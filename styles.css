@@ -1,131 +1,93 @@
-/* ===== GLOBAL ===== */
-body {
-  margin: 0;
-  font-family: 'Segoe UI', Arial, sans-serif;
-  background: #ffffff;
-  color: #333;
+/* Fondo elegante */
+.hero-background {
+    background-image: url('https://images.unsplash.com/photo-1526045431048-f857369baa09?auto=format&fit=crop&w=1400&q=80');
+    background-size: cover;
+    background-position: center;
+    filter: brightness(0.45);
+    position: fixed;
+    inset: 0;
+    z-index: -1;
 }
 
-/* ===== HEADER ===== */
-.header-elegante {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 18px 40px;
-  background: #ffffffee;
-  backdrop-filter: blur(8px);
-  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-  position: sticky;
-  top: 0;
-  z-index: 10;
+/* Header */
+header {
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.logo span {
-  font-size: 30px;
-  font-weight: bold;
-  color: #d6336c;
+header h1 {
+    color: white;
+    font-size: 32px;
+    letter-spacing: 1px;
 }
 
-.nav-horizontal {
-  display: flex;
-  gap: 30px;
+nav a {
+    color: #f1f1f1;
+    margin-left: 20px;
+    text-decoration: none;
+    font-size: 18px;
+    transition: 0.3s;
 }
 
-.nav-horizontal a {
-  font-size: 18px;
-  color: #444;
-  transition: .3s;
+nav a:hover {
+    color: #ffcccc;
 }
 
-.nav-horizontal a:hover {
-  color: #d6336c;
+/* Sección principal */
+.hero {
+    text-align: center;
+    margin-top: 160px;
+    color: white;
 }
 
-/* ===== HERO ===== */
-
-.hero-elegante {
-  height: 90vh;
-  display: flex;
-  align-items: center;
-  padding-left: 80px;
-  background:
-    linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
-    url("A_photograph_showcases_a_bouquet_of_flowers_wrappe.png")
-    center/cover no-repeat;
-  color: white;
+.hero h2 {
+    font-size: 48px;
+    font-weight: bold;
 }
 
-.hero-texto h1 {
-  font-size: 58px;
-  margin-bottom: 10px;
+.hero p {
+    font-size: 22px;
 }
 
-.hero-texto p {
-  font-size: 20px;
-  line-height: 1.4;
-  margin-bottom: 30px;
+/* Barra inferior WhatsApp */
+.whatsapp-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #ffffffee;
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    border-top: 3px solid #25d366;
 }
 
-.btn-principal {
-  background: #d6336c;
-  padding: 14px 36px;
-  color: white;
-  font-size: 20px;
-  border-radius: 50px;
-  font-weight: bold;
-  transition: .3s;
+.whatsapp-icon {
+    width: 38px;
 }
 
-.btn-principal:hover {
-  background: #b02657;
+.whatsapp-button {
+    background: #25d366;
+    color: white;
+    padding: 10px 18px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-size: 17px;
+    box-shadow: 0 3px 5px #0003;
 }
 
-
-/* ===== WHATSAPP BOTTOM BOX ===== */
-
-.whatsapp-bottom {
-  position: fixed;
-  bottom: 20px;
-  left: 20px;
-  background: #25d366;
-  padding: 16px 20px;
-  border-radius: 14px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
-  z-index: 999;
-  display: flex;
-  align-items: center;
-  animation: aparecer 0.7s ease-out;
+.whatsapp-button:hover {
+    background: #1ebe5a;
 }
 
-.whatsapp-bottom a {
-  display: flex;
-  align-items: center;
-  color: white;
-  text-decoration: none;
-}
-
-.whatsapp-bottom img {
-  width: 50px;
-  margin-right: 12px;
-}
-
-.whatsapp-bottom span {
-  font-size: 15px;
-  font-weight: 500;
-  line-height: 1.2;
-}
-
-@keyframes aparecer {
-  from { opacity: 0; transform: translateY(20px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-
-/* ===== FOOTER ===== */
-.pie {
-  text-align: center;
-  padding: 20px;
-  background: #f7f7f7;
-  font-size: 15px;
-  color: #555;
+/* Footer */
+footer {
+    text-align: center;
+    color: white;
+    margin-top: 120px;
+    font-size: 16px;
 }
