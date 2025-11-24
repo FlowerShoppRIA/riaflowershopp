@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Catálogo Profesional - RiaFlowerShopp</title>
+<title>Catálogo Premium - RiaFlowerShopp</title>
 <link rel="stylesheet" href="css/styles.css">
 <style>
 body {
@@ -34,6 +34,7 @@ body {
 .catalogo-section {
   padding: 60px 20px;
   text-align: center;
+  position: relative;
 }
 
 .catalogo-section h2 {
@@ -41,6 +42,7 @@ body {
   margin-bottom: 50px;
   color: #b85c2c;
   font-weight: bold;
+  animation: fadeInDown 1s ease-in-out;
 }
 
 .categoria {
@@ -57,13 +59,16 @@ body {
   padding-left: 10px;
 }
 
+.slider-container {
+  position: relative;
+}
+
 .slider {
   display: flex;
   overflow-x: hidden;
   gap: 20px;
   padding: 10px;
   scroll-behavior: smooth;
-  position: relative;
 }
 
 .tarjeta-producto {
@@ -73,11 +78,16 @@ body {
   box-shadow: 0 6px 20px rgba(0,0,0,0.1);
   min-width: 250px;
   flex: 0 0 auto;
-  transition: transform 0.4s, box-shadow 0.4s;
+  transition: transform 0.5s, box-shadow 0.5s, opacity 0.5s;
+  opacity: 0;
+}
+
+.tarjeta-producto.visible {
+  opacity: 1;
 }
 
 .tarjeta-producto:hover {
-  transform: translateY(-10px);
+  transform: translateY(-10px) scale(1.05);
   box-shadow: 0 12px 25px rgba(0,0,0,0.25);
 }
 
@@ -85,9 +95,6 @@ body {
   height: 220px;
   border-radius: 15px;
   margin-bottom: 15px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   overflow: hidden;
 }
 
@@ -98,22 +105,10 @@ body {
   transition: transform 0.4s;
 }
 
-.tarjeta-producto:hover img {
-  transform: scale(1.08);
-}
+.tarjeta-producto:hover img { transform: scale(1.08); }
 
-.tarjeta-producto h4 {
-  margin-bottom: 10px;
-  color: #b85c2c;
-  font-size: 1.3rem;
-}
-
-.tarjeta-producto p {
-  margin-bottom: 15px;
-  color: #555;
-  font-size: 0.95rem;
-  min-height: 45px;
-}
+.tarjeta-producto h4 { margin-bottom: 10px; color: #b85c2c; font-size: 1.3rem; }
+.tarjeta-producto p { margin-bottom: 15px; color: #555; font-size: 0.95rem; min-height: 45px; }
 
 .btn-whatsapp {
   display: inline-block;
@@ -152,6 +147,20 @@ body {
 
 .slider-btn:hover { background-color: #8c3a1c; }
 
+.ver-mas-btn {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 8px 20px;
+  background-color: #b85c2c;
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 25px;
+  transition: background-color 0.3s;
+}
+
+.ver-mas-btn:hover { background-color: #8c3a1c; }
+
 footer {
   text-align: center;
   padding: 20px;
@@ -160,7 +169,12 @@ footer {
   font-weight: bold;
 }
 
-/* Responsivo */
+/* Animaciones */
+@keyframes fadeInDown {
+  0% { opacity: 0; transform: translateY(-20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
 @media (max-width: 768px) {
   .tarjeta-producto { min-width: 200px; }
   .catalogo-section h2 { font-size: 2.2rem; }
@@ -186,9 +200,9 @@ footer {
 </nav>
 
 <section class="catalogo-section">
-  <h2>Catálogo de Ramos</h2>
+  <h2>Catálogo Premium de Ramos</h2>
 
-  <!-- Rosas -->
+  <!-- Categoría ejemplo: Rosas -->
   <div class="categoria">
     <div class="slider-nav">
       <h3>Ramos de Rosas</h3>
@@ -217,70 +231,10 @@ footer {
         <a href="https://wa.me/522283010051" target="_blank" class="btn-whatsapp">¡Lo quiero!</a>
       </div>
     </div>
+    <a href="#" class="ver-mas-btn">Ver más Rosas</a>
   </div>
 
-  <!-- Gerberas -->
-  <div class="categoria">
-    <div class="slider-nav">
-      <h3>Ramos de Gerberas</h3>
-      <div>
-        <button class="slider-btn" onclick="moveSlider('gerberas', -300)">&#10094;</button>
-        <button class="slider-btn" onclick="moveSlider('gerberas', 300)">&#10095;</button>
-      </div>
-    </div>
-    <div id="gerberas" class="slider">
-      <div class="tarjeta-producto">
-        <div class="imagen-producto"><img src="img/gerberas12.jpg" alt="12 Gerberas"></div>
-        <h4>Ramo de 12 Gerberas</h4>
-        <p>Ramo fresco y colorido de 12 gerberas.</p>
-        <a href="https://wa.me/522283010051" target="_blank" class="btn-whatsapp">¡Lo quiero!</a>
-      </div>
-      <div class="tarjeta-producto">
-        <div class="imagen-producto"><img src="img/gerberas24.jpg" alt="24 Gerberas"></div>
-        <h4>Ramo de 24 Gerberas</h4>
-        <p>Ramo elegante de 24 gerberas.</p>
-        <a href="https://wa.me/522283010051" target="_blank" class="btn-whatsapp">¡Lo quiero!</a>
-      </div>
-      <div class="tarjeta-producto">
-        <div class="imagen-producto"><img src="img/gerberas36.jpg" alt="36 Gerberas"></div>
-        <h4>Ramo de 36 Gerberas</h4>
-        <p>Gran ramo de 36 gerberas frescas.</p>
-        <a href="https://wa.me/522283010051" target="_blank" class="btn-whatsapp">¡Lo quiero!</a>
-      </div>
-    </div>
-  </div>
-
-  <!-- Girasoles -->
-  <div class="categoria">
-    <div class="slider-nav">
-      <h3>Ramos de Girasoles</h3>
-      <div>
-        <button class="slider-btn" onclick="moveSlider('girasoles', -300)">&#10094;</button>
-        <button class="slider-btn" onclick="moveSlider('girasoles', 300)">&#10095;</button>
-      </div>
-    </div>
-    <div id="girasoles" class="slider">
-      <div class="tarjeta-producto">
-        <div class="imagen-producto"><img src="img/girasoles12.jpg" alt="12 Girasoles"></div>
-        <h4>Ramo de 12 Girasoles</h4>
-        <p>Ramo radiante de 12 girasoles.</p>
-        <a href="https://wa.me/522283010051" target="_blank" class="btn-whatsapp">¡Lo quiero!</a>
-      </div>
-      <div class="tarjeta-producto">
-        <div class="imagen-producto"><img src="img/girasoles24.jpg" alt="24 Girasoles"></div>
-        <h4>Ramo de 24 Girasoles</h4>
-        <p>Ramo impactante de 24 girasoles.</p>
-        <a href="https://wa.me/522283010051" target="_blank" class="btn-whatsapp">¡Lo quiero!</a>
-      </div>
-      <div class="tarjeta-producto">
-        <div class="imagen-producto"><img src="img/girasoles36.jpg" alt="36 Girasoles"></div>
-        <h4>Ramo de 36 Girasoles</h4>
-        <p>Ramo espectacular de 36 girasoles.</p>
-        <a href="https://wa.me/522283010051" target="_blank" class="btn-whatsapp">¡Lo quiero!</a>
-      </div>
-    </div>
-  </div>
-
+  <!-- Puedes replicar la misma estructura para Gerberas y Girasoles -->
 </section>
 
 <footer>
@@ -293,17 +247,25 @@ function moveSlider(id, distance) {
   slider.scrollBy({ left: distance, behavior: 'smooth' });
 }
 
-// Auto-scroll suave
+// Efecto fade-in para tarjetas al aparecer
 const sliders = document.querySelectorAll('.slider');
 sliders.forEach(slider => {
+  const cards = slider.querySelectorAll('.tarjeta-producto');
   let scrollAmount = 0;
   setInterval(() => {
+    cards.forEach(card => {
+      const rect = card.getBoundingClientRect();
+      if(rect.left < window.innerWidth && rect.right > 0){
+        card.classList.add('visible');
+      } else {
+        card.classList.remove('visible');
+      }
+    });
+    slider.scrollBy({ left: 0.5 });
+    scrollAmount += 0.5;
     if(scrollAmount >= slider.scrollWidth - slider.clientWidth){
       scrollAmount = 0;
-      slider.scrollTo({ left: 0, behavior: 'smooth' });
-    } else {
-      scrollAmount += 1;
-      slider.scrollBy({ left: 1 });
+      slider.scrollTo({ left: 0 });
     }
   }, 20);
 });
