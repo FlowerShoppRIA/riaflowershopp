@@ -34,6 +34,7 @@ body {
 .bodas-section {
   padding: 50px 20px;
   text-align: center;
+  position: relative;
 }
 
 .bodas-section h2 {
@@ -60,7 +61,7 @@ body {
 .slider {
   display: flex;
   overflow-x: auto;
-  gap: 20px;
+  gap: 15px;
   padding: 10px;
   scroll-behavior: smooth;
 }
@@ -72,8 +73,8 @@ body {
   border-radius: 15px;
   box-shadow: 0 6px 20px rgba(0,0,0,0.1);
   flex: 0 0 auto;
-  min-width: 200px;
-  padding: 15px;
+  min-width: 160px;
+  padding: 10px;
   text-align: center;
   transition: transform 0.3s, box-shadow 0.3s;
 }
@@ -85,21 +86,21 @@ body {
 
 .product-card img {
   width: 100%;
-  height: 150px;
+  height: 120px;
   object-fit: cover;
   border-radius: 10px;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 }
 
 .product-card h4 {
   margin: 5px 0;
   color: #b85c2c;
-  font-size: 1.1rem;
+  font-size: 1rem;
 }
 
 .product-card p {
-  margin: 5px 0 10px;
-  font-size: 0.95rem;
+  margin: 3px 0 8px;
+  font-size: 0.85rem;
   color: #555;
 }
 
@@ -107,11 +108,11 @@ body {
   display: inline-block;
   background-color: #25D366;
   color: #fff;
-  padding: 8px 20px;
+  padding: 6px 18px;
   border-radius: 25px;
   text-decoration: none;
   font-weight: bold;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   transition: background-color 0.3s, transform 0.3s;
 }
 
@@ -119,6 +120,52 @@ body {
   background-color: #1ebe5d;
   transform: scale(1.05);
 }
+
+/* Recuadro Express flotante */
+.express-box {
+  position: fixed;
+  right: 15px;
+  bottom: 15px;
+  background: #ffe6cc;
+  border: 2px solid #b85c2c;
+  border-radius: 20px;
+  padding: 12px 15px;
+  text-align: center;
+  width: 200px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+  transition: transform 0.3s;
+  z-index: 1000;
+}
+
+.express-box:hover {
+  transform: translateY(-5px);
+}
+
+.express-box h4 {
+  font-size: 1rem;
+  color: #b85c2c;
+  margin-bottom: 8px;
+}
+
+.express-box p {
+  font-size: 0.8rem;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.express-box a {
+  display: inline-block;
+  background-color: #25D366;
+  color: #fff;
+  padding: 6px 15px;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 0.85rem;
+  text-decoration: none;
+  transition: background-color 0.3s;
+}
+
+.express-box a:hover { background-color: #1ebe5d; }
 
 footer {
   text-align: center;
@@ -130,16 +177,18 @@ footer {
 
 /* Responsivo */
 @media (max-width: 768px) {
-  .product-card { min-width: 180px; }
+  .product-card { min-width: 140px; }
   .bodas-section h2 { font-size: 2rem; }
   .subcategoria h3 { font-size: 1.6rem; }
+  .express-box { width: 180px; padding: 10px; }
 }
 
 @media (max-width: 480px) {
-  .product-card { min-width: 140px; padding: 10px; }
+  .product-card { min-width: 120px; padding: 8px; }
   .bodas-section h2 { font-size: 1.6rem; }
   .subcategoria h3 { font-size: 1.4rem; }
-  .btn-whatsapp { padding: 6px 15px; font-size: 0.8rem; }
+  .btn-whatsapp { padding: 5px 12px; font-size: 0.75rem; }
+  .express-box { width: 160px; padding: 8px; }
 }
 </style>
 </head>
@@ -194,7 +243,52 @@ footer {
     </div>
   </div>
 
+  <!-- Ramos de Novia -->
+  <div class="subcategoria">
+    <h3>Ramos de Novia</h3>
+    <div class="slider" id="ramos-novia">
+      <div class="product-card">
+        <img src="img/ramo-novia1.jpg" alt="Ramo Novia 1">
+        <h4>Ramo Romantic</h4>
+        <p>$1200 MXN</p>
+        <a href="https://wa.me/522283010051" target="_blank" class="btn-whatsapp">¡Lo quiero!</a>
+      </div>
+      <div class="product-card">
+        <img src="img/ramo-novia2.jpg" alt="Ramo Novia 2">
+        <h4>Ramo Elegance</h4>
+        <p>$1450 MXN</p>
+        <a href="https://wa.me/522283010051" target="_blank" class="btn-whatsapp">¡Lo quiero!</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Arreglos para Invitados -->
+  <div class="subcategoria">
+    <h3>Arreglos para Invitados</h3>
+    <div class="slider" id="invitados">
+      <div class="product-card">
+        <img src="img/invitado1.jpg" alt="Arreglo Invitado 1">
+        <h4>Detalle Floral</h4>
+        <p>$350 MXN</p>
+        <a href="https://wa.me/522283010051" target="_blank" class="btn-whatsapp">¡Lo quiero!</a>
+      </div>
+      <div class="product-card">
+        <img src="img/invitado2.jpg" alt="Arreglo Invitado 2">
+        <h4>Mini Elegance</h4>
+        <p>$400 MXN</p>
+        <a href="https://wa.me/522283010051" target="_blank" class="btn-whatsapp">¡Lo quiero!</a>
+      </div>
+    </div>
+  </div>
+
 </section>
+
+<!-- Recuadro Express flotante -->
+<div class="express-box">
+  <h4>Express</h4>
+  <p>¿Quieres ver lo que tenemos listo para enviar? Solicítalo por WhatsApp, te enviamos imágenes, eliges y lo enviamos al momento.</p>
+  <a href="https://wa.me/522283010051" target="_blank">¡Ver Express!</a>
+</div>
 
 <footer>
   © RiaFlowerShopp 2025 – Diseños florales con amor.
