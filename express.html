@@ -1,40 +1,91 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Express</title>
-  <link rel="stylesheet" href="styles.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Express - RiaFlowerShopp</title>
+<link rel="stylesheet" href="css/styles.css">
+<style>
+body {
+  font-family: Arial, sans-serif;
+  background-color: #fff8f0;
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
+
+.menu {
+  background: #b85c2c;
+  text-align: center;
+  padding: 12px 0;
+}
+
+.menu a {
+  color: #fff;
+  text-decoration: none;
+  margin: 0 15px;
+  font-weight: bold;
+  font-size: 1.1rem;
+  transition: color 0.3s;
+}
+
+.menu a:hover { color: #ffe6cc; }
+
+.express-section {
+  padding: 80px 20px;
+  text-align: center;
+  background: linear-gradient(to bottom, #fff8f0, #ffe6cc);
+}
+
+.express-section h2 {
+  font-size: 3rem;
+  color: #b85c2c;
+  margin-bottom: 30px;
+}
+
+.express-section p {
+  font-size: 1.2rem;
+  margin-bottom: 40px;
+  color: #555;
+}
+
+.btn-whatsapp-express {
+  display: inline-block;
+  background-color: #25D366;
+  color: #fff;
+  padding: 15px 35px;
+  border-radius: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 1.2rem;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.btn-whatsapp-express:hover {
+  background-color: #1ebe5d;
+  transform: scale(1.05);
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  background: #b85c2c;
+  color: white;
+  font-weight: bold;
+}
+</style>
 </head>
 <body>
 
-<header>
-  <h1>Express - Listos para Enviar</h1>
-  <nav class="nav-horizontal">
-    <a href="index.html">Inicio</a>
-    <a href="catalogo.html">Catálogo</a>
-    <a href="servicios.html">Servicios</a>
-    <a href="https://wa.me/522289951623" target="_blank">WhatsApp</a>
-  </nav>
-</header>
+<nav class="menu">
+  <a href="index.html">Inicio</a>
+  <a href="catalogo.html">Catálogo</a>
+  <a href="express.html">Express</a>
+  <a href="servicios.html">Servicios</a>
+  <a href="contacto.html">Contacto</a>
+</nav>
 
-<section class="productos-horizontal">
-
-  <div class="producto">
-    <img src="EXPRESS1.jpg" alt="Express 1">
-    <h3>Express 1</h3>
-  </div>
-
-  <div class="producto">
-    <img src="EXPRESS2.jpg" alt="Express 2">
-    <h3>Express 2</h3>
-  </div>
-
-  <div class="producto">
-    <img src="EXPRESS3.jpg" alt="Express 3">
-    <h3>Express 3</h3>
-  </div>
-
-</section>
-
-</body>
-</html>
+<section class="express-section">
+  <h2>Express - Listos para enviar</h2>
+  <p>Si quieres alguno de nuestros arreglos ya preparados y disponibles en stock, ¡te lo enviamos de inmediato!  
+  Elige tu ramo favorito y te lo hacemos
