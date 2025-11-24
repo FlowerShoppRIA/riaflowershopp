@@ -8,7 +8,7 @@
 <style>
 body {
   font-family: Arial, sans-serif;
-  background-color: #fff8f0;
+  background: linear-gradient(to bottom, #fff8f0, #ffe6cc);
   margin: 0;
   padding: 0;
   color: #333;
@@ -32,33 +32,37 @@ body {
 .menu a:hover { color: #ffe6cc; }
 
 .express-section {
-  padding: 80px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   text-align: center;
-  background: linear-gradient(to bottom, #fff8f0, #ffe6cc);
+  padding: 100px 20px;
 }
 
 .express-section h2 {
   font-size: 3rem;
   color: #b85c2c;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
 
 .express-section p {
-  font-size: 1.2rem;
-  margin-bottom: 40px;
+  font-size: 1.3rem;
   color: #555;
-  line-height: 1.5;
+  margin-bottom: 40px;
+  line-height: 1.6;
+  max-width: 600px;
 }
 
 .btn-whatsapp-express {
   display: inline-block;
   background-color: #25D366;
   color: #fff;
-  padding: 15px 35px;
-  border-radius: 30px;
+  font-size: 1.3rem;
   font-weight: bold;
+  padding: 15px 40px;
+  border-radius: 30px;
   text-decoration: none;
-  font-size: 1.2rem;
   transition: background-color 0.3s, transform 0.3s;
 }
 
@@ -94,16 +98,16 @@ footer {
 
 <section class="express-section">
   <h2>Express - Listos para enviar</h2>
-  <p>Tenemos arreglos florales ya preparados y disponibles en stock.  
-  Solo elige tu favorito y te lo enviamos de inmediato.</p>
+  <p>¿Quieres checar lo que tenemos listo para enviar?  
+  Solicítalo por WhatsApp, te enviamos imágenes de los arreglos disponibles, eliges y lo enviamos al momento.</p>
   
   <a href="https://wa.me/522283010051?text=Hola,%20quiero%20ver%20los%20arreglos%20Express%20disponibles" 
      target="_blank" class="btn-whatsapp-express">
-    Pedir por WhatsApp
+    Solicitar por WhatsApp
   </a>
 
   <div class="stock-note">
-    * Las imágenes y disponibilidad se envían directamente por WhatsApp y se actualizan conforme se venden.
+    * La disponibilidad se actualiza en tiempo real según el stock.
   </div>
 </section>
 
