@@ -6,7 +6,7 @@
   <title>Catálogo Dinámico - RiaFlowerShopp</title>
   <link rel="stylesheet" href="css/styles.css">
   <style>
-    /* Estilos dinámicos y atractivos solo para la sección catálogo */
+    /* Sección catálogo con slider */
 
     .catalogo-section {
       padding: 60px 20px;
@@ -23,21 +23,28 @@
 
     .categoria {
       margin-bottom: 70px;
+      text-align: left;
     }
 
     .categoria h3 {
       font-size: 2.2rem;
-      margin-bottom: 30px;
+      margin-bottom: 20px;
       color: #8c3a1c;
       text-transform: uppercase;
       letter-spacing: 1px;
+      padding-left: 10px;
     }
 
-    .grid-productos {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 30px;
-      justify-items: center;
+    .slider {
+      display: flex;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      gap: 20px;
+      padding: 10px;
+    }
+
+    .slider::-webkit-scrollbar {
+      display: none;
     }
 
     .tarjeta-producto {
@@ -45,16 +52,14 @@
       border-radius: 20px;
       padding: 20px;
       box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+      min-width: 250px;
+      flex: 0 0 auto;
       transition: transform 0.4s, box-shadow 0.4s;
-      width: 100%;
-      max-width: 280px;
-      position: relative;
-      overflow: hidden;
     }
 
     .tarjeta-producto:hover {
-      transform: translateY(-15px);
-      box-shadow: 0 15px 25px rgba(0,0,0,0.2);
+      transform: translateY(-10px);
+      box-shadow: 0 12px 25px rgba(0,0,0,0.2);
     }
 
     .imagen-producto {
@@ -103,6 +108,29 @@
       background-color: #1ebe5d;
       transform: scale(1.05);
     }
+
+    /* Flechas slider */
+    .slider-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .slider-btn {
+      background-color: #b85c2c;
+      color: #fff;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1.2rem;
+      transition: background-color 0.3s;
+    }
+
+    .slider-btn:hover {
+      background-color: #8c3a1c;
+    }
   </style>
 </head>
 <body>
@@ -112,8 +140,14 @@
 
     <!-- Ramos de Rosas -->
     <div class="categoria">
-      <h3>Ramos de Rosas</h3>
-      <div class="grid-productos">
+      <div class="slider-nav">
+        <h3>Ramos de Rosas</h3>
+        <div>
+          <button class="slider-btn" onclick="scrollSlider('rosas', -300)">&#10094;</button>
+          <button class="slider-btn" onclick="scrollSlider('rosas', 300)">&#10095;</button>
+        </div>
+      </div>
+      <div id="rosas" class="slider">
         <div class="tarjeta-producto">
           <div class="imagen-producto">Imagen 12 rosas</div>
           <h4>Ramo de 12 Rosas</h4>
@@ -123,13 +157,13 @@
         <div class="tarjeta-producto">
           <div class="imagen-producto">Imagen 24 rosas</div>
           <h4>Ramo de 24 Rosas</h4>
-          <p>Magnífico ramo de 24 rosas, perfecto para ocasiones especiales.</p>
+          <p>Magnífico ramo de 24 rosas frescas.</p>
           <a href="https://wa.me/XXXXXXXXXXX" target="_blank" class="btn-whatsapp">¡Lo quiero!</a>
         </div>
         <div class="tarjeta-producto">
           <div class="imagen-producto">Imagen 36 rosas</div>
           <h4>Ramo de 36 Rosas</h4>
-          <p>Imponente ramo de 36 rosas frescas para un regalo inolvidable.</p>
+          <p>Imponente ramo de 36 rosas frescas.</p>
           <a href="https://wa.me/XXXXXXXXXXX" target="_blank" class="btn-whatsapp">¡Lo quiero!</a>
         </div>
       </div>
@@ -137,8 +171,14 @@
 
     <!-- Ramos de Gerberas -->
     <div class="categoria">
-      <h3>Ramos de Gerberas</h3>
-      <div class="grid-productos">
+      <div class="slider-nav">
+        <h3>Ramos de Gerberas</h3>
+        <div>
+          <button class="slider-btn" onclick="scrollSlider('gerberas', -300)">&#10094;</button>
+          <button class="slider-btn" onclick="scrollSlider('gerberas', 300)">&#10095;</button>
+        </div>
+      </div>
+      <div id="gerberas" class="slider">
         <div class="tarjeta-producto">
           <div class="imagen-producto">Imagen 12 gerberas</div>
           <h4>Ramo de 12 Gerberas</h4>
@@ -148,13 +188,13 @@
         <div class="tarjeta-producto">
           <div class="imagen-producto">Imagen 24 gerberas</div>
           <h4>Ramo de 24 Gerberas</h4>
-          <p>Ramo elegante de 24 gerberas, perfecto para regalos.</p>
+          <p>Ramo elegante de 24 gerberas.</p>
           <a href="https://wa.me/XXXXXXXXXXX" target="_blank" class="btn-whatsapp">¡Lo quiero!</a>
         </div>
         <div class="tarjeta-producto">
           <div class="imagen-producto">Imagen 36 gerberas</div>
           <h4>Ramo de 36 Gerberas</h4>
-          <p>Gran ramo de 36 gerberas frescas para impresionar.</p>
+          <p>Gran ramo de 36 gerberas frescas.</p>
           <a href="https://wa.me/XXXXXXXXXXX" target="_blank" class="btn-whatsapp">¡Lo quiero!</a>
         </div>
       </div>
@@ -162,30 +202,43 @@
 
     <!-- Ramos de Girasoles -->
     <div class="categoria">
-      <h3>Ramos de Girasoles</h3>
-      <div class="grid-productos">
+      <div class="slider-nav">
+        <h3>Ramos de Girasoles</h3>
+        <div>
+          <button class="slider-btn" onclick="scrollSlider('girasoles', -300)">&#10094;</button>
+          <button class="slider-btn" onclick="scrollSlider('girasoles', 300)">&#10095;</button>
+        </div>
+      </div>
+      <div id="girasoles" class="slider">
         <div class="tarjeta-producto">
           <div class="imagen-producto">Imagen 12 girasoles</div>
           <h4>Ramo de 12 Girasoles</h4>
-          <p>Ramo radiante de 12 girasoles, lleno de alegría.</p>
+          <p>Ramo radiante de 12 girasoles.</p>
           <a href="https://wa.me/XXXXXXXXXXX" target="_blank" class="btn-whatsapp">¡Lo quiero!</a>
         </div>
         <div class="tarjeta-producto">
           <div class="imagen-producto">Imagen 24 girasoles</div>
           <h4>Ramo de 24 Girasoles</h4>
-          <p>Ramo impactante de 24 girasoles, ideal para ocasiones especiales.</p>
+          <p>Ramo impactante de 24 girasoles.</p>
           <a href="https://wa.me/XXXXXXXXXXX" target="_blank" class="btn-whatsapp">¡Lo quiero!</a>
         </div>
         <div class="tarjeta-producto">
           <div class="imagen-producto">Imagen 36 girasoles</div>
           <h4>Ramo de 36 Girasoles</h4>
-          <p>Ramo espectacular de 36 girasoles frescos que enamoran.</p>
+          <p>Ramo espectacular de 36 girasoles.</p>
           <a href="https://wa.me/XXXXXXXXXXX" target="_blank" class="btn-whatsapp">¡Lo quiero!</a>
         </div>
       </div>
     </div>
 
   </section>
+
+  <script>
+    function scrollSlider(id, distance) {
+      const slider = document.getElementById(id);
+      slider.scrollBy({ left: distance, behavior: 'smooth' });
+    }
+  </script>
 
 </body>
 </html>
