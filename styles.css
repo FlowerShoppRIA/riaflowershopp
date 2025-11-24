@@ -1,4 +1,4 @@
-/* ====== ESTILO GENERAL ====== */
+/* ===== GLOBAL ===== */
 body {
   margin: 0;
   font-family: 'Segoe UI', Arial, sans-serif;
@@ -6,17 +6,13 @@ body {
   color: #333;
 }
 
-a {
-  text-decoration: none;
-}
-
-/* ====== HEADER ELEGANTE ====== */
+/* ===== HEADER ===== */
 .header-elegante {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 18px 40px;
-  background: #ffffffdd;
+  background: #ffffffee;
   backdrop-filter: blur(8px);
   box-shadow: 0 2px 10px rgba(0,0,0,0.08);
   position: sticky;
@@ -28,7 +24,6 @@ a {
   font-size: 30px;
   font-weight: bold;
   color: #d6336c;
-  letter-spacing: 1px;
 }
 
 .nav-horizontal {
@@ -39,94 +34,98 @@ a {
 .nav-horizontal a {
   font-size: 18px;
   color: #444;
-  font-weight: 500;
-  transition: 0.3s;
+  transition: .3s;
 }
 
 .nav-horizontal a:hover {
   color: #d6336c;
 }
 
-/* ====== HERO ====== */
+/* ===== HERO ===== */
+
 .hero-elegante {
-  height: 88vh;
+  height: 90vh;
   display: flex;
   align-items: center;
   padding-left: 80px;
-  background: 
-    linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
-    url('/mnt/data/A_photograph_showcases_a_bouquet_of_flowers_wrappe.png')
+  background:
+    linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
+    url("A_photograph_showcases_a_bouquet_of_flowers_wrappe.png")
     center/cover no-repeat;
   color: white;
-}
-
-.hero-texto {
-  max-width: 600px;
 }
 
 .hero-texto h1 {
   font-size: 58px;
   margin-bottom: 10px;
-  font-weight: 700;
 }
 
 .hero-texto p {
   font-size: 20px;
-  line-height: 1.5;
+  line-height: 1.4;
   margin-bottom: 30px;
 }
 
 .btn-principal {
   background: #d6336c;
-  color: white;
   padding: 14px 36px;
+  color: white;
   font-size: 20px;
   border-radius: 50px;
   font-weight: bold;
-  transition: 0.3s;
+  transition: .3s;
 }
 
 .btn-principal:hover {
   background: #b02657;
 }
 
-/* ====== BARRA LATERAL WHATSAPP ====== */
-.barra-whatsapp {
+
+/* ===== WHATSAPP BOTTOM BOX ===== */
+
+.whatsapp-bottom {
   position: fixed;
-  right: 0;
-  top: 30%;
-  width: 220px;
+  bottom: 20px;
+  left: 20px;
   background: #25d366;
-  padding: 15px;
-  border-radius: 12px 0 0 12px;
-  box-shadow: -4px 4px 14px rgba(0,0,0,0.25);
+  padding: 16px 20px;
+  border-radius: 14px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
   z-index: 999;
+  display: flex;
+  align-items: center;
+  animation: aparecer 0.7s ease-out;
 }
 
-.barra-whatsapp a {
+.whatsapp-bottom a {
   display: flex;
-  flex-direction: column;
   align-items: center;
   color: white;
+  text-decoration: none;
 }
 
-.barra-whatsapp img {
+.whatsapp-bottom img {
   width: 50px;
-  margin-bottom: 10px;
+  margin-right: 12px;
 }
 
-.barra-whatsapp p {
-  text-align: center;
+.whatsapp-bottom span {
   font-size: 15px;
   font-weight: 500;
+  line-height: 1.2;
 }
 
-/* ====== PIE DE PÁGINA ====== */
+@keyframes aparecer {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+
+/* ===== FOOTER ===== */
 .pie {
   text-align: center;
   padding: 20px;
   background: #f7f7f7;
-  margin-top: 40px;
   font-size: 15px;
-  color: #666;
+  color: #555;
 }
