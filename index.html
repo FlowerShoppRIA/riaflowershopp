@@ -1,146 +1,53 @@
-/* Reset */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RiaFlowerShopp</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
 
-body {
-    font-family: Arial, sans-serif;
-    background-color: #fafafa;
-    color: #333;
-}
+<body>
 
-/* Barra superior */
-.top-bar {
-    background: #222;
-    color: gold;
-    padding: 8px 20px;
-    text-align: center;
-    font-size: 15px;
-    letter-spacing: 1px;
-}
+    <!-- Barra superior -->
+    <header class="top-bar">
+        <div class="top-text">@RiaFlowerShopp 2025 • Flores que inspiran</div>
+    </header>
 
-/* Sidebar WhatsApp */
-.whatsapp-sidebar {
-    position: fixed;
-    left: 0;
-    top: 40%;
-    background: #25d366;
-    padding: 10px;
-    border-radius: 0 10px 10px 0;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-    z-index: 10;
-}
+    <!-- Cuadro WhatsApp (arriba derecha) -->
+    <div class="whatsapp-top-box">
+        <a href="https://wa.me/522283010051?text=Hola,%20quiero%20enviar%20una%20foto%20para%20cotizar%20un%20ramo" target="_blank">
+            <img src="img/whatsapp.png" alt="WhatsApp">
+            <span>¿Tienes una imagen del ramo<br>que deseas? ¡Envíala aquí!</span>
+        </a>
+    </div>
 
-.whatsapp-sidebar a {
-    display: flex;
-    align-items: center;
-    color: white;
-    text-decoration: none;
-}
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Flores que inspiran</h1>
+            <p>Arreglos florales elegantes, personalizados y listos para entregar</p>
+        </div>
+    </section>
 
-.whatsapp-sidebar img {
-    width: 40px;
-    margin-right: 8px;
-}
+    <!-- Menú -->
+    <nav class="menu">
+        <a href="catalogo.html">Catálogo</a>
+        <a href="express.html">Express</a>
+        <a href="servicios.html">Servicios</a>
+        <a href="contacto.html">Contacto</a>
+    </nav>
 
-.whatsapp-sidebar span {
-    font-size: 14px;
-    font-weight: bold;
-}
+    <!-- Intro -->
+    <section class="intro">
+        <h2>Bienvenido a RiaFlowerShopp</h2>
+        <p>Diseñamos arreglos florales únicos para cada ocasión. Elegancia y calidad en cada detalle.</p>
+    </section>
 
-/* HERO (con fondo funcional) */
-.hero {
-    background-image: url("img/imagendefondo.png"); /* usa placeholder elegante */
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    height: 88vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    text-align: center;
-    color: white;
-    animation: fadeIn 1.3s ease-in-out;
-}
+    <!-- Footer -->
+    <footer>
+        © RiaFlowerShopp 2025 – Diseños florales con amor.
+    </footer>
 
-.hero::before {
-    content: "";
-    position: absolute;
-    top: 0; 
-    left: 0;
-    width: 100%; 
-    height: 100%;
-    background: linear-gradient(
-        rgba(0, 0, 0, 0.55),
-        rgba(0, 0, 0, 0.25)
-    );
-    z-index: 1;
-}
-
-.hero-content {
-    position: relative;
-    z-index: 2;
-    animation: slideUp 1.3s ease-in-out;
-}
-
-.hero h1 {
-    font-size: 3rem;
-    margin-bottom: 10px;
-}
-
-.hero p {
-    font-size: 1.3rem;
-}
-
-/* Menú horizontal */
-.menu {
-    background: gold;
-    padding: 12px 0;
-    text-align: center;
-}
-
-.menu a {
-    margin: 0 20px;
-    font-size: 18px;
-    color: black;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-.menu a:hover {
-    color: white;
-}
-
-/* Sección intro */
-.intro {
-    padding: 50px 20px;
-    text-align: center;
-}
-
-.intro h2 {
-    font-size: 2rem;
-    margin-bottom: 10px;
-}
-
-/* Footer */
-footer {
-    background: #222;
-    color: white;
-    padding: 15px;
-    text-align: center;
-    margin-top: 40px;
-}
-
-/* Animaciones */
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-@keyframes slideUp {
-    from { transform: translateY(40px); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
-}
+</body>
+</html>
