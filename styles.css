@@ -1,0 +1,68 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #fafafa;
+}
+
+header {
+  background: #d6336c;
+  padding: 20px;
+  color: white;
+  text-align: center;
+}
+
+.nav-horizontal {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.nav-horizontal a {
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.hero {
+  padding: 40px;
+  text-align: center;
+}
+
+.productos-horizontal {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  padding: 20px;
+  gap: 20px;
+}
+
+.producto {
+  min-width: 250px;
+  background: white;
+  border-radius: 12px;
+  padding: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.producto img {
+  width: 100%;
+  border-radius: 12px;
+}
+
+.servicios-horizontal {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  padding: 40px;
+}
+
+.servicio-btn {
+  background: #ffb703;
+  padding: 20px 40px;
+  border-radius: 12px;
+  font-size: 22px;
+  font-weight: bold;
+  color: black;
+  text-decoration: none;
+}
