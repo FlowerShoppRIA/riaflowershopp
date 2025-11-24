@@ -52,7 +52,7 @@ body {
 
 /* HERO (con fondo funcional) */
 .hero {
-    background-image: url("img/placeholder-hero.jpg"); /* usa placeholder elegante */
+    background-image: url("img/imagendefondo.png"); /* usa placeholder elegante */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
