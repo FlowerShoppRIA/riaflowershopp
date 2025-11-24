@@ -1,6 +1,6 @@
 /* Fondo elegante con nueva imagen */
 .hero-background {
-    background-image: url('img/imagen_de_fondo.png');
+    background-image: url('img/imagendefondo.png'');
     background-size: cover;
     background-position: center;
     filter: brightness(0.45);
