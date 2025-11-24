@@ -1,29 +1,172 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Servicios</title>
-  <link rel="stylesheet" href="styles.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Servicios - RiaFlowerShopp</title>
+<link rel="stylesheet" href="css/styles.css">
+<style>
+body {
+  font-family: Arial, sans-serif;
+  background: #fff8f0;
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
+
+.menu {
+  background: #b85c2c;
+  text-align: center;
+  padding: 12px 0;
+}
+
+.menu a {
+  color: #fff;
+  text-decoration: none;
+  margin: 0 15px;
+  font-weight: bold;
+  font-size: 1.1rem;
+  transition: color 0.3s;
+}
+
+.menu a:hover { color: #ffe6cc; }
+
+.servicios-section {
+  padding: 50px 20px;
+  text-align: center;
+}
+
+.servicios-section h2 {
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+  color: #b85c2c;
+  font-weight: bold;
+}
+
+.servicios-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 25px;
+}
+
+.servicio-card {
+  background-color: #fff;
+  border-radius: 15px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+  overflow: hidden;
+  width: 280px;
+  transition: transform 0.3s, box-shadow 0.3s;
+  text-align: center;
+}
+
+.servicio-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.2);
+}
+
+.servicio-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.servicio-card h3 {
+  margin: 15px 0 10px;
+  color: #b85c2c;
+  font-size: 1.4rem;
+}
+
+.servicio-card p {
+  margin: 0 15px 15px;
+  font-size: 0.95rem;
+  color: #555;
+  min-height: 50px;
+}
+
+.btn-servicio {
+  display: inline-block;
+  margin-bottom: 15px;
+  background-color: #25D366;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1rem;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.btn-servicio:hover {
+  background-color: #1ebe5d;
+  transform: scale(1.05);
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  background: #b85c2c;
+  color: white;
+  font-weight: bold;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .servicio-card { width: 220px; }
+  .servicios-section h2 { font-size: 2rem; }
+}
+
+@media (max-width: 480px) {
+  .servicio-card { width: 180px; }
+  .servicios-section h2 { font-size: 1.6rem; }
+  .btn-servicio { padding: 8px 18px; font-size: 0.9rem; }
+}
+</style>
 </head>
 <body>
 
-<header>
-  <h1>Servicios Especiales</h1>
-  <nav class="nav-horizontal">
-    <a href="index.html">Inicio</a>
-    <a href="catalogo.html">Catálogo</a>
-    <a href="express.html">Express</a>
-    <a href="https://wa.me/522289951623" target="_blank">WhatsApp</a>
-  </nav>
-</header>
+<nav class="menu">
+  <a href="index.html">Inicio</a>
+  <a href="catalogo.html">Catálogo</a>
+  <a href="express.html">Express</a>
+  <a href="servicios.html">Servicios</a>
+  <a href="contacto.html">Contacto</a>
+</nav>
 
-<section class="servicios-horizontal">
+<section class="servicios-section">
+  <h2>Servicios</h2>
+  <div class="servicios-container">
 
-  <a class="servicio-btn" href="bodas.html">Bodas</a>
-  <a class="servicio-btn" href="quinceaneras.html">Quinceañeras</a>
-  <a class="servicio-btn" href="funerales.html">Funerales</a>
+    <!-- Bodas -->
+    <div class="servicio-card">
+      <img src="img/boda.jpg" alt="Bodas">
+      <h3>Bodas</h3>
+      <p>Diseños florales elegantes y personalizados para tu día especial.</p>
+      <a href="productos-bodas.html" class="btn-servicio">Ver Productos</a>
+    </div>
 
+    <!-- Quince Años -->
+    <div class="servicio-card">
+      <img src="img/quince.jpg" alt="Quince Años">
+      <h3>Quince Años</h3>
+      <p>Ramos y arreglos únicos para que tu fiesta sea inolvidable.</p>
+      <a href="productos-quince.html" class="btn-servicio">Ver Productos</a>
+    </div>
+
+    <!-- Funerales -->
+    <div class="servicio-card">
+      <img src="img/funeral.jpg" alt="Funerales">
+      <h3>Funerales</h3>
+      <p>Arreglos sobrios y respetuosos para momentos difíciles.</p>
+      <a href="productos-funerales.html" class="btn-servicio">Ver Productos</a>
+    </div>
+
+  </div>
 </section>
+
+<footer>
+  © RiaFlowerShopp 2025 – Diseños florales con amor.
+</footer>
 
 </body>
 </html>
