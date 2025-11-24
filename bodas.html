@@ -1,39 +1,212 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Bodas</title>
-  <link rel="stylesheet" href="styles.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Servicios de Bodas - RiaFlowerShopp</title>
+<link rel="stylesheet" href="css/styles.css">
+<style>
+body {
+  font-family: Arial, sans-serif;
+  background: #fff8f0;
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
+
+.menu {
+  background: #b85c2c;
+  text-align: center;
+  padding: 12px 0;
+}
+
+.menu a {
+  color: #fff;
+  text-decoration: none;
+  margin: 0 15px;
+  font-weight: bold;
+  font-size: 1.1rem;
+  transition: color 0.3s;
+}
+
+.menu a:hover { color: #ffe6cc; }
+
+.bodas-section {
+  padding: 50px 20px;
+  text-align: center;
+}
+
+.bodas-section h2 {
+  font-size: 2.5rem;
+  margin-bottom: 50px;
+  color: #b85c2c;
+  font-weight: bold;
+}
+
+.subcategoria {
+  margin-bottom: 60px;
+  text-align: left;
+}
+
+.subcategoria h3 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #8c3a1c;
+  padding-left: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.slider {
+  display: flex;
+  overflow-x: auto;
+  gap: 20px;
+  padding: 10px;
+  scroll-behavior: smooth;
+}
+
+.slider::-webkit-scrollbar { display: none; }
+
+.product-card {
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+  flex: 0 0 auto;
+  min-width: 200px;
+  padding: 15px;
+  text-align: center;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.2);
+}
+
+.product-card img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.product-card h4 {
+  margin: 5px 0;
+  color: #b85c2c;
+  font-size: 1.1rem;
+}
+
+.product-card p {
+  margin: 5px 0 10px;
+  font-size: 0.95rem;
+  color: #555;
+}
+
+.btn-whatsapp {
+  display: inline-block;
+  background-color: #25D366;
+  color: #fff;
+  padding: 8px 20px;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 0.9rem;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.btn-whatsapp:hover {
+  background-color: #1ebe5d;
+  transform: scale(1.05);
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  background: #b85c2c;
+  color: white;
+  font-weight: bold;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .product-card { min-width: 180px; }
+  .bodas-section h2 { font-size: 2rem; }
+  .subcategoria h3 { font-size: 1.6rem; }
+}
+
+@media (max-width: 480px) {
+  .product-card { min-width: 140px; padding: 10px; }
+  .bodas-section h2 { font-size: 1.6rem; }
+  .subcategoria h3 { font-size: 1.4rem; }
+  .btn-whatsapp { padding: 6px 15px; font-size: 0.8rem; }
+}
+</style>
 </head>
 <body>
 
-<header>
-  <h1>Arreglos para Bodas</h1>
-  <nav class="nav-horizontal">
-    <a href="servicios.html">Regresar</a>
-    <a href="index.html">Inicio</a>
-    <a href="https://wa.me/522289951623" target="_blank">WhatsApp</a>
-  </nav>
-</header>
+<nav class="menu">
+  <a href="index.html">Inicio</a>
+  <a href="catalogo.html">Catálogo</a>
+  <a href="express.html">Express</a>
+  <a href="servicios.html">Servicios</a>
+  <a href="contacto.html">Contacto</a>
+</nav>
 
-<section class="productos-horizontal">
+<section class="bodas-section">
+  <h2>Servicios de Bodas</h2>
 
-  <div class="producto">
-    <img src="BODA1.jpg" alt="Boda 1">
-    <h3>Ramo de Novia</h3>
+  <!-- Centros de Mesa -->
+  <div class="subcategoria">
+    <h3>Centros de Mesa</h3>
+    <div class="slider" id="centros">
+      <div class="product-card">
+        <img src="img/centro1.jpg" alt="Centro Mesa 1">
+        <h4>Centro Elegancia</h4>
+        <p>$800 MXN</p>
+        <a href="https://wa.me/522283010051" target="_blank" class="btn-whatsapp">¡Lo quiero!</a>
+      </div>
+      <div class="product-card">
+        <img src="img/centro2.jpg" alt="Centro Mesa 2">
+        <h4>Centro Romance</h4>
+        <p>$950 MXN</p>
+        <a href="https://wa.me/522283010051" target="_blank" class="btn-whatsapp">¡Lo quiero!</a>
+      </div>
+    </div>
   </div>
 
-  <div class="producto">
-    <img src="BODA2.jpg" alt="Boda 2">
-    <h3>Centro de Mesa</h3>
-  </div>
-
-  <div class="producto">
-    <img src="BODA3.jpg" alt="Boda 3">
-    <h3>Decoración Floral</h3>
+  <!-- Mesa Principal -->
+  <div class="subcategoria">
+    <h3>Mesa Principal</h3>
+    <div class="slider" id="mesa-principal">
+      <div class="product-card">
+        <img src="img/mesa1.jpg" alt="Mesa Principal 1">
+        <h4>Arreglo Majestuoso</h4>
+        <p>$2500 MXN</p>
+        <a href="https://wa.me/522283010051" target="_blank" class="btn-whatsapp">¡Lo quiero!</a>
+      </div>
+      <div class="product-card">
+        <img src="img/mesa2.jpg" alt="Mesa Principal 2">
+        <h4>Arreglo Imperial</h4>
+        <p>$3200 MXN</p>
+        <a href="https://wa.me/522283010051" target="_blank" class="btn-whatsapp">¡Lo quiero!</a>
+      </div>
+    </div>
   </div>
 
 </section>
+
+<footer>
+  © RiaFlowerShopp 2025 – Diseños florales con amor.
+</footer>
+
+<script>
+// Slider funcional
+function moveSlider(id, distance){
+  const slider = document.getElementById(id);
+  slider.scrollBy({ left: distance, behavior: 'smooth' });
+}
+</script>
 
 </body>
 </html>
