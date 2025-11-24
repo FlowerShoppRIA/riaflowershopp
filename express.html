@@ -32,7 +32,7 @@ body {
 .menu a:hover { color: #ffe6cc; }
 
 .express-section {
-  padding: 60px 20px;
+  padding: 80px 20px;
   text-align: center;
   background: linear-gradient(to bottom, #fff8f0, #ffe6cc);
 }
@@ -40,7 +40,7 @@ body {
 .express-section h2 {
   font-size: 3rem;
   color: #b85c2c;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
 }
 
 .express-section p {
@@ -50,55 +50,15 @@ body {
   line-height: 1.5;
 }
 
-.slider-express {
-  display: flex;
-  overflow-x: auto;
-  gap: 20px;
-  padding: 10px 0;
-  scroll-behavior: smooth;
-}
-
-.slider-express::-webkit-scrollbar {
-  display: none;
-}
-
-.tarjeta-express {
-  background: #fff;
-  min-width: 220px;
-  border-radius: 20px;
-  padding: 15px;
-  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
-  flex: 0 0 auto;
-  transition: transform 0.3s, box-shadow 0.3s;
-  text-align: center;
-}
-
-.tarjeta-express:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 12px 25px rgba(0,0,0,0.2);
-}
-
-.imagen-express {
-  height: 180px;
-  background-color: #f5f5f5;
-  border-radius: 15px;
-  margin-bottom: 15px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #bbb;
-  font-size: 1rem;
-}
-
 .btn-whatsapp-express {
   display: inline-block;
   background-color: #25D366;
   color: #fff;
-  padding: 10px 25px;
+  padding: 15px 35px;
   border-radius: 30px;
   font-weight: bold;
   text-decoration: none;
-  font-size: 1rem;
+  font-size: 1.2rem;
   transition: background-color 0.3s, transform 0.3s;
 }
 
@@ -134,33 +94,13 @@ footer {
 
 <section class="express-section">
   <h2>Express - Listos para enviar</h2>
-  <p>Elige uno de nuestros arreglos ya preparados y disponibles en stock.  
-  Te lo enviamos de inmediato. Los productos se actualizan conforme se venden.</p>
-
-  <div class="slider-express">
-    <div class="tarjeta-express">
-      <div class="imagen-express">Imagen Ramo 1</div>
-      <h4>Ramo Express 1</h4>
-      <p>Arreglo fresco y elegante, listo para entrega inmediata.</p>
-      <a href="https://wa.me/522283010051?text=Hola,%20quiero%20el%20Ramo%20Express%201" 
-         target="_blank" class="btn-whatsapp-express">¡Lo quiero!</a>
-    </div>
-    <div class="tarjeta-express">
-      <div class="imagen-express">Imagen Ramo 2</div>
-      <h4>Ramo Express 2</h4>
-      <p>Colores vibrantes y flores frescas, disponible ahora.</p>
-      <a href="https://wa.me/522283010051?text=Hola,%20quiero%20el%20Ramo%20Express%202" 
-         target="_blank" class="btn-whatsapp-express">¡Lo quiero!</a>
-    </div>
-    <div class="tarjeta-express">
-      <div class="imagen-express">Imagen Ramo 3</div>
-      <h4>Ramo Express 3</h4>
-      <p>Perfecto para regalar hoy mismo.</p>
-      <a href="https://wa.me/522283010051?text=Hola,%20quiero%20el%20Ramo%20Express%203" 
-         target="_blank" class="btn-whatsapp-express">¡Lo quiero!</a>
-    </div>
-    <!-- Puedes agregar más tarjetas según stock disponible -->
-  </div>
+  <p>Tenemos arreglos florales ya preparados y disponibles en stock.  
+  Solo elige tu favorito y te lo enviamos de inmediato.</p>
+  
+  <a href="https://wa.me/522283010051?text=Hola,%20quiero%20ver%20los%20arreglos%20Express%20disponibles" 
+     target="_blank" class="btn-whatsapp-express">
+    Pedir por WhatsApp
+  </a>
 
   <div class="stock-note">
     * Las imágenes y disponibilidad se envían directamente por WhatsApp y se actualizan conforme se venden.
