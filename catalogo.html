@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Catálogo Premium - RiaFlowerShopp</title>
+<title>Catálogo Profesional - RiaFlowerShopp</title>
 <link rel="stylesheet" href="css/styles.css">
 <style>
 body {
@@ -42,7 +42,6 @@ body {
   margin-bottom: 50px;
   color: #b85c2c;
   font-weight: bold;
-  animation: fadeInDown 1s ease-in-out;
 }
 
 .categoria {
@@ -59,42 +58,37 @@ body {
   padding-left: 10px;
 }
 
-.slider-container {
-  position: relative;
-}
-
 .slider {
   display: flex;
   overflow-x: hidden;
-  gap: 20px;
+  gap: 15px;
   padding: 10px;
   scroll-behavior: smooth;
+  position: relative;
 }
 
 .tarjeta-producto {
   background-color: #fff;
-  border-radius: 20px;
-  padding: 20px;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
-  min-width: 250px;
+  border-radius: 15px;
+  padding: 15px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  min-width: 200px;
   flex: 0 0 auto;
-  transition: transform 0.5s, box-shadow 0.5s, opacity 0.5s;
-  opacity: 0;
-}
-
-.tarjeta-producto.visible {
-  opacity: 1;
+  transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .tarjeta-producto:hover {
-  transform: translateY(-10px) scale(1.05);
-  box-shadow: 0 12px 25px rgba(0,0,0,0.25);
+  transform: translateY(-8px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
 }
 
 .imagen-producto {
-  height: 220px;
-  border-radius: 15px;
-  margin-bottom: 15px;
+  height: 180px;
+  border-radius: 12px;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   overflow: hidden;
 }
 
@@ -102,23 +96,35 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.4s;
+  transition: transform 0.3s;
 }
 
-.tarjeta-producto:hover img { transform: scale(1.08); }
+.tarjeta-producto:hover img {
+  transform: scale(1.05);
+}
 
-.tarjeta-producto h4 { margin-bottom: 10px; color: #b85c2c; font-size: 1.3rem; }
-.tarjeta-producto p { margin-bottom: 15px; color: #555; font-size: 0.95rem; min-height: 45px; }
+.tarjeta-producto h4 {
+  margin-bottom: 8px;
+  color: #b85c2c;
+  font-size: 1.1rem;
+}
+
+.tarjeta-producto p {
+  margin-bottom: 12px;
+  color: #555;
+  font-size: 0.9rem;
+  min-height: 40px;
+}
 
 .btn-whatsapp {
   display: inline-block;
   background-color: #25D366;
   color: #fff;
-  padding: 10px 25px;
-  border-radius: 30px;
+  padding: 8px 20px;
+  border-radius: 25px;
   text-decoration: none;
   font-weight: bold;
-  font-size: 1rem;
+  font-size: 0.95rem;
   transition: background-color 0.3s, transform 0.3s;
 }
 
@@ -138,28 +144,14 @@ body {
   background-color: #b85c2c;
   color: #fff;
   border: none;
-  padding: 10px 15px;
+  padding: 8px 12px;
   border-radius: 50%;
   cursor: pointer;
-  font-size: 1.2rem;
+  font-size: 1rem;
   transition: background-color 0.3s;
 }
 
 .slider-btn:hover { background-color: #8c3a1c; }
-
-.ver-mas-btn {
-  display: inline-block;
-  margin-top: 10px;
-  padding: 8px 20px;
-  background-color: #b85c2c;
-  color: #fff;
-  text-decoration: none;
-  font-weight: bold;
-  border-radius: 25px;
-  transition: background-color 0.3s;
-}
-
-.ver-mas-btn:hover { background-color: #8c3a1c; }
 
 footer {
   text-align: center;
@@ -169,23 +161,54 @@ footer {
   font-weight: bold;
 }
 
-/* Animaciones */
-@keyframes fadeInDown {
-  0% { opacity: 0; transform: translateY(-20px); }
-  100% { opacity: 1; transform: translateY(0); }
+/* Sección Express flotante */
+.express-float {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 280px;
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+  padding: 20px;
+  text-align: center;
+  z-index: 5;
+}
+
+.express-float h3 {
+  font-size: 1.5rem;
+  color: #b85c2c;
+  margin-bottom: 10px;
+}
+
+.express-float p {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 15px;
+  line-height: 1.4;
+}
+
+.express-float .btn-whatsapp {
+  font-size: 1rem;
+  padding: 10px 20px;
+}
+
+/* Responsivo */
+@media (max-width: 1024px){
+  .express-float { position: static; margin: 30px auto 50px; width: 90%; }
 }
 
 @media (max-width: 768px) {
-  .tarjeta-producto { min-width: 200px; }
+  .tarjeta-producto { min-width: 160px; padding: 12px; }
   .catalogo-section h2 { font-size: 2.2rem; }
   .categoria h3 { font-size: 1.6rem; }
 }
 
 @media (max-width: 480px) {
-  .tarjeta-producto { min-width: 160px; padding: 15px; }
+  .tarjeta-producto { min-width: 140px; padding: 10px; }
   .catalogo-section h2 { font-size: 1.8rem; }
   .categoria h3 { font-size: 1.4rem; }
-  .btn-whatsapp { padding: 8px 20px; font-size: 0.9rem; }
+  .btn-whatsapp { padding: 8px 15px; font-size: 0.9rem; }
 }
 </style>
 </head>
@@ -200,15 +223,23 @@ footer {
 </nav>
 
 <section class="catalogo-section">
-  <h2>Catálogo Premium de Ramos</h2>
+  <h2>Catálogo de Ramos</h2>
 
-  <!-- Categoría ejemplo: Rosas -->
+  <!-- Recuadro Express flotante -->
+  <div class="express-float">
+    <h3>Express</h3>
+    <p>¿Quieres ver lo que tenemos listo para enviar?  
+       Solicítalo por WhatsApp, te enviamos imágenes, eliges y lo enviamos al momento.</p>
+    <a href="https://wa.me/522283010051" target="_blank" class="btn-whatsapp">¡Ver Express!</a>
+  </div>
+
+  <!-- Rosas -->
   <div class="categoria">
     <div class="slider-nav">
       <h3>Ramos de Rosas</h3>
       <div>
-        <button class="slider-btn" onclick="moveSlider('rosas', -300)">&#10094;</button>
-        <button class="slider-btn" onclick="moveSlider('rosas', 300)">&#10095;</button>
+        <button class="slider-btn" onclick="moveSlider('rosas', -200)">&#10094;</button>
+        <button class="slider-btn" onclick="moveSlider('rosas', 200)">&#10095;</button>
       </div>
     </div>
     <div id="rosas" class="slider">
@@ -231,10 +262,70 @@ footer {
         <a href="https://wa.me/522283010051" target="_blank" class="btn-whatsapp">¡Lo quiero!</a>
       </div>
     </div>
-    <a href="#" class="ver-mas-btn">Ver más Rosas</a>
   </div>
 
-  <!-- Puedes replicar la misma estructura para Gerberas y Girasoles -->
+  <!-- Gerberas -->
+  <div class="categoria">
+    <div class="slider-nav">
+      <h3>Ramos de Gerberas</h3>
+      <div>
+        <button class="slider-btn" onclick="moveSlider('gerberas', -200)">&#10094;</button>
+        <button class="slider-btn" onclick="moveSlider('gerberas', 200)">&#10095;</button>
+      </div>
+    </div>
+    <div id="gerberas" class="slider">
+      <div class="tarjeta-producto">
+        <div class="imagen-producto"><img src="img/gerberas12.jpg" alt="12 Gerberas"></div>
+        <h4>Ramo de 12 Gerberas</h4>
+        <p>Ramo fresco y colorido de 12 gerberas.</p>
+        <a href="https://wa.me/522283010051" target="_blank" class="btn-whatsapp">¡Lo quiero!</a>
+      </div>
+      <div class="tarjeta-producto">
+        <div class="imagen-producto"><img src="img/gerberas24.jpg" alt="24 Gerberas"></div>
+        <h4>Ramo de 24 Gerberas</h4>
+        <p>Ramo elegante de 24 gerberas.</p>
+        <a href="https://wa.me/522283010051" target="_blank" class="btn-whatsapp">¡Lo quiero!</a>
+      </div>
+      <div class="tarjeta-producto">
+        <div class="imagen-producto"><img src="img/gerberas36.jpg" alt="36 Gerberas"></div>
+        <h4>Ramo de 36 Gerberas</h4>
+        <p>Gran ramo de 36 gerberas frescas.</p>
+        <a href="https://wa.me/522283010051" target="_blank" class="btn-whatsapp">¡Lo quiero!</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Girasoles -->
+  <div class="categoria">
+    <div class="slider-nav">
+      <h3>Ramos de Girasoles</h3>
+      <div>
+        <button class="slider-btn" onclick="moveSlider('girasoles', -200)">&#10094;</button>
+        <button class="slider-btn" onclick="moveSlider('girasoles', 200)">&#10095;</button>
+      </div>
+    </div>
+    <div id="girasoles" class="slider">
+      <div class="tarjeta-producto">
+        <div class="imagen-producto"><img src="img/girasoles12.jpg" alt="12 Girasoles"></div>
+        <h4>Ramo de 12 Girasoles</h4>
+        <p>Ramo radiante de 12 girasoles.</p>
+        <a href="https://wa.me/522283010051" target="_blank" class="btn-whatsapp">¡Lo quiero!</a>
+      </div>
+      <div class="tarjeta-producto">
+        <div class="imagen-producto"><img src="img/girasoles24.jpg" alt="24 Girasoles"></div>
+        <h4>Ramo de 24 Girasoles</h4>
+        <p>Ramo impactante de 24 girasoles.</p>
+        <a href="https://wa.me/522283010051" target="_blank" class="btn-whatsapp">¡Lo quiero!</a>
+      </div>
+      <div class="tarjeta-producto">
+        <div class="imagen-producto"><img src="img/girasoles36.jpg" alt="36 Girasoles"></div>
+        <h4>Ramo de 36 Girasoles</h4>
+        <p>Ramo espectacular de 36 girasoles.</p>
+        <a href="https://wa.me/522283010051" target="_blank" class="btn-whatsapp">¡Lo quiero!</a>
+      </div>
+    </div>
+  </div>
+
 </section>
 
 <footer>
@@ -246,29 +337,6 @@ function moveSlider(id, distance) {
   const slider = document.getElementById(id);
   slider.scrollBy({ left: distance, behavior: 'smooth' });
 }
-
-// Efecto fade-in para tarjetas al aparecer
-const sliders = document.querySelectorAll('.slider');
-sliders.forEach(slider => {
-  const cards = slider.querySelectorAll('.tarjeta-producto');
-  let scrollAmount = 0;
-  setInterval(() => {
-    cards.forEach(card => {
-      const rect = card.getBoundingClientRect();
-      if(rect.left < window.innerWidth && rect.right > 0){
-        card.classList.add('visible');
-      } else {
-        card.classList.remove('visible');
-      }
-    });
-    slider.scrollBy({ left: 0.5 });
-    scrollAmount += 0.5;
-    if(scrollAmount >= slider.scrollWidth - slider.clientWidth){
-      scrollAmount = 0;
-      slider.scrollTo({ left: 0 });
-    }
-  }, 20);
-});
 </script>
 
 </body>
