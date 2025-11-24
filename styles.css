@@ -21,42 +21,43 @@ body {
     letter-spacing: 1px;
 }
 
-/* Sidebar WhatsApp */
-.whatsapp-sidebar {
+/* Cuadro WhatsApp arriba derecha */
+.whatsapp-top-box {
     position: fixed;
-    left: 0;
-    top: 40%;
+    top: 70px;
+    right: 20px;
     background: #25d366;
-    padding: 10px;
-    border-radius: 0 10px 10px 0;
+    padding: 12px 14px;
+    border-radius: 10px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.3);
     z-index: 10;
 }
 
-.whatsapp-sidebar a {
+.whatsapp-top-box a {
     display: flex;
     align-items: center;
     color: white;
     text-decoration: none;
 }
 
-.whatsapp-sidebar img {
+.whatsapp-top-box img {
     width: 40px;
-    margin-right: 8px;
+    margin-right: 10px;
 }
 
-.whatsapp-sidebar span {
+.whatsapp-top-box span {
     font-size: 14px;
     font-weight: bold;
+    line-height: 1.2em;
 }
 
-/* HERO (con fondo funcional) */
+/* HERO con tu imagen real */
 .hero {
-    background-image: url("img/imagendefondo.png"); /* usa placeholder elegante */
+    background-image: url("img/imagendefondo.png");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    height: 88vh;
+    height: 90vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -95,7 +96,7 @@ body {
     font-size: 1.3rem;
 }
 
-/* Menú horizontal */
+/* Menú */
 .menu {
     background: gold;
     padding: 12px 0;
@@ -114,7 +115,7 @@ body {
     color: white;
 }
 
-/* Sección intro */
+/* Intro */
 .intro {
     padding: 50px 20px;
     text-align: center;
