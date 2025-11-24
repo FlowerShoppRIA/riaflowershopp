@@ -21,7 +21,7 @@
         </a>
     </div>
 
-    <!-- Menú -->
+    <!-- Menú de navegación -->
     <nav class="menu">
         <a href="index.html">Inicio</a>
         <a href="catalogo.html">Catálogo</a>
@@ -30,13 +30,21 @@
         <a href="contacto.html">Contacto</a>
     </nav>
 
-    <!-- Hero para catálogo -->
+    <!-- Hero / Header para catálogo -->
     <section class="hero">
         <div class="hero-content">
             <h1>RiaFlowerShopp</h1>
             <p>Flores que inspiran</p>
             <p>Arreglos florales elegantes, personalizados y listos para entregar.</p>
         </div>
+    </section>
+
+    <!-- Botones rápidos para otras secciones -->
+    <section style="text-align:center; margin: 30px 0;">
+        <a href="express.html" class="btn-whatsapp" style="margin:0 10px;">Express</a>
+        <a href="servicios.html" class="btn-whatsapp" style="margin:0 10px;">Servicios</a>
+        <a href="contacto.html" class="btn-whatsapp" style="margin:0 10px;">Contacto</a>
+        <a href="index.html" class="btn-whatsapp" style="margin:0 10px;">Regresar al Inicio</a>
     </section>
 
     <!-- Catálogo dinámico con slider -->
@@ -56,7 +64,7 @@
                 <div class="tarjeta-producto">
                     <div class="imagen-producto">Imagen 12 rosas</div>
                     <h4>Ramo de 12 Rosas</h4>
-                    <p>Elegante ramo de 12 rosas frescas, ideal para sorprender.</p>
+                    <p>Elegante ramo de 12 rosas frescas.</p>
                     <a href="https://wa.me/522283010051" target="_blank" class="btn-whatsapp">¡Lo quiero!</a>
                 </div>
                 <div class="tarjeta-producto">
@@ -124,4 +132,32 @@
                 <div class="tarjeta-producto">
                     <div class="imagen-producto">Imagen 24 girasoles</div>
                     <h4>Ramo de 24 Girasoles</h4>
-                    <p>
+                    <p>Ramo impactante de 24 girasoles.</p>
+                    <a href="https://wa.me/522283010051" target="_blank" class="btn-whatsapp">¡Lo quiero!</a>
+                </div>
+                <div class="tarjeta-producto">
+                    <div class="imagen-producto">Imagen 36 girasoles</div>
+                    <h4>Ramo de 36 Girasoles</h4>
+                    <p>Ramo espectacular de 36 girasoles.</p>
+                    <a href="https://wa.me/522283010051" target="_blank" class="btn-whatsapp">¡Lo quiero!</a>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        © RiaFlowerShopp 2025 – Diseños florales con amor.
+    </footer>
+
+    <!-- Script para slider -->
+    <script>
+        function scrollSlider(id, distance) {
+            const slider = document.getElementById(id);
+            slider.scrollBy({ left: distance, behavior: 'smooth' });
+        }
+    </script>
+
+</body>
+</html>
