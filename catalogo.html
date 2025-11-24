@@ -50,8 +50,8 @@ body {
 }
 
 .categoria h3 {
-  font-size: 2rem;
-  margin-bottom: 20px;
+  font-size: 1.8rem;
+  margin-bottom: 15px;
   color: #8c3a1c;
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -61,7 +61,7 @@ body {
 .slider {
   display: flex;
   overflow-x: hidden;
-  gap: 15px;
+  gap: 12px;
   padding: 10px;
   scroll-behavior: smooth;
   position: relative;
@@ -69,23 +69,23 @@ body {
 
 .tarjeta-producto {
   background-color: #fff;
-  border-radius: 15px;
-  padding: 15px;
+  border-radius: 12px;
+  padding: 12px;
   box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-  min-width: 200px;
+  min-width: 180px;
   flex: 0 0 auto;
   transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .tarjeta-producto:hover {
-  transform: translateY(-8px);
+  transform: translateY(-6px);
   box-shadow: 0 10px 20px rgba(0,0,0,0.2);
 }
 
 .imagen-producto {
-  height: 180px;
-  border-radius: 12px;
-  margin-bottom: 12px;
+  height: 160px;
+  border-radius: 10px;
+  margin-bottom: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -104,27 +104,27 @@ body {
 }
 
 .tarjeta-producto h4 {
-  margin-bottom: 8px;
+  margin-bottom: 6px;
   color: #b85c2c;
-  font-size: 1.1rem;
+  font-size: 1.05rem;
 }
 
 .tarjeta-producto p {
-  margin-bottom: 12px;
+  margin-bottom: 10px;
   color: #555;
-  font-size: 0.9rem;
-  min-height: 40px;
+  font-size: 0.85rem;
+  min-height: 35px;
 }
 
 .btn-whatsapp {
   display: inline-block;
   background-color: #25D366;
   color: #fff;
-  padding: 8px 20px;
+  padding: 7px 18px;
   border-radius: 25px;
   text-decoration: none;
   font-weight: bold;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   transition: background-color 0.3s, transform 0.3s;
 }
 
@@ -137,17 +137,17 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 }
 
 .slider-btn {
   background-color: #b85c2c;
   color: #fff;
   border: none;
-  padding: 8px 12px;
+  padding: 6px 10px;
   border-radius: 50%;
   cursor: pointer;
-  font-size: 1rem;
+  font-size: 0.95rem;
   transition: background-color 0.3s;
 }
 
@@ -161,16 +161,16 @@ footer {
   font-weight: bold;
 }
 
-/* Recuadro Express tipo WhatsApp flotante con animación llamativa */
+/* Recuadro Express flotante más pequeño */
 .express-float {
   position: fixed;
-  bottom: 30px;
-  right: 30px;
-  width: 280px;
+  bottom: 20px;
+  right: 20px;
+  width: 240px;
   background: linear-gradient(135deg, #fff8f0, #ffe6cc);
-  border-radius: 25px;
-  box-shadow: 0 8px 30px rgba(0,0,0,0.35);
-  padding: 18px;
+  border-radius: 20px;
+  box-shadow: 0 6px 25px rgba(0,0,0,0.3);
+  padding: 15px;
   text-align: center;
   z-index: 999;
   display: flex;
@@ -181,53 +181,52 @@ footer {
 }
 
 .express-float h3 {
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   color: #b85c2c;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
   font-weight: bold;
 }
 
 .express-float p {
-  font-size: 0.95rem;
+  font-size: 0.85rem;
   color: #555;
-  margin-bottom: 12px;
-  line-height: 1.4;
+  margin-bottom: 10px;
+  line-height: 1.3;
 }
 
 .express-float .btn-whatsapp {
-  font-size: 1rem;
-  padding: 10px 20px;
-  background-color: #25D366;
-  border-radius: 30px;
+  font-size: 0.95rem;
+  padding: 8px 18px;
+  border-radius: 25px;
   font-weight: bold;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
   transition: all 0.3s ease;
 }
 
 .express-float .btn-whatsapp:hover {
-  transform: scale(1.1) rotate(-2deg);
+  transform: scale(1.08) rotate(-2deg);
   background-color: #1ebe5d;
 }
 
-/* Animación flotante llamativa */
 @keyframes floatBounce {
   0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
+  50% { transform: translateY(-8px); }
 }
 
 /* Responsivo */
 @media (max-width: 768px){
-  .express-float { width: 90%; bottom: 20px; right: 5%; }
-  .tarjeta-producto { min-width: 160px; padding: 12px; }
-  .catalogo-section h2 { font-size: 2.2rem; }
-  .categoria h3 { font-size: 1.6rem; }
+  .express-float { width: 85%; bottom: 15px; right: 7%; }
+  .tarjeta-producto { min-width: 140px; padding: 10px; }
+  .catalogo-section h2 { font-size: 2rem; }
+  .categoria h3 { font-size: 1.5rem; }
 }
 
 @media (max-width: 480px){
-  .tarjeta-producto { min-width: 140px; padding: 10px; }
-  .catalogo-section h2 { font-size: 1.8rem; }
-  .categoria h3 { font-size: 1.4rem; }
-  .btn-whatsapp { padding: 8px 15px; font-size: 0.9rem; }
+  .tarjeta-producto { min-width: 120px; padding: 8px; }
+  .catalogo-section h2 { font-size: 1.6rem; }
+  .categoria h3 { font-size: 1.3rem; }
+  .btn-whatsapp { padding: 6px 15px; font-size: 0.85rem; }
+  .express-float { width: 80%; bottom: 10px; right: 5%; }
 }
 </style>
 </head>
@@ -268,6 +267,57 @@ footer {
       </div>
     </div>
   </div>
+
+  <!-- Gerberas -->
+  <div class="categoria">
+    <div class="slider-nav">
+      <h3>Ramos de Gerberas</h3>
+      <div>
+        <button class="slider-btn" onclick="moveSlider('gerberas', -200)">&#10094;</button>
+        <button class="slider-btn" onclick="moveSlider('gerberas', 200)">&#10095;</button>
+      </div>
+    </div>
+    <div id="gerberas" class="slider">
+      <div class="tarjeta-producto">
+        <div class="imagen-producto"><img src="img/gerberas12.jpg" alt="12 Gerberas"></div>
+        <h4>Ramo de 12 Gerberas</h4>
+        <p>Ramo fresco y colorido de 12 gerberas.</p>
+        <a href="https://wa.me/522283010051" target="_blank" class="btn-whatsapp">¡Lo quiero!</a>
+      </div>
+      <div class="tarjeta-producto">
+        <div class="imagen-producto"><img src="img/gerberas24.jpg" alt="24 Gerberas"></div>
+        <h4>Ramo de 24 Gerberas</h4>
+        <p>Ramo elegante de 24 gerberas.</p>
+        <a href="https://wa.me/522283010051" target="_blank" class="btn-whatsapp">¡Lo quiero!</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Girasoles -->
+  <div class="categoria">
+    <div class="slider-nav">
+      <h3>Ramos de Girasoles</h3>
+      <div>
+        <button class="slider-btn" onclick="moveSlider('girasoles', -200)">&#10094;</button>
+        <button class="slider-btn" onclick="moveSlider('girasoles', 200)">&#10095;</button>
+      </div>
+    </div>
+    <div id="girasoles" class="slider">
+      <div class="tarjeta-producto">
+        <div class="imagen-producto"><img src="img/girasoles12.jpg" alt="12 Girasoles"></div>
+        <h4>Ramo de 12 Girasoles</h4>
+        <p>Ramo radiante de 12 girasoles.</p>
+        <a href="https://wa.me/522283010051" target="_blank" class="btn-whatsapp">¡Lo quiero!</a>
+      </div>
+      <div class="tarjeta-producto">
+        <div class="imagen-producto"><img src="img/girasoles24.jpg" alt="24 Girasoles"></div>
+        <h4>Ramo de 24 Girasoles</h4>
+        <p>Ramo impactante de 24 girasoles.</p>
+        <a href="https://wa.me/522283010051" target="_blank" class="btn-whatsapp">¡Lo quiero!</a>
+      </div>
+    </div>
+  </div>
+
 </section>
 
 <!-- Recuadro Express flotante -->
