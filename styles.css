@@ -1,128 +1,118 @@
-/* RESET */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
+/* ===== GENERAL ===== */
 body {
+    margin: 0;
     font-family: Arial, sans-serif;
-    background:#fafafa;
-    color:#333;
+    background: #fafafa;
 }
 
-/* BARRA SUPERIOR */
 .top-bar {
-    background:#222;
-    color:gold;
-    text-align:center;
-    padding:10px;
-    font-size:16px;
+    background: #222;
+    color: gold;
+    padding: 12px;
+    text-align: center;
+    font-weight: bold;
 }
 
-/* MENÚ LATERAL (RECUADROS A LA DERECHA) */
-.side-menu {
-    position:fixed;
-    top:250px;
-    right:20px;
-    width:180px;
-    display:flex;
-    flex-direction:column;
-    gap:12px;
-    z-index:10;
-}
-
-.side-menu-item {
-    background:#b85c2c;
-    color:#fff;
-    padding:14px;
-    text-align:center;
-    font-weight:bold;
-    border-radius:10px;
-    text-decoration:none;
-    font-size:1rem;
-    box-shadow:0 3px 8px rgba(0,0,0,0.3);
-    transition:0.3s;
-}
-
-.side-menu-item:hover {
-    background:#d17344;
-    transform:scale(1.06);
-}
-
-/* CUADRO WHATSAPP */
-.whatsapp-box {
-    background:#b85c2c;
-    position:fixed;
-    top:470px;
-    right:20px;
-    width:180px;
-    padding:14px;
-    border-radius:10px;
-    box-shadow:0 3px 8px rgba(0,0,0,0.3);
-    z-index:10;
-}
-
-.whatsapp-box a {
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    text-decoration:none;
-    color:white;
-}
-
-.whatsapp-box img {
-    width:40px;
-    margin-bottom:8px;
-}
-
-.whatsapp-box span {
-    font-size:0.95rem;
-    font-weight:bold;
-    text-align:center;
-}
-
-/* INTRO PRINCIPAL ARRIBA */
-.top-intro {
-    text-align:center;
-    padding:40px 20px;
-}
-
-.top-intro h2 {
-    font-size:2rem;
-    margin-bottom:10px;
-}
-
-.top-intro p {
-    font-size:1.2rem;
-    color:#444;
-}
-
-/* HERO */
+/* ===== HERO ===== */
 .hero {
-    height:70vh;
-    background:url("img/imagendefondo.png") center/cover no-repeat;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    flex-direction:column;
-    text-align:center;
-    color:white;
-    text-shadow:0 3px 6px rgba(0,0,0,0.5);
+    height: 70vh;
+    background: url("img/imagendefondo.png") center/cover no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    text-shadow: 0 3px 6px rgba(0,0,0,0.5);
 }
 
 .hero h1 {
-    font-size:3rem;
+    font-size: 3rem;
+    margin: 0;
 }
 
 .hero p {
-    font-size:1.3rem;
-    margin-top:10px;
+    font-size: 1.3rem;
+    margin-top: 10px;
 }
 
+/* ===== INTRO ===== */
+.intro {
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.intro h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.intro p {
+    font-size: 1.2rem;
+    color: #444;
+    max-width: 600px;
+    margin: auto;
+}
+
+/* ===== MENÚ LATERAL ===== */
+.side-menu {
+    position: fixed;
+    right: 20px;
+    top: 180px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.side-item {
+    background: #b85c2c;
+    padding: 14px;
+    width: 170px;
+    text-align: center;
+    color: #fff;
+    font-weight: bold;
+    border-radius: 10px;
+    text-decoration: none;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.25);
+    transition: transform 0.25s;
+}
+
+.side-item:hover {
+    transform: scale(1.06);
+}
+
+/* ===== WHATSAPP ===== */
+.whatsapp-box {
+    position: fixed;
+    right: 20px;
+    top: 480px;
+    background: #25d366;
+    padding: 12px;
+    width: 150px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.25);
+}
+
+.whatsapp-box a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.whatsapp-box img {
+    width: 36px;
+    margin-bottom: 6px;
+}
+
+.whatsapp-box span {
+    font-size: 0.9rem;
+    line-height: 1.1em;
+}
+
+/* ===== FOOTER ===== */
 footer {
-    text-align:center;
-    padding:15px;
-    color:#555;
-    margin-top:40px;
+    text-align: center;
+    color: #555;
+    padding: 20px;
+    margin-top: 40px;
 }
