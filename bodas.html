@@ -1,195 +1,252 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Servicios de Bodas - RiaFlowerShopp</title>
-<link rel="stylesheet" href="css/styles.css">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Bodas Premium - Ria Wedding Floral Studio</title>
+<link rel="stylesheet" href="css/styles.css" />
 <style>
 body {
   font-family: Arial, sans-serif;
-  background: #fff8f0;
+  background: #fff8f2;
   margin: 0;
   padding: 0;
-  color: #333;
+  color: #3d3d3d;
 }
 
+/* MENÚ SUPERIOR */
 .menu {
   background: #b85c2c;
   text-align: center;
-  padding: 12px 0;
+  padding: 14px 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
-
 .menu a {
   color: #fff;
   text-decoration: none;
-  margin: 0 15px;
+  margin: 0 18px;
   font-weight: bold;
-  font-size: 1.1rem;
-  transition: color 0.3s;
+  font-size: 1.15rem;
+  transition: 0.3s;
+}
+.menu a:hover {
+  color: #ffe6cc;
 }
 
-.menu a:hover { color: #ffe6cc; }
+/* TITULAR */
+.header-bodas {
+  background: url('img/header-bodas.jpg') center/cover no-repeat;
+  padding: 80px 20px;
+  text-align: center;
+  color: #b85c2c;
+}
+.header-bodas h1 {
+  font-size: 3rem;
+  background: rgba(255,255,255,0.7);
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 12px;
+}
 
+/* SECCIONES */
 .bodas-section {
   padding: 50px 20px;
-  text-align: center;
-  position: relative;
+  max-width: 1100px;
+  margin: auto;
 }
-
 .bodas-section h2 {
-  font-size: 2.5rem;
-  margin-bottom: 50px;
+  font-size: 2.4rem;
+  margin-bottom: 40px;
   color: #b85c2c;
-  font-weight: bold;
+  text-align: center;
 }
 
+/* SUBCATEGORÍAS */
 .subcategoria {
-  margin-bottom: 60px;
-  text-align: left;
+  margin-bottom: 70px;
 }
-
 .subcategoria h3 {
-  font-size: 2rem;
-  margin-bottom: 20px;
+  font-size: 1.9rem;
   color: #8c3a1c;
-  padding-left: 10px;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  margin-bottom: 15px;
+  padding-left: 5px;
 }
 
+/* SLIDER */
 .slider {
   display: flex;
   overflow-x: auto;
-  gap: 15px;
+  gap: 20px;
   padding: 10px;
   scroll-behavior: smooth;
 }
+.slider::-webkit-scrollbar {
+  display: none;
+}
 
-.slider::-webkit-scrollbar { display: none; }
-
+/* CARDS */
 .product-card {
   background: #fff;
-  border-radius: 15px;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+  border-radius: 16px;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.1);
   flex: 0 0 auto;
-  min-width: 160px;
-  padding: 10px;
+  min-width: 200px;
+  padding: 12px;
   text-align: center;
-  transition: transform 0.3s, box-shadow 0.3s;
+  transition: 0.3s;
 }
-
 .product-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 12px 25px rgba(0,0,0,0.2);
+  transform: translateY(-6px);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.2);
 }
-
-.product-card img {
+.product-img-placeholder {
   width: 100%;
-  height: 120px;
-  object-fit: cover;
-  border-radius: 10px;
+  height: 150px;
+  background: #f0d6c7;
+  border-radius: 12px;
   margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  color: #8c3a1c;
+  font-weight: bold;
 }
-
 .product-card h4 {
-  margin: 5px 0;
   color: #b85c2c;
-  font-size: 1rem;
+  font-size: 1.1rem;
+  margin: 6px 0;
 }
-
 .product-card p {
-  margin: 3px 0 8px;
-  font-size: 0.85rem;
-  color: #555;
+  font-size: 0.9rem;
+  color: #444;
+  margin-bottom: 10px;
 }
 
+/* BOTÓN WHATSAPP */
 .btn-whatsapp {
-  display: inline-block;
   background-color: #25D366;
   color: #fff;
-  padding: 6px 18px;
+  padding: 7px 20px;
   border-radius: 25px;
   text-decoration: none;
   font-weight: bold;
-  font-size: 0.85rem;
-  transition: background-color 0.3s, transform 0.3s;
+  font-size: 0.9rem;
+  transition: 0.3s;
 }
-
 .btn-whatsapp:hover {
   background-color: #1ebe5d;
   transform: scale(1.05);
 }
 
-/* Recuadro Express flotante */
+/* EXPRESS BOX */
 .express-box {
   position: fixed;
-  right: 15px;
-  bottom: 15px;
+  right: 20px;
+  bottom: 20px;
   background: #ffe6cc;
   border: 2px solid #b85c2c;
   border-radius: 20px;
-  padding: 12px 15px;
+  padding: 15px;
+  width: 220px;
   text-align: center;
-  width: 200px;
   box-shadow: 0 6px 20px rgba(0,0,0,0.2);
-  transition: transform 0.3s;
-  z-index: 1000;
+  transition: 0.3s;
+  z-index: 999;
 }
-
 .express-box:hover {
-  transform: translateY(-5px);
+  transform: translateY(-6px);
 }
-
 .express-box h4 {
-  font-size: 1rem;
+  font-size: 1.1rem;
   color: #b85c2c;
+  margin-bottom: 6px;
+}
+.express-box p {
+  font-size: 0.85rem;
   margin-bottom: 8px;
 }
 
-.express-box p {
-  font-size: 0.8rem;
-  color: #333;
-  margin-bottom: 10px;
+footer {
+  background: #b85c2c;
+  text-align: center;
+  color: #fff;
+  padding: 20px;
+  margin-top: 40px;
+  font-weight: bold;
 }
 
-.express-box a {
-  display: inline-block;
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .product-card {
+    min-width: 160px;
+  }
+  .header-bodas h1 {
+    font-size: 2.2rem;
+  }
+}
+@media (max-width: 480px) {
+  .product-card {
+    min-width: 140px;
+  }
+  .header-bodas h1 {
+    font-size: 1.8rem;
+  }
+}
+.productos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 18px;
+  padding: 5px;
+  justify-items: center;
+}
+
+.hover-desc {
+  position: relative;
+}
+.desc-hover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.7);
+  color: #fff;
+  font-size: 0.9rem;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  opacity: 0;
+  border-radius: 12px;
+  transition: 0.3s;
+}
+.hover-desc:hover .desc-hover {
+  opacity: 1;
+}
+
+.btn-whatsapp-large {
+  display: block;
+  margin: 25px auto;
+  width: fit-content;
   background-color: #25D366;
   color: #fff;
-  padding: 6px 15px;
-  border-radius: 20px;
+  padding: 12px 28px;
+  border-radius: 30px;
   font-weight: bold;
-  font-size: 0.85rem;
+  font-size: 1rem;
   text-decoration: none;
-  transition: background-color 0.3s;
+  transition: 0.3s;
+}
+.btn-whatsapp-large:hover {
+  background-color: #1ebe5d;
+  transform: scale(1.05);
 }
 
-.express-box a:hover { background-color: #1ebe5d; }
-
-footer {
-  text-align: center;
-  padding: 20px;
-  background: #b85c2c;
-  color: white;
-  font-weight: bold;
-}
-
-/* Responsivo */
-@media (max-width: 768px) {
-  .product-card { min-width: 140px; }
-  .bodas-section h2 { font-size: 2rem; }
-  .subcategoria h3 { font-size: 1.6rem; }
-  .express-box { width: 180px; padding: 10px; }
-}
-
-@media (max-width: 480px) {
-  .product-card { min-width: 120px; padding: 8px; }
-  .bodas-section h2 { font-size: 1.6rem; }
-  .subcategoria h3 { font-size: 1.4rem; }
-  .btn-whatsapp { padding: 5px 12px; font-size: 0.75rem; }
-  .express-box { width: 160px; padding: 8px; }
-}
 </style>
 </head>
 <body>
@@ -202,105 +259,148 @@ footer {
   <a href="contacto.html">Contacto</a>
 </nav>
 
-<section class="bodas-section">
-  <h2>Servicios de Bodas</h2>
+<header class="header-bodas">
+  <h1>Ria Wedding Floral Studio</h1>
+</header>
 
-  <!-- Centros de Mesa -->
+<section class="bodas-section">
+  <h2>Arreglos Premium para Bodas</h2>
+
   <div class="subcategoria">
     <h3>Centros de Mesa</h3>
-    <div class="slider" id="centros">
-      <div class="product-card">
-        <img src="img/centro1.jpg" alt="Centro Mesa 1">
-        <h4>Centro Elegancia</h4>
-        <p>$800 MXN</p>
-        <a href="https://wa.me/522283010051" target="_blank" class="btn-whatsapp">¡Lo quiero!</a>
+    <div class="productos-grid">
+
+      <div class="product-card hover-desc">
+        <div class="product-img-placeholder">Imagen Próximamente</div>
+        <div class="desc-hover">Rosas blancas, hortensias premium y eucalipto silver.</div>
+        <h4>Centro Royal</h4>
+        <p>$1,800 MXN</p>
+        <a href="https://wa.me/522283010051" target="_blank" class="btn-whatsapp">Solicitar</a>
       </div>
-      <div class="product-card">
-        <img src="img/centro2.jpg" alt="Centro Mesa 2">
-        <h4>Centro Romance</h4>
-        <p>$950 MXN</p>
-        <a href="https://wa.me/522283010051" target="_blank" class="btn-whatsapp">¡Lo quiero!</a>
+
+      <div class="product-card hover-desc">
+        <div class="product-img-placeholder">Imagen Próximamente</div>
+        <div class="desc-hover">Rosas champagne, orquídeas y follaje ruscus.</div>
+        <h4>Centro Luxury Gold</h4>
+        <p>$2,000 MXN</p>
+        <a href="https://wa.me/522283010051" target="_blank" class="btn-whatsapp">Solicitar</a>
       </div>
+
+      <div class="product-card hover-desc">
+        <div class="product-img-placeholder">Imagen Próximamente</div>
+        <div class="desc-hover">Lirios blancos, rosas crema y hojas de leather leaf.</div>
+        <h4>Centro White Crystal</h4>
+        <p>$1,650 MXN</p>
+        <a href="https://wa.me/522283010051" target="_blank" class="btn-whatsapp">Solicitar</a>
+      </div>
+
     </div>
   </div>
 
-  <!-- Mesa Principal -->
   <div class="subcategoria">
     <h3>Mesa Principal</h3>
-    <div class="slider" id="mesa-principal">
-      <div class="product-card">
-        <img src="img/mesa1.jpg" alt="Mesa Principal 1">
-        <h4>Arreglo Majestuoso</h4>
-        <p>$2500 MXN</p>
-        <a href="https://wa.me/522283010051" target="_blank" class="btn-whatsapp">¡Lo quiero!</a>
+    <div class="productos-grid">
+
+      <div class="product-card hover-desc">
+        <div class="product-img-placeholder">Imagen Próximamente</div>
+        <div class="desc-hover">Rosas premium, orquídea phalaenopsis y follaje israelí.</div>
+        <h4>Mesa Imperial</h4>
+        <p>$4,500 MXN</p>
+        <a href="https://wa.me/522283010051" target="_blank" class="btn-whatsapp">Solicitar</a>
       </div>
-      <div class="product-card">
-        <img src="img/mesa2.jpg" alt="Mesa Principal 2">
-        <h4>Arreglo Imperial</h4>
-        <p>$3200 MXN</p>
-        <a href="https://wa.me/522283010051" target="_blank" class="btn-whatsapp">¡Lo quiero!</a>
+
+      <div class="product-card hover-desc">
+        <div class="product-img-placeholder">Imagen Próximamente</div>
+        <div class="desc-hover">Peonias, rosas sahara y eucalipto cinerea.</div>
+        <h4>Mesa Reina Floral</h4>
+        <p>$5,200 MXN</p>
+        <a href="https://wa.me/522283010051" target="_blank" class="btn-whatsapp">Solicitar</a>
       </div>
+
+      <div class="product-card hover-desc">
+        <div class="product-img-placeholder">Imagen Próximamente</div>
+        <div class="desc-hover">Rosas inglesas, anémonas y follaje italiano.</div>
+        <h4>Mesa Glamour Deluxe</h4>
+        <p>$6,000 MXN</p>
+        <a href="https://wa.me/522283010051" target="_blank" class="btn-whatsapp">Solicitar</a>
+      </div>
+
     </div>
   </div>
 
-  <!-- Ramos de Novia -->
   <div class="subcategoria">
     <h3>Ramos de Novia</h3>
-    <div class="slider" id="ramos-novia">
-      <div class="product-card">
-        <img src="img/ramo-novia1.jpg" alt="Ramo Novia 1">
-        <h4>Ramo Romantic</h4>
-        <p>$1200 MXN</p>
-        <a href="https://wa.me/522283010051" target="_blank" class="btn-whatsapp">¡Lo quiero!</a>
+    <div class="productos-grid">
+
+      <div class="product-card hover-desc">
+        <div class="product-img-placeholder">Imagen Próximamente</div>
+        <div class="desc-hover">Rosas avalanche, astilbe y eucalipto seeded.</div>
+        <h4>Ramo Diamond</h4>
+        <p>$2,200 MXN</p>
+        <a href="https://wa.me/522283010051" target="_blank" class="btn-whatsapp">Solicitar</a>
       </div>
-      <div class="product-card">
-        <img src="img/ramo-novia2.jpg" alt="Ramo Novia 2">
-        <h4>Ramo Elegance</h4>
-        <p>$1450 MXN</p>
-        <a href="https://wa.me/522283010051" target="_blank" class="btn-whatsapp">¡Lo quiero!</a>
+
+      <div class="product-card hover-desc">
+        <div class="product-img-placeholder">Imagen Próximamente</div>
+        <div class="desc-hover">Rosas jardín, dalias y foliage dusty miller.</div>
+        <h4>Ramo Royal Bloom</h4>
+        <p>$2,800 MXN</p>
+        <a href="https://wa.me/522283010051" target="_blank" class="btn-whatsapp">Solicitar</a>
       </div>
+
+      <div class="product-card hover-desc">
+        <div class="product-img-placeholder">Imagen Próximamente</div>
+        <div class="desc-hover">Rosas playa blanca, ranúnculos y eucalipto baby blue.</div>
+        <h4>Ramo Crystal Rose</h4>
+        <p>$3,000 MXN</p>
+        <a href="https://wa.me/522283010051" target="_blank" class="btn-whatsapp">Solicitar</a>
+      </div>
+
     </div>
   </div>
 
-  <!-- Arreglos para Invitados -->
   <div class="subcategoria">
     <h3>Arreglos para Invitados</h3>
-    <div class="slider" id="invitados">
-      <div class="product-card">
-        <img src="img/invitado1.jpg" alt="Arreglo Invitado 1">
-        <h4>Detalle Floral</h4>
-        <p>$350 MXN</p>
-        <a href="https://wa.me/522283010051" target="_blank" class="btn-whatsapp">¡Lo quiero!</a>
+    <div class="productos-grid">
+
+      <div class="product-card hover-desc">
+        <div class="product-img-placeholder">Imagen Próximamente</div>
+        <div class="desc-hover">Mini rosas spray, gypsophilia y ruscus.</div>
+        <h4>Mini Deluxe</h4>
+        <p>$650 MXN</p>
+        <a href="https://wa.me/522283010051" target="_blank" class="btn-whatsapp">Solicitar</a>
       </div>
-      <div class="product-card">
-        <img src="img/invitado2.jpg" alt="Arreglo Invitado 2">
-        <h4>Mini Elegance</h4>
-        <p>$400 MXN</p>
-        <a href="https://wa.me/522283010051" target="_blank" class="btn-whatsapp">¡Lo quiero!</a>
+
+      <div class="product-card hover-desc">
+        <div class="product-img-placeholder">Imagen Próximamente</div>
+        <div class="desc-hover">Rosas mini, solidago y follaje fino.</div>
+        <h4>Elegance Mini</h4>
+        <p>$750 MXN</p>
+        <a href="https://wa.me/522283010051" target="_blank" class="btn-whatsapp">Solicitar</a>
       </div>
+
+      <div class="product-card hover-desc">
+        <div class="product-img-placeholder">Imagen Próximamente</div>
+        <div class="desc-hover">Rosas blancas mini, lisianthus y hojas frescas.</div>
+        <h4>Mini Pearl</h4>
+        <p>$820 MXN</p>
+        <a href="https://wa.me/522283010051" target="_blank" class="btn-whatsapp">Solicitar</a>
+      </div>
+
     </div>
   </div>
 
+  <div class="contacto-wsp">
+    <a href="https://wa.me/522283010051" target="_blank" class="btn-whatsapp-large">Solicitar cotización y más información</a>
+  </div>
 </section>
 
-<!-- Recuadro Express flotante -->
-<div class="express-box">
-  <h4>Express</h4>
-  <p>¿Quieres ver lo que tenemos listo para enviar? Solicítalo por WhatsApp, te enviamos imágenes, eliges y lo enviamos al momento.</p>
-  <a href="https://wa.me/522283010051" target="_blank">¡Ver Express!</a>
-</div>
+<!-- EXPRESS -->
+
 
 <footer>
-  © RiaFlowerShopp 2025 – Diseños florales con amor.
+  © RiaFlowerShopp 2025 – Diseños florales para momentos inolvidables.
 </footer>
-
-<script>
-// Slider funcional
-function moveSlider(id, distance){
-  const slider = document.getElementById(id);
-  slider.scrollBy({ left: distance, behavior: 'smooth' });
-}
-</script>
 
 </body>
 </html>
