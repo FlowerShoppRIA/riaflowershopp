@@ -1,54 +1,27 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RiaFlowerShopp</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
+/* --- MENÚ MODERNO --- */
+.menu {
+    background: #b85c2c;
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    padding: 15px 0;
+}
 
-<body>
+.menu a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.15rem;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 12px;
+    transition: .25s ease-in-out;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(4px);
+}
 
-    <!-- Barra superior -->
-    <header class="top-bar">
-        <div class="top-text">@RiaFlowerShopp 2025 • Flores que inspiran</div>
-    </header>
-
-    <!-- Cuadro WhatsApp arriba derecha -->
-    <div class="whatsapp-top-box">
-        <a href="https://wa.me/522283010051?text=Hola,%20quiero%20enviar%20una%20foto%20para%20cotizar%20un%20ramo" target="_blank">
-            <img src="img/whatsapp.png" alt="WhatsApp">
-            <span>¿Tienes una imagen del ramo<br>que deseas? ¡Envíala aquí!</span>
-        </a>
-    </div>
-
-    <!-- HERO -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1>Flores que inspiran</h1>
-            <p>Arreglos florales elegantes, personalizados y listos para entregar</p>
-        </div>
-    </section>
-
-    <!-- Menú principal -->
-    <nav class="menu">
-        <a href="catalogo.html">Catálogo</a>
-        <a href="express.html">Express</a>
-        <a href="servicios.html">Servicios</a>
-        <a href="contacto.html">Contacto</a>
-        <a href="bodas.html">Bodas</a>
-    </nav>
-
-    <!-- Intro -->
-    <section class="intro">
-        <h2>Bienvenido a RiaFlowerShopp</h2>
-        <p>Diseñamos arreglos florales únicos para cada ocasión. Elegancia y calidad en cada detalle.</p>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        © RiaFlowerShopp 2025 – Diseños florales con amor.
-    </footer>
-
-</body>
-</html>
+.menu a:hover {
+    background: #ffffff;
+    color: #b85c2c;
+    transform: translateY(-3px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+}
