@@ -1,3 +1,6 @@
+# index.html
+
+```html
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -6,7 +9,6 @@
     <title>RiaFlowerShopp</title>
     <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
 
     <!-- Barra superior -->
@@ -14,7 +16,7 @@
         <div class="top-text">@RiaFlowerShopp 2025 • Flores que inspiran</div>
     </header>
 
-    <!-- WhatsApp arriba derecha -->
+    <!-- Cuadro WhatsApp (arriba derecha) -->
     <div class="whatsapp-top-box">
         <a href="https://wa.me/522283010051?text=Hola,%20quiero%20enviar%20una%20foto%20para%20cotizar%20un%20ramo" target="_blank">
             <img src="img/whatsapp.png" alt="WhatsApp">
@@ -24,27 +26,181 @@
 
     <!-- Hero -->
     <section class="hero">
+        <div class="hero-overlay"></div>
         <div class="hero-content">
             <h1>Flores que inspiran</h1>
             <p>Arreglos florales elegantes, personalizados y listos para entregar</p>
         </div>
     </section>
 
-    <!-- Menú principal -->
+    <!-- Menú mejorado -->
     <nav class="menu">
-        <a href="catalogo.html" class="menu-item">Catálogo</a>
-        <a href="express.html" class="menu-item">Express</a>
-        <a href="servicios.html" class="menu-item">Servicios</a>
-        <a href="contacto.html" class="menu-item">Contacto</a>
-        <a href="bodas.html" class="menu-item">Bodas</a>
+        <a class="menu-item" href="catalogo.html">Catálogo</a>
+        <a class="menu-item" href="express.html">Express</a>
+        <a class="menu-item" href="servicios.html">Servicios</a>
+        <a class="menu-item" href="contacto.html">Contacto</a>
+        <a class="menu-item" href="bodas.html">Bodas</a>
     </nav>
 
-    <!-- Intro -->
+    <!-- Intro mejor ubicada -->
     <section class="intro">
         <h2>Bienvenido a RiaFlowerShopp</h2>
-        <p>Diseñamos arreglos florales únicos para cada ocasión. Elegancia y calidad en cada detalle.</p>
+        <p>Diseñamos arreglos florales únicos para cada ocasión.<br>Elegancia y calidad en cada detalle.</p>
     </section>
 
     <!-- Footer -->
     <footer>
-        © RiaFlowerShopp 2025 – Diseños florales con am
+        © RiaFlowerShopp 2025 – Diseños florales con amor.
+    </footer>
+
+</body>
+</html>
+```
+
+# styles.css
+
+```css
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #fafafa;
+    color: #333;
+}
+
+/* Barra superior */
+.top-bar {
+    background: #222;
+    color: gold;
+    padding: 8px 20px;
+    text-align: center;
+    font-size: 15px;
+    letter-spacing: 1px;
+}
+
+/* Cuadro WhatsApp */
+.whatsapp-top-box {
+    position: fixed;
+    top: 70px;
+    right: 20px;
+    background: #25d366;
+    padding: 12px 14px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    z-index: 10;
+}
+
+.whatsapp-top-box a {
+    display: flex;
+    align-items: center;
+    color: white;
+    text-decoration: none;
+}
+
+.whatsapp-top-box img {
+    width: 40px;
+    margin-right: 10px;
+}
+
+.whatsapp-top-box span {
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 1.2em;
+}
+
+/* HERO */
+.hero {
+    background-image: url("img/imagendefondo.png");
+    background-size: cover;
+    background-position: center;
+    height: 70vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.25);
+}
+
+.hero-content {
+    position: relative;
+    text-align: center;
+    color: white;
+}
+
+.hero-content h1 {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+}
+
+/* MENÚ MEJORADO */
+.menu {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    padding: 18px 0;
+    background: #b85c2c;
+}
+
+.menu-item {
+    color: white;
+    text-decoration: none;
+    padding: 10px 18px;
+    border-radius: 10px;
+    font-size: 1.15rem;
+    font-weight: bold;
+    background: #d17344;
+    transition: 0.3s;
+}
+
+.menu-item:hover {
+    background: #e08651;
+    transform: scale(1.07);
+}
+
+/* INTRO MEJORADA */
+.intro {
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.intro h2 {
+    font-size: 2rem;
+    color: #b85c2c;
+    margin-bottom: 10px;
+}
+
+.intro p {
+    font-size: 1.2rem;
+    line-height: 1.5em;
+    color: #444;
+}
+
+/* Footer */
+footer {
+    margin-top: 40px;
+    background: #b85c2c;
+    color: white;
+    text-align: center;
+    padding: 18px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+```
