@@ -88,18 +88,19 @@ body {
     font-size: 1.2rem;
 }
 
-/* MENÚ TIPO CUADRO */
+/* MENÚ EN FORMA DE RECUADRO (NUEVO) */
 .menu-box {
-    position: relative;
-    margin: 25px auto;
     background: #25d366;
     padding: 18px 20px;
-    width: 85%;
-    max-width: 850px;
+    width: 90%;
+    max-width: 900px;
+    margin: 25px auto;
     border-radius: 14px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+    
     display: flex;
     justify-content: space-around;
+    align-items: center;
     flex-wrap: wrap;
     gap: 12px;
 }
@@ -107,18 +108,18 @@ body {
 .menu-box-item {
     background: white;
     color: #25d366;
-    padding: 10px 16px;
-    border-radius: 8px;
+    padding: 12px 22px;
+    border-radius: 10px;
+    font-size: 1.2rem;
     font-weight: bold;
     text-decoration: none;
-    font-size: 1.1rem;
     box-shadow: 0 3px 8px rgba(0,0,0,0.2);
     transition: 0.3s;
 }
 
 .menu-box-item:hover {
-    background: #f0fff5;
-    transform: scale(1.08);
+    background: #eafff0;
+    transform: scale(1.1);
 }
 
 /* INTRO */
@@ -130,22 +131,19 @@ body {
 .intro h2 {
     font-size: 2rem;
     color: #b85c2c;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
 }
 
 .intro p {
     font-size: 1.2rem;
     line-height: 1.5em;
-    color: #444;
 }
 
 /* Footer */
 footer {
-    margin-top: 40px;
     background: #b85c2c;
     color: white;
     text-align: center;
     padding: 18px;
     font-weight: bold;
-    letter-spacing: 1px;
 }
