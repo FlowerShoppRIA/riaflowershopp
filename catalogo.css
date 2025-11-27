@@ -24,16 +24,14 @@ body {
 
 /* --- 1. CABECERA Y MENÚ (Como en la referencia) --- */
 .main-header {
-    background: var(--color-terra); /* Color terroso de la barra */
+    background: var(--color-terra);
     color: white;
-    padding: 15px 0; /* Padding solo arriba/abajo */
+    padding: 12px 0; 
     display: flex;
-    justify-content: center; /* Menú centrado, sin logo a los lados */
+    justify-content: center;
     align-items: center;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
-
-.logo { display: none; } /* Ocultamos el logo en la barra, ya que no aparece en la referencia */
 
 .menu a {
     color: white;
@@ -47,7 +45,7 @@ body {
 }
 
 .menu a:hover, .menu a.active {
-    color: #ffe6cc; /* Tono más claro al pasar el mouse */
+    color: #ffe6cc;
     border-bottom: 2px solid #ffe6cc;
 }
 
@@ -61,11 +59,10 @@ body {
 
 /* BARRA LATERAL (ASIDE) */
 .sidebar-filter {
-    flex: 0 0 220px; /* Un poco más estrecho para un look más ligero */
+    flex: 0 0 220px;
     margin-right: 50px;
-    padding: 20px 0; /* Quitamos padding horizontal para mover los botones al borde */
-    background: transparent; /* Fondo transparente para seguir el tono general */
-    border-radius: 0;
+    padding: 20px 0;
+    background: transparent;
     box-shadow: none;
     height: fit-content;
     position: sticky;
@@ -80,9 +77,6 @@ body {
     font-size: 1.2rem;
     text-transform: uppercase;
     text-align: left;
-    border-bottom: none;
-    padding-bottom: 0;
-    margin-left: 0;
 }
 
 /* Botones de Filtro (Estilo minimalista) */
@@ -97,25 +91,23 @@ body {
     font-size: 1rem;
     color: var(--color-dark-text);
     cursor: pointer;
-    transition: background-color 0.3s, color 0.3s;
+    transition: color 0.3s;
 }
 
 .filter-btn:hover {
     color: var(--color-terra);
-    background-color: transparent;
 }
 
 .filter-btn i {
     margin-right: 10px;
-    color: var(--color-terra); /* Iconos en color terroso */
+    color: var(--color-terra);
 }
 
-/* ESTILO PARA EL BOTÓN ACTIVO (CLICKED) */
+/* ESTILO PARA EL BOTÓN ACTIVO */
 .filter-btn.active {
-    background-color: transparent;
-    color: var(--color-terra); /* Solo cambia el color del texto a terroso */
+    color: var(--color-terra);
     font-weight: 700;
-    border-left: 3px solid var(--color-terra); /* Indicador visual lateral */
+    border-left: 3px solid var(--color-terra); 
     padding-left: 17px;
 }
 
@@ -126,10 +118,10 @@ body {
 /* ÁREA DE CONTENIDO (MAIN) */
 .catalogo-content-area {
     flex: 1;
-    padding: 0; /* Sin padding en el área de contenido */
+    padding: 0;
 }
 
-/* Título dinámico del catálogo (Gran tipografía centrada) */
+/* Título dinámico del catálogo (Gran tipografía) */
 .catalogo-content-area h2 {
     font-family: var(--font-heading);
     font-size: 3rem;
@@ -138,18 +130,20 @@ body {
     color: var(--color-terra);
     font-weight: 700;
 }
-.catalogo-content-area h2 i {
-    display: none; /* Ocultamos el icono para mantener la elegancia */
-}
 
 /* Rejilla de Productos */
 .product-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Tarjetas un poco más grandes */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 40px;
 }
 
-/* --- 3. TARJETAS DE PRODUCTO (VENDIBLES) --- */
+/* Ocultar productos */
+.tarjeta-producto.hidden {
+    display: none !important;
+}
+
+/* --- 3. TARJETAS DE PRODUCTO --- */
 .tarjeta-producto {
     background-color: var(--color-light-bg);
     border-radius: 10px;
@@ -157,7 +151,7 @@ body {
     box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     transition: box-shadow 0.3s ease;
     text-align: center;
-    border: 1px solid #f0f0f0; /* Borde muy sutil */
+    border: 1px solid #f0f0f0;
 }
 
 .tarjeta-producto:hover {
@@ -165,16 +159,17 @@ body {
 }
 
 .imagen-producto {
-    height: 200px; /* Más grande */
+    height: 200px;
     border-radius: 8px;
     margin-bottom: 15px;
     overflow: hidden;
-    /* Quitamos el efecto hover de zoom para un look más limpio */
-}
-.tarjeta-producto:hover img {
-    transform: none; 
 }
 
+.imagen-producto img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
 
 .tarjeta-producto h4 {
     font-family: var(--font-heading);
@@ -193,42 +188,54 @@ body {
 .price-tag {
     font-size: 1.6rem;
     font-weight: 700;
-    color: var(--color-dark-text); /* Precio en color oscuro para destacar */
+    color: var(--color-dark-text);
     margin-bottom: 15px;
 }
 
 /* Botón de WhatsApp */
 .btn-whatsapp {
     display: block;
-    background-color: var(--color-terra); /* Botón principal con color de marca */
+    background-color: var(--color-terra);
     color: white;
     padding: 10px 0;
-    border-radius: 5px; /* Bordes menos redondeados */
+    border-radius: 5px;
     font-weight: 700;
     font-size: 0.95rem;
+    text-decoration: none;
+    transition: background-color 0.3s;
 }
 
 .btn-whatsapp:hover {
-    background-color: #a34e23; /* Tono ligeramente más oscuro al pasar el mouse */
-    transform: none; /* Quitamos el efecto de elevación */
+    background-color: #a34e23;
 }
 
 /* --- 4. RECUADRO EXPRESS FLOTANTE --- */
 .express-float {
-    /* Mantenemos el estilo flotante pero con los nuevos colores */
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    width: 200px;
     background: var(--color-light-bg);
-    border: 2px solid var(--color-terra);
+    border-radius: 12px;
     box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+    padding: 15px;
+    text-align: center;
+    z-index: 9999;
+    border: 2px solid var(--color-terra);
+    font-size: 0.9rem;
 }
+
 .express-float h4 {
     color: var(--color-terra);
+    margin-bottom: 5px;
+    font-size: 1.2rem;
 }
 
 /* --- 5. PIE DE PÁGINA --- */
 footer {
     text-align: center;
     padding: 25px;
-    background: var(--color-terra); /* Usamos el color terroso para el footer */
+    background: var(--color-terra);
     color: white;
     font-weight: 400;
     font-size: 0.9rem;
@@ -237,7 +244,6 @@ footer {
 
 /* --- 6. RESPONSIVO (Móviles) --- */
 @media (max-width: 900px) {
-    /* Ajustes para el modo móvil - Mantenemos la lógica de la pila */
     .main-content-wrapper { flex-direction: column; margin-top: 20px; }
     .main-header { padding: 15px 15px; }
 
@@ -249,14 +255,6 @@ footer {
         margin-bottom: 20px;
     }
     
-    /* Hacemos los botones de filtro horizontales en móvil */
-    .sidebar-filter-buttons {
-        display: flex;
-        overflow-x: auto;
-        gap: 10px;
-        padding-bottom: 10px;
-    }
-    
     .filter-btn {
         min-width: 120px;
         flex-shrink: 0;
@@ -266,8 +264,8 @@ footer {
     }
 
     .filter-btn.active { 
-        border: 1px solid var(--color-terra); /* Borde completo activo en móvil */
-        border-left: none; /* Quitamos el borde lateral que ya no tiene sentido */
+        border: 1px solid var(--color-terra);
+        border-left: none;
         padding-left: 15px; 
         background: var(--color-soft-cream);
     }
