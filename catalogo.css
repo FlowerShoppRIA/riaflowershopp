@@ -130,7 +130,7 @@ body {
 /* Rejilla de Productos */
 .product-grid {
     display: grid;
-    /* Ajuste para tarjetas más pequeñas, permitiendo más por fila */
+    /* Tamaño de tarjeta reducido y responsivo */
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
     gap: 30px;
 }
@@ -149,17 +149,16 @@ body {
     transition: box-shadow 0.3s ease;
     text-align: center;
     border: 1px solid #f0f0f0;
-    /* Aseguramos que la tarjeta tenga una posición relativa para el hover */
     position: relative; 
 }
 
 /* Contenedor de Imagen y Overlay */
 .imagen-producto {
-    height: 180px; /* Tamaño reducido de la imagen */
+    height: 180px;
     border-radius: 8px;
     margin-bottom: 15px;
     overflow: hidden;
-    position: relative; /* Clave para el overlay */
+    position: relative; 
 }
 
 .imagen-producto img {
@@ -176,21 +175,21 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(184, 92, 44, 0.9); /* Overlay semi-transparente del color de marca */
+    background-color: rgba(184, 92, 44, 0.9); 
     color: white;
     padding: 15px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    opacity: 0; /* Inicialmente invisible */
+    opacity: 0; 
     transition: opacity 0.3s ease;
-    pointer-events: none; /* Permite hacer click a través de la capa si no está activa */
+    pointer-events: none; 
 }
 
 .tarjeta-producto:hover .detalle-overlay {
-    opacity: 1; /* Se vuelve visible al pasar el cursor */
-    pointer-events: auto; /* Permite interacción con los elementos del overlay */
+    opacity: 1; 
+    pointer-events: auto; 
 }
 
 .detalle-overlay h4 {
@@ -205,7 +204,6 @@ body {
     min-height: auto;
 }
 
-/* Etiqueta de Precio DENTRO del Overlay */
 .detalle-overlay .price-tag {
     font-size: 1.5rem;
     color: white;
@@ -213,12 +211,12 @@ body {
     margin-bottom: 15px;
 }
 .detalle-overlay .btn-whatsapp {
-    background-color: #25D366; /* Volvemos a usar el verde para el CTA en el overlay */
+    background-color: #25D366; 
     padding: 8px 15px;
 }
 
 
-/* Precios en la tarjeta (Visibles por defecto, ocultos en hover) */
+/* Texto debajo de la imagen (Desktop) */
 .tarjeta-producto h4 {
     font-family: var(--font-heading);
     margin-bottom: 5px;
@@ -233,13 +231,62 @@ body {
     min-height: 35px;
 }
 
-/* OCULTAR PRECIO EN MODO DESKTOP (Se ve en el Overlay) */
+/* OCULTAR PRECIO NORMAL EN DESKTOP (Se ve en el Overlay) */
 .price-tag-mobile {
     display: none; 
 }
 
 
-/* --- 4. RESPONSIVO (MEJORA DE UX EN MÓVILES) --- */
+/* --- 4. RECUADRO EXPRESS FLOTANTE --- */
+.express-float {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    width: 200px;
+    background: var(--color-light-bg);
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+    padding: 15px;
+    text-align: center;
+    z-index: 9999;
+    border: 2px solid var(--color-terra);
+    font-size: 0.9rem;
+}
+
+.express-float h4 {
+    color: var(--color-terra);
+    margin-bottom: 5px;
+    font-size: 1.2rem;
+}
+
+.btn-whatsapp {
+    display: block;
+    background-color: var(--color-terra);
+    color: white;
+    padding: 10px 0;
+    border-radius: 5px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.btn-whatsapp:hover {
+    background-color: #a34e23;
+}
+
+/* --- 5. PIE DE PÁGINA --- */
+footer {
+    text-align: center;
+    padding: 25px;
+    background: var(--color-terra);
+    color: white;
+    font-weight: 400;
+    font-size: 0.9rem;
+    margin-top: 50px;
+}
+
+/* --- 6. RESPONSIVO (Móviles) --- */
 @media (max-width: 900px) {
     /* Ocultamos el overlay en móvil y mostramos los detalles debajo de la imagen */
     .detalle-overlay {
@@ -247,7 +294,6 @@ body {
     }
     
     .product-grid {
-        /* Permite dos columnas en la mayoría de los móviles grandes y tablets */
         grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
         gap: 20px;
     }
@@ -258,13 +304,13 @@ body {
     }
     
     .imagen-producto {
-        height: 140px; /* Reducimos la altura de la imagen en móvil */
+        height: 140px; 
         margin-bottom: 10px;
     }
 
     /* MOSTRAR EL PRECIO Y BOTÓN DE WHATSAPP EN MÓVIL (debajo de la descripción) */
     .price-tag-mobile {
-        display: block; /* Hacemos visible el precio en móvil */
+        display: block; 
         font-size: 1.3rem;
         font-weight: 700;
         color: var(--color-terra);
@@ -303,4 +349,3 @@ body {
         text-align: center;
     }
 }
-/* El footer y express-float se mantienen */
