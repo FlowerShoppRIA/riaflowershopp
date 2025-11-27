@@ -1,116 +1,55 @@
-/* ===== GENERAL ===== */
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: #fafafa;
-}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RiaFlowerShopp</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
 
-.top-bar {
-    background: #222;
-    color: gold;
-    padding: 12px;
-    text-align: center;
-    font-weight: bold;
-}
+<!-- BARRA SUPERIOR -->
+<header class="top-bar">
+    <h2>Bienvenido a RiaFlowerShopp</h2>
+    <p>Creamos arreglos florales únicos para cada ocasión</p>
+</header>
 
-/* ===== HERO ===== */
-.hero {
-    height: 70vh;
-    background: url("img/imagendefondo.png") center/cover no-repeat;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    color: white;
-    text-shadow: 0 3px 6px rgba(0,0,0,0.5);
-}
-.hero h1 {
-    font-size: 3rem;
-    margin: 0;
-}
-.hero p {
-    font-size: 1.3rem;
-    margin-top: 10px;
-}
+<!-- MENÚ LATERAL -->
+<nav class="side-menu">
+    <a href="catalogo.html" class="side-item">Catálogo</a>
+    <a href="express.html" class="side-item">Express</a>
+    <a href="bodas.html" class="side-item">Bodas</a>
+    <a href="funerales.html" class="side-item">Funerales</a>
+    <a href="quince.html" class="side-item">Quince Años</a>
+</nav>
 
-/* ===== INTRO RECUADRO CENTRAL ===== */
-.intro-box {
-    background: #f5e6dc;
-    max-width: 700px;
-    margin: 40px auto;
-    padding: 40px 30px;
-    border-radius: 15px;
-    text-align: center;
-    box-shadow: 0 6px 25px rgba(0,0,0,0.15);
-    font-weight: bold;
-    font-size: 1.2rem;
-    color: #b85c2c;
-}
-.intro-box h2 {
-    font-size: 2.2rem;
-    margin-bottom: 15px;
-}
-.intro-box p {
-    font-size: 1.1rem;
-    color: #444;
-    line-height: 1.5em;
-}
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-content">
+        <h1>Flores que inspiran</h1>
+        <p>Diseños florales creados con amor para cada momento especial</p>
+    </div>
+</section>
 
-/* ===== MENÚ LATERAL ===== */
-.side-menu {
-    position: fixed;
-    right: 20px;
-    top: 180px;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
-.side-item {
-    background: #b85c2c;
-    padding: 14px;
-    width: 170px;
-    text-align: center;
-    color: #fff;
-    font-weight: bold;
-    border-radius: 10px;
-    text-decoration: none;
-    box-shadow: 0 3px 8px rgba(0,0,0,0.25);
-    transition: transform 0.25s;
-}
-.side-item:hover {
-    transform: scale(1.06);
-}
+<!-- INTRO EN RECUADRO CENTRAL -->
+<section class="intro-box">
+    <h2>Calidad, diseño y entrega express</h2>
+    <p>
+        Creamos arreglos florales únicos, elegantes y personalizados para cada ocasión.
+    </p>
+</section>
 
-/* ===== WHATSAPP MODIFICADO ===== */
-.whatsapp-box {
-    position: fixed;
-    right: 20px;
-    top: 480px;
-    background: #d17344; /* nuevo color acorde a la página */
-    padding: 10px;
-    width: 170px;
-    border-radius: 10px;
-    text-align: center;
-    box-shadow: 0 3px 8px rgba(0,0,0,0.25);
-}
-.whatsapp-box a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 0.85rem;
-}
-.whatsapp-box img {
-    width: 36px;
-    margin-bottom: 6px;
-}
-.whatsapp-box span {
-    line-height: 1.2em;
-}
+<!-- BOTÓN WHATSAPP PROFESIONAL -->
+<div class="whatsapp-box">
+    <a href="https://wa.me/522283010051?text=Hola,%20quiero%20cotizar%20un%20arreglo" target="_blank">
+        <img src="img/whatsapp.png" alt="WhatsApp">
+        <span>¿Ya sabes lo que quieres?<br>¡Envíanos un mensaje para cotizar!</span>
+    </a>
+</div>
 
-/* ===== FOOTER ===== */
-footer {
-    text-align: center;
-    color: #555;
-    padding: 20px;
-    margin-top: 40px;
-}
+<footer>
+    © 2025 RiaFlowerShopp – Diseños florales con amor.
+</footer>
+
+</body>
+</html>
