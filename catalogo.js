@@ -3,13 +3,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const productCards = document.querySelectorAll('.tarjeta-producto');
     const titleElement = document.getElementById('tituloCatalogo');
     
+    // Nombres para los títulos del catálogo
     const categoryNames = {
         'todos': 'Toda la Colección Exclusiva de RiaFlowerShopp',
         'rosas': 'Ramos de Rosas - Pasión y Romance',
         'gerberas': 'Arreglos de Gerberas - Alegría y Color',
+        'girasoles': 'Ramos de Girasoles - Felicidad y Optimismo',
+        'tulipanes': 'Tulipanes - Sofisticación y Ternura', // NUEVA CATEGORÍA
         'orquideas': 'Orquídeas - Elegancia y Lujo',
         'lirios': 'Lirios - Majestuosidad y Pureza',
-        'lisianthus': 'Lisianthus - Delicadeza y Dulzura'
+        'lisianthus': 'Lisianthus - Delicadeza y Versatilidad'
     };
 
     function updateTitle(category) {
