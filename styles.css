@@ -39,11 +39,11 @@
     </p>
 </section>
 
-<!-- BOTÓN WHATSAPP PROFESIONAL -->
-<div class="whatsapp-box">
+<!-- BOTÓN WHATSAPP REDUCIDO -->
+<div class="whatsapp-box" style="width: 150px; padding: 8px;">
     <a href="https://wa.me/522283010051?text=Hola,%20quiero%20cotizar%20un%20arreglo" target="_blank">
-        <img src="img/whatsapp.png" alt="WhatsApp">
-        <span>¿Ya sabes lo que quieres?<br>¡Envíanos un mensaje para cotizar!</span>
+        <img src="img/whatsapp.png" alt="WhatsApp" style="width: 32px; margin-bottom:4px;">
+        <span style="font-size:0.8rem; line-height:1.2em;">¿Ya sabes lo que quieres?<br>¡Envíanos un mensaje!</span>
     </a>
 </div>
 
