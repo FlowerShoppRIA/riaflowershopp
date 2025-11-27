@@ -1,92 +1,130 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Catálogo Oficial | RiaFlowerShopp</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Catálogo Oficial | RiaFlowerShopp - Filtro por Flor</title>
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    
-    <link rel="stylesheet" href="catalogo.css">
+<link rel="stylesheet" href="css/styles.css"> 
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
-
 <body>
 
-    <header class="main-header">
-        <div class="header-logo">
-            <i class="fas fa-leaf"></i> 
-            <h1>RiaFlowerShopp</h1>
-        </div>
-        <nav class="header-nav">
-            <a href="index.html">Inicio</a>
-            <a href="catalogo.html">Catálogo</a>
-            <a href="#contacto">Contacto</a>
-            <a href="#nosotros">Nosotros</a>
-        </nav>
-        <div class="header-actions">
-            <button class="cta-button">
-                <i class="fas fa-shopping-cart"></i> 
-                Mi Pedido
-            </button>
-        </div>
-    </header>
-
-    <div class="main-container">
-
-        <aside class="sidebar-filters">
-            <h3 class="sidebar-title"><i class="fas fa-filter"></i> Filtrar por Flor</h3>
-
-            <button id="btn-todos" class="cat-btn active" onclick="cargarProductos('todos')">Todos los Arreglos</button>
-
-            <button id="btn-rosas" class="cat-btn" onclick="cargarProductos('rosas')"><i class="fas fa-heart"></i> Rosas</button>
-            <button id="btn-gerberas" class="cat-btn" onclick="cargarProductos('gerberas')"><i class="fas fa-sun"></i> Gerberas</button>
-            <button id="btn-orquideas" class="cat-btn" onclick="cargarProductos('orquideas')"><i class="fas fa-tree"></i> Orquídeas</button>
-            <button id="btn-lirios" class="cat-btn" onclick="cargarProductos('lirios')"><i class="fas fa-tint"></i> Lirios</button>
-            <button id="btn-lisianthus" class="cat-btn" onclick="cargarProductos('lisianthus')"><i class="fas fa-spa"></i> Lisianthus</button>
-        
-            <div class="promo-box">
-                <h4><i class="fas fa-gift"></i> ¿Buscas algo Único?</h4>
-                <p>Diseñamos tu arreglo floral a medida. ¡Contáctanos!</p>
-                <a href="#contacto" class="promo-link">Personalizar ahora</a>
-            </div>
-        </aside>
-
-        <main class="catalogue-content" id="catalogo">
-            <h2 id="tituloCatalogo">Explora Nuestros Arreglos Exclusivos de RiaFlowerShopp</h2>
-            <p class="catalogue-subtitle">Selecciona una categoría o desplázate para ver toda nuestra colección.</p>
-
-            <div id="gridProductos" class="product-grid">
-                </div>
-            
-            <div class="load-more-container">
-                <button class="load-more-btn" onclick="cargarMasProductos()">Cargar Más Arreglos</button>
-            </div>
-
-        </main>
-
+<header class="main-header">
+    <div class="logo">
+        <i class="fas fa-leaf"></i> 
+        <h1>RiaFlowerShopp</h1>
     </div>
+    <nav class="menu">
+        <a href="index.html"><i class="fas fa-home"></i> Inicio</a>
+        <a href="catalogo.html" class="active"><i class="fas fa-book-open"></i> Catálogo</a>
+        <a href="express.html"><i class="fas fa-truck-fast"></i> Express</a>
+        <a href="servicios.html"><i class="fas fa-calendar-alt"></i> Servicios</a>
+        <a href="contacto.html"><i class="fas fa-headset"></i> Contacto</a>
+    </nav>
+</header>
 
-    <footer class="main-footer" id="contacto">
-        <div class="footer-content">
-            <div class="footer-contact">
-                <h3><i class="fas fa-headset"></i> Contacto RiaFlowerShopp</h3>
-                <p>Lunes a Sábado: 8:00 AM - 6:00 PM</p>
-                <p><i class="fas fa-phone"></i> +52 55 1234 5678</p>
-                <p><i class="fas fa-envelope"></i> info@riaflowershopp.com</p>
-            </div>
-            <div class="footer-social">
-                <h3><i class="fas fa-share-alt"></i> Síguenos</h3>
-                <a href="#" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
-                <a href="#" target="_blank"><i class="fab fa-facebook-f"></i> Facebook</a>
-                <a href="#" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-            </div>
-        </div>
-        <div class="footer-copy">
-             <p>© 2025 RiaFlowerShopp — Todos los derechos reservados.</p>
-        </div>
-    </footer>
+<div class="main-content-wrapper">
 
-    <script src="catalogo.js"></script>
+    <aside class="sidebar-filter">
+        <h3><i class="fas fa-filter"></i> Filtrar por Flor</h3>
+
+        <button class="filter-btn active" data-category="todos">
+            <i class="fas fa-star"></i> Todos los Arreglos
+        </button>
+        <button class="filter-btn" data-category="rosas">
+            <i class="fas fa-heart"></i> Rosas
+        </button>
+        <button class="filter-btn" data-category="gerberas">
+            <i class="fas fa-sun"></i> Gerberas
+        </button>
+        <button class="filter-btn" data-category="orquideas">
+            <i class="fas fa-tree"></i> Orquídeas
+        </button>
+        <button class="filter-btn" data-category="lirios">
+            <i class="fas fa-tint"></i> Lirios
+        </button>
+        <button class="filter-btn" data-category="lisianthus">
+            <i class="fas fa-spa"></i> Lisianthus
+        </button>
+
+        <div class="promo-box">
+            <h4><i class="fas fa-gift"></i> Envío Gratis</h4>
+            <p>En pedidos de más de $70.00 USD. ¡Consulta zonas!</p>
+        </div>
+    </aside>
+
+    <main class="catalogo-content-area">
+        <h2 id="tituloCatalogo"></h2>
+        
+        <div id="product-grid" class="product-grid">
+            <div class="tarjeta-producto" data-category="rosas">
+                <div class="imagen-producto"><img src="img/rosas12.jpg" alt="12 Rosas"></div>
+                <h4>Ramo Clásico (12 Rosas)</h4>
+                <p>Elegante ramo de 12 rosas frescas.</p>
+                <div class="price-tag">$35.00 USD</div>
+                <a href="https://wa.me/522283010051" target="_blank" class="btn-whatsapp"><i class="fab fa-whatsapp"></i> ¡Lo quiero!</a>
+            </div>
+
+            <div class="tarjeta-producto" data-category="gerberas">
+                <div class="imagen-producto"><img src="img/gerberas24.jpg" alt="24 Gerberas"></div>
+                <h4>Ramo Alegría (24 Gerberas)</h4>
+                <p>Ramo vibrante y colorido de gerberas.</p>
+                <div class="price-tag">$45.00 USD</div>
+                <a href="https://wa.me/522283010051" target="_blank" class="btn-whatsapp"><i class="fab fa-whatsapp"></i> ¡Lo quiero!</a>
+            </div>
+
+            <div class="tarjeta-producto" data-category="orquideas">
+                <div class="imagen-producto"><img src="img/arreglo-orquideas.jpg" alt="Arreglo Orquídeas"></div>
+                <h4>Elegancia Pura (Orquídeas)</h4>
+                <p>Arreglo de orquídeas blancas en maceta de cerámica.</p>
+                <div class="price-tag">$75.00 USD</div>
+                <a href="https://wa.me/522283010051" target="_blank" class="btn-whatsapp"><i class="fab fa-whatsapp"></i> ¡Lo quiero!</a>
+            </div>
+            
+            <div class="tarjeta-producto" data-category="rosas">
+                <div class="imagen-producto"><img src="img/rosas36.jpg" alt="36 Rosas"></div>
+                <h4>Ramo Lujo (36 Rosas)</h4>
+                <p>Impresionante ramo para un gran gesto de amor.</p>
+                <div class="price-tag">$90.00 USD</div>
+                <a href="https://wa.me/522283010051" target="_blank" class="btn-whatsapp"><i class="fab fa-whatsapp"></i> ¡Lo quiero!</a>
+            </div>
+            
+            <div class="tarjeta-producto" data-category="lirios">
+                <div class="imagen-producto"><img src="img/ramo-lirios.jpg" alt="Ramo de Lirios"></div>
+                <h4>Ramo Majestad (Lirios)</h4>
+                <p>Lirios y follaje exótico, símbolo de pureza.</p>
+                <div class="price-tag">$50.00 USD</div>
+                <a href="https://wa.me/522283010051" target="_blank" class="btn-whatsapp"><i class="fab fa-whatsapp"></i> ¡Lo quiero!</a>
+            </div>
+            
+            <div class="tarjeta-producto" data-category="lisianthus">
+                <div class="imagen-producto"><img src="img/ramo-lisianthus.jpg" alt="Ramo de Lisianthus"></div>
+                <h4>Ramo Dulzura (Lisianthus)</h4>
+                <p>Delicados Lisianthus en tonos pastel.</p>
+                <div class="price-tag">$40.00 USD</div>
+                <a href="https://wa.me/522283010051" target="_blank" class="btn-whatsapp"><i class="fab fa-whatsapp"></i> ¡Lo quiero!</a>
+            </div>
+
+            </div>
+    </main>
+
+</div> <div class="express-float">
+  <h4><i class="fas fa-exclamation-triangle"></i> ¡Envío Express!</h4>
+  <p>Contáctanos por WhatsApp para ver los arreglos listos y enviarlos al instante.</p>
+  <a href="https://wa.me/522283010051?text=Hola,%20quisiera%20ver%20las%20opciones%20de%20envío%20Express." target="_blank" class="btn-whatsapp">
+    <i class="fab fa-whatsapp"></i> Ver Express
+  </a>
+</div>
+
+<footer>
+  © RiaFlowerShopp 2025 – Diseños florales con amor.
+</footer>
+
+<script src="js/catalogo.js"></script>
 
 </body>
 </html>
