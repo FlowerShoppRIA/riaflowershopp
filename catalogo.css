@@ -22,7 +22,7 @@ body {
     line-height: 1.6;
 }
 
-/* --- 1. CABECERA Y MENÚ (Como en la referencia) --- */
+/* --- 1. CABECERA Y MENÚ --- */
 .main-header {
     background: var(--color-terra);
     color: white;
@@ -57,13 +57,12 @@ body {
     padding: 0 20px;
 }
 
-/* BARRA LATERAL (ASIDE) */
+/* BARRA LATERAL */
 .sidebar-filter {
     flex: 0 0 220px;
     margin-right: 50px;
     padding: 20px 0;
     background: transparent;
-    box-shadow: none;
     height: fit-content;
     position: sticky;
     top: 20px;
@@ -79,7 +78,7 @@ body {
     text-align: left;
 }
 
-/* Botones de Filtro (Estilo minimalista) */
+/* Botones de Filtro */
 .filter-btn {
     display: block;
     width: 100%;
@@ -110,10 +109,7 @@ body {
     border-left: 3px solid var(--color-terra); 
     padding-left: 17px;
 }
-
-.filter-btn.active i {
-    color: var(--color-terra);
-}
+.filter-btn.active i { color: var(--color-terra); }
 
 /* ÁREA DE CONTENIDO (MAIN) */
 .catalogo-content-area {
@@ -121,7 +117,7 @@ body {
     padding: 0;
 }
 
-/* Título dinámico del catálogo (Gran tipografía) */
+/* Título dinámico del catálogo */
 .catalogo-content-area h2 {
     font-family: var(--font-heading);
     font-size: 3rem;
@@ -134,8 +130,9 @@ body {
 /* Rejilla de Productos */
 .product-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 40px;
+    /* Ajuste para tarjetas más pequeñas, permitiendo más por fila */
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
+    gap: 30px;
 }
 
 /* Ocultar productos */
@@ -143,7 +140,7 @@ body {
     display: none !important;
 }
 
-/* --- 3. TARJETAS DE PRODUCTO --- */
+/* --- 3. TARJETAS DE PRODUCTO (VENDIBLES) --- */
 .tarjeta-producto {
     background-color: var(--color-light-bg);
     border-radius: 10px;
@@ -152,25 +149,76 @@ body {
     transition: box-shadow 0.3s ease;
     text-align: center;
     border: 1px solid #f0f0f0;
+    /* Aseguramos que la tarjeta tenga una posición relativa para el hover */
+    position: relative; 
 }
 
-.tarjeta-producto:hover {
-    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-}
-
+/* Contenedor de Imagen y Overlay */
 .imagen-producto {
-    height: 200px;
+    height: 180px; /* Tamaño reducido de la imagen */
     border-radius: 8px;
     margin-bottom: 15px;
     overflow: hidden;
+    position: relative; /* Clave para el overlay */
 }
 
 .imagen-producto img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transition: transform 0.3s;
 }
 
+/* EFECTO HOVER: OVERLAY DE DETALLES (UX Mejorada) */
+.detalle-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(184, 92, 44, 0.9); /* Overlay semi-transparente del color de marca */
+    color: white;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0; /* Inicialmente invisible */
+    transition: opacity 0.3s ease;
+    pointer-events: none; /* Permite hacer click a través de la capa si no está activa */
+}
+
+.tarjeta-producto:hover .detalle-overlay {
+    opacity: 1; /* Se vuelve visible al pasar el cursor */
+    pointer-events: auto; /* Permite interacción con los elementos del overlay */
+}
+
+.detalle-overlay h4 {
+    color: white;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+.detalle-overlay p {
+    color: #ffe6cc;
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+    min-height: auto;
+}
+
+/* Etiqueta de Precio DENTRO del Overlay */
+.detalle-overlay .price-tag {
+    font-size: 1.5rem;
+    color: white;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+.detalle-overlay .btn-whatsapp {
+    background-color: #25D366; /* Volvemos a usar el verde para el CTA en el overlay */
+    padding: 8px 15px;
+}
+
+
+/* Precios en la tarjeta (Visibles por defecto, ocultos en hover) */
 .tarjeta-producto h4 {
     font-family: var(--font-heading);
     margin-bottom: 5px;
@@ -185,76 +233,58 @@ body {
     min-height: 35px;
 }
 
-.price-tag {
-    font-size: 1.6rem;
-    font-weight: 700;
-    color: var(--color-dark-text);
-    margin-bottom: 15px;
+/* OCULTAR PRECIO EN MODO DESKTOP (Se ve en el Overlay) */
+.price-tag-mobile {
+    display: none; 
 }
 
-/* Botón de WhatsApp */
-.btn-whatsapp {
-    display: block;
-    background-color: var(--color-terra);
-    color: white;
-    padding: 10px 0;
-    border-radius: 5px;
-    font-weight: 700;
-    font-size: 0.95rem;
-    text-decoration: none;
-    transition: background-color 0.3s;
-}
 
-.btn-whatsapp:hover {
-    background-color: #a34e23;
-}
-
-/* --- 4. RECUADRO EXPRESS FLOTANTE --- */
-.express-float {
-    position: fixed;
-    bottom: 25px;
-    right: 25px;
-    width: 200px;
-    background: var(--color-light-bg);
-    border-radius: 12px;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
-    padding: 15px;
-    text-align: center;
-    z-index: 9999;
-    border: 2px solid var(--color-terra);
-    font-size: 0.9rem;
-}
-
-.express-float h4 {
-    color: var(--color-terra);
-    margin-bottom: 5px;
-    font-size: 1.2rem;
-}
-
-/* --- 5. PIE DE PÁGINA --- */
-footer {
-    text-align: center;
-    padding: 25px;
-    background: var(--color-terra);
-    color: white;
-    font-weight: 400;
-    font-size: 0.9rem;
-    margin-top: 50px;
-}
-
-/* --- 6. RESPONSIVO (Móviles) --- */
+/* --- 4. RESPONSIVO (MEJORA DE UX EN MÓVILES) --- */
 @media (max-width: 900px) {
-    .main-content-wrapper { flex-direction: column; margin-top: 20px; }
-    .main-header { padding: 15px 15px; }
+    /* Ocultamos el overlay en móvil y mostramos los detalles debajo de la imagen */
+    .detalle-overlay {
+        display: none !important;
+    }
+    
+    .product-grid {
+        /* Permite dos columnas en la mayoría de los móviles grandes y tablets */
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 20px;
+    }
 
+    .tarjeta-producto {
+        padding: 15px;
+        min-width: 180px;
+    }
+    
+    .imagen-producto {
+        height: 140px; /* Reducimos la altura de la imagen en móvil */
+        margin-bottom: 10px;
+    }
+
+    /* MOSTRAR EL PRECIO Y BOTÓN DE WHATSAPP EN MÓVIL (debajo de la descripción) */
+    .price-tag-mobile {
+        display: block; /* Hacemos visible el precio en móvil */
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: var(--color-terra);
+        margin-bottom: 10px;
+    }
+    
+    /* El botón de WhatsApp en la base de la tarjeta (para móvil) */
+    .tarjeta-producto > .btn-whatsapp {
+        display: block;
+        background-color: var(--color-cta); /* Usamos el verde llamativo para CTA móvil */
+    }
+
+    /* Layout general de columna */
+    .main-content-wrapper { flex-direction: column; margin-top: 20px; }
     .sidebar-filter {
         flex: 1 1 auto;
         width: 100%;
         position: static;
-        margin-right: 0;
         margin-bottom: 20px;
     }
-    
     .filter-btn {
         min-width: 120px;
         flex-shrink: 0;
@@ -262,16 +292,15 @@ footer {
         padding: 8px 15px;
         border: 1px solid #ddd;
     }
-
     .filter-btn.active { 
         border: 1px solid var(--color-terra);
         border-left: none;
         padding-left: 15px; 
         background: var(--color-soft-cream);
     }
-    
     .catalogo-content-area h2 {
         font-size: 2rem;
         text-align: center;
     }
 }
+/* El footer y express-float se mantienen */
