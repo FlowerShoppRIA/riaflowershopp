@@ -1,11 +1,12 @@
-/* --- 0. VARIABLES Y RESET BÁSICO --- */
+/* --- RiaFlowerShopp Estilo Cálido y Terroso --- */
 :root {
-    --color-primary: #8c3a1c; /* Color principal (marrón oscuro elegante de RiaFlowerShopp) */
-    --color-secondary: #b85c2c; /* Color de acento (terracota / cálido) */
-    --color-bg-light: #fff8f0; /* Fondo muy claro */
-    --color-cta: #25D366; /* Verde de WhatsApp */
-    --font-heading: 'Playfair Display', serif;
-    --font-body: 'Roboto', sans-serif;
+    --color-terra: #b85c2c; /* Marrón Terroso de la barra de navegación */
+    --color-dark-text: #333333; /* Texto principal oscuro */
+    --color-soft-cream: #fff8f0; /* Fondo general, como la referencia */
+    --color-light-bg: #ffffff; /* Fondo de tarjetas */
+    --color-cta: #25D366; /* Verde WhatsApp */
+    --font-heading: 'Playfair Display', serif; /* Elegante para títulos */
+    --font-body: 'Roboto', sans-serif; /* Limpio para cuerpo */
 }
 
 * {
@@ -16,54 +17,38 @@
 
 body {
     font-family: var(--font-body);
-    background: var(--color-bg-light);
-    color: #333;
+    background: var(--color-soft-cream);
+    color: var(--color-dark-text);
     line-height: 1.6;
 }
 
-/* --- 1. CABECERA Y MENÚ (HEADER) --- */
+/* --- 1. CABECERA Y MENÚ (Como en la referencia) --- */
 .main-header {
-    background: var(--color-primary);
+    background: var(--color-terra); /* Color terroso de la barra */
     color: white;
-    padding: 15px 30px;
+    padding: 15px 0; /* Padding solo arriba/abajo */
     display: flex;
-    justify-content: space-between;
+    justify-content: center; /* Menú centrado, sin logo a los lados */
     align-items: center;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.logo {
-    display: flex;
-    align-items: center;
-}
-
-.logo i {
-    font-size: 1.8rem;
-    margin-right: 10px;
-    color: #ffe6cc;
-}
-
-.logo h1 {
-    font-family: var(--font-heading);
-    font-size: 1.5rem;
-    font-weight: 700;
-}
+.logo { display: none; } /* Ocultamos el logo en la barra, ya que no aparece en la referencia */
 
 .menu a {
-    color: #ffe6cc;
+    color: white;
     text-decoration: none;
-    margin: 0 15px;
-    font-weight: 400;
-    font-size: 0.95rem;
-    transition: color 0.3s, font-weight 0.3s;
+    margin: 0 20px;
+    font-weight: 500;
+    font-size: 1.05rem;
+    transition: color 0.3s;
     padding: 5px 0;
     border-bottom: 2px solid transparent;
 }
 
 .menu a:hover, .menu a.active {
-    color: white;
-    font-weight: 700;
-    border-bottom: 2px solid white;
+    color: #ffe6cc; /* Tono más claro al pasar el mouse */
+    border-bottom: 2px solid #ffe6cc;
 }
 
 /* --- 2. LAYOUT PRINCIPAL (SIDEBAR + CONTENT) --- */
@@ -76,240 +61,186 @@ body {
 
 /* BARRA LATERAL (ASIDE) */
 .sidebar-filter {
-    flex: 0 0 250px;
-    margin-right: 40px;
-    padding: 20px;
-    background: white;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    flex: 0 0 220px; /* Un poco más estrecho para un look más ligero */
+    margin-right: 50px;
+    padding: 20px 0; /* Quitamos padding horizontal para mover los botones al borde */
+    background: transparent; /* Fondo transparente para seguir el tono general */
+    border-radius: 0;
+    box-shadow: none;
     height: fit-content;
     position: sticky;
     top: 20px;
 }
 
 .sidebar-filter h3 {
-    font-family: var(--font-heading);
-    color: var(--color-primary);
-    margin-bottom: 25px;
-    font-size: 1.5rem;
-    border-bottom: 1px solid #eee;
-    padding-bottom: 10px;
+    font-family: var(--font-body);
+    font-weight: 700;
+    color: var(--color-dark-text);
+    margin-bottom: 20px;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    text-align: left;
+    border-bottom: none;
+    padding-bottom: 0;
+    margin-left: 0;
 }
 
-.sidebar-filter h3 i {
-    margin-right: 10px;
-}
-
-/* Botones de Filtro */
+/* Botones de Filtro (Estilo minimalista) */
 .filter-btn {
     display: block;
     width: 100%;
-    padding: 12px 15px;
-    margin-bottom: 10px;
+    padding: 10px 0;
+    margin-bottom: 8px;
     background: transparent;
-    border: 1px solid #ddd;
-    border-radius: 8px;
+    border: none;
     text-align: left;
     font-size: 1rem;
-    color: #555;
+    color: var(--color-dark-text);
     cursor: pointer;
-    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+    transition: background-color 0.3s, color 0.3s;
 }
 
 .filter-btn:hover {
-    background-color: #fcebeb;
-    border-color: var(--color-secondary);
+    color: var(--color-terra);
+    background-color: transparent;
 }
 
 .filter-btn i {
     margin-right: 10px;
-    color: var(--color-secondary);
+    color: var(--color-terra); /* Iconos en color terroso */
 }
 
 /* ESTILO PARA EL BOTÓN ACTIVO (CLICKED) */
 .filter-btn.active {
-    background-color: var(--color-secondary);
-    color: white;
-    border-color: var(--color-secondary);
-    font-weight: bold;
-    box-shadow: 0 2px 8px rgba(184, 92, 44, 0.4);
+    background-color: transparent;
+    color: var(--color-terra); /* Solo cambia el color del texto a terroso */
+    font-weight: 700;
+    border-left: 3px solid var(--color-terra); /* Indicador visual lateral */
+    padding-left: 17px;
 }
 
 .filter-btn.active i {
-    color: white;
-}
-
-.promo-box {
-    margin-top: 30px;
-    padding: 15px;
-    background: var(--color-bg-light);
-    border-radius: 8px;
-    border: 1px dashed var(--color-secondary);
-}
-
-.promo-box h4 {
-    font-size: 1.1rem;
-    color: var(--color-primary);
-    margin-bottom: 5px;
+    color: var(--color-terra);
 }
 
 /* ÁREA DE CONTENIDO (MAIN) */
 .catalogo-content-area {
     flex: 1;
-    padding: 20px;
+    padding: 0; /* Sin padding en el área de contenido */
 }
 
-/* Título dinámico del catálogo */
+/* Título dinámico del catálogo (Gran tipografía centrada) */
 .catalogo-content-area h2 {
     font-family: var(--font-heading);
-    font-size: 2.5rem;
-    margin-bottom: 40px;
-    text-align: left;
-    color: var(--color-primary);
+    font-size: 3rem;
+    margin-bottom: 60px;
+    text-align: center;
+    color: var(--color-terra);
+    font-weight: 700;
+}
+.catalogo-content-area h2 i {
+    display: none; /* Ocultamos el icono para mantener la elegancia */
 }
 
 /* Rejilla de Productos */
 .product-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 30px;
-}
-
-/* OCULTAR PRODUCTOS FILTRADOS */
-.tarjeta-producto.hidden {
-    display: none !important;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Tarjetas un poco más grandes */
+    gap: 40px;
 }
 
 /* --- 3. TARJETAS DE PRODUCTO (VENDIBLES) --- */
 .tarjeta-producto {
-    background-color: #fff;
-    border-radius: 12px;
-    padding: 15px;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
-    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    background-color: var(--color-light-bg);
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    transition: box-shadow 0.3s ease;
     text-align: center;
-    border: 1px solid #eee;
+    border: 1px solid #f0f0f0; /* Borde muy sutil */
 }
 
 .tarjeta-producto:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 15px 30px rgba(0,0,0,0.25);
-    border-color: var(--color-secondary);
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
 }
 
 .imagen-producto {
-    height: 180px;
+    height: 200px; /* Más grande */
     border-radius: 8px;
     margin-bottom: 15px;
     overflow: hidden;
+    /* Quitamos el efecto hover de zoom para un look más limpio */
 }
-
-.imagen-producto img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.5s;
-}
-
 .tarjeta-producto:hover img {
-    transform: scale(1.1);
+    transform: none; 
 }
+
 
 .tarjeta-producto h4 {
     font-family: var(--font-heading);
-    margin-bottom: 8px;
-    color: var(--color-primary);
-    font-size: 1.3rem;
-    font-weight: 700;
+    margin-bottom: 5px;
+    color: var(--color-terra);
+    font-size: 1.4rem;
 }
 
 .tarjeta-producto p {
-    margin-bottom: 15px;
+    margin-bottom: 10px;
     color: #777;
-    font-size: 0.95rem;
-    min-height: 40px;
+    font-size: 0.9rem;
+    min-height: 35px;
 }
 
 .price-tag {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     font-weight: 700;
-    color: var(--color-secondary);
+    color: var(--color-dark-text); /* Precio en color oscuro para destacar */
     margin-bottom: 15px;
 }
 
 /* Botón de WhatsApp */
 .btn-whatsapp {
     display: block;
-    background-color: var(--color-cta);
-    color: #fff;
+    background-color: var(--color-terra); /* Botón principal con color de marca */
+    color: white;
     padding: 10px 0;
-    border-radius: 30px;
-    text-decoration: none;
+    border-radius: 5px; /* Bordes menos redondeados */
     font-weight: 700;
-    font-size: 1rem;
-    transition: background-color 0.3s, transform 0.3s;
-    letter-spacing: 0.5px;
+    font-size: 0.95rem;
 }
 
-.btn-whatsapp i { margin-right: 5px; }
-
 .btn-whatsapp:hover {
-    background-color: #1ebe5d;
-    transform: translateY(-2px);
+    background-color: #a34e23; /* Tono ligeramente más oscuro al pasar el mouse */
+    transform: none; /* Quitamos el efecto de elevación */
 }
 
 /* --- 4. RECUADRO EXPRESS FLOTANTE --- */
 .express-float {
-    position: fixed;
-    bottom: 25px;
-    right: 25px;
-    width: 200px;
-    background: white;
-    border-radius: 12px;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.4);
-    padding: 15px;
-    text-align: center;
-    z-index: 9999;
-    border: 3px solid var(--color-secondary);
-    font-size: 0.9rem;
-    transition: transform 0.5s ease;
+    /* Mantenemos el estilo flotante pero con los nuevos colores */
+    background: var(--color-light-bg);
+    border: 2px solid var(--color-terra);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
 }
-
-.express-float:hover {
-    transform: scale(1.03);
-}
-
 .express-float h4 {
-    font-family: var(--font-heading);
-    margin-bottom: 5px;
-    color: var(--color-primary);
-    font-size: 1.2rem;
+    color: var(--color-terra);
 }
 
-/* --- 5. PIE DE PÁGINA (FOOTER) --- */
+/* --- 5. PIE DE PÁGINA --- */
 footer {
     text-align: center;
     padding: 25px;
-    background: var(--color-primary);
+    background: var(--color-terra); /* Usamos el color terroso para el footer */
     color: white;
     font-weight: 400;
     font-size: 0.9rem;
-    margin-top: 40px;
+    margin-top: 50px;
 }
 
 /* --- 6. RESPONSIVO (Móviles) --- */
 @media (max-width: 900px) {
-    .main-header {
-        flex-direction: column;
-        padding: 15px 15px;
-    }
-    .menu { margin-top: 10px; }
-    
-    .main-content-wrapper {
-        flex-direction: column;
-        margin-top: 20px;
-    }
-    
+    /* Ajustes para el modo móvil - Mantenemos la lógica de la pila */
+    .main-content-wrapper { flex-direction: column; margin-top: 20px; }
+    .main-header { padding: 15px 15px; }
+
     .sidebar-filter {
         flex: 1 1 auto;
         width: 100%;
@@ -317,33 +248,32 @@ footer {
         margin-right: 0;
         margin-bottom: 20px;
     }
-
-    /* Ajuste para que los botones de filtro se desplacen en horizontal en móvil */
-    .filter-buttons-wrapper {
+    
+    /* Hacemos los botones de filtro horizontales en móvil */
+    .sidebar-filter-buttons {
         display: flex;
         overflow-x: auto;
         gap: 10px;
         padding-bottom: 10px;
     }
+    
     .filter-btn {
         min-width: 120px;
         flex-shrink: 0;
         text-align: center;
         padding: 8px 15px;
+        border: 1px solid #ddd;
     }
-    .sidebar-filter h3 { text-align: center; }
 
+    .filter-btn.active { 
+        border: 1px solid var(--color-terra); /* Borde completo activo en móvil */
+        border-left: none; /* Quitamos el borde lateral que ya no tiene sentido */
+        padding-left: 15px; 
+        background: var(--color-soft-cream);
+    }
+    
     .catalogo-content-area h2 {
         font-size: 2rem;
         text-align: center;
     }
-    .product-grid { gap: 20px; }
-}
-
-@media (max-width: 500px) {
-    .tarjeta-producto { min-width: 180px; padding: 10px; }
-    .imagen-producto { height: 140px; }
-    .tarjeta-producto h4 { font-size: 1.1rem; }
-    .price-tag { font-size: 1.3rem; }
-    .express-float { width: 140px; bottom: 10px; right: 10px; font-size: 0.8rem; }
 }
