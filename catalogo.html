@@ -1,39 +1,49 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Catálogo - RiaFlowerShopp</title>
-<link rel="stylesheet" href="catalogo.css">
+    <meta charset="UTF-8">
+    <title>Catálogo - Florería</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="catalogo.css">
 </head>
+
 <body>
 
-<header class="top-bar">
-    Catálogo de Flores – RiaFlowerShopp
-</header>
+    <div class="top-bar">
+        CATÁLOGO DE ARREGLOS FLORALES
+    </div>
 
-<div class="layout">
-    <aside class="side-menu-left">
-        <h3>Categorías</h3>
-        <button class="cat-btn active" data-target="rosas">Rosas</button>
-        <button class="cat-btn" data-target="gerberas">Gerberas</button>
-        <button class="cat-btn" data-target="orquideas">Orquídeas</button>
-        <button class="cat-btn" data-target="lirios">Lirios</button>
-        <button class="cat-btn" data-target="lisianthus">Lisianthus</button>
-    </aside>
+    <div class="layout">
 
-    <section class="catalogo">
-        <h2 id="titulo-categoria">Ramos de Rosas</h2>
-        <div id="contenedor-productos" class="productos-grid">
-            <!-- Espacios para fotos automáticamente generados por JS -->
-        </div>
-    </section>
-</div>
+        <!-- MENÚ LATERAL IZQUIERDO -->
+        <aside class="side-menu-left">
+            <h3>Categorías</h3>
 
-<footer>
-  © RiaFlowerShopp 2025 – Diseños florales con amor.
-</footer>
+            <button id="btn-rosas" class="cat-btn" onclick="cargarProductos('rosas')">Rosas</button>
+            <button id="btn-gerberas" class="cat-btn" onclick="cargarProductos('gerberas')">Gerberas</button>
+            <button id="btn-orquideas" class="cat-btn" onclick="cargarProductos('orquideas')">Orquídeas</button>
+            <button id="btn-lirios" class="cat-btn" onclick="cargarProductos('lirios')">Lirios</button>
+            <button id="btn-lisianthus" class="cat-btn" onclick="cargarProductos('lisianthus')">Lisianthus</button>
+        </aside>
 
-<script src="catalogo.js"></script>
+        <!-- CATÁLOGO -->
+        <main class="catalogo">
+            <h2 id="tituloCatalogo">CATÁLOGO</h2>
+
+            <div id="gridProductos" class="productos-grid">
+                <!-- productos generados por JS -->
+            </div>
+        </main>
+
+    </div>
+
+    <footer>
+        © 2025 Florería — Todos los derechos reservados
+    </footer>
+
+    <!-- JS -->
+    <script src="catalogo.js"></script>
+
 </body>
 </html>
