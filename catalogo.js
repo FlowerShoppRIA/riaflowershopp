@@ -1,59 +1,79 @@
-// === PRODUCTOS POR CATEGORÍA ===
-const productos = {
-    rosas: [
-        { nombre: "Ramo de Rosas 1", desc: "Descripción del producto.", img: "img/placeholder.jpg" },
-        { nombre: "Ramo de Rosas 2", desc: "Descripción del producto.", img: "img/placeholder.jpg" },
-        { nombre: "Ramo de Rosas 3", desc: "Descripción del producto.", img: "img/placeholder.jpg" }
-    ],
-    gerberas: [
-        { nombre: "Ramo de Gerberas 1", desc: "Descripción del producto.", img: "img/placeholder.jpg" },
-        { nombre: "Ramo de Gerberas 2", desc: "Descripción del producto.", img: "img/placeholder.jpg" }
-    ],
-    orquideas: [
-        { nombre: "Orquídea Premium", desc: "Descripción del producto.", img: "img/placeholder.jpg" }
-    ],
-    lirios: [
-        { nombre: "Ramo de Lirios 1", desc: "Descripción del producto.", img: "img/placeholder.jpg" },
-        { nombre: "Ramo de Lirios 2", desc: "Descripción del producto.", img: "img/placeholder.jpg" }
-    ],
-    lisianthus: [
-        { nombre: "Ramo de Lisianthus 1", desc: "Descripción del producto.", img: "img/placeholder.jpg" }
-    ]
-};
+document.addEventListener('DOMContentLoaded', () => {
+    // Selectores
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const productCards = document.querySelectorAll('.tarjeta-producto');
+    const titleElement = document.getElementById('tituloCatalogo');
+    
+    // Nombres que aparecerán en el título de la sección
+    const categoryNames = {
+        'todos': 'Toda la Colección Exclusiva de RiaFlowerShopp',
+        'rosas': 'Ramos de Rosas - Pasión y Romance',
+        'gerberas': 'Arreglos de Gerberas - Alegría y Color',
+        'orquideas': 'Orquídeas - Elegancia y Lujo',
+        'lirios': 'Lirios - Majestuosidad y Pureza',
+        'lisianthus': 'Lisianthus - Delicadeza y Dulzura'
+    };
 
+    /**
+     * Actualiza el texto del título principal del catálogo.
+     * @param {string} category - La clave de la categoría actual.
+     */
+    function updateTitle(category) {
+        titleElement.innerHTML = categoryNames[category] || 'Catálogo de Productos';
+    }
 
-// === FUNCIÓN PARA CARGAR PRODUCTOS EN EL CATÁLOGO ===
-function cargarProductos(tipo) {
+    /**
+     * Filtra los productos mostrando u ocultando las tarjetas.
+     * @param {string} category - La categoría a mostrar.
+     */
+    function filterProducts(category) {
+        productCards.forEach(card => {
+            const cardCategory = card.getAttribute('data-category');
+            
+            if (category === 'todos' || cardCategory === category) {
+                // Mostrar el producto
+                card.style.display = 'block';
+                card.classList.remove('hidden');
+            } else {
+                // Ocultar el producto
+                card.style.display = 'none';
+                card.classList.add('hidden');
+            }
+        });
+    }
 
-    // Cambiar título
-    document.getElementById("tituloCatalogo").innerText = tipo.toUpperCase();
+    /**
+     * Maneja el estado 'activo' del botón.
+     * @param {HTMLElement} button - El botón que acaba de ser clicado.
+     */
+    function setActiveButton(button) {
+        // 1. Quitar 'active' de todos los botones
+        filterButtons.forEach(btn => btn.classList.remove('active'));
+        
+        // 2. Añadir 'active' al botón clicado
+        button.classList.add('active');
+    }
 
-    // Renderizar grid
-    const contenedor = document.getElementById("gridProductos");
-    contenedor.innerHTML = "";
-
-    productos[tipo].forEach(prod => {
-        contenedor.innerHTML += `
-            <div class="tarjeta-producto">
-                <div class="imagen-producto">
-                    <img src="${prod.img}" alt="${prod.nombre}">
-                </div>
-                <h4>${prod.nombre}</h4>
-                <p>${prod.desc}</p>
-                <a class="btn-whatsapp" href="https://wa.me/521000000000">
-                    Cotizar
-                </a>
-            </div>
-        `;
+    // Añadir el evento de click a todos los botones de filtro
+    filterButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const category = button.getAttribute('data-category');
+            
+            setActiveButton(button);
+            filterProducts(category);
+            updateTitle(category);
+        });
     });
 
-    // Activar color del botón seleccionado
-    document.querySelectorAll(".cat-btn").forEach(btn => btn.classList.remove("active"));
-    document.getElementById("btn-" + tipo).classList.add("active");
-}
-
-
-// === CARGAR LA PRIMERA CATEGORÍA AL INICIAR ===
-window.onload = () => {
-    cargarProductos("rosas");
-};
+    // Inicialización: Ejecutar la función al cargar la página para mostrar 'todos' por defecto.
+    const initialButton = document.querySelector('.filter-btn.active');
+    if (initialButton) {
+        const initialCategory = initialButton.getAttribute('data-category');
+        filterProducts(initialCategory);
+        updateTitle(initialCategory);
+    } else {
+        // Fallback si no hay botón 'active' por defecto (muestra todo)
+        filterProducts('todos');
+        updateTitle('todos');
+    }
+});
