@@ -90,8 +90,8 @@ body {
 .whatsapp-box {
     position: fixed;
     right: 20px;
-    top: 480px;
-    background: #b85c2c; /* mismo color que los recuadros laterales */
+    top: 500px;
+    background: #b85c2c; /* mismo color que recuadros laterales */
     padding: 14px;
     width: 170px;
     border-radius: 10px;
