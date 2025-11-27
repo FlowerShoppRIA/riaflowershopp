@@ -211,7 +211,7 @@ body {
     margin-bottom: 15px;
 }
 .detalle-overlay .btn-whatsapp {
-    background-color: #25D366; 
+    background-color: var(--color-cta); 
     padding: 8px 15px;
 }
 
@@ -237,28 +237,48 @@ body {
 }
 
 
-/* --- 4. RECUADRO EXPRESS FLOTANTE --- */
+/* --- 4. RECUADRO EXPRESS FLOTANTE (¡AHORA MÁS LLAMATIVO!) --- */
 .express-float {
     position: fixed;
-    bottom: 25px;
-    right: 25px;
-    width: 200px;
-    background: var(--color-light-bg);
-    border-radius: 12px;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
-    padding: 15px;
+    bottom: 30px; 
+    right: 30px; 
+    width: 240px; 
+    background: linear-gradient(135deg, #fff8f0 0%, #ffffff 100%); 
+    border-radius: 15px; 
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15); 
+    padding: 20px; 
     text-align: center;
     z-index: 9999;
-    border: 2px solid var(--color-terra);
-    font-size: 0.9rem;
+    border: 3px solid var(--color-terra); 
+    font-size: 0.95rem; 
+    transform: translateY(0); 
+    transition: all 0.4s ease-in-out; 
+    cursor: pointer; 
+}
+
+/* Efecto de "enrollar" al pasar el cursor */
+.express-float:hover {
+    transform: translateY(-5px) scale(1.02); 
+    box-shadow: 0 15px 40px rgba(0,0,0,0.25); 
 }
 
 .express-float h4 {
+    font-family: var(--font-heading); 
     color: var(--color-terra);
-    margin-bottom: 5px;
-    font-size: 1.2rem;
+    margin-bottom: 10px; 
+    font-size: 1.6rem; 
+    line-height: 1.2;
+    text-transform: uppercase;
 }
 
+.express-float p {
+    color: var(--color-dark-text);
+    margin-bottom: 18px; 
+    font-size: 1rem; 
+    font-weight: 500; 
+}
+
+/* Estilo para el botón de WhatsApp (Se aplica a todos los .btn-whatsapp) */
 .btn-whatsapp {
     display: block;
     background-color: var(--color-terra);
@@ -273,6 +293,18 @@ body {
 
 .btn-whatsapp:hover {
     background-color: #a34e23;
+}
+
+/* Sobrescribir el estilo del botón para el express-float (Más grande y verde) */
+.express-float .btn-whatsapp {
+    background-color: var(--color-cta); 
+    padding: 12px 15px; 
+    border-radius: 8px; 
+    font-size: 1.05rem; 
+}
+
+.express-float .btn-whatsapp:hover {
+    background-color: #1DA851; /* Verde más oscuro al pasar el cursor */
 }
 
 /* --- 5. PIE DE PÁGINA --- */
@@ -347,5 +379,32 @@ footer {
     .catalogo-content-area h2 {
         font-size: 2rem;
         text-align: center;
+    }
+    
+    /* Versión móvil del Recuadro Express */
+    .express-float {
+        width: 90%; 
+        left: 5%; 
+        right: 5%;
+        bottom: 20px;
+        font-size: 0.9rem;
+        padding: 15px;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        transform: translateY(0) scale(1); /* Desactivar hover en móvil */
+    }
+    .express-float:hover {
+        transform: translateY(0) scale(1); /* Asegurar que no haya efecto hover en móvil */
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    .express-float h4 {
+        font-size: 1.3rem;
+    }
+    .express-float p {
+        font-size: 0.85rem;
+    }
+    .express-float .btn-whatsapp {
+        padding: 10px 10px;
+        font-size: 0.95rem;
     }
 }
