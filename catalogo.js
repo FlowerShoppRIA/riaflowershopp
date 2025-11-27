@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const productCards = document.querySelectorAll('.tarjeta-producto');
     const titleElement = document.getElementById('tituloCatalogo');
     
-    // Nombres para los títulos del catálogo
+    // Nombres para los títulos del catálogo (Actualizados)
     const categoryNames = {
         'todos': 'Toda la Colección Exclusiva de RiaFlowerShopp',
         'rosas': 'Ramos de Rosas - Pasión y Romance',
@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Inicialización
+    // Inicialización: Muestra la categoría 'todos' por defecto.
     const initialButton = document.querySelector('.filter-btn.active');
     if (initialButton) {
         const initialCategory = initialButton.getAttribute('data-category');
