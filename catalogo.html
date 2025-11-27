@@ -3,269 +3,104 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Catálogo Profesional - RiaFlowerShopp</title>
-<link rel="stylesheet" href="css/styles.css">
-<style>
-body {
-  font-family: Arial, sans-serif;
-  background: #fff8f0;
-  margin: 0;
-  padding: 0;
-  color: #333;
-}
+<title>Catálogo Oficial | RiaFlowerShopp - Filtro por Flor</title>
 
-.menu {
-  background: #b85c2c;
-  text-align: center;
-  padding: 12px 0;
-}
+<link rel="stylesheet" href="catalogo.css"> 
 
-.menu a {
-  color: #fff;
-  text-decoration: none;
-  margin: 0 15px;
-  font-weight: bold;
-  font-size: 1.1rem;
-  transition: color 0.3s;
-}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-.menu a:hover { color: #ffe6cc; }
-
-.catalogo-section {
-  padding: 40px 20px;
-  text-align: center;
-}
-
-.catalogo-section h2 {
-  font-size: 2.5rem;
-  margin-bottom: 40px;
-  color: #b85c2c;
-  font-weight: bold;
-}
-
-.categoria {
-  margin-bottom: 60px;
-  text-align: center;
-}
-
-.categoria h3 {
-  font-size: 1.8rem;
-  margin-bottom: 15px;
-  color: #8c3a1c;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-.slider {
-  display: flex;
-  overflow-x: hidden;
-  gap: 15px;
-  padding: 10px;
-  scroll-behavior: smooth;
-  justify-content: center;
-}
-
-.tarjeta-producto {
-  background-color: #fff;
-  border-radius: 15px;
-  padding: 10px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-  min-width: 180px;
-  flex: 0 0 auto;
-  transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.tarjeta-producto:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-}
-
-.imagen-producto {
-  height: 150px;
-  border-radius: 10px;
-  margin-bottom: 10px;
-  overflow: hidden;
-}
-
-.imagen-producto img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.3s;
-}
-
-.tarjeta-producto:hover img {
-  transform: scale(1.05);
-}
-
-.tarjeta-producto h4 {
-  margin-bottom: 5px;
-  color: #b85c2c;
-  font-size: 1.1rem;
-}
-
-.tarjeta-producto p {
-  margin-bottom: 8px;
-  color: #555;
-  font-size: 0.85rem;
-  min-height: 35px;
-}
-
-.btn-whatsapp {
-  display: inline-block;
-  background-color: #25D366;
-  color: #fff;
-  padding: 8px 20px;
-  border-radius: 25px;
-  text-decoration: none;
-  font-weight: bold;
-  font-size: 0.9rem;
-  transition: background-color 0.3s, transform 0.3s;
-}
-
-.btn-whatsapp:hover {
-  background-color: #1ebe5d;
-  transform: scale(1.05);
-}
-
-/* Recuadro Express flotante */
-.express-float {
-  position: fixed;
-  bottom: 15px;
-  right: 15px;
-  width: 160px;
-  background: linear-gradient(135deg, #fff8f0, #ffe6cc);
-  border-radius: 12px;
-  box-shadow: 0 6px 15px rgba(0,0,0,0.3);
-  padding: 10px;
-  text-align: center;
-  z-index: 9999;
-  border: 2px solid #b85c2c;
-  font-size: 0.85rem;
-}
-
-/* Animación ligera para llamar la atención */
-.express-float:hover {
-  transform: scale(1.05);
-  transition: transform 0.3s;
-}
-
-footer {
-  text-align: center;
-  padding: 20px;
-  background: #b85c2c;
-  color: white;
-  font-weight: bold;
-}
-
-/* Responsivo */
-@media (max-width: 768px) {
-  .tarjeta-producto { min-width: 140px; }
-  .catalogo-section h2 { font-size: 2rem; }
-  .categoria h3 { font-size: 1.4rem; }
-}
-
-@media (max-width: 480px) {
-  .tarjeta-producto { min-width: 120px; padding: 8px; }
-  .catalogo-section h2 { font-size: 1.6rem; }
-  .categoria h3 { font-size: 1.2rem; }
-  .btn-whatsapp { padding: 6px 15px; font-size: 0.8rem; }
-  .express-float { width: 140px; font-size: 0.8rem; }
-}
-</style>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-<nav class="menu">
-  <a href="index.html">Inicio</a>
-  <a href="catalogo.html">Catálogo</a>
-  <a href="express.html">Express</a>
-  <a href="servicios.html">Servicios</a>
-  <a href="contacto.html">Contacto</a>
-</nav>
+<header class="main-header">
+    <nav class="menu">
+        <a href="index.html">Inicio</a>
+        <a href="catalogo.html" class="active">Catálogo</a>
+        <a href="express.html">Express</a>
+        <a href="servicios.html">Servicios</a>
+        <a href="contacto.html">Contacto</a>
+    </nav>
+</header>
 
-<section class="catalogo-section">
-  <h2>Catálogo de Ramos</h2>
+<div class="main-content-wrapper">
 
-  <!-- Rosas -->
-  <div class="categoria">
-    <h3>Ramos de Rosas</h3>
-    <div id="rosas" class="slider">
-      <div class="tarjeta-producto">
-        <div class="imagen-producto"><img src="img/rosas12.jpg" alt="12 Rosas"></div>
-        <h4>12 Rosas</h4>
-        <p>Elegante ramo de 12 rosas frescas.</p>
-        <a href="https://wa.me/522283010051" target="_blank" class="btn-whatsapp">¡Lo quiero!</a>
-      </div>
-      <div class="tarjeta-producto">
-        <div class="imagen-producto"><img src="img/rosas24.jpg" alt="24 Rosas"></div>
-        <h4>24 Rosas</h4>
-        <p>Ramo magnífico de 24 rosas.</p>
-        <a href="https://wa.me/522283010051" target="_blank" class="btn-whatsapp">¡Lo quiero!</a>
-      </div>
-      <div class="tarjeta-producto">
-        <div class="imagen-producto"><img src="img/rosas36.jpg" alt="36 Rosas"></div>
-        <h4>36 Rosas</h4>
-        <p>Ramo impresionante de 36 rosas frescas para ocasiones especiales.</p>
-        <a href="https://wa.me/522283010051" target="_blank" class="btn-whatsapp">¡Lo quiero!</a>
-      </div>
-    </div>
-  </div>
+    <aside class="sidebar-filter">
+        <h3><i class="fas fa-filter"></i> Explorar Ramos</h3>
 
-  <!-- Gerberas -->
-  <div class="categoria">
-    <h3>Ramos de Gerberas</h3>
-    <div id="gerberas" class="slider">
-      <div class="tarjeta-producto">
-        <div class="imagen-producto"><img src="img/gerberas12.jpg" alt="12 Gerberas"></div>
-        <h4>12 Gerberas</h4>
-        <p>Ramo colorido de 12 gerberas frescas.</p>
-        <a href="https://wa.me/522283010051" target="_blank" class="btn-whatsapp">¡Lo quiero!</a>
-      </div>
-      <div class="tarjeta-producto">
-        <div class="imagen-producto"><img src="img/gerberas24.jpg" alt="24 Gerberas"></div>
-        <h4>24 Gerberas</h4>
-        <p>Ramo elegante de 24 gerberas.</p>
-        <a href="https://wa.me/522283010051" target="_blank" class="btn-whatsapp">¡Lo quiero!</a>
-      </div>
-      <div class="tarjeta-producto">
-        <div class="imagen-producto"><img src="img/gerberas36.jpg" alt="36 Gerberas"></div>
-        <h4>36 Gerberas</h4>
-        <p>Ramo completo de 36 gerberas frescas y coloridas.</p>
-        <a href="https://wa.me/522283010051" target="_blank" class="btn-whatsapp">¡Lo quiero!</a>
-      </div>
-    </div>
-  </div>
+        <button class="filter-btn active" data-category="todos">
+            <i class="fas fa-star"></i> Todos los Arreglos
+        </button>
+        <button class="filter-btn" data-category="rosas">
+            <i class="fas fa-heart"></i> Rosas
+        </button>
+        <button class="filter-btn" data-category="gerberas">
+            <i class="fas fa-sun"></i> Gerberas
+        </button>
+        <button class="filter-btn" data-category="orquideas">
+            <i class="fas fa-tree"></i> Orquídeas
+        </button>
+        <button class="filter-btn" data-category="lirios">
+            <i class="fas fa-tint"></i> Lirios
+        </button>
+        <button class="filter-btn" data-category="lisianthus">
+            <i class="fas fa-spa"></i> Lisianthus
+        </button>
+    </aside>
 
-  <!-- Girasoles -->
-  <div class="categoria">
-    <h3>Ramos de Girasoles</h3>
-    <div id="girasoles" class="slider">
-      <div class="tarjeta-producto">
-        <div class="imagen-producto"><img src="img/girasoles12.jpg" alt="12 Girasoles"></div>
-        <h4>12 Girasoles</h4>
-        <p>Ramo radiante de 12 girasoles frescos.</p>
-        <a href="https://wa.me/522283010051" target="_blank" class="btn-whatsapp">¡Lo quiero!</a>
-      </div>
-      <div class="tarjeta-producto">
-        <div class="imagen-producto"><img src="img/girasoles24.jpg" alt="24 Girasoles"></div>
-        <h4>24 Girasoles</h4>
-        <p>Ramo impactante de 24 girasoles frescos y luminosos.</p>
-        <a href="https://wa.me/522283010051" target="_blank" class="btn-whatsapp">¡Lo quiero!</a>
-      </div>
-      <div class="tarjeta-producto">
-        <div class="imagen-producto"><img src="img/girasoles36.jpg" alt="36 Girasoles"></div>
-        <h4>36 Girasoles</h4>
-        <p>Ramo espectacular de 36 girasoles para alegrar cualquier ocasión.</p>
-        <a href="https://wa.me/522283010051" target="_blank" class="btn-whatsapp">¡Lo quiero!</a>
-      </div>
-    </div>
-  </div>
+    <main class="catalogo-content-area">
+        <h2 id="tituloCatalogo"></h2>
+        
+        <div id="product-grid" class="product-grid">
+            <div class="tarjeta-producto" data-category="rosas">
+                <div class="imagen-producto"><img src="img/rosas12.jpg" alt="12 Rosas"></div>
+                <h4>12 Rosas</h4>
+                <p>Elegante ramo de 12 rosas frescas.</p>
+                <div class="price-tag">$35.00 USD</div>
+                <a href="https://wa.me/522283010051" target="_blank" class="btn-whatsapp">¡Lo quiero!</a>
+            </div>
+            <div class="tarjeta-producto" data-category="rosas">
+                <div class="imagen-producto"><img src="img/rosas24.jpg" alt="24 Rosas"></div>
+                <h4>24 Rosas</h4>
+                <p>Ramo magnífico de 24 rosas.</p>
+                <div class="price-tag">$65.00 USD</div>
+                <a href="https://wa.me/522283010051" target="_blank" class="btn-whatsapp">¡Lo quiero!</a>
+            </div>
+            <div class="tarjeta-producto" data-category="rosas">
+                <div class="imagen-producto"><img src="img/rosas36.jpg" alt="36 Rosas"></div>
+                <h4>36 Rosas</h4>
+                <p>Ramo impresionante de 36 rosas.</p>
+                <div class="price-tag">$90.00 USD</div>
+                <a href="https://wa.me/522283010051" target="_blank" class="btn-whatsapp">¡Lo quiero!</a>
+            </div>
 
-</section>
+            <div class="tarjeta-producto" data-category="gerberas">
+                <div class="imagen-producto"><img src="img/gerberas12.jpg" alt="12 Gerberas"></div>
+                <h4>12 Gerberas</h4>
+                <p>Ramo colorido de 12 gerberas frescas.</p>
+                <div class="price-tag">$30.00 USD</div>
+                <a href="https://wa.me/522283010051" target="_blank" class="btn-whatsapp">¡Lo quiero!</a>
+            </div>
+            <div class="tarjeta-producto" data-category="gerberas">
+                <div class="imagen-producto"><img src="img/gerberas24.jpg" alt="24 Gerberas"></div>
+                <h4>24 Gerberas</h4>
+                <p>Ramo elegante de 24 gerberas.</p>
+                <div class="price-tag">$55.00 USD</div>
+                <a href="https://wa.me/522283010051" target="_blank" class="btn-whatsapp">¡Lo quiero!</a>
+            </div>
+            
+            <div class="tarjeta-producto" data-category="orquideas">
+                <div class="imagen-producto"><img src="img/orquidea.jpg" alt="Arreglo Orquídea"></div>
+                <h4>Orquídea Phalaenopsis</h4>
+                <p>Elegante maceta de Orquídea.</p>
+                <div class="price-tag">$75.00 USD</div>
+                <a href="https://wa.me/522283010051" target="_blank" class="btn-whatsapp">¡Lo quiero!</a>
+            </div>
 
-<!-- Recuadro Express flotante -->
-<div class="express-float">
+        </div>
+    </main>
+
+</div> <div class="express-float">
   <h4>Express</h4>
   <p>¿Quieres ver lo que tenemos listo para enviar? Solicítalo por WhatsApp, te enviamos imágenes, eliges y lo enviamos al momento.</p>
   <a href="https://wa.me/522283010051" target="_blank" class="btn-whatsapp">¡Ver Express!</a>
@@ -274,6 +109,8 @@ footer {
 <footer>
   © RiaFlowerShopp 2025 – Diseños florales con amor.
 </footer>
+
+<script src="catalogo.js"></script>
 
 </body>
 </html>
