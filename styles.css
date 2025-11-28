@@ -61,7 +61,7 @@ h1, h2, h3 {
    ================================================================= */
 .hero {
     /* IMPORTANTE: Cambia esta ruta a tu imagen */
-    background-image: url('img/imagendefondo'); 
+    background-image: url('img/imagendefondo.png'); 
     background-size: cover;
     background-position: center;
     min-height: 450px;
