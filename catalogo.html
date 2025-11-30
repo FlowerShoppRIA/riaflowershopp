@@ -148,7 +148,7 @@
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
         .filter-btn.active i { color: white; }
-        .filter-btn-all { display: none !important; } /* Ocultar "Todos" */
+        /* REMOVIDO: .filter-btn-all { display: none !important; } */
 
 
         /* ÁREA DE CONTENIDO Y GRID DE PRODUCTOS */
@@ -465,11 +465,12 @@
 
         <!-- BARRA LATERAL DE FILTROS (Se mantiene la lógica para filtrar) -->
         <aside class="sidebar-filter">
-            <h3>Colecciones</h3>
+            <h3>Buscar por Colección</h3>
 
             <div class="filter-container-mobile">
                 <!-- Botones de Filtro -->
-                <button class="filter-btn active filter-btn-all" data-category="rosas"><i class="fas fa-leaf"></i> Rosas</button>
+                <!-- Botón de Rosas ahora visible y activo por defecto -->
+                <button class="filter-btn active" data-category="rosas"><i class="fas fa-leaf"></i> Rosas</button>
                 <button class="filter-btn" data-category="gerberas"><i class="fas fa-sun"></i> Gerberas</button>
                 <button class="filter-btn" data-category="girasoles"><i class="fas fa-gift"></i> Girasoles</button>
                 <button class="filter-btn" data-category="tulipanes"><i class="fas fa-seedling"></i> Tulipanes</button>
@@ -990,7 +991,7 @@
                 productCards.forEach(card => {
                     const cardCategory = card.getAttribute('data-category');
                     
-                    // Comprueba si la categoría es "todos" o si la tarjeta contiene la categoría buscada
+                    // Comprueba si la categoría es "todos" (aunque no hay botón de "todos") o si la tarjeta contiene la categoría buscada
                     if (category === 'todos' || cardCategory.includes(category)) {
                         card.style.display = 'block';
                     } else {
