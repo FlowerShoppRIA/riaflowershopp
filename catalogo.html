@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RiaFlowerShopp | Catálogo - Regalos Florales</title>
     <!-- Fuentes de Google: Playfair Display para títulos, Roboto para cuerpo -->
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght+400;500;700&display=swap" rel="stylesheet">
     <!-- Font Awesome para iconos de filtrado y WhatsApp -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     
@@ -14,7 +14,7 @@
         :root {
             --color-terra: #b85c2c; /* Marrón Terroso de la barra de navegación */
             --color-dark-text: #333333; /* Texto principal oscuro */
-            --color-soft-cream: #fff8f0; /* Fondo general, como la referencia */
+            --color-soft-cream: #fff8f0; /* Fondo general */
             --color-light-bg: #ffffff; /* Fondo de tarjetas */
             --color-cta: #25D366; /* Verde WhatsApp */
             --font-heading: 'Playfair Display', serif; /* Elegante para títulos */
@@ -34,7 +34,7 @@
             line-height: 1.6;
         }
 
-        /* --- 1. CABECERA Y MENÚ --- */
+        /* --- 1. CABECERA Y MENÚ (CAMBIOS DE NAVEGACIÓN) --- */
         .main-header {
             background: var(--color-terra);
             color: white;
@@ -61,6 +61,15 @@
             border-bottom: 2px solid #ffe6cc;
         }
 
+        /* Título/Logo en el menú */
+        .menu a.logo-link {
+            font-family: var(--font-heading); 
+            font-size: 1.8rem; 
+            font-weight: 700; 
+            margin-right: 40px;
+            border-bottom: none; /* Asegurar que el logo no tenga borde inferior */
+        }
+
         /* --- 2. LAYOUT PRINCIPAL (SIDEBAR + CONTENT) --- */
         .main-content-wrapper {
             display: flex;
@@ -85,15 +94,13 @@
             display: flex;
             gap: 10px;
             overflow-x: auto;
-            padding-bottom: 10px; /* Espacio para la sombra de scroll si es necesario */
+            padding-bottom: 10px;
             -webkit-overflow-scrolling: touch;
-            /* Ocultar scrollbar estándar */
-            scrollbar-width: none; /* Firefox */
+            scrollbar-width: none; 
         }
         .filter-container-mobile::-webkit-scrollbar {
-            display: none; /* Chrome, Safari, Opera */
+            display: none; 
         }
-
 
         .sidebar-filter h3 {
             font-family: var(--font-body);
@@ -144,8 +151,9 @@
             padding: 0;
         }
 
-        /* Título dinámico del catálogo */
+        /* Título del catálogo (SE OCULTA PARA DEJAR SÓLO LOS FILTROS COMO ENCABEZADO) */
         .catalogo-content-area h2 {
+            display: none; 
             font-family: var(--font-heading);
             font-size: 3rem;
             margin-bottom: 60px;
@@ -157,17 +165,15 @@
         /* Rejilla de Productos */
         .product-grid {
             display: grid;
-            /* Tamaño de tarjeta reducido y responsivo */
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
             gap: 30px;
         }
 
-        /* Ocultar productos */
         .tarjeta-producto.hidden {
             display: none !important;
         }
 
-        /* --- 3. TARJETAS DE PRODUCTO (VENDIBLES) --- */
+        /* --- 3. TARJETAS DE PRODUCTO --- */
         .tarjeta-producto {
             background-color: var(--color-light-bg);
             border-radius: 10px;
@@ -179,7 +185,6 @@
             position: relative; 
         }
 
-        /* Contenedor de Imagen y Overlay */
         .imagen-producto {
             height: 180px;
             border-radius: 8px;
@@ -195,7 +200,7 @@
             transition: transform 0.3s;
         }
 
-        /* EFECTO HOVER: OVERLAY DE DETALLES (UX Mejorada) */
+        /* EFECTO HOVER: OVERLAY DE DETALLES */
         .detalle-overlay {
             position: absolute;
             top: 0;
@@ -219,17 +224,8 @@
             pointer-events: auto; 
         }
 
-        .detalle-overlay h4 {
-            color: white;
-            font-size: 1.2rem;
-            margin-bottom: 10px;
-        }
-        .detalle-overlay p {
-            color: #ffe6cc;
-            font-size: 0.9rem;
-            margin-bottom: 15px;
-            min-height: auto;
-        }
+        .detalle-overlay h4 { color: white; font-size: 1.2rem; margin-bottom: 10px; }
+        .detalle-overlay p { color: #ffe6cc; font-size: 0.9rem; margin-bottom: 15px; min-height: auto; }
 
         .detalle-overlay .price-tag {
             font-size: 1.5rem;
@@ -237,11 +233,11 @@
             font-weight: 700;
             margin-bottom: 15px;
         }
+
         .detalle-overlay .btn-whatsapp {
             background-color: var(--color-cta); 
             padding: 8px 15px;
         }
-
 
         /* Texto debajo de la imagen (Desktop) */
         .tarjeta-producto h4 {
@@ -264,75 +260,67 @@
         }
 
 
-        /* --- 4. RECUADRO EXPRESS FLOTANTE --- */
+        /* --- 4. RECUADRO EXPRESS FLOTANTE (REPOSICIONADO Y REDUCIDO) --- */
         .express-float {
             position: fixed;
             bottom: 30px; 
-            right: 30px; 
-            width: 240px; 
+            /* CAMBIO: De right a left */
+            left: 30px; 
+            /* CAMBIO: Reducir ancho */
+            width: 180px; 
             background: linear-gradient(135deg, #fff8f0 0%, #ffffff 100%); 
             border-radius: 15px; 
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15); 
-            padding: 20px; 
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1); 
+            padding: 15px; 
             text-align: center;
             z-index: 9999;
-            border: 3px solid var(--color-terra); 
-            font-size: 0.95rem; 
+            border: 2px solid var(--color-terra); /* Borde más sutil */
             transform: translateY(0); 
             transition: all 0.4s ease-in-out; 
             cursor: pointer; 
         }
-
-        /* Efecto de "enrollar" al pasar el cursor */
-        .express-float:hover {
-            transform: translateY(-5px) scale(1.02); 
-            box-shadow: 0 15px 40px rgba(0,0,0,0.25); 
+        
+        /* Ocultar el texto en el recuadro express, solo dejar el botón */
+        .express-float h4, .express-float p {
+            display: none; 
         }
-
-        .express-float h4 {
-            font-family: var(--font-heading); 
-            color: var(--color-terra);
-            margin-bottom: 10px; 
-            font-size: 1.6rem; 
-            line-height: 1.2;
-            text-transform: uppercase;
-        }
-
-        .express-float p {
-            color: var(--color-dark-text);
-            margin-bottom: 18px; 
-            font-size: 1rem; 
-            font-weight: 500; 
-        }
-
-        /* Estilo para el botón de WhatsApp (Se aplica a todos los .btn-whatsapp) */
-        .btn-whatsapp {
-            display: block;
-            background-color: var(--color-terra);
-            color: white;
-            padding: 10px 0;
-            border-radius: 5px;
-            font-weight: 700;
-            font-size: 0.95rem;
-            text-decoration: none;
-            transition: background-color 0.3s;
-        }
-
-        .btn-whatsapp:hover {
-            background-color: #a34e23;
-        }
-
-        /* Sobrescribir el estilo del botón para el express-float (Más grande y verde) */
+        
+        /* Estilo del botón express-float (ahora el único contenido visible en desktop) */
         .express-float .btn-whatsapp {
+            display: block;
             background-color: var(--color-cta); 
-            padding: 12px 15px; 
+            padding: 10px; /* Reducir padding */
             border-radius: 8px; 
-            font-size: 1.05rem; 
+            font-size: 0.9rem; 
+            font-weight: 700;
+            /* Texto del botón siempre visible en desktop */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        
+        /* Tooltip simple para desktop */
+        .express-float::before {
+            content: '¿Necesitas ayuda o algo Express?';
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(51, 51, 51, 0.9);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.8rem;
+            white-space: nowrap;
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+        
+        .express-float:hover::before {
+            opacity: 1;
         }
 
-        .express-float .btn-whatsapp:hover {
-            background-color: #1DA851; /* Verde más oscuro al pasar el cursor */
-        }
 
         /* --- 5. PIE DE PÁGINA --- */
         footer {
@@ -347,27 +335,49 @@
 
         /* --- 6. RESPONSIVO (Móviles) --- */
         @media (max-width: 900px) {
-            /* Ocultamos el overlay en móvil y mostramos los detalles debajo de la imagen */
-            .detalle-overlay {
-                display: none !important;
+            /* Restablecer para móvil: Mostrar el contenido de texto en el express float */
+            .express-float h4, .express-float p {
+                display: block; 
+            }
+            .express-float::before {
+                display: none; /* Ocultar el tooltip en móvil */
             }
             
-            .product-grid {
-                grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-                gap: 20px;
-            }
-
-            .tarjeta-producto {
+            /* Ajustar express-float para móvil */
+            .express-float {
+                width: 90%; 
+                left: 5%; 
+                right: 5%;
+                bottom: 20px;
                 padding: 15px;
-                min-width: 180px;
+                border-radius: 10px;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.1);
             }
-            
-            .imagen-producto {
-                height: 140px; 
+            .express-float h4 {
+                font-size: 1.3rem;
+                margin-bottom: 5px;
+            }
+            .express-float p {
+                font-size: 0.85rem;
                 margin-bottom: 10px;
             }
+            .express-float .btn-whatsapp {
+                padding: 10px 10px;
+                font-size: 0.95rem;
+            }
 
-            /* MOSTRAR EL PRECIO Y BOTÓN DE WHATSAPP EN MÓVIL (debajo de la descripción) */
+            /* Asegurar que la barra lateral de filtros esté arriba en móvil */
+            .main-content-wrapper { flex-direction: column; }
+            .sidebar-filter {
+                order: -1; /* Mover el sidebar al principio */
+                margin-bottom: 20px;
+            }
+            
+            /* Ajustes de tarjeta para móvil */
+            .product-grid {
+                grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            }
+            
             .price-tag-mobile {
                 display: block; 
                 font-size: 1.3rem;
@@ -376,91 +386,17 @@
                 margin-bottom: 10px;
             }
             
-            /* El botón de WhatsApp en la base de la tarjeta (para móvil) */
             .tarjeta-producto > .btn-whatsapp {
                 display: block;
-                background-color: var(--color-cta); /* Usamos el verde llamativo para CTA móvil */
-            }
-
-            /* Layout general de columna */
-            .main-content-wrapper { flex-direction: column; margin-top: 20px; padding: 0 15px; }
-            .sidebar-filter {
-                flex: 1 1 auto;
-                width: 100%;
-                position: static;
-                margin-bottom: 20px;
-                margin-right: 0; /* Remove margin-right on mobile */
-            }
-            
-            /* Ocultar el título de la sidebar en móvil, se verá como una barra horizontal */
-            .sidebar-filter h3 {
-                display: none;
-            }
-
-            /* Hacer que los filtros se muestren horizontalmente y sean scrollables */
-            .sidebar-filter .filter-list-desktop {
-                display: none; /* Ocultar la lista vertical de escritorio */
-            }
-            .sidebar-filter .filter-list-mobile {
-                display: flex; /* Mostrar la lista horizontal de móvil */
-                overflow-x: auto;
-                gap: 10px;
-                padding-bottom: 10px;
-            }
-
-            .filter-btn {
-                min-width: 120px;
-                flex-shrink: 0;
-                text-align: center;
-                padding: 8px 15px;
-                border: 1px solid #ddd;
-                border-radius: 20px; /* Botones pill-shaped */
-                margin-bottom: 0; /* Remove vertical margin */
-                display: inline-block; /* Allow them to sit side-by-side */
-            }
-            .filter-btn i {
-                margin-right: 5px;
-            }
-            .filter-btn.active { 
-                border: 1px solid var(--color-terra);
-                border-left: 1px solid var(--color-terra); /* Override desktop border */
-                padding-left: 15px; 
-                background: var(--color-soft-cream);
-                box-shadow: 0 0 5px rgba(184, 92, 44, 0.2);
-            }
-            .catalogo-content-area h2 {
-                font-size: 2rem;
-                text-align: center;
-                margin-bottom: 30px;
-            }
-            
-            /* Versión móvil del Recuadro Express */
-            .express-float {
-                width: 90%; 
-                left: 5%; 
-                right: 5%;
-                bottom: 20px;
-                font-size: 0.9rem;
-                padding: 15px;
-                border-radius: 10px;
-                box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-                transform: translateY(0) scale(1); /* Desactivar hover en móvil */
-            }
-            .express-float:hover {
-                transform: translateY(0) scale(1); /* Asegurar que no haya efecto hover en móvil */
-                box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            }
-            .express-float h4 {
-                font-size: 1.3rem;
-            }
-            .express-float p {
-                font-size: 0.85rem;
-            }
-            .express-float .btn-whatsapp {
-                padding: 10px 10px;
-                font-size: 0.95rem;
+                background-color: var(--color-cta); 
             }
         }
+        
+        /* ESTILO PARA OCULTAR 'TODA LA COLECCIÓN' COMPLETAMENTE, DEJAR SÓLO LAS FLORES */
+        .filter-btn-all {
+            display: none !important;
+        }
+        
     </style>
 </head>
 <body>
@@ -468,8 +404,13 @@
     <!-- CABECERA PRINCIPAL -->
     <header class="main-header">
         <nav class="menu">
-            <!-- Título/Logo -->
-            <a href="#" style="font-family: var(--font-heading); font-size: 1.8rem; font-weight: 700; margin-right: 40px;">RiaFlowerShopp</a>
+            <!-- CAMBIO: Título/Logo ahora enlaza a la raíz (/) o index.html -->
+            <a href="index.html" class="logo-link">RiaFlowerShopp</a>
+            
+            <!-- CAMBIO: Nuevo enlace de INICIO -->
+            <a href="index.html">Inicio</a>
+            
+            <!-- El catálogo ya no tiene la clase 'active' por defecto, el filtro 'todos' lo maneja -->
             <a href="#" class="active">Catálogo</a>
             <a href="#">Servicios</a>
             <a href="#">Contacto</a>
@@ -481,11 +422,13 @@
 
         <!-- BARRA LATERAL DE FILTROS -->
         <aside class="sidebar-filter">
-            <h3>Filtrar por Flor</h3>
+            <!-- CAMBIO: Título del filtro actualizado -->
+            <h3>Filtrar por Categoría o Colección</h3>
 
             <!-- Lista de Filtros (Desktop) -->
             <div class="filter-list-desktop">
-                <button class="filter-btn active" data-category="todos"><i class="fas fa-grip-horizontal"></i> Toda la Colección</button>
+                <!-- Se oculta este botón con la clase filter-btn-all para cumplir con tu solicitud -->
+                <button class="filter-btn active filter-btn-all" data-category="todos"><i class="fas fa-grip-horizontal"></i> Toda la Colección</button>
                 <button class="filter-btn" data-category="rosas"><i class="fas fa-leaf"></i> Rosas</button>
                 <button class="filter-btn" data-category="gerberas"><i class="fas fa-sun"></i> Gerberas</button>
                 <button class="filter-btn" data-category="girasoles"><i class="fas fa-gift"></i> Girasoles</button>
@@ -496,8 +439,9 @@
             </div>
 
              <!-- Lista de Filtros (Mobile - Scrollable) -->
-            <div class="filter-list-mobile">
-                <button class="filter-btn active" data-category="todos"><i class="fas fa-grip-horizontal"></i> Todos</button>
+            <div class="filter-container-mobile">
+                <!-- Se oculta este botón con la clase filter-btn-all para cumplir con tu solicitud -->
+                <button class="filter-btn active filter-btn-all" data-category="todos"><i class="fas fa-grip-horizontal"></i> Todos</button>
                 <button class="filter-btn" data-category="rosas"><i class="fas fa-leaf"></i> Rosas</button>
                 <button class="filter-btn" data-category="gerberas"><i class="fas fa-sun"></i> Gerberas</button>
                 <button class="filter-btn" data-category="girasoles"><i class="fas fa-gift"></i> Girasoles</button>
@@ -510,8 +454,8 @@
 
         <!-- ÁREA DE CATÁLOGO -->
         <section class="catalogo-content-area">
-            <!-- ID actualizado a 'tituloCatalogo' para coincidir con tu JS -->
-            <h2 id="tituloCatalogo">Toda la Colección Exclusiva de RiaFlowerShopp</h2> 
+            <!-- El título <h2> ahora está oculto por CSS -->
+            <h2 id="tituloCatalogo"></h2> 
 
             <div class="product-grid">
 
@@ -700,12 +644,15 @@
 
     </main>
 
-    <!-- RECUADRO DE PEDIDO EXPRESS FLOTANTE -->
+    <!-- RECUADRO DE PEDIDO EXPRESS FLOTANTE (REPOSICIONADO A LA IZQUIERDA Y REDUCIDO) -->
     <div class="express-float">
+        <!-- Ocultado en desktop, visible en móvil: -->
         <h4>Pedido Express</h4>
         <p>¿Necesitas algo personalizado o para hoy mismo? ¡Escríbenos!</p>
+        
+        <!-- Botón principal, visible en ambas versiones: -->
         <a href="https://wa.me/XXXXXXXXXX?text=Hola,%20quisiera%20hacer%20un%20pedido%20express%20personalizado." class="btn-whatsapp" target="_blank">
-            <i class="fab fa-whatsapp"></i> Chatea con Nosotros
+            <i class="fab fa-whatsapp"></i> Chat Express
         </a>
     </div>
 
@@ -722,28 +669,10 @@
             const productCards = document.querySelectorAll('.tarjeta-producto');
             const titleElement = document.getElementById('tituloCatalogo');
             
-            // Mapeo de categorías a títulos del catálogo
-            const categoryNames = {
-                'todos': 'Toda la Colección Exclusiva de RiaFlowerShopp',
-                'rosas': 'Ramos de Rosas - Pasión y Romance',
-                'gerberas': 'Arreglos de Gerberas - Alegría y Color',
-                'girasoles': 'Ramos de Girasoles - Felicidad y Optimismo',
-                'tulipanes': 'Tulipanes - Sofisticación y Ternura', 
-                'orquideas': 'Orquídeas - Elegancia y Lujo',
-                'lirios': 'Lirios - Majestuosidad y Pureza',
-                'lisianthus': 'Lisianthus - Delicadeza y Versatilidad'
-            };
-
-            // Función para actualizar el título principal
+            // Función para actualizar el título principal (Se deja vacío)
             function updateTitle(category) {
-                // Si la categoría de filtro es "todos", usamos el título principal.
-                if (category === 'todos') {
-                    titleElement.innerHTML = categoryNames['todos'];
-                    return;
-                }
-                
-                // Intentamos encontrar un nombre de título basado en la categoría del botón
-                titleElement.innerHTML = categoryNames[category] || 'Catálogo de Productos';
+                // Dejamos el título vacío para cumplir con tu solicitud
+                titleElement.innerHTML = '';
             }
 
             // Función principal de filtrado
@@ -751,9 +680,7 @@
                 productCards.forEach(card => {
                     const cardCategory = card.getAttribute('data-category');
                     
-                    // La tarjeta se muestra si:
-                    // 1. Se seleccionó 'todos', O
-                    // 2. La cadena de categorías de la tarjeta contiene la categoría del botón (ej: 'gerberas lirios' contiene 'gerberas')
+                    // Muestra la tarjeta si es "todos" o si la categoría del botón coincide con alguna de la tarjeta
                     if (category === 'todos' || cardCategory.includes(category)) {
                         card.style.display = 'block';
                         card.classList.remove('hidden');
@@ -772,7 +699,7 @@
                 // Activa el botón específico presionado
                 const categoryToActivate = button.getAttribute('data-category');
                 
-                // Activa el botón en ambas listas (desktop y mobile) si existen
+                // Activa el botón en ambas listas (desktop y mobile)
                 document.querySelectorAll(`.filter-btn[data-category="${categoryToActivate}"]`).forEach(btn => {
                     btn.classList.add('active');
                 });
@@ -785,19 +712,19 @@
                     
                     setActiveButton(button);
                     filterProducts(category);
-                    updateTitle(category);
+                    updateTitle(category); 
                 });
             });
 
-            // Inicialización: Muestra la categoría 'todos' por defecto.
+            // Inicialización: Al cargar, el filtro 'todos' debe estar activo (aunque esté oculto)
             const initialButton = document.querySelector('.filter-btn[data-category="todos"]');
+            
             if (initialButton) {
-                 // Asegura que 'todos' esté activo al inicio.
                 setActiveButton(initialButton);
                 filterProducts('todos');
                 updateTitle('todos');
             } else {
-                // Fallback si no hay botón 'todos'
+                 // Si no existe 'todos', solo aseguramos que todo se muestre
                 filterProducts('todos');
                 updateTitle('todos');
             }
