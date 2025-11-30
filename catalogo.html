@@ -80,8 +80,8 @@
 
         /* BARRA LATERAL */
         .sidebar-filter {
-            flex: 0 0 220px;
-            margin-right: 50px;
+            flex: 0 0 200px; /* Ancho ajustado */
+            margin-right: 40px; /* Margen ajustado */
             padding: 20px 0;
             background: transparent;
             height: fit-content;
@@ -89,7 +89,7 @@
             top: 20px;
         }
         
-        /* Contenedor de filtros en móvil (para hacerlos scrollables) */
+        /* Contenedor de filtros (Ahora es el principal) */
         .filter-container-mobile {
             display: flex;
             gap: 10px;
@@ -100,6 +100,18 @@
         }
         .filter-container-mobile::-webkit-scrollbar {
             display: none; 
+        }
+
+        /* Estilo para hacerlo vertical en desktop y sin scroll */
+        @media (min-width: 901px) {
+             .filter-container-mobile {
+                display: block; /* Vuelve a ser vertical en desktop */
+                overflow-x: visible; 
+                padding-bottom: 0;
+            }
+            .filter-btn {
+                width: 100%; /* Ocupa todo el ancho */
+            }
         }
 
         .sidebar-filter h3 {
@@ -115,8 +127,8 @@
         /* Botones de Filtro */
         .filter-btn {
             display: block;
-            width: 100%;
-            padding: 10px 0;
+            min-width: fit-content; /* Para móvil */
+            padding: 10px 10px;
             margin-bottom: 8px;
             background: transparent;
             border: none;
@@ -124,10 +136,12 @@
             font-size: 1rem;
             color: var(--color-dark-text);
             cursor: pointer;
-            transition: color 0.3s;
+            transition: all 0.3s;
+            border-radius: 5px;
         }
 
         .filter-btn:hover {
+            background-color: #f5f5f5;
             color: var(--color-terra);
         }
 
@@ -138,12 +152,13 @@
 
         /* ESTILO PARA EL BOTÓN ACTIVO */
         .filter-btn.active {
-            color: var(--color-terra);
-            font-weight: 700;
-            border-left: 3px solid var(--color-terra); 
-            padding-left: 17px;
+            color: white;
+            background-color: var(--color-terra); 
+            border-left: none; /* Eliminar borde lateral si se usa fondo */
+            padding-left: 10px;
+            font-weight: 500;
         }
-        .filter-btn.active i { color: var(--color-terra); }
+        .filter-btn.active i { color: white; }
 
         /* ÁREA DE CONTENIDO (MAIN) */
         .catalogo-content-area {
@@ -158,9 +173,8 @@
         
         /* Rejilla de Productos */
         .product-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); /* Más pequeño */
+            gap: 20px; /* Espacio reducido */
         }
 
         .tarjeta-producto.hidden {
@@ -173,14 +187,20 @@
             border-radius: 10px;
             padding: 10px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            transition: box-shadow 0.3s ease;
+            transition: all 0.3s ease; /* Transición para la expansión */
             text-align: center;
             border: 1px solid #f0f0f0;
             position: relative; 
         }
 
+        /* Animación de expansión en hover (Desktop) */
+        .tarjeta-producto:hover {
+            box-shadow: 0 8px 20px rgba(184, 92, 44, 0.25); /* Sombra con color terra */
+            transform: translateY(-5px) scale(1.03); /* Efecto de levantamiento y zoom */
+        }
+
         .imagen-producto {
-            height: 180px;
+            height: 140px; /* Altura reducida */
             border-radius: 8px;
             margin-bottom: 15px;
             overflow: hidden;
@@ -211,16 +231,26 @@
             opacity: 0; 
             transition: opacity 0.3s ease;
             pointer-events: none; 
+            border-radius: 10px; /* Para que coincida con la tarjeta */
         }
 
         .tarjeta-producto:hover .detalle-overlay {
             opacity: 1; 
             pointer-events: auto; 
         }
-        .detalle-overlay h4 { color: white; font-size: 1.2rem; margin-bottom: 10px; }
-        .detalle-overlay p { color: #ffe6cc; font-size: 0.9rem; margin-bottom: 15px; min-height: auto; }
+        .detalle-overlay h4 { color: white; font-size: 1.1rem; margin-bottom: 5px; }
+        .detalle-overlay p { 
+            color: #ffe6cc; 
+            font-size: 0.85rem; 
+            margin-bottom: 15px; 
+            min-height: auto; 
+            display: -webkit-box;
+            -webkit-line-clamp: 3; /* Limitar descripción */
+            -webkit-box-orient: vertical;  
+            overflow: hidden;
+        }
         .detalle-overlay .price-tag {
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             color: white;
             font-weight: 700;
             margin-bottom: 15px;
@@ -235,13 +265,13 @@
             font-family: var(--font-heading);
             margin-bottom: 5px;
             color: var(--color-terra);
-            font-size: 1.4rem;
+            font-size: 1.2rem; /* Título más pequeño */
         }
         .tarjeta-producto p {
             margin-bottom: 10px;
             color: #777;
-            font-size: 0.9rem;
-            min-height: 35px;
+            font-size: 0.8rem; /* Descripción más pequeña */
+            min-height: 25px; /* Altura mínima ajustada */
         }
 
         /* OCULTAR PRECIO NORMAL EN DESKTOP (Se ve en el Overlay) */
@@ -250,13 +280,12 @@
         }
 
 
-        /* --- 4. RECUADRO EXPRESS FLOTANTE (COLAPSABLE EN DESKTOP) --- */
+        /* --- 4. RECUADRO EXPRESS FLOTANTE (SIEMPRE EXPANDIDO EN DESKTOP) --- */
         .express-float {
             position: fixed;
             bottom: 30px; 
             left: 30px; 
-            /* Estado Colapsado por defecto */
-            width: 60px; 
+            width: 180px; /* Siempre expandido en desktop */
             background: linear-gradient(135deg, #fff8f0 0%, #ffffff 100%); 
             border-radius: 15px; 
             box-shadow: 0 5px 20px rgba(0,0,0,0.1); 
@@ -265,60 +294,44 @@
             z-index: 9999;
             border: 2px solid var(--color-terra); 
             transition: all 0.4s ease-in-out; 
-            cursor: pointer; 
+            cursor: default; /* Ya no tiene hover de expansión */
         }
         
-        /* Ocultar elementos descriptivos en el estado colapsado (Desktop) */
+        /* Mostrar elementos descriptivos en el estado default (Desktop) */
         .express-float h4, .express-float p {
-            display: none; 
+            display: block; 
+            font-size: 1.1rem; 
+            margin-bottom: 5px;
         }
         
-        /* Botón en estado colapsado (solo icono) */
+        /* Botón siempre con texto en desktop */
         .express-float .btn-whatsapp {
             display: flex;
             align-items: center;
             justify-content: center;
             background-color: var(--color-cta); 
-            padding: 10px; 
+            padding: 8px 12px; 
             border-radius: 8px; 
-            font-size: 0.9rem; 
+            font-size: 0.95rem; 
             font-weight: 700;
+            color: white;
+            text-decoration: none;
         }
         .express-float .btn-whatsapp span {
-            display: none; /* Ocultar texto */
+            display: inline; /* Mostrar texto */
         }
         .express-float .btn-whatsapp i {
-            margin-right: 0; /* Icono centrado */
-            font-size: 1.4rem; /* Icono más grande */
+            margin-right: 8px; 
+            font-size: 1rem; 
         }
 
-        /* EXPANDIR al pasar el cursor (Desktop) */
+        /* Eliminar estilos de hover de expansión obsoletos */
         .express-float:hover {
-            width: 180px; /* Ancho expandido */
-            cursor: default; 
+            transform: none;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1); 
         }
-        .express-float:hover h4 {
-            display: block; 
-            font-size: 1.1rem; 
-            margin-bottom: 5px;
-        }
-        .express-float:hover p {
-            display: block; 
-            font-size: 0.8rem;
-            margin-bottom: 10px;
-        }
-        .express-float:hover .btn-whatsapp span {
-            display: inline; /* Mostrar texto del botón */
-        }
-        .express-float:hover .btn-whatsapp i {
-            margin-right: 8px; /* Restaurar margen */
-            font-size: 0.9rem; /* Restaurar tamaño de icono normal */
-        }
+        .express-float::before { display: none; }
 
-        /* Tooltip simple para desktop (oculto ahora que hay expansión) */
-        .express-float::before {
-            display: none;
-        }
 
         /* --- 5. PIE DE PÁGINA --- */
         footer {
@@ -333,40 +346,31 @@
 
         /* --- 6. RESPONSIVO (Móviles) --- */
         @media (max-width: 900px) {
-            /* Express-Float: Siempre expandido en móvil */
+            /* Express-Float: Mantener la lógica móvil (siempre expandido y ancho completo) */
             .express-float {
                 width: 90%; 
                 left: 5%; 
                 right: 5%;
                 bottom: 20px;
-                padding: 15px;
             }
-            .express-float h4, .express-float p {
-                display: block; /* Mostrar texto descriptivo */
-            }
-            .express-float .btn-whatsapp span {
-                display: inline; /* Mostrar texto del botón */
-            }
-            .express-float .btn-whatsapp i {
-                margin-right: 8px; 
-                font-size: 0.95rem; 
-            }
-
+            
             /* Layout Móvil */
             .main-content-wrapper { flex-direction: column; }
             .sidebar-filter {
                 order: -1; 
                 margin-bottom: 20px;
+                flex: 0 0 auto; /* Permite que la barra de filtros ocupe solo el espacio necesario */
             }
             
             /* Ajustes de tarjeta para móvil */
             .product-grid {
-                grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+                grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+                gap: 15px;
             }
             
             .price-tag-mobile {
                 display: block; 
-                font-size: 1.3rem;
+                font-size: 1.2rem;
                 font-weight: 700;
                 color: var(--color-terra);
                 margin-bottom: 10px;
@@ -375,6 +379,17 @@
             .tarjeta-producto > .btn-whatsapp {
                 display: block;
                 background-color: var(--color-cta); 
+            }
+            
+            /* Desactivar animación de hover en dispositivos táctiles */
+            .tarjeta-producto:hover {
+                transform: none;
+                box-shadow: 0 2px 10px rgba(0,0,0,0.05); 
+            }
+            
+            /* Ocultar el overlay de detalles en móvil */
+            .detalle-overlay {
+                display: none;
             }
         }
         
@@ -398,24 +413,12 @@
 
         <!-- BARRA LATERAL DE FILTROS -->
         <aside class="sidebar-filter">
-            <!-- CAMBIO: Título del filtro a "Colecciones" -->
             <h3>Colecciones</h3>
 
-            <!-- Lista de Filtros (Desktop) -->
-            <div class="filter-list-desktop">
-                <button class="filter-btn active filter-btn-all" data-category="todos"><i class="fas fa-grip-horizontal"></i> Toda la Colección</button>
-                <button class="filter-btn" data-category="rosas"><i class="fas fa-leaf"></i> Rosas</button>
-                <button class="filter-btn" data-category="gerberas"><i class="fas fa-sun"></i> Gerberas</button>
-                <button class="filter-btn" data-category="girasoles"><i class="fas fa-gift"></i> Girasoles</button>
-                <button class="filter-btn" data-category="tulipanes"><i class="fas fa-seedling"></i> Tulipanes</button>
-                <button class="filter-btn" data-category="orquideas"><i class="fas fa-hand-holding-heart"></i> Orquídeas</button>
-                <button class="filter-btn" data-category="lirios"><i class="fas fa-bell"></i> Lirios</button>
-                <button class="filter-btn" data-category="lisianthus"><i class="fas fa-feather-alt"></i> Lisianthus</button>
-            </div>
-
-             <!-- Lista de Filtros (Mobile - Scrollable) -->
+             <!-- Lista de Filtros (Única, scrollable en móvil, vertical en desktop) -->
             <div class="filter-container-mobile">
-                <button class="filter-btn active filter-btn-all" data-category="todos"><i class="fas fa-grip-horizontal"></i> Todos</button>
+                <!-- Se mantiene el botón 'todos' para la lógica del script, aunque esté oculto -->
+                <button class="filter-btn active filter-btn-all" data-category="todos"><i class="fas fa-grip-horizontal"></i> Todos</button> 
                 <button class="filter-btn" data-category="rosas"><i class="fas fa-leaf"></i> Rosas</button>
                 <button class="filter-btn" data-category="gerberas"><i class="fas fa-sun"></i> Gerberas</button>
                 <button class="filter-btn" data-category="girasoles"><i class="fas fa-gift"></i> Girasoles</button>
@@ -437,7 +440,7 @@
                 <!-- Rosas: Docena Premium (12) -->
                 <div class="tarjeta-producto" data-category="rosas">
                     <div class="imagen-producto">
-                        <img src="https://placehold.co/300x200/c9082a/ffffff?text=Rosas+12" alt="Ramo de 12 Rosas Premium">
+                        <img src="https://placehold.co/300x180/C9082A/ffffff?text=RAMO+12+ROSAS" alt="Ramo de 12 Rosas Premium">
                         <div class="detalle-overlay">
                             <h4>Docena Premium</h4>
                             <p>12 rosas frescas de tallo largo, presentación elegante sin base.</p>
@@ -454,7 +457,7 @@
                 <!-- Rosas: Dos Docenas Amor (24) -->
                 <div class="tarjeta-producto" data-category="rosas">
                     <div class="imagen-producto">
-                        <img src="https://placehold.co/300x200/9e0721/ffffff?text=Rosas+24" alt="Ramo de 24 Rosas">
+                        <img src="https://placehold.co/300x180/9E0721/ffffff?text=RAMO+24+ROSAS" alt="Ramo de 24 Rosas">
                         <div class="detalle-overlay">
                             <h4>Dos Docenas Amor</h4>
                             <p>24 Rosas Rojas. El regalo clásico para expresar amor profundo y duradero.</p>
@@ -471,7 +474,7 @@
                 <!-- Rosas: Ramo Cumpleaños (36) -->
                 <div class="tarjeta-producto" data-category="rosas">
                     <div class="imagen-producto">
-                        <img src="https://placehold.co/300x200/6e081c/ffffff?text=Rosas+36" alt="Ramo de 36 Rosas">
+                        <img src="https://placehold.co/300x180/6E081C/ffffff?text=RAMO+36+ROSAS" alt="Ramo de 36 Rosas">
                         <div class="detalle-overlay">
                             <h4>Ramo Cumpleaños</h4>
                             <p>36 rosas rojas o mixtas. Ideal para celebraciones grandes.</p>
@@ -488,7 +491,7 @@
                 <!-- Rosas: Gran Acontecimiento (50) -->
                 <div class="tarjeta-producto" data-category="rosas">
                     <div class="imagen-producto">
-                        <img src="https://placehold.co/300x200/4c0211/ffffff?text=Rosas+50" alt="Ramo de 50 Rosas">
+                        <img src="https://placehold.co/300x180/4C0211/ffffff?text=RAMO+50+ROSAS" alt="Ramo de 50 Rosas">
                         <div class="detalle-overlay">
                             <h4>Gran Acontecimiento</h4>
                             <p>50 rosas del color de su elección, envueltas de manera majestuosa.</p>
@@ -505,7 +508,7 @@
                 <!-- Rosas: (EXISTENTE) Pasión Profunda -->
                 <div class="tarjeta-producto" data-category="rosas">
                     <div class="imagen-producto">
-                        <img src="https://placehold.co/300x200/b85c2c/ffffff?text=Rosas+Rojas" alt="Ramo de Rosas Rojas">
+                        <img src="https://placehold.co/300x180/8B0000/ffffff?text=RAMO+PASION" alt="Ramo de Rosas Rojas">
                         <div class="detalle-overlay">
                             <h4>Pasión Profunda</h4>
                             <p>Docena de rosas rojas de exportación en papel Kraft italiano.</p>
@@ -522,7 +525,7 @@
                 <!-- Rosas: (EXISTENTE) Pureza Eterna -->
                 <div class="tarjeta-producto" data-category="rosas">
                     <div class="imagen-producto">
-                        <img src="https://placehold.co/300x200/e0e0e0/333333?text=Rosas+Blancas+Lujo" alt="Arreglo de Rosas Blancas">
+                        <img src="https://placehold.co/300x180/F0F0F0/333333?text=CAJA+DE+ROSAS" alt="Arreglo de Rosas Blancas">
                         <div class="detalle-overlay">
                             <h4>Pureza Eterna</h4>
                             <p>Arreglo de 24 rosas blancas en caja de lujo redonda.</p>
@@ -544,7 +547,7 @@
                 <!-- Gerberas: Docena Alegría (12) -->
                 <div class="tarjeta-producto" data-category="gerberas">
                     <div class="imagen-producto">
-                        <img src="https://placehold.co/300x200/FFD700/333333?text=Gerberas+12" alt="Ramo de 12 Gerberas">
+                        <img src="https://placehold.co/300x180/FFD700/333333?text=RAMO+12+GERBERAS" alt="Ramo de 12 Gerberas">
                         <div class="detalle-overlay">
                             <h4>Docena Alegría</h4>
                             <p>Ramo de 12 gerberas de colores variados en presentación minimalista.</p>
@@ -561,7 +564,7 @@
                 <!-- Gerberas: Ramo Amistad (24) -->
                 <div class="tarjeta-producto" data-category="gerberas">
                     <div class="imagen-producto">
-                        <img src="https://placehold.co/300x200/FFA500/333333?text=Gerberas+24" alt="Ramo de 24 Gerberas">
+                        <img src="https://placehold.co/300x180/FFA500/333333?text=RAMO+24+GERBERAS" alt="Ramo de 24 Gerberas">
                         <div class="detalle-overlay">
                             <h4>Ramo Amistad</h4>
                             <p>24 gerberas frescas y vibrantes en tonos naranjas y rosas.</p>
@@ -578,7 +581,7 @@
                 <!-- Gerberas: Fiesta Floral (36) -->
                 <div class="tarjeta-producto" data-category="gerberas">
                     <div class="imagen-producto">
-                        <img src="https://placehold.co/300x200/FF4500/ffffff?text=Gerberas+36" alt="Ramo de 36 Gerberas">
+                        <img src="https://placehold.co/300x180/FF4500/ffffff?text=RAMO+36+GERBERAS" alt="Ramo de 36 Gerberas">
                         <div class="detalle-overlay">
                             <h4>Fiesta Floral</h4>
                             <p>Espectacular arreglo de 36 gerberas que llenan cualquier espacio de color.</p>
@@ -595,7 +598,7 @@
                 <!-- Gerberas: Bouquet Luminoso (50) -->
                 <div class="tarjeta-producto" data-category="gerberas">
                     <div class="imagen-producto">
-                        <img src="https://placehold.co/300x200/D2B48C/333333?text=Gerberas+50" alt="Ramo de 50 Gerberas">
+                        <img src="https://placehold.co/300x180/CD853F/333333?text=BOUQUET+50+GERBERAS" alt="Ramo de 50 Gerberas">
                         <div class="detalle-overlay">
                             <h4>Bouquet Luminoso</h4>
                             <p>50 gerberas en tonos pastel, un regalo impresionante y elegante.</p>
@@ -612,7 +615,7 @@
                 <!-- Gerberas: (EXISTENTE) Sol Radiante -->
                 <div class="tarjeta-producto" data-category="gerberas">
                     <div class="imagen-producto">
-                        <img src="https://placehold.co/300x200/ffc300/333333?text=Gerberas+Amarillas" alt="Gerberas Amarillas">
+                        <img src="https://placehold.co/300x180/F0E68C/333333?text=BOUQUET+SOL" alt="Gerberas Amarillas">
                         <div class="detalle-overlay">
                             <h4>Sol Radiante</h4>
                             <p>Bouquet de 15 gerberas amarillas y follaje verde.</p>
@@ -634,7 +637,7 @@
                 <!-- Girasoles: 12 Girasoles Grandes -->
                 <div class="tarjeta-producto" data-category="girasoles">
                     <div class="imagen-producto">
-                        <img src="https://placehold.co/300x200/FFDB58/333333?text=Girasoles+12" alt="Ramo de 12 Girasoles Grandes">
+                        <img src="https://placehold.co/300x180/FFDB58/333333?text=RAMO+12+GIRASOLES" alt="Ramo de 12 Girasoles Grandes">
                         <div class="detalle-overlay">
                             <h4>12 Girasoles Grandes</h4>
                             <p>Ramo de 12 girasoles, un regalo lleno de energía y positividad.</p>
@@ -651,7 +654,7 @@
                 <!-- Girasoles: Campo de Sol (24) -->
                 <div class="tarjeta-producto" data-category="girasoles">
                     <div class="imagen-producto">
-                        <img src="https://placehold.co/300x200/F0E68C/333333?text=Girasoles+24" alt="Ramo de 24 Girasoles">
+                        <img src="https://placehold.co/300x180/F0E68C/333333?text=RAMO+24+GIRASOLES" alt="Ramo de 24 Girasoles">
                         <div class="detalle-overlay">
                             <h4>Campo de Sol</h4>
                             <p>24 girasoles que capturan la belleza de un campo soleado.</p>
@@ -668,7 +671,7 @@
                 <!-- Girasoles: Cosecha de Éxito (36) -->
                 <div class="tarjeta-producto" data-category="girasoles">
                     <div class="imagen-producto">
-                        <img src="https://placehold.co/300x200/DAA520/ffffff?text=Girasoles+36" alt="Ramo de 36 Girasoles">
+                        <img src="https://placehold.co/300x180/DAA520/ffffff?text=RAMO+36+GIRASOLES" alt="Ramo de 36 Girasoles">
                         <div class="detalle-overlay">
                             <h4>Cosecha de Éxito</h4>
                             <p>36 Girasoles que simbolizan la alegría y los logros.</p>
@@ -685,7 +688,7 @@
                 <!-- Girasoles: Jardín de Verano (50) -->
                 <div class="tarjeta-producto" data-category="girasoles">
                     <div class="imagen-producto">
-                        <img src="https://placehold.co/300x200/B8860B/ffffff?text=Girasoles+50" alt="Ramo de 50 Girasoles">
+                        <img src="https://placehold.co/300x180/B8860B/ffffff?text=RAMO+50+GIRASOLES" alt="Ramo de 50 Girasoles">
                         <div class="detalle-overlay">
                             <h4>Jardín de Verano</h4>
                             <p>50 girasoles. El arreglo perfecto para un impacto inolvidable.</p>
@@ -702,7 +705,7 @@
                 <!-- Girasoles: (EXISTENTE) Optimismo sin Fin -->
                 <div class="tarjeta-producto" data-category="girasoles">
                     <div class="imagen-producto">
-                        <img src="https://placehold.co/300x200/fec84e/333333?text=Ramo+Girasoles" alt="Ramo de Girasoles">
+                        <img src="https://placehold.co/300x180/FFD700/333333?text=RAMO+OPTIMISMO" alt="Ramo de Girasoles">
                         <div class="detalle-overlay">
                             <h4>Optimismo sin Fin</h4>
                             <p>Ramo de 7 girasoles grandes, ideal para celebrar.</p>
@@ -723,7 +726,7 @@
 
                 <div class="tarjeta-producto" data-category="tulipanes">
                     <div class="imagen-producto">
-                        <img src="https://placehold.co/300x200/ff99aa/ffffff?text=Tulipanes+Rosados" alt="Ramo de Tulipanes Rosados">
+                        <img src="https://placehold.co/300x180/FF99AA/ffffff?text=TULIPANES+ROSADOS" alt="Ramo de Tulipanes Rosados">
                         <div class="detalle-overlay">
                             <h4>Ternura Holandesa</h4>
                             <p>20 tulipanes rosados, envueltos en tela de organza.</p>
@@ -739,7 +742,7 @@
 
                 <div class="tarjeta-producto" data-category="tulipanes">
                     <div class="imagen-producto">
-                        <img src="https://placehold.co/300x200/0000FF/ffffff?text=Tulipanes+Azules" alt="Ramo de Tulipanes Azules">
+                        <img src="https://placehold.co/300x180/0000CD/ffffff?text=TULIPANES+AZULES" alt="Ramo de Tulipanes Azules">
                         <div class="detalle-overlay">
                             <h4>Sueño Tranquilo</h4>
                             <p>15 tulipanes azules intensos, ideales para desear paz.</p>
@@ -755,7 +758,7 @@
 
                 <div class="tarjeta-producto" data-category="tulipanes">
                     <div class="imagen-producto">
-                        <img src="https://placehold.co/300x200/FFFF00/333333?text=Tulipanes+Amarillos" alt="Ramo de Tulipanes Amarillos">
+                        <img src="https://placehold.co/300x180/FFFF00/333333?text=TULIPANES+AMARILLOS" alt="Ramo de Tulipanes Amarillos">
                         <div class="detalle-overlay">
                             <h4>Alegría Inesperada</h4>
                             <p>25 tulipanes amarillos y blancos en presentación de jarrón.</p>
@@ -771,7 +774,7 @@
                 
                 <div class="tarjeta-producto" data-category="tulipanes">
                     <div class="imagen-producto">
-                        <img src="https://placehold.co/300x200/800000/ffffff?text=Tulipanes+Borgoña" alt="Ramo de Tulipanes Borgoña">
+                        <img src="https://placehold.co/300x180/800000/ffffff?text=TULIPANES+BORGOÑA" alt="Ramo de Tulipanes Borgoña">
                         <div class="detalle-overlay">
                             <h4>Intensidad Silenciosa</h4>
                             <p>18 tulipanes borgoña, de tonos profundos y sofisticados.</p>
@@ -787,7 +790,7 @@
                 
                 <div class="tarjeta-producto" data-category="tulipanes">
                     <div class="imagen-producto">
-                        <img src="https://placehold.co/300x200/F08080/333333?text=Tulipanes+Pastel" alt="Ramo de Tulipanes Pastel">
+                        <img src="https://placehold.co/300x180/F08080/333333?text=TULIPANES+PASTEL" alt="Ramo de Tulipanes Pastel">
                         <div class="detalle-overlay">
                             <h4>Sueño de Primavera</h4>
                             <p>30 tulipanes en colores pastel (rosa, amarillo, melocotón).</p>
@@ -808,7 +811,7 @@
 
                 <div class="tarjeta-producto" data-category="orquideas">
                     <div class="imagen-producto">
-                        <img src="https://placehold.co/300x200/800080/ffffff?text=Orquídeas+Phalaenopsis" alt="Orquídea Phalaenopsis">
+                        <img src="https://placehold.co/300x180/800080/ffffff?text=ORQUIDEA+PHALAENOPSIS" alt="Orquídea Phalaenopsis">
                         <div class="detalle-overlay">
                             <h4>Elegancia Imperial</h4>
                             <p>Planta de Orquídea Phalaenopsis doble vara en maceta de cerámica.</p>
@@ -824,7 +827,7 @@
 
                 <div class="tarjeta-producto" data-category="orquideas">
                     <div class="imagen-producto">
-                        <img src="https://placehold.co/300x200/008080/ffffff?text=Orquídea+Cymbidium" alt="Orquídea Cymbidium">
+                        <img src="https://placehold.co/300x180/008080/ffffff?text=ORQUIDEA+CYMBIDIUM" alt="Orquídea Cymbidium">
                         <div class="detalle-overlay">
                             <h4>Flor Exótica</h4>
                             <p>Arreglo de Orquídea Cymbidium de larga duración.</p>
@@ -840,7 +843,7 @@
 
                 <div class="tarjeta-producto" data-category="orquideas">
                     <div class="imagen-producto">
-                        <img src="https://placehold.co/300x200/FFC0CB/333333?text=Orquídea+Rosa" alt="Orquídea Phalaenopsis Rosa">
+                        <img src="https://placehold.co/300x180/FFC0CB/333333?text=ORQUIDEA+ROSA" alt="Orquídea Phalaenopsis Rosa">
                         <div class="detalle-overlay">
                             <h4>Delicadeza Rosa</h4>
                             <p>Orquídea Phalaenopsis de una vara en maceta de vidrio minimalista.</p>
@@ -856,7 +859,7 @@
 
                 <div class="tarjeta-producto" data-category="orquideas">
                     <div class="imagen-producto">
-                        <img src="https://placehold.co/300x200/A0522D/ffffff?text=Orquídea+Vainilla" alt="Orquídea en Maceta de Barro">
+                        <img src="https://placehold.co/300x180/A0522D/ffffff?text=ORQUIDEA+EN+BARRO" alt="Orquídea en Maceta de Barro">
                         <div class="detalle-overlay">
                             <h4>Tierra y Flor</h4>
                             <p>Orquídea blanca en maceta de barro rústico.</p>
@@ -872,7 +875,7 @@
 
                 <div class="tarjeta-producto" data-category="orquideas">
                     <div class="imagen-producto">
-                        <img src="https://placehold.co/300x200/000000/ffffff?text=Orquídea+Negra" alt="Orquídea Preservada">
+                        <img src="https://placehold.co/300x180/000000/ffffff?text=ORQUIDEA+PRESERVADA" alt="Orquídea Preservada">
                         <div class="detalle-overlay">
                             <h4>Lujo Preservado</h4>
                             <p>Flor de orquídea preservada de color negro en caja de cristal.</p>
@@ -893,7 +896,7 @@
 
                 <div class="tarjeta-producto" data-category="lirios">
                     <div class="imagen-producto">
-                        <img src="https://placehold.co/300x200/ffffff/000000?text=Lirios+Blancos+Alto" alt="Arreglo de Lirios Blancos">
+                        <img src="https://placehold.co/300x180/FFFFFF/000000?text=LIRIOS+BLANCOS" alt="Arreglo de Lirios Blancos">
                         <div class="detalle-overlay">
                             <h4>Majestuosidad Pura</h4>
                             <p>Arreglo alto con 10 tallos de lirios blancos, ideal para inauguraciones.</p>
@@ -909,7 +912,7 @@
 
                 <div class="tarjeta-producto" data-category="lirios">
                     <div class="imagen-producto">
-                        <img src="https://placehold.co/300x200/FFA07A/333333?text=Lirios+Naranjas" alt="Ramo de Lirios Naranjas">
+                        <img src="https://placehold.co/300x180/FFA07A/333333?text=LIRIOS+NARANJAS" alt="Ramo de Lirios Naranjas">
                         <div class="detalle-overlay">
                             <h4>Atardecer Dorado</h4>
                             <p>Ramo de lirios naranjas vibrantes, perfecto para motivar.</p>
@@ -925,7 +928,7 @@
 
                 <div class="tarjeta-producto" data-category="lirios">
                     <div class="imagen-producto">
-                        <img src="https://placehold.co/300x200/ADD8E6/333333?text=Lirios+Azules" alt="Arreglo de Lirios Azules">
+                        <img src="https://placehold.co/300x180/ADD8E6/333333?text=LIRIOS+AZULES" alt="Arreglo de Lirios Azules">
                         <div class="detalle-overlay">
                             <h4>Serenidad del Mar</h4>
                             <p>Jarrón de lirios azules y blancos, evocando la calma.</p>
@@ -941,7 +944,7 @@
 
                 <div class="tarjeta-producto" data-category="lirios">
                     <div class="imagen-producto">
-                        <img src="https://placehold.co/300x200/C0C0C0/333333?text=Lirios+Cala" alt="Ramo de Lirios Cala">
+                        <img src="https://placehold.co/300x180/C0C0C0/333333?text=LIRIOS+CALA" alt="Ramo de Lirios Cala">
                         <div class="detalle-overlay">
                             <h4>Lirio Cala Elegante</h4>
                             <p>Ramo de 10 lirios Cala (Zantedeschia) en tallo largo.</p>
@@ -957,7 +960,7 @@
 
                 <div class="tarjeta-producto" data-category="lirios">
                     <div class="imagen-producto">
-                        <img src="https://placehold.co/300x200/FF69B4/ffffff?text=Lirios+Rosas" alt="Ramo de Lirios Rosas">
+                        <img src="https://placehold.co/300x180/FF69B4/ffffff?text=LIRIOS+ROSAS" alt="Ramo de Lirios Rosas">
                         <div class="detalle-overlay">
                             <h4>Sueños Rosas</h4>
                             <p>Lirios rosas orientales, muy perfumados, en presentación de bouquet.</p>
@@ -978,7 +981,7 @@
 
                 <div class="tarjeta-producto" data-category="lisianthus">
                     <div class="imagen-producto">
-                        <img src="https://placehold.co/300x200/9370DB/ffffff?text=Lisianthus+Morados" alt="Ramo de Lisianthus Morados">
+                        <img src="https://placehold.co/300x180/9370DB/ffffff?text=LISIANTHUS+MORADOS" alt="Ramo de Lisianthus Morados">
                         <div class="detalle-overlay">
                             <h4>Sueño Versátil</h4>
                             <p>Ramo de Lisianthus morados y rosas en tono pastel, muy delicado.</p>
@@ -994,7 +997,7 @@
 
                 <div class="tarjeta-producto" data-category="lisianthus">
                     <div class="imagen-producto">
-                        <img src="https://placehold.co/300x200/F0F8FF/333333?text=Lisianthus+Blanco" alt="Ramo de Lisianthus Blanco">
+                        <img src="https://placehold.co/300x180/F0F8FF/333333?text=LISIANTHUS+BLANCOS" alt="Ramo de Lisianthus Blanco">
                         <div class="detalle-overlay">
                             <h4>Nieve de Verano</h4>
                             <p>Ramo puro de Lisianthus blancos, ideal para bodas o aniversarios.</p>
@@ -1010,7 +1013,7 @@
 
                 <div class="tarjeta-producto" data-category="lisianthus">
                     <div class="imagen-producto">
-                        <img src="https://placehold.co/300x200/FF6347/ffffff?text=Lisianthus+Rojo" alt="Arreglo de Lisianthus Rojos">
+                        <img src="https://placehold.co/300x180/FF6347/ffffff?text=LISIANTHUS+ROJOS" alt="Arreglo de Lisianthus Rojos">
                         <div class="detalle-overlay">
                             <h4>Pasión Suave</h4>
                             <p>Arreglo moderno con Lisianthus rojos y follaje exótico.</p>
@@ -1026,7 +1029,7 @@
 
                 <div class="tarjeta-producto" data-category="lisianthus">
                     <div class="imagen-producto">
-                        <img src="https://placehold.co/300x200/DDA0DD/333333?text=Lisianthus+Doble" alt="Ramo de Lisianthus Doble">
+                        <img src="https://placehold.co/300x180/DDA0DD/333333?text=LISIANTHUS+DOBLE" alt="Ramo de Lisianthus Doble">
                         <div class="detalle-overlay">
                             <h4>Doble Encanto</h4>
                             <p>Ramo que combina lisianthus morados y rosados, muy abundantes.</p>
@@ -1042,7 +1045,7 @@
 
                 <div class="tarjeta-producto" data-category="lisianthus">
                     <div class="imagen-producto">
-                        <img src="https://placehold.co/300x200/4682B4/ffffff?text=Lisianthus+Azul" alt="Lisianthus Azul en Canasta">
+                        <img src="https://placehold.co/300x180/4682B4/ffffff?text=LISIANTHUS+CANASTA" alt="Lisianthus Azul en Canasta">
                         <div class="detalle-overlay">
                             <h4>Cesta Delicada</h4>
                             <p>Lisianthus azules en una pequeña canasta de mimbre.</p>
@@ -1062,7 +1065,7 @@
                 <!-- PRODUCTO MIXTO (EXISTENTE) -->
                 <div class="tarjeta-producto" data-category="gerberas lirios">
                     <div class="imagen-producto">
-                        <img src="https://placehold.co/300x200/F08080/FFFFFF?text=Arreglo+Mixto" alt="Arreglo floral Mixto">
+                        <img src="https://placehold.co/300x180/F08080/FFFFFF?text=ARREGLO+MIXTO" alt="Arreglo floral Mixto">
                         <div class="detalle-overlay">
                             <h4>Festival de Color</h4>
                             <p>Arreglo que combina gerberas y lirios, lleno de vitalidad.</p>
@@ -1081,13 +1084,13 @@
 
     </main>
 
-    <!-- RECUADRO DE PEDIDO EXPRESS FLOTANTE (COLAPSABLE) -->
+    <!-- RECUADRO DE PEDIDO EXPRESS FLOTANTE (AHORA SIEMPRE EXPANDIDO EN DESKTOP) -->
     <div class="express-float">
-        <!-- Visible solo en hover (Desktop) o siempre (Mobile) -->
+        <!-- Visible siempre -->
         <h4>Pedido Express</h4>
         <p>¿Necesitas algo personalizado o para hoy mismo? ¡Escríbenos!</p>
         
-        <!-- Botón principal -->
+        <!-- Botón principal (siempre con texto) -->
         <a href="https://wa.me/XXXXXXXXXX?text=Hola,%20quisiera%20hacer%20un%20pedido%20express%20personalizado." class="btn-whatsapp" target="_blank">
             <i class="fab fa-whatsapp"></i> <span>Chat Express</span>
         </a>
@@ -1106,6 +1109,7 @@
             
             // Función principal de filtrado
             function filterProducts(category) {
+                let foundAny = false;
                 productCards.forEach(card => {
                     const cardCategory = card.getAttribute('data-category');
                     
@@ -1113,11 +1117,15 @@
                     if (category === 'todos' || cardCategory.includes(category)) {
                         card.style.display = 'block';
                         card.classList.remove('hidden');
+                        foundAny = true;
                     } else {
                         card.style.display = 'none';
                         card.classList.add('hidden');
                     }
                 });
+                
+                // Si no se encuentra ningún producto, se podría mostrar un mensaje.
+                // (Opcional: aquí solo filtra y oculta, no se añade mensaje de "no encontrado" por simplicidad)
             }
 
             // Función para marcar el botón de filtro como activo
@@ -1126,7 +1134,7 @@
                 
                 const categoryToActivate = button.getAttribute('data-category');
                 
-                // Activa el botón en ambas listas (desktop y mobile)
+                // Activa el botón que fue clickeado (en ambas listas si existieran, pero ahora solo hay una)
                 document.querySelectorAll(`.filter-btn[data-category="${categoryToActivate}"]`).forEach(btn => {
                     btn.classList.add('active');
                 });
@@ -1143,11 +1151,11 @@
             });
 
             // Inicialización: Mostrar todo y activar "todos" (aunque esté oculto)
-            const initialButton = document.querySelector('.filter-btn[data-category="todos"]');
+            const initialButton = document.querySelector('.filter-btn[data-category="rosas"]'); // Iniciar en Rosas por defecto
             
             if (initialButton) {
                 setActiveButton(initialButton);
-                filterProducts('todos');
+                filterProducts('rosas');
             } else {
                 filterProducts('todos');
             }
