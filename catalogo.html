@@ -16,7 +16,8 @@
             --color-dark-text: #3a3a3a; /* Texto principal oscuro */
             --color-soft-cream: #fbf9f6; /* Fondo general minimalista */
             --color-light-bg: #ffffff; /* Fondo de tarjetas */
-            --color-cta: #25D366; /* Verde WhatsApp */
+            --color-cta: #1a1a1a; /* NEGRO MATE para el botón flotante (Mejora) */
+            --color-cta-hover: #333333; /* Color oscuro en hover */
             --font-heading: 'Playfair Display', serif; /* Elegante para títulos */
             --font-body: 'Roboto', sans-serif; /* Limpio para cuerpo */
         }
@@ -265,7 +266,8 @@
             margin-bottom: 20px;
         }
         .detalle-overlay .btn-whatsapp {
-            background-color: var(--color-cta); 
+            /* Mantiene el color original de WhatsApp en el overlay */
+            background-color: #25D366; 
             padding: 10px 20px;
             border-radius: 20px;
             font-weight: 500;
@@ -285,22 +287,22 @@
             }
         }
         
-        /* --- 4. RECUADRO EXPRESS FLOTANTE (MINIMIZADO) --- */
+        /* --- 4. RECUADRO EXPRESS FLOTANTE (MINIMIZADO) - ESTÉTICA MEJORADA --- */
         .express-float {
             position: fixed;
             bottom: 30px; 
             left: 30px; 
-            width: 55px; /* Tamaño minimizado (solo el icono) */
+            width: 55px; 
             height: 55px;
             border-radius: 50px; 
-            background: var(--color-cta); 
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3); 
+            background: var(--color-cta); /* NEGRO MATE */
+            box-shadow: 0 4px 15px rgba(0,0,0,0.4); /* Sombra más fuerte */
             padding: 0; 
             text-align: center;
             z-index: 9999;
-            transition: all 0.3s ease-in-out; 
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); /* Curva de transición elegante */
             cursor: pointer;
-            overflow: hidden; /* Necesario para ocultar el contenido expandido */
+            overflow: hidden; 
             display: flex;
             align-items: center;
             justify-content: center;
@@ -320,45 +322,46 @@
             align-items: center;
             justify-content: center;
             position: absolute;
-            width: 200px; /* Ancho expandido */
+            width: 200px; 
             height: 100%;
             top: 0;
             left: 0;
-            background: linear-gradient(90deg, #1DA851 0%, var(--color-cta) 100%);
-            border-radius: 50px;
+            /* Degradado de negro a un gris oscuro */
+            background: linear-gradient(90deg, var(--color-cta) 0%, var(--color-cta-hover) 100%); 
+            border-radius: 10px; /* Ya que el padre se redondeará al expandirse */
             padding: 10px 15px;
             opacity: 0;
-            transform: translateX(-100%); /* Desplazado a la izquierda */
+            transform: translateX(-100%); 
             transition: all 0.3s ease-out;
         }
 
         .express-float:hover {
-            width: 200px; /* Ancho de expansión */
-            border-radius: 10px; /* Forma de recuadro al expandirse */
+            width: 200px; 
+            border-radius: 10px; /* Se convierte en caja al expandirse */
             background-color: var(--color-cta);
         }
 
         .express-float:hover .express-content {
             opacity: 1;
-            transform: translateX(0); /* Muestra el contenido */
+            transform: translateX(0); 
             width: 100%;
         }
 
         .express-float:hover i {
             opacity: 0;
-            transform: scale(0.5); /* Oculta el icono principal */
+            transform: scale(0.5); 
         }
         
         /* Estilos del texto en la expansión */
         .express-content h4 {
             font-family: var(--font-body);
             font-weight: 700;
-            color: white;
+            color: #25D366; /* Verde de WhatsApp para destacar el servicio */
             font-size: 1rem;
             margin: 0;
         }
         .express-content p {
-            color: #e6ffec;
+            color: #cccccc;
             font-size: 0.75rem;
             margin: 0;
             line-height: 1.2;
@@ -367,8 +370,8 @@
         
         /* Botón de texto dentro de la expansión */
         .express-content .btn-whatsapp-expanded {
-            background-color: white; 
-            color: var(--color-cta);
+            background-color: #25D366; 
+            color: white;
             padding: 5px 10px; 
             border-radius: 5px; 
             font-size: 0.8rem; 
@@ -398,6 +401,7 @@
                 bottom: 20px; 
                 left: 20px; 
                 border-radius: 50%;
+                background: var(--color-cta); /* Mantiene el color negro en móvil */
             }
             .express-float:hover { width: 50px; border-radius: 50%; }
             .express-content { display: none !important; } /* Ocultar contenido expandido en móvil */
@@ -427,7 +431,8 @@
             /* Botón de whatsapp visible en la tarjeta en móvil */
             .tarjeta-producto > a {
                  display: block;
-                 background-color: var(--color-cta); 
+                 /* Mantiene el color verde de WhatsApp en el botón de la tarjeta */
+                 background-color: #25D366; 
                  color: white;
                  text-decoration: none;
                  padding: 5px 10px;
@@ -480,277 +485,474 @@
 
             <div class="product-grid">
                 
-                <!-- EJEMPLOS DE TARJETAS DE PRODUCTO (ROSAS) -->
+                <!-- === COLECCIÓN: ROSAS (12, 24, 36, 50) === -->
                 
-                <!-- Rosas: Docena Premium (12) -->
+                <!-- Rosas: Docena Clásica (12) -->
                 <div class="tarjeta-producto" data-category="rosas">
                     <div class="imagen-producto">
                         <img src="https://placehold.co/300x180/C9082A/ffffff?text=RAMO+12+ROSAS" alt="Ramo de 12 Rosas Premium">
-                        <!-- Overlay de detalles: Visible solo en hover (Desktop) -->
                         <div class="detalle-overlay">
-                            <h4>Docena Premium</h4>
-                            <p class="sub-desc">12 rosas frescas de tallo largo, presentación elegante.</p>
-                            <span class="price-tag">$50.00 USD</span>
-                            <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20Docena%20Premium%20de%20Rosas%20(12)" class="btn-whatsapp" target="_blank">Ordenar ahora <i class="fab fa-whatsapp"></i></a>
+                            <h4>Docena Clásica (12)</h4>
+                            <p class="sub-desc">12 rosas frescas de tallo largo. El símbolo atemporal del amor.</p>
+                            <span class="price-tag">$850 MXN</span>
+                            <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20Docena%20Clásica%20de%20Rosas%20(12)" class="btn-whatsapp" target="_blank">Ordenar ahora <i class="fab fa-whatsapp"></i></a>
                         </div>
                     </div>
-                    <h4>Docena Premium</h4>
-                    <!-- Precio visible en la vista rápida -->
-                    <span class="price-tag-mobile">$50.00 USD</span>
-                    <!-- Botón visible en móvil (oculto en desktop) -->
-                    <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20Docena%20Premium%20de%20Rosas%20(12)" target="_blank">Ver Detalles <i class="fas fa-arrow-right"></i></a>
+                    <h4>Docena Clásica</h4>
+                    <span class="price-tag-mobile">$850 MXN</span>
+                    <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20Docena%20Clásica%20de%20Rosas%20(12)" target="_blank">Ver Detalles <i class="fas fa-arrow-right"></i></a>
                 </div>
 
-                <!-- Rosas: Pureza Eterna (Caja de Rosas Blancas) -->
+                <!-- Rosas: Doble de Amor (24) -->
                 <div class="tarjeta-producto" data-category="rosas">
                     <div class="imagen-producto">
-                        <img src="https://placehold.co/300x180/F0F0F0/3a3a3a?text=CAJA+DE+ROSAS+BLANCAS" alt="Arreglo de Rosas Blancas">
+                        <img src="https://placehold.co/300x180/F0F0F0/3a3a3a?text=RAMO+24+ROSAS+BLANCAS" alt="Ramo de 24 Rosas Blancas">
                          <div class="detalle-overlay">
-                            <h4>Pureza Eterna</h4>
-                            <p class="sub-desc">24 rosas blancas en caja de lujo redonda. Elegancia y significado.</p>
-                            <span class="price-tag">$65.00 USD</span>
-                            <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20el%20arreglo%20Pureza%20Eterna%20de%20Rosas%20Blancas" class="btn-whatsapp" target="_blank">Ordenar ahora <i class="fab fa-whatsapp"></i></a>
+                            <h4>Doble de Amor (24)</h4>
+                            <p class="sub-desc">24 rosas del color de tu elección, ideales para aniversarios o cumpleaños.</p>
+                            <span class="price-tag">$1,390 MXN</span>
+                            <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20el%20arreglo%20Doble%20de%20Amor%20(24%20Rosas)" class="btn-whatsapp" target="_blank">Ordenar ahora <i class="fab fa-whatsapp"></i></a>
                         </div>
                     </div>
-                    <h4>Pureza Eterna</h4>
-                    <span class="price-tag-mobile">$65.00 USD</span>
-                    <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20el%20arreglo%20Pureza%20Eterna%20de%20Rosas%20Blancas" target="_blank">Ver Detalles <i class="fas fa-arrow-right"></i></a>
+                    <h4>Doble de Amor</h4>
+                    <span class="price-tag-mobile">$1,390 MXN</span>
+                    <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20el%20arreglo%20Doble%20de%20Amor%20(24%20Rosas)" target="_blank">Ver Detalles <i class="fas fa-arrow-right"></i></a>
                 </div>
                 
-                <!-- Rosas: Gran Acontecimiento (50) -->
+                <!-- Rosas: Gran Romance (36) -->
+                <div class="tarjeta-producto" data-category="rosas">
+                    <div class="imagen-producto">
+                        <img src="https://placehold.co/300x180/C41E3A/ffffff?text=RAMO+36+ROSAS+ROJAS" alt="Ramo de 36 Rosas">
+                        <div class="detalle-overlay">
+                            <h4>Gran Romance (36)</h4>
+                            <p class="sub-desc">36 rosas que expresan un amor profundo. Presentación de lujo.</p>
+                            <span class="price-tag">$2,050 MXN</span>
+                            <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20Gran%20Romance%20(36%20Rosas)" class="btn-whatsapp" target="_blank">Ordenar ahora <i class="fab fa-whatsapp"></i></a>
+                        </div>
+                    </div>
+                    <h4>Gran Romance</h4>
+                    <span class="price-tag-mobile">$2,050 MXN</span>
+                    <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20Gran%20Romance%20(36%20Rosas)" target="_blank">Ver Detalles <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <!-- Rosas: Majestuosidad (50) -->
                 <div class="tarjeta-producto" data-category="rosas">
                     <div class="imagen-producto">
                         <img src="https://placehold.co/300x180/4C0211/ffffff?text=RAMO+50+ROSAS+LUJO" alt="Ramo de 50 Rosas">
                         <div class="detalle-overlay">
-                            <h4>Gran Acontecimiento</h4>
-                            <p class="sub-desc">50 rosas del color de su elección, envueltas de manera majestuosa.</p>
-                            <span class="price-tag">$150.00 USD</span>
-                            <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20Gran%20Acontecimiento%20de%20Rosas%20(50)" class="btn-whatsapp" target="_blank">Ordenar ahora <i class="fab fa-whatsapp"></i></a>
+                            <h4>Majestuosidad (50)</h4>
+                            <p class="sub-desc">50 rosas envueltas de manera majestuosa. Para los grandes acontecimientos.</p>
+                            <span class="price-tag">$2,500 MXN</span>
+                            <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20Majestuosidad%20(50%20Rosas)" class="btn-whatsapp" target="_blank">Ordenar ahora <i class="fab fa-whatsapp"></i></a>
                         </div>
                     </div>
-                    <h4>Gran Acontecimiento</h4>
-                    <span class="price-tag-mobile">$150.00 USD</span>
-                    <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20Gran%20Acontecimiento%20de%20Rosas%20(50)" target="_blank">Ver Detalles <i class="fas fa-arrow-right"></i></a>
+                    <h4>Majestuosidad</h4>
+                    <span class="price-tag-mobile">$2,500 MXN</span>
+                    <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20Majestuosidad%20(50%20Rosas)" target="_blank">Ver Detalles <i class="fas fa-arrow-right"></i></a>
                 </div>
 
-                <!-- EJEMPLOS DE TARJETAS DE PRODUCTO (GERBERAS) -->
+                <!-- === COLECCIÓN: GERBERAS (12, 24, 36, 50) === -->
                 
-                <!-- Gerberas: Docena Alegría (12) -->
+                <!-- Gerberas: Docena de Colores (12) -->
                 <div class="tarjeta-producto" data-category="gerberas">
                     <div class="imagen-producto">
                         <img src="https://placehold.co/300x180/FFD700/3a3a3a?text=RAMO+12+GERBERAS+MIX" alt="Ramo de 12 Gerberas">
                         <div class="detalle-overlay">
-                            <h4>Docena Alegría</h4>
-                            <p class="sub-desc">Ramo de 12 gerberas de colores variados en presentación minimalista.</p>
-                            <span class="price-tag">$30.00 USD</span>
-                            <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20Docena%20Alegría%20de%20Gerberas%20(12)" class="btn-whatsapp" target="_blank">Ordenar ahora <i class="fab fa-whatsapp"></i></a>
+                            <h4>Docena de Colores (12)</h4>
+                            <p class="sub-desc">Ramo de 12 gerberas de colores vibrantes. Un regalo de pura alegría.</p>
+                            <span class="price-tag">$580 MXN</span>
+                            <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20Docena%20de%20Colores%20de%20Gerberas%20(12)" class="btn-whatsapp" target="_blank">Ordenar ahora <i class="fab fa-whatsapp"></i></a>
                         </div>
                     </div>
-                    <h4>Docena Alegría</h4>
-                    <span class="price-tag-mobile">$30.00 USD</span>
-                    <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20Docena%20Alegría%20de%20Gerberas%20(12)" target="_blank">Ver Detalles <i class="fas fa-arrow-right"></i></a>
+                    <h4>Docena de Colores</h4>
+                    <span class="price-tag-mobile">$580 MXN</span>
+                    <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20Docena%20de%20Colores%20de%20Gerberas%20(12)" target="_blank">Ver Detalles <i class="fas fa-arrow-right"></i></a>
                 </div>
                 
-                <!-- Gerberas: Sol Radiante (Bouquet) -->
+                <!-- Gerberas: Alegría Doble (24) -->
                 <div class="tarjeta-producto" data-category="gerberas">
                     <div class="imagen-producto">
-                        <img src="https://placehold.co/300x180/F0E68C/3a3a3a?text=BOUQUET+GERBERAS+AMARILLAS" alt="Gerberas Amarillas">
+                        <img src="https://placehold.co/300x180/F0E68C/3a3a3a?text=BOUQUET+24+GERBERAS" alt="Gerberas Amarillas">
                         <div class="detalle-overlay">
-                            <h4>Sol Radiante</h4>
-                            <p class="sub-desc">Bouquet de 15 gerberas amarillas y follaje verde.</p>
-                            <span class="price-tag">$35.00 USD</span>
-                            <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20el%20bouquet%20Sol%20Radiante%20de%20Gerberas%20Amarillas" class="btn-whatsapp" target="_blank">Ordenar ahora <i class="fab fa-whatsapp"></i></a>
+                            <h4>Alegría Doble (24)</h4>
+                            <p class="sub-desc">24 cabezas de gerberas frescas en bouquet, maximizando el impacto visual.</p>
+                            <span class="price-tag">$990 MXN</span>
+                            <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20el%20bouquet%20Alegría%20Doble%20(24%20Gerberas)" class="btn-whatsapp" target="_blank">Ordenar ahora <i class="fab fa-whatsapp"></i></a>
                         </div>
                     </div>
-                    <h4>Sol Radiante</h4>
-                    <span class="price-tag-mobile">$35.00 USD</span>
-                    <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20el%20bouquet%20Sol%20Radiante%20de%20Gerberas%20Amarillas" target="_blank">Ver Detalles <i class="fas fa-arrow-right"></i></a>
+                    <h4>Alegría Doble</h4>
+                    <span class="price-tag-mobile">$990 MXN</span>
+                    <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20el%20bouquet%20Alegría%20Doble%20(24%20Gerberas)" target="_blank">Ver Detalles <i class="fas fa-arrow-right"></i></a>
                 </div>
-                
-                <!-- EJEMPLOS DE TARJETAS DE PRODUCTO (GIRASOLES) -->
 
-                <!-- Girasoles: 12 Girasoles Grandes -->
+                <!-- Gerberas: Ramo Festivo (36) -->
+                <div class="tarjeta-producto" data-category="gerberas">
+                    <div class="imagen-producto">
+                        <img src="https://placehold.co/300x180/FF6347/ffffff?text=RAMO+36+GERBERAS+GRANDES" alt="Ramo de 36 Gerberas">
+                        <div class="detalle-overlay">
+                            <h4>Ramo Festivo (36)</h4>
+                            <p class="sub-desc">36 gerberas de tallo largo, perfecto para celebraciones y eventos grandes.</p>
+                            <span class="price-tag">$1,500 MXN</span>
+                            <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20Ramo%20Festivo%20(36%20Gerberas)" class="btn-whatsapp" target="_blank">Ordenar ahora <i class="fab fa-whatsapp"></i></a>
+                        </div>
+                    </div>
+                    <h4>Ramo Festivo</h4>
+                    <span class="price-tag-mobile">$1,500 MXN</span>
+                    <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20Ramo%20Festivo%20(36%20Gerberas)" target="_blank">Ver Detalles <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <!-- Gerberas: Explosión Floral (50) -->
+                <div class="tarjeta-producto" data-category="gerberas">
+                    <div class="imagen-producto">
+                        <img src="https://placehold.co/300x180/FF1493/ffffff?text=RAMO+50+GERBERAS+FULL+COLOR" alt="Ramo de 50 Gerberas">
+                        <div class="detalle-overlay">
+                            <h4>Explosión Floral (50)</h4>
+                            <p class="sub-desc">50 gerberas en un arreglo espectacular. El regalo más impactante.</p>
+                            <span class="price-tag">$1,990 MXN</span>
+                            <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20Explosión%20Floral%20(50%20Gerberas)" class="btn-whatsapp" target="_blank">Ordenar ahora <i class="fab fa-whatsapp"></i></a>
+                        </div>
+                    </div>
+                    <h4>Explosión Floral</h4>
+                    <span class="price-tag-mobile">$1,990 MXN</span>
+                    <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20Explosión%20Floral%20(50%20Gerberas)" target="_blank">Ver Detalles <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <!-- === COLECCIÓN: GIRASOLES (12, 24, 36, 50) === -->
+
+                <!-- Girasoles: Docena de Sol (12) -->
                 <div class="tarjeta-producto" data-category="girasoles">
                     <div class="imagen-producto">
                         <img src="https://placehold.co/300x180/FFDB58/3a3a3a?text=RAMO+12+GIRASOLES" alt="Ramo de 12 Girasoles Grandes">
                         <div class="detalle-overlay">
-                            <h4>12 Girasoles Grandes</h4>
-                            <p class="sub-desc">Ramo de 12 girasoles, un regalo lleno de energía y positividad.</p>
-                            <span class="price-tag">$60.00 USD</span>
-                            <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%2012%20Girasoles%20Grandes" class="btn-whatsapp" target="_blank">Ordenar ahora <i class="fab fa-whatsapp"></i></a>
+                            <h4>Docena de Sol (12)</h4>
+                            <p class="sub-desc">Ramo de 12 girasoles grandes, que irradian energía y positividad.</p>
+                            <span class="price-tag">$1,150 MXN</span>
+                            <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20Docena%20de%20Sol%20(12%20Girasoles)" class="btn-whatsapp" target="_blank">Ordenar ahora <i class="fab fa-whatsapp"></i></a>
                         </div>
                     </div>
-                    <h4>12 Girasoles Grandes</h4>
-                    <span class="price-tag-mobile">$60.00 USD</span>
-                    <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%2012%20Girasoles%20Grandes" target="_blank">Ver Detalles <i class="fas fa-arrow-right"></i></a>
+                    <h4>Docena de Sol</h4>
+                    <span class="price-tag-mobile">$1,150 MXN</span>
+                    <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20Docena%20de%20Sol%20(12%20Girasoles)" target="_blank">Ver Detalles <i class="fas fa-arrow-right"></i></a>
                 </div>
 
-                <!-- Girasoles: Campo de Sol (24) -->
+                <!-- Girasoles: Doble Resplandor (24) -->
                 <div class="tarjeta-producto" data-category="girasoles">
                     <div class="imagen-producto">
                         <img src="https://placehold.co/300x180/F0E68C/3a3a3a?text=RAMO+24+GIRASOLES" alt="Ramo de 24 Girasoles">
                         <div class="detalle-overlay">
-                            <h4>Campo de Sol</h4>
-                            <p class="sub-desc">24 girasoles que capturan la belleza de un campo soleado. ¡Impresionante!</p>
-                            <span class="price-tag">$100.00 USD</span>
-                            <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20Campo%20de%20Sol%20(24%20Girasoles)" class="btn-whatsapp" target="_blank">Ordenar ahora <i class="fab fa-whatsapp"></i></a>
+                            <h4>Doble Resplandor (24)</h4>
+                            <p class="sub-desc">24 girasoles que duplican la alegría. Un detalle que no olvidarán.</p>
+                            <span class="price-tag">$1,950 MXN</span>
+                            <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20Doble%20Resplandor%20(24%20Girasoles)" class="btn-whatsapp" target="_blank">Ordenar ahora <i class="fab fa-whatsapp"></i></a>
                         </div>
                     </div>
-                    <h4>Campo de Sol</h4>
-                    <span class="price-tag-mobile">$100.00 USD</span>
-                    <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20Campo%20de%20Sol%20(24%20Girasoles)" target="_blank">Ver Detalles <i class="fas fa-arrow-right"></i></a>
+                    <h4>Doble Resplandor</h4>
+                    <span class="price-tag-mobile">$1,950 MXN</span>
+                    <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20Doble%20Resplandor%20(24%20Girasoles)" target="_blank">Ver Detalles <i class="fas fa-arrow-right"></i></a>
+                </div>
+                
+                <!-- Girasoles: Campo Luminoso (36) -->
+                <div class="tarjeta-producto" data-category="girasoles">
+                    <div class="imagen-producto">
+                        <img src="https://placehold.co/300x180/DAA520/ffffff?text=RAMO+36+GIRASOLES+IMPRESIONANTE" alt="Ramo de 36 Girasoles">
+                        <div class="detalle-overlay">
+                            <h4>Campo Luminoso (36)</h4>
+                            <p class="sub-desc">36 girasoles en un arreglo que simula un pequeño campo de luz.</p>
+                            <span class="price-tag">$2,700 MXN</span>
+                            <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20Campo%20Luminoso%20(36%20Girasoles)" class="btn-whatsapp" target="_blank">Ordenar ahora <i class="fab fa-whatsapp"></i></a>
+                        </div>
+                    </div>
+                    <h4>Campo Luminoso</h4>
+                    <span class="price-tag-mobile">$2,700 MXN</span>
+                    <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20Campo%20Luminoso%20(36%20Girasoles)" target="_blank">Ver Detalles <i class="fas fa-arrow-right"></i></a>
+                </div>
+                
+                <!-- Girasoles: Eterno Verano (50) -->
+                <div class="tarjeta-producto" data-category="girasoles">
+                    <div class="imagen-producto">
+                        <img src="https://placehold.co/300x180/F4A460/3a3a3a?text=RAMO+50+GIRASOLES+MAGNO" alt="Ramo de 50 Girasoles">
+                        <div class="detalle-overlay">
+                            <h4>Eterno Verano (50)</h4>
+                            <p class="sub-desc">50 girasoles. La máxima expresión de felicidad y admiración.</p>
+                            <span class="price-tag">$3,500 MXN</span>
+                            <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20Eterno%20Verano%20(50%20Girasoles)" class="btn-whatsapp" target="_blank">Ordenar ahora <i class="fab fa-whatsapp"></i></a>
+                        </div>
+                    </div>
+                    <h4>Eterno Verano</h4>
+                    <span class="price-tag-mobile">$3,500 MXN</span>
+                    <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20Eterno%20Verano%20(50%20Girasoles)" target="_blank">Ver Detalles <i class="fas fa-arrow-right"></i></a>
                 </div>
 
-                <!-- EJEMPLOS DE TARJETAS DE PRODUCTO (TULIPANES) -->
+                <!-- === COLECCIÓN: TULIPANES (4 productos únicos) === -->
 
+                <!-- Tulipanes: Ternura Holandesa (20) -->
                 <div class="tarjeta-producto" data-category="tulipanes">
                     <div class="imagen-producto">
                         <img src="https://placehold.co/300x180/FF99AA/ffffff?text=TULIPANES+ROSADOS+20" alt="Ramo de Tulipanes Rosados">
                         <div class="detalle-overlay">
                             <h4>Ternura Holandesa</h4>
-                            <p class="sub-desc">20 tulipanes rosados, envueltos en tela de organza. Pura delicadeza.</p>
-                            <span class="price-tag">$55.00 USD</span>
+                            <p class="sub-desc">20 tulipanes rosados, envueltos en tela de organza. Pura delicadeza y elegancia.</p>
+                            <span class="price-tag">$950 MXN</span>
                             <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20el%20ramo%20Ternura%20Holandesa%20de%20Tulipanes" class="btn-whatsapp" target="_blank">Ordenar ahora <i class="fab fa-whatsapp"></i></a>
                         </div>
                     </div>
                     <h4>Ternura Holandesa</h4>
-                    <span class="price-tag-mobile">$55.00 USD</span>
+                    <span class="price-tag-mobile">$950 MXN</span>
                     <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20el%20ramo%20Ternura%20Holandesa%20de%20Tulipanes" target="_blank">Ver Detalles <i class="fas fa-arrow-right"></i></a>
                 </div>
 
+                <!-- Tulipanes: Intensidad Silenciosa (18) -->
                 <div class="tarjeta-producto" data-category="tulipanes">
                     <div class="imagen-producto">
                         <img src="https://placehold.co/300x180/800000/ffffff?text=TULIPANES+BORGOÑA+INTENSO" alt="Ramo de Tulipanes Borgoña">
                         <div class="detalle-overlay">
                             <h4>Intensidad Silenciosa</h4>
-                            <p class="sub-desc">18 tulipanes borgoña, de tonos profundos y sofisticados. Exclusivo.</p>
-                            <span class="price-tag">$48.00 USD</span>
+                            <p class="sub-desc">18 tulipanes borgoña, de tonos profundos y sofisticados. Un lujo exclusivo.</p>
+                            <span class="price-tag">$820 MXN</span>
                             <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20el%20ramo%20Intensidad%20Silenciosa" class="btn-whatsapp" target="_blank">Ordenar ahora <i class="fab fa-whatsapp"></i></a>
                         </div>
                     </div>
                     <h4>Intensidad Silenciosa</h4>
-                    <span class="price-tag-mobile">$48.00 USD</span>
+                    <span class="price-tag-mobile">$820 MXN</span>
                     <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20el%20ramo%20Intensidad%20Silenciosa" target="_blank">Ver Detalles <i class="fas fa-arrow-right"></i></a>
                 </div>
+                
+                <!-- Tulipanes: Arcoíris Primaveral (30) -->
+                <div class="tarjeta-producto" data-category="tulipanes">
+                    <div class="imagen-producto">
+                        <img src="https://placehold.co/300x180/FFB6C1/000000?text=TULIPANES+30+COLORES" alt="Ramo de 30 Tulipanes de Colores">
+                        <div class="detalle-overlay">
+                            <h4>Arcoíris Primaveral</h4>
+                            <p class="sub-desc">Ramo vibrante con 30 tulipanes en una mezcla alegre de todos los colores.</p>
+                            <span class="price-tag">$1,400 MXN</span>
+                            <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20el%20ramo%20Arcoíris%20Primaveral" class="btn-whatsapp" target="_blank">Ordenar ahora <i class="fab fa-whatsapp"></i></a>
+                        </div>
+                    </div>
+                    <h4>Arcoíris Primaveral</h4>
+                    <span class="price-tag-mobile">$1,400 MXN</span>
+                    <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20el%20ramo%20Arcoíris%20Primaveral" target="_blank">Ver Detalles <i class="fas fa-arrow-right"></i></a>
+                </div>
 
-                <!-- EJEMPLOS DE TARJETAS DE PRODUCTO (ORQUIDEAS) -->
+                <!-- Tulipanes: Elegancia Minimalista (10) -->
+                <div class="tarjeta-producto" data-category="tulipanes">
+                    <div class="imagen-producto">
+                        <img src="https://placehold.co/300x180/FFFFFF/3a3a3a?text=TULIPANES+BLANCOS+10+MINIMAL" alt="Ramo de 10 Tulipanes Blancos">
+                        <div class="detalle-overlay">
+                            <h4>Elegancia Minimalista</h4>
+                            <p class="sub-desc">10 tulipanes blancos puros envoltura moderna. Sencillez y buen gusto.</p>
+                            <span class="price-tag">$590 MXN</span>
+                            <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20Elegancia%20Minimalista%20(10%20Tulipanes)" class="btn-whatsapp" target="_blank">Ordenar ahora <i class="fab fa-whatsapp"></i></a>
+                        </div>
+                    </div>
+                    <h4>Elegancia Minimalista</h4>
+                    <span class="price-tag-mobile">$590 MXN</span>
+                    <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20Elegancia%20Minimalista%20(10%20Tulipanes)" target="_blank">Ver Detalles <i class="fas fa-arrow-right"></i></a>
+                </div>
 
+                <!-- === COLECCIÓN: ORQUÍDEAS (4 productos únicos) === -->
+
+                <!-- Orquídeas: Elegancia Imperial (Doble Vara) -->
                 <div class="tarjeta-producto" data-category="orquideas">
                     <div class="imagen-producto">
                         <img src="https://placehold.co/300x180/800080/ffffff?text=ORQUIDEA+DOBLE+VARA" alt="Orquídea Phalaenopsis">
                         <div class="detalle-overlay">
                             <h4>Elegancia Imperial</h4>
-                            <p class="sub-desc">Planta de Orquídea Phalaenopsis doble vara en maceta de cerámica.</p>
-                            <span class="price-tag">$75.00 USD</span>
+                            <p class="sub-desc">Planta de Orquídea Phalaenopsis doble vara en maceta de cerámica. Larga duración.</p>
+                            <span class="price-tag">$1,250 MXN</span>
                             <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20la%20Orquídea%20Elegancia%20Imperial" class="btn-whatsapp" target="_blank">Ordenar ahora <i class="fab fa-whatsapp"></i></a>
                         </div>
                     </div>
                     <h4>Elegancia Imperial</h4>
-                    <span class="price-tag-mobile">$75.00 USD</span>
+                    <span class="price-tag-mobile">$1,250 MXN</span>
                     <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20la%20Orquídea%20Elegancia%20Imperial" target="_blank">Ver Detalles <i class="fas fa-arrow-right"></i></a>
                 </div>
 
+                <!-- Orquídeas: Lujo Preservado (Flor preservada) -->
                 <div class="tarjeta-producto" data-category="orquideas">
                     <div class="imagen-producto">
                         <img src="https://placehold.co/300x180/000000/ffffff?text=ORQUIDEA+PRESERVADA+CRISTAL" alt="Orquídea Preservada">
                         <div class="detalle-overlay">
                             <h4>Lujo Preservado</h4>
-                            <p class="sub-desc">Flor de orquídea preservada de color negro en caja de cristal. Regalo eterno.</p>
-                            <span class="price-tag">$110.00 USD</span>
+                            <p class="sub-desc">Flor de orquídea preservada en caja de cristal. Un regalo eterno y sofisticado.</p>
+                            <span class="price-tag">$1,800 MXN</span>
                             <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20Orquídea%20Lujo%20Preservado" class="btn-whatsapp" target="_blank">Ordenar ahora <i class="fab fa-whatsapp"></i></a>
                         </div>
                     </div>
                     <h4>Lujo Preservado</h4>
-                    <span class="price-tag-mobile">$110.00 USD</span>
+                    <span class="price-tag-mobile">$1,800 MXN</span>
                     <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20Orquídea%20Lujo%20Preservado" target="_blank">Ver Detalles <i class="fas fa-arrow-right"></i></a>
                 </div>
+                
+                <!-- Orquídeas: Orquídea Cattleya (Perfume Exótico) -->
+                <div class="tarjeta-producto" data-category="orquideas">
+                    <div class="imagen-producto">
+                        <img src="https://placehold.co/300x180/FF69B4/ffffff?text=ORQUIDEA+CATTLEYA" alt="Orquídea Cattleya">
+                        <div class="detalle-overlay">
+                            <h4>Perfume Exótico (Cattleya)</h4>
+                            <p class="sub-desc">Planta de Orquídea Cattleya, conocida por su belleza y aroma intenso.</p>
+                            <span class="price-tag">$990 MXN</span>
+                            <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20Orquídea%20Perfume%20Exótico" class="btn-whatsapp" target="_blank">Ordenar ahora <i class="fab fa-whatsapp"></i></a>
+                        </div>
+                    </div>
+                    <h4>Perfume Exótico</h4>
+                    <span class="price-tag-mobile">$990 MXN</span>
+                    <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20Orquídea%20Perfume%20Exótico" target="_blank">Ver Detalles <i class="fas fa-arrow-right"></i></a>
+                </div>
 
-                <!-- EJEMPLOS DE TARJETAS DE PRODUCTO (LIRIOS) -->
+                <!-- Orquídeas: Mini Orquídeas (Trío en Maceta) -->
+                <div class="tarjeta-producto" data-category="orquideas">
+                    <div class="imagen-producto">
+                        <img src="https://placehold.co/300x180/D8BFD8/3a3a3a?text=MINI+ORQUIDEAS+TRIO" alt="Trío de Mini Orquídeas">
+                        <div class="detalle-overlay">
+                            <h4>Mini Orquídeas Trío</h4>
+                            <p class="sub-desc">Tres mini orquídeas de colores variados en una elegante maceta de barro.</p>
+                            <span class="price-tag">$750 MXN</span>
+                            <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20el%20Trío%20de%20Mini%20Orquídeas" class="btn-whatsapp" target="_blank">Ordenar ahora <i class="fab fa-whatsapp"></i></a>
+                        </div>
+                    </div>
+                    <h4>Mini Orquídeas Trío</h4>
+                    <span class="price-tag-mobile">$750 MXN</span>
+                    <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20el%20Trío%20de%20Mini%20Orquídeas" target="_blank">Ver Detalles <i class="fas fa-arrow-right"></i></a>
+                </div>
 
+                <!-- === COLECCIÓN: LIRIOS (4 productos únicos) === -->
+
+                <!-- Lirios: Majestuosidad Pura (10 tallos Blancos) -->
                 <div class="tarjeta-producto" data-category="lirios">
                     <div class="imagen-producto">
                         <img src="https://placehold.co/300x180/FFFFFF/3a3a3a?text=LIRIOS+BLANCOS+MAJESTUOSOS" alt="Arreglo de Lirios Blancos">
                         <div class="detalle-overlay">
                             <h4>Majestuosidad Pura</h4>
-                            <p class="sub-desc">Arreglo alto con 10 tallos de lirios blancos, ideal para inauguraciones.</p>
-                            <span class="price-tag">$60.00 USD</span>
+                            <p class="sub-desc">Arreglo alto con 10 tallos de lirios blancos. Imponente y formal.</p>
+                            <span class="price-tag">$900 MXN</span>
                             <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20el%20arreglo%20Majestuosidad%20Pura%20de%20Lirios" class="btn-whatsapp" target="_blank">Ordenar ahora <i class="fab fa-whatsapp"></i></a>
                         </div>
                     </div>
                     <h4>Majestuosidad Pura</h4>
-                    <span class="price-tag-mobile">$60.00 USD</span>
+                    <span class="price-tag-mobile">$900 MXN</span>
                     <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20el%20arreglo%20Majestuosidad%20Pura%20de%20Lirios" target="_blank">Ver Detalles <i class="fas fa-arrow-right"></i></a>
                 </div>
 
+                <!-- Lirios: Lirio Cala Elegante (10 tallos) -->
                 <div class="tarjeta-producto" data-category="lirios">
                     <div class="imagen-producto">
                         <img src="https://placehold.co/300x180/C0C0C0/3a3a3a?text=LIRIOS+CALA+ELEGANTES" alt="Ramo de Lirios Cala">
                         <div class="detalle-overlay">
                             <h4>Lirio Cala Elegante</h4>
-                            <p class="sub-desc">Ramo de 10 lirios Cala (Zantedeschia) en tallo largo, símbolo de belleza.</p>
-                            <span class="price-tag">$70.00 USD</span>
+                            <p class="sub-desc">Ramo de 10 lirios Cala (Zantedeschia) en tallo largo. Diseño minimalista.</p>
+                            <span class="price-tag">$1,100 MXN</span>
                             <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20el%20ramo%20Lirio%20Cala%20Elegante" class="btn-whatsapp" target="_blank">Ordenar ahora <i class="fab fa-whatsapp"></i></a>
                         </div>
                     </div>
                     <h4>Lirio Cala Elegante</h4>
-                    <span class="price-tag-mobile">$70.00 USD</span>
+                    <span class="price-tag-mobile">$1,100 MXN</span>
                     <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20el%20ramo%20Lirio%20Cala%20Elegante" target="_blank">Ver Detalles <i class="fas fa-arrow-right"></i></a>
                 </div>
+                
+                <!-- Lirios: Perfume Oriental (Lirios Rosas) -->
+                <div class="tarjeta-producto" data-category="lirios">
+                    <div class="imagen-producto">
+                        <img src="https://placehold.co/300x180/F08080/ffffff?text=LIRIOS+ROSAS+ORIENTALES" alt="Lirios Rosas Orientales">
+                        <div class="detalle-overlay">
+                            <h4>Perfume Oriental</h4>
+                            <p class="sub-desc">Ramo de lirios orientales rosas. Fragancia intensa y capullos grandes.</p>
+                            <span class="price-tag">$780 MXN</span>
+                            <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20Perfume%20Oriental%20de%20Lirios" class="btn-whatsapp" target="_blank">Ordenar ahora <i class="fab fa-whatsapp"></i></a>
+                        </div>
+                    </div>
+                    <h4>Perfume Oriental</h4>
+                    <span class="price-tag-mobile">$780 MXN</span>
+                    <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20Perfume%20Oriental%20de%20Lirios" target="_blank">Ver Detalles <i class="fas fa-arrow-right"></i></a>
+                </div>
 
-                <!-- EJEMPLOS DE TARJETAS DE PRODUCTO (LISIANTHUS) -->
+                <!-- Lirios: Arreglo de Alstroemerias y Lirios -->
+                <div class="tarjeta-producto" data-category="lirios">
+                    <div class="imagen-producto">
+                        <img src="https://placehold.co/300x180/E0FFFF/3a3a3a?text=MIX+LIRIOS+ALSTROEMERIAS" alt="Arreglo Mixto Lirios y Alstroemerias">
+                        <div class="detalle-overlay">
+                            <h4>Naturaleza Compartida</h4>
+                            <p class="sub-desc">Base de lirios blancos combinados con alstroemerias de colores. Muy duradero.</p>
+                            <span class="price-tag">$650 MXN</span>
+                            <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20Arreglo%20Naturaleza%20Compartida" class="btn-whatsapp" target="_blank">Ordenar ahora <i class="fab fa-whatsapp"></i></a>
+                        </div>
+                    </div>
+                    <h4>Naturaleza Compartida</h4>
+                    <span class="price-tag-mobile">$650 MXN</span>
+                    <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20Arreglo%20Naturaleza%20Compartida" target="_blank">Ver Detalles <i class="fas fa-arrow-right"></i></a>
+                </div>
 
+                <!-- === COLECCIÓN: LISIANTHUS (4 productos únicos) === -->
+
+                <!-- Lisianthus: Sueño Versátil (Morados y Rosas) -->
                 <div class="tarjeta-producto" data-category="lisianthus">
                     <div class="imagen-producto">
                         <img src="https://placehold.co/300x180/9370DB/ffffff?text=LISIANTHUS+MORADOS+Y+ROSAS" alt="Ramo de Lisianthus Morados">
                         <div class="detalle-overlay">
                             <h4>Sueño Versátil</h4>
-                            <p class="sub-desc">Ramo de Lisianthus morados y rosas en tono pastel, muy delicado y abundante.</p>
-                            <span class="price-tag">$48.00 USD</span>
+                            <p class="sub-desc">Ramo de Lisianthus morados y rosas en tono pastel. Abundante y muy delicado.</p>
+                            <span class="price-tag">$820 MXN</span>
                             <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20el%20ramo%20Sueño%20Versátil%20de%20Lisianthus" class="btn-whatsapp" target="_blank">Ordenar ahora <i class="fab fa-whatsapp"></i></a>
                         </div>
                     </div>
                     <h4>Sueño Versátil</h4>
-                    <span class="price-tag-mobile">$48.00 USD</span>
+                    <span class="price-tag-mobile">$820 MXN</span>
                     <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20el%20ramo%20Sueño%20Versátil%20de%20Lisianthus" target="_blank">Ver Detalles <i class="fas fa-arrow-right"></i></a>
                 </div>
 
+                <!-- Lisianthus: Nieve de Verano (Blancos) -->
                 <div class="tarjeta-producto" data-category="lisianthus">
                     <div class="imagen-producto">
                         <img src="https://placehold.co/300x180/F0F8FF/3a3a3a?text=LISIANTHUS+BLANCOS+PUROS" alt="Ramo de Lisianthus Blanco">
                         <div class="detalle-overlay">
                             <h4>Nieve de Verano</h4>
-                            <p class="sub-desc">Ramo puro de Lisianthus blancos, ideal para bodas o aniversarios. Simboliza respeto.</p>
-                            <span class="price-tag">$42.00 USD</span>
+                            <p class="sub-desc">Ramo puro de Lisianthus blancos. Símbolo de respeto y gratitud.</p>
+                            <span class="price-tag">$750 MXN</span>
                             <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20el%20ramo%20Nieve%20de%20Verano" class="btn-whatsapp" target="_blank">Ordenar ahora <i class="fab fa-whatsapp"></i></a>
                         </div>
                     </div>
                     <h4>Nieve de Verano</h4>
-                    <span class="price-tag-mobile">$42.00 USD</span>
+                    <span class="price-tag-mobile">$750 MXN</span>
                     <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20el%20ramo%20Nieve%20de%20Verano" target="_blank">Ver Detalles <i class="fas fa-arrow-right"></i></a>
                 </div>
                 
-                <!-- PRODUCTO MIXTO -->
-                <div class="tarjeta-producto" data-category="gerberas lirios">
+                <!-- Lisianthus: Cascada de Púrpura (Lisianthus + Rosas) -->
+                <div class="tarjeta-producto" data-category="lisianthus rosas">
                     <div class="imagen-producto">
-                        <img src="https://placehold.co/300x180/F08080/FFFFFF?text=ARREGLO+MIXTO+VITALIDAD" alt="Arreglo floral Mixto">
+                        <img src="https://placehold.co/300x180/4B0082/ffffff?text=LISIANTHUS+ROSAS+PURPURA" alt="Cascada de Púrpura">
                         <div class="detalle-overlay">
-                            <h4>Festival de Color</h4>
-                            <p class="sub-desc">Arreglo que combina gerberas y lirios, lleno de vitalidad y alegría.</p>
-                            <span class="price-tag">$58.00 USD</span>
-                            <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20el%20arreglo%20Festival%20de%20Color" class="btn-whatsapp" target="_blank">Ordenar ahora <i class="fab fa-whatsapp"></i></a>
+                            <h4>Cascada de Púrpura</h4>
+                            <p class="sub-desc">Combinación de Lisianthus y rosas moradas. Arreglo denso y muy romántico.</p>
+                            <span class="price-tag">$1,100 MXN</span>
+                            <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20Cascada%20de%20Púrpura" class="btn-whatsapp" target="_blank">Ordenar ahora <i class="fab fa-whatsapp"></i></a>
                         </div>
                     </div>
-                    <h4>Festival de Color</h4>
-                    <span class="price-tag-mobile">$58.00 USD</span>
-                    <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20el%20arreglo%20Festival%20de%20Color" target="_blank">Ver Detalles <i class="fas fa-arrow-right"></i></a>
+                    <h4>Cascada de Púrpura</h4>
+                    <span class="price-tag-mobile">$1,100 MXN</span>
+                    <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20Cascada%20de%20Púrpura" target="_blank">Ver Detalles <i class="fas fa-arrow-right"></i></a>
                 </div>
 
+                <!-- Lisianthus: Mix de Pasteles (Lisianthus y Eucalipto) -->
+                <div class="tarjeta-producto" data-category="lisianthus">
+                    <div class="imagen-producto">
+                        <img src="https://placehold.co/300x180/E6E6FA/3a3a3a?text=LISIANTHUS+PASTEL+EUCALIPTO" alt="Mix de Pasteles">
+                        <div class="detalle-overlay">
+                            <h4>Mix de Pasteles</h4>
+                            <p class="sub-desc">Lisianthus blancos y lavanda combinados con follaje de eucalipto aromático.</p>
+                            <span class="price-tag">$620 MXN</span>
+                            <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20Mix%20de%20Pasteles" class="btn-whatsapp" target="_blank">Ordenar ahora <i class="fab fa-whatsapp"></i></a>
+                        </div>
+                    </div>
+                    <h4>Mix de Pasteles</h4>
+                    <span class="price-tag-mobile">$620 MXN</span>
+                    <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20Mix%20de%20Pasteles" target="_blank">Ver Detalles <i class="fas fa-arrow-right"></i></a>
+                </div>
+                
             </div>
         </section>
 
     </main>
 
-    <!-- RECUADRO DE PEDIDO EXPRESS FLOTANTE (MINIMIZADO/EXPANDIBLE) -->
+    <!-- RECUADRO DE PEDIDO EXPRESS FLOTANTE NEGRO (MEJORADO) -->
     <a href="https://wa.me/XXXXXXXXXX?text=Hola,%20quisiera%20hacer%20un%20pedido%20express%20personalizado." class="express-float" target="_blank">
         <i class="fab fa-whatsapp"></i> <!-- Ícono visible cuando está minimizado -->
         <div class="express-content">
@@ -763,7 +965,7 @@
 
     <!-- PIE DE PÁGINA -->
     <footer>
-        &copy; 2023 RiaFlowerShopp. Todos los derechos reservados. | Envíos a Domicilio.
+        &copy; 2023 RiaFlowerShopp. Todos los derechos reservados. | Precios en Pesos Mexicanos (MXN).
     </footer>
 
     <!-- SCRIPT DE FILTRADO (Lógica para filtrar y actualizar el título) -->
@@ -788,6 +990,7 @@
                 productCards.forEach(card => {
                     const cardCategory = card.getAttribute('data-category');
                     
+                    // Comprueba si la categoría es "todos" o si la tarjeta contiene la categoría buscada
                     if (category === 'todos' || cardCategory.includes(category)) {
                         card.style.display = 'block';
                     } else {
