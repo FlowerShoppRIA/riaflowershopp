@@ -1,172 +1,548 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Servicios - RiaFlowerShopp</title>
-<link rel="stylesheet" href="css/styles.css">
-<style>
-body {
-  font-family: Arial, sans-serif;
-  background: #fff8f0;
-  margin: 0;
-  padding: 0;
-  color: #333;
-}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RiaFlowerShopp | Servicios Florales Especiales</title>
+    <!-- Fuentes de Google: Playfair Display para títulos, Roboto para cuerpo -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome para iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <style>
+        /* --- RiaFlowerShopp Estilo Cálido y Terroso --- */
+        :root {
+            --color-terra: #a8522c; /* Marrón Terroso de la barra de navegación */
+            --color-dark-text: #3a3a3a; /* Texto principal oscuro */
+            --color-soft-cream: #fbf9f6; /* Fondo general minimalista */
+            --color-light-bg: #ffffff; /* Fondo de tarjetas */
+            --color-cta: #1a1a1a; /* NEGRO MATE para el botón flotante */
+            --font-heading: 'Playfair Display', serif; /* Elegante para títulos */
+            --font-body: 'Roboto', sans-serif; /* Limpio para cuerpo */
+        }
 
-.menu {
-  background: #b85c2c;
-  text-align: center;
-  padding: 12px 0;
-}
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-.menu a {
-  color: #fff;
-  text-decoration: none;
-  margin: 0 15px;
-  font-weight: bold;
-  font-size: 1.1rem;
-  transition: color 0.3s;
-}
+        body {
+            font-family: var(--font-body);
+            background: var(--color-soft-cream);
+            color: var(--color-dark-text);
+            line-height: 1.6;
+        }
 
-.menu a:hover { color: #ffe6cc; }
+        /* --- 1. CABECERA Y MENÚ --- */
+        .main-header {
+            background: var(--color-terra);
+            color: white;
+            padding: 12px 0; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
 
-.servicios-section {
-  padding: 50px 20px;
-  text-align: center;
-}
+        .menu a {
+            color: white;
+            text-decoration: none;
+            margin: 0 20px;
+            font-weight: 400;
+            font-size: 1rem;
+            transition: all 0.3s;
+            padding: 5px 0;
+            border-bottom: 2px solid transparent;
+        }
 
-.servicios-section h2 {
-  font-size: 2.5rem;
-  margin-bottom: 40px;
-  color: #b85c2c;
-  font-weight: bold;
-}
+        .menu a:hover, .menu a.active {
+            color: #fff0e6;
+            border-bottom: 2px solid #fff0e6;
+        }
 
-.servicios-container {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 25px;
-}
+        .menu a.logo-link {
+            font-family: var(--font-heading); 
+            font-size: 1.6rem; 
+            font-weight: 600; 
+            margin-right: 40px;
+            border-bottom: none; 
+        }
 
-.servicio-card {
-  background-color: #fff;
-  border-radius: 15px;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
-  overflow: hidden;
-  width: 280px;
-  transition: transform 0.3s, box-shadow 0.3s;
-  text-align: center;
-}
+        /* --- 2. LAYOUT PRINCIPAL (Contenido y Sidebar) --- */
+        .main-content-wrapper {
+            max-width: 1200px; 
+            margin: 40px auto 80px auto;
+            padding: 0 20px;
+        }
 
-.servicio-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 12px 25px rgba(0,0,0,0.2);
-}
+        .page-title {
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            color: var(--color-terra);
+            text-align: center;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        .page-subtitle {
+            text-align: center;
+            color: #6a6a6a;
+            font-size: 1.1rem;
+            margin-bottom: 50px;
+        }
 
-.servicio-card img {
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
-}
+        /* Contenedor Flex para el Layout de 2 Columnas */
+        .services-container {
+            display: grid;
+            grid-template-columns: 250px 1fr; /* 250px para el sidebar, el resto para detalles */
+            gap: 30px;
+            background-color: var(--color-light-bg);
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+            padding: 20px;
+        }
+        
+        /* --- 3. BARRA LATERAL (SIDEBAR) --- */
+        .sidebar-nav {
+            padding-right: 20px;
+            border-right: 1px solid #eee;
+        }
 
-.servicio-card h3 {
-  margin: 15px 0 10px;
-  color: #b85c2c;
-  font-size: 1.4rem;
-}
+        .nav-title {
+            font-family: var(--font-heading);
+            font-size: 1.4rem;
+            color: var(--color-dark-text);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--color-terra);
+        }
 
-.servicio-card p {
-  margin: 0 15px 15px;
-  font-size: 0.95rem;
-  color: #555;
-  min-height: 50px;
-}
+        .nav-link {
+            display: flex;
+            align-items: center;
+            padding: 15px 10px;
+            margin-bottom: 8px;
+            text-decoration: none;
+            color: var(--color-dark-text);
+            font-weight: 500;
+            border-radius: 6px;
+            transition: all 0.3s;
+            font-size: 1rem;
+        }
 
-.btn-servicio {
-  display: inline-block;
-  margin-bottom: 15px;
-  background-color: #25D366;
-  color: #fff;
-  padding: 10px 20px;
-  border-radius: 25px;
-  text-decoration: none;
-  font-weight: bold;
-  font-size: 1rem;
-  transition: background-color 0.3s, transform 0.3s;
-}
+        .nav-link i {
+            margin-right: 12px;
+            font-size: 1.3rem;
+            color: var(--color-terra);
+            width: 20px;
+            text-align: center;
+        }
 
-.btn-servicio:hover {
-  background-color: #1ebe5d;
-  transform: scale(1.05);
-}
+        .nav-link:hover {
+            background-color: #f7e7df; /* Tono suave de terra */
+            color: var(--color-terra);
+        }
 
-footer {
-  text-align: center;
-  padding: 20px;
-  background: #b85c2c;
-  color: white;
-  font-weight: bold;
-}
+        .nav-link.active {
+            background-color: var(--color-terra);
+            color: white;
+            font-weight: 600;
+        }
+        
+        .nav-link.active i {
+            color: white;
+        }
+        
+        /* Estilo especial para Funerarios en la navegación */
+        .nav-link[data-service="funerarios"] i {
+            color: #6a6a6a;
+        }
+        .nav-link[data-service="funerarios"].active i {
+            color: white;
+        }
 
-/* Responsivo */
-@media (max-width: 768px) {
-  .servicio-card { width: 220px; }
-  .servicios-section h2 { font-size: 2rem; }
-}
+        /* --- 4. ÁREA DE DETALLES DEL SERVICIO --- */
+        .service-details {
+            padding: 10px 0 20px 0;
+        }
 
-@media (max-width: 480px) {
-  .servicio-card { width: 180px; }
-  .servicios-section h2 { font-size: 1.6rem; }
-  .btn-servicio { padding: 8px 18px; font-size: 0.9rem; }
-}
-</style>
+        .details-header {
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .details-header h2 {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            color: var(--color-terra);
+            margin-bottom: 10px;
+        }
+        
+        /* Estilo para Funerarios en el título de detalles */
+        .service-details.funerarios h2 {
+            color: #6a6a6a;
+        }
+
+        .details-description {
+            color: #555;
+            font-size: 1rem;
+        }
+
+        /* Contenedor de Productos/Paquetes (El mismo grid anterior) */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .product-card {
+            background-color: var(--color-soft-cream);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+            border-left: 5px solid #e0e0e0;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            border-left-color: var(--color-terra);
+        }
+        
+        /* Ajuste para tarjetas Funerarias */
+        .service-details.funerarios .product-card:hover {
+            border-left-color: #6a6a6a;
+        }
+
+        .product-card h3 {
+            font-family: var(--font-heading);
+            font-size: 1.3rem;
+            color: var(--color-terra);
+            margin-bottom: 10px;
+        }
+        
+        /* Ajuste de color del título de la tarjeta Funeraria */
+        .service-details.funerarios .product-card h3 {
+             color: #6a6a6a;
+        }
+
+        .product-card p {
+            font-size: 0.95rem;
+            color: #6a6a6a;
+            margin-bottom: 15px;
+        }
+        
+        .btn-card-contact {
+            display: inline-block;
+            background-color: var(--color-terra);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: background-color 0.2s;
+        }
+
+        .btn-card-contact:hover {
+            background-color: #7a3a24;
+        }
+        
+        /* Botón Funerario más sobrio */
+        .service-details.funerarios .btn-card-contact {
+            background-color: #6a6a6a;
+        }
+        .service-details.funerarios .btn-card-contact:hover {
+            background-color: #555555;
+        }
+
+        /* Estilos de Novenarios */
+        .novenario-list {
+            list-style: none;
+            padding: 0;
+            margin-top: 20px;
+        }
+
+        .novenario-list li {
+            background-color: #f0f0f0;
+            padding: 12px 20px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            font-size: 0.95rem;
+        }
+        .novenario-list li i {
+            color: #3a3a3a;
+            margin-right: 10px;
+        }
+
+        /* Mensaje de Bienvenida Inicial */
+        .initial-message {
+            text-align: center;
+            padding: 60px 20px;
+            background-color: #fcf4f0;
+            border: 1px dashed var(--color-terra);
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+
+        .initial-message h3 {
+            font-family: var(--font-heading);
+            color: var(--color-terra);
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+        
+        /* --- 5. RESPONSIVO (Móviles) --- */
+        @media (max-width: 768px) {
+            .page-title { font-size: 2rem; }
+            .page-subtitle { margin-bottom: 30px; }
+            
+            .services-container {
+                grid-template-columns: 1fr; /* Colapsa a una columna */
+                gap: 20px;
+                padding: 15px;
+            }
+            
+            .sidebar-nav {
+                border-right: none;
+                border-bottom: 1px solid #eee;
+                padding-right: 0;
+                padding-bottom: 15px;
+            }
+
+            .nav-title {
+                text-align: center;
+                border-bottom: 1px solid #eee;
+            }
+            
+            .nav-link {
+                justify-content: center;
+                padding: 12px;
+            }
+
+            .products-grid { grid-template-columns: 1fr; }
+        }
+    </style>
 </head>
 <body>
 
-<nav class="menu">
-  <a href="index.html">Inicio</a>
-  <a href="catalogo.html">Catálogo</a>
-  <a href="express.html">Express</a>
-  <a href="servicios.html">Servicios</a>
-  <a href="contacto.html">Contacto</a>
-</nav>
+    <!-- CABECERA PRINCIPAL -->
+    <header class="main-header">
+        <nav class="menu">
+            <a href="index.html" class="logo-link">RiaFlowerShopp</a>
+            <a href="index.html">Inicio</a>
+            <a href="catalogo.html">Catálogo</a>
+            <a href="#" class="active">Servicios</a>
+            <a href="#">Contacto</a>
+        </nav>
+    </header>
 
-<section class="servicios-section">
-  <h2>Servicios</h2>
-  <div class="servicios-container">
+    <!-- CONTENEDOR PRINCIPAL DE SERVICIOS -->
+    <main class="main-content-wrapper">
 
-    <!-- Bodas -->
-    <div class="servicio-card">
-      <img src="img/boda.jpg" alt="Bodas">
-      <h3>Bodas</h3>
-      <p>Diseños florales elegantes y personalizados para tu día especial.</p>
-      <a href="productos-bodas.html" class="btn-servicio">Ver Productos</a>
-    </div>
+        <h1 class="page-title">Servicios Florales para Momentos Únicos</h1>
+        <p class="page-subtitle">Diseño y montaje de arreglos florales especializados para eventos sociales y ceremonias solemnes.</p>
 
-    <!-- Quince Años -->
-    <div class="servicio-card">
-      <img src="img/quince.jpg" alt="Quince Años">
-      <h3>Quince Años</h3>
-      <p>Ramos y arreglos únicos para que tu fiesta sea inolvidable.</p>
-      <a href="productos-quince.html" class="btn-servicio">Ver Productos</a>
-    </div>
+        <div class="services-container">
+            <!-- BARRA LATERAL DE NAVEGACIÓN -->
+            <aside class="sidebar-nav">
+                <h3 class="nav-title">Servicios Especiales</h3>
+                <a href="#" data-service="bodas" class="nav-link active">
+                    <i class="fas fa-ring"></i> Bodas
+                </a>
+                <a href="#" data-service="quince_anos" class="nav-link">
+                    <i class="fas fa-crown"></i> Quince Años
+                </a>
+                <a href="#" data-service="funerarios" class="nav-link">
+                    <i class="fas fa-cross"></i> Servicios Funerarios
+                </a>
+            </aside>
 
-    <!-- Funerales -->
-    <div class="servicio-card">
-      <img src="img/funeral.jpg" alt="Funerales">
-      <h3>Funerales</h3>
-      <p>Arreglos sobrios y respetuosos para momentos difíciles.</p>
-      <a href="productos-funerales.html" class="btn-servicio">Ver Productos</a>
-    </div>
+            <!-- ÁREA DE DETALLES (Contenido Dinámico) -->
+            <section class="service-details" id="service-details">
+                <div class="initial-message">
+                    <h3>Bienvenido a Servicios Especiales</h3>
+                    <p>Selecciona un servicio de la izquierda (Bodas, Quince Años o Funerarios) para ver los paquetes y detalles de los arreglos que ofrecemos.</p>
+                </div>
+            </section>
+        </div>
 
-  </div>
-</section>
+    </main>
 
-<footer>
-  © RiaFlowerShopp 2025 – Diseños florales con amor.
-</footer>
+    <!-- BOTÓN FLOTANTE DE WHATSAPP -->
+    <a href="https://wa.me/XXXXXXXXXX?text=Hola,%20solicito%20información%20sobre%20sus%20servicios%20especiales." class="express-float" target="_blank">
+        <i class="fab fa-whatsapp"></i> 
+    </a>
+
+    <!-- PIE DE PÁGINA -->
+    <footer>
+        &copy; 2023 RiaFlowerShopp. Todos los derechos reservados. | Contacto y Pedidos: WhatsApp.
+    </footer>
+
+    <!-- LÓGICA DE CARGA DINÁMICA CON JAVASCRIPT -->
+    <script>
+        // 1. DATA DE SERVICIOS
+        const servicesData = {
+            'bodas': {
+                title: 'Diseño Floral para Bodas',
+                description: 'Creamos atmósferas mágicas que reflejan su historia de amor. Desde la ceremonia hasta el banquete, cada flor es seleccionada para armonizar con el tema de su boda.',
+                products: [
+                    { name: 'Mesa de Novios (Principal)', desc: 'Diseño de cabecera de mesa, con cascadas florales completas o jardines bajos y abundantes. Incluye montaje de candelabros y follaje premium.', whatsapp: 'Mesa%20Principal' },
+                    { name: 'Centros de Mesa (Banquete)', desc: 'Opciones altas y bajas que aportan movimiento y volumen al salón. Diseños que van desde la elegancia minimalista hasta el lujo total con flores importadas.', whatsapp: 'Centros%20de%20Mesa' },
+                    { name: 'Decoración de Iglesia/Altar', desc: 'Arreglos para el altar, bancas, e iluminación con velos y flores. Decoración especial para la entrada principal y el pasillo.', whatsapp: 'Decoración%20Iglesia' },
+                    { name: 'Bouquets y Boutonniere', desc: 'Diseño de ramo de novia personalizado (bouquet), ramos para damas de honor y prendidos (boutonniere) para el novio y padrinos. Totalmente coordinados.', whatsapp: 'Bouquets' }
+                ]
+            },
+            'quince_anos': {
+                title: 'Flores para Fiestas de Quince Años',
+                description: 'Diseños frescos y modernos, pensados para la quinceañera. Creamos ambientes vibrantes que realzan el espíritu joven y festivo de la celebración.',
+                products: [
+                    { name: 'Mesa Principal Temática', desc: 'Arreglos y bases florales que destacan la mesa principal, adaptados al color y tema de la quinceañera (Ej. Vintage, Jardín Secreto, Gala).', whatsapp: 'XV%20Años:%20Mesa%20Principal' },
+                    { name: 'Centros de Mesa Juveniles', desc: 'Centros altos con follaje colgante o bases con luces LED y flores de temporada. Diseños divertidos y elegantes que capturan la atención.', whatsapp: 'XV%20Años:%20Centros%20de%20Mesa' },
+                    { name: 'Arcos y Puerta de Entrada', desc: 'Arreglos florales monumentales en la puerta o pórtico. Diseño de fondo floral (Photo Booth) para capturar los mejores recuerdos del evento.', whatsapp: 'XV%20Años:%20Arcos%20y%20Entrada' },
+                    { name: 'Ramos de Quinceañera', desc: 'Ramos de presentación y réplica (para lanzar) a juego. Elaborados con flores delicadas como Lisianthus, Rosas de jardín o Peonías (según disponibilidad).', whatsapp: 'XV%20Años:%20Ramos' }
+                ]
+            },
+            'funerarios': {
+                title: 'Servicios Florales Funerarios (Paz y Respeto)',
+                description: 'Arreglos sobrios y respetuosos, elaborados con la mayor calidad y puntualidad para acompañar en estos momentos difíciles.',
+                products: [
+                    // Subsección 1: Arreglos de Salas
+                    { name: 'Coronas Fúnebres', desc: 'Coronas circulares grandes con bases de tripie y listón personalizado. Flores tradicionales: Lirios, Rosas Blancas y Crisantemos.', whatsapp: 'Funerario:%20Coronas', subTitle: 'Arreglos para Salas y Ataúdes' },
+                    { name: 'Cruces y Palmas', desc: 'Arreglos con forma de cruz en flores naturales. Ideales para colocar en esquinas o a la entrada de la sala velatoria.', whatsapp: 'Funerario:%20Cruces' },
+                    { name: 'Arreglos Cubre-Ataúdes', desc: 'Arreglos horizontales diseñados para cubrir el ataúd por completo o parcialmente. Rosas y follaje denso para máxima solemnidad.', whatsapp: 'Funerario:%20Cubre-Ataúdes' },
+                    { name: 'Bases Florales Medianas', desc: 'Arreglos de pie o de mesa para complementar la decoración de la sala, disponibles en tonos neutros y flores de temporada.', whatsapp: 'Funerario:%20Bases%20Medianas' },
+                    // Subsección 2: Novenarios (Generado como lista en JS para el Novenario)
+                    { name: 'Paquetes de Novenarios (9 Días)', desc: 'Servicio de suministro de flores frescas diarias o semanalmente para el periodo del novenario, garantizando frescura y entrega puntual.', whatsapp: 'Funerario:%20Novenarios', isNovenario: true }
+                ]
+            }
+        };
+
+        const serviceDetailsElement = document.getElementById('service-details');
+        const navLinks = document.querySelectorAll('.nav-link');
+        
+        // 2. FUNCIÓN PARA GENERAR EL CONTENIDO DE LA TARJETA
+        function generateProductCard(product, serviceId) {
+            const buttonText = product.isNovenario ? 'Solicitar Paquete' : 'Cotizar Paquete';
+            
+            // Generar contenido de Novenarios como lista
+            if (product.isNovenario) {
+                return `
+                    <div class="product-card" style="grid-column: 1 / -1;">
+                        <h3>${product.name}</h3>
+                        <p>${product.desc}</p>
+                        <ul class="novenario-list">
+                            <li><i class="fas fa-calendar-alt"></i> Paquete Básico: 9 Arreglos pequeños (tipo ramo o florero) para cambio diario.</li>
+                            <li><i class="fas fa-calendar-alt"></i> Paquete Estándar: 3 Arreglos medianos (centros de mesa) con cambio cada tres días.</li>
+                            <li><i class="fas fa-calendar-alt"></i> Paquete Premium: Servicio de montaje semanal con flores de alta gama (Orquídeas o Anturios) para un ambiente duradero.</li>
+                        </ul>
+                        <a href="https://wa.me/XXXXXXXXXX?text=Cotización%20Servicio%20${product.whatsapp}" class="btn-card-contact" target="_blank" style="margin-top: 15px;">
+                            ${buttonText} <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
+                `;
+            }
+
+            // Generar tarjetas estándar
+            return `
+                <div class="product-card">
+                    <h3>${product.name}</h3>
+                    <p>${product.desc}</p>
+                    <a href="https://wa.me/XXXXXXXXXX?text=Cotización%20Servicio%20${serviceId.toUpperCase()}:%20${product.whatsapp}" class="btn-card-contact" target="_blank">
+                        ${buttonText} <i class="fab fa-whatsapp"></i>
+                    </a>
+                </div>
+            `;
+        }
+
+        // 3. FUNCIÓN PRINCIPAL PARA CARGAR EL SERVICIO
+        function loadService(serviceId) {
+            const data = servicesData[serviceId];
+            if (!data) return;
+
+            // 1. Limpiar clase anterior y añadir la clase específica para CSS
+            serviceDetailsElement.className = 'service-details ' + serviceId;
+
+            // 2. Generar el HTML de las tarjetas
+            let productsHtml = '';
+            let currentSubTitle = '';
+            
+            data.products.forEach(product => {
+                // Manejar el subtítulo (solo para Funerarios)
+                if (product.subTitle && product.subTitle !== currentSubTitle) {
+                    if (currentSubTitle !== '') {
+                        productsHtml += '</div>'; // Cerrar el grid anterior si existe
+                    }
+                    productsHtml += `<h4 style="font-family: var(--font-body); font-weight: 700; font-size: 1.2rem; color: var(--color-dark-text); margin-top: 30px; margin-bottom: 15px;">${product.subTitle}</h4>`;
+                    productsHtml += '<div class="products-grid">';
+                    currentSubTitle = product.subTitle;
+                }
+                
+                // Si no tiene subtitulo (Bodas/XV Años), asegura que el grid principal esté abierto
+                if (serviceId !== 'funerarios' && productsHtml === '') {
+                     productsHtml += '<div class="products-grid">';
+                }
+                
+                productsHtml += generateProductCard(product, serviceId);
+            });
+            
+            // 3. Cerrar el grid si no fue cerrado previamente
+            if (productsHtml.endsWith('<div class="products-grid">')) {
+                 productsHtml += '</div>';
+            }
+
+
+            // 4. Construir el contenido final
+            const finalHtml = `
+                <div class="details-header">
+                    <h2>${data.title}</h2>
+                    <p class="details-description">${data.description}</p>
+                </div>
+                ${productsHtml}
+            `;
+
+            // 5. Inyectar el HTML
+            serviceDetailsElement.innerHTML = finalHtml;
+        }
+
+        // 4. EVENT LISTENERS PARA NAVEGACIÓN
+        navLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const serviceId = this.getAttribute('data-service');
+
+                // Quitar 'active' de todos los enlaces
+                navLinks.forEach(nav => nav.classList.remove('active'));
+
+                // Añadir 'active' al enlace clickeado
+                this.classList.add('active');
+
+                // Cargar el contenido
+                loadService(serviceId);
+            });
+        });
+
+        // 5. CARGAR EL SERVICIO DE BODAS POR DEFECTO AL INICIAR
+        window.onload = function() {
+            // Asegurarse de que el enlace de 'bodas' tenga la clase 'active' inicialmente (ya está en HTML)
+            loadService('bodas');
+        }
+
+    </script>
+
+    <!-- BOTÓN FLOTANTE DE WHATSAPP (Mantenido) -->
+    <a href="https://wa.me/XXXXXXXXXX?text=Hola,%20solicito%20información%20sobre%20sus%20servicios%20especiales." class="express-float" target="_blank">
+        <i class="fab fa-whatsapp"></i> 
+    </a>
+
+    <!-- PIE DE PÁGINA -->
+    <footer>
+        &copy; 2023 RiaFlowerShopp. Todos los derechos reservados. | Contacto y Pedidos: WhatsApp.
+    </footer>
 
 </body>
 </html>
