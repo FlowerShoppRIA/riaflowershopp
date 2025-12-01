@@ -4,8 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RiaFlowerShopp | Catálogo de Flores Profesional y Dinámico</title>
-        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Fuentes de Google: Playfair Display para títulos, Roboto para cuerpo -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome para iconos de filtrado y WhatsApp -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     
     <style>
         /* --- RiaFlowerShopp Estilo Cálido y Terroso --- */
@@ -33,7 +35,7 @@
             line-height: 1.6;
         }
 
-        /* --- 1. CABECERA Y MENÚ (SIN CAMBIOS) --- */
+        /* --- 1. CABECERA Y MENÚ --- */
         .main-header {
             background: var(--color-terra);
             color: white;
@@ -69,7 +71,7 @@
             border-bottom: none; 
         }
 
-        /* --- 2. LAYOUT PRINCIPAL (SIN CAMBIOS) --- */
+        /* --- 2. LAYOUT PRINCIPAL (SIDEBAR + CONTENT) --- */
         .main-content-wrapper {
             display: flex;
             max-width: 1300px; /* Ancho mayor para más productos en vista */
@@ -146,6 +148,7 @@
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
         .filter-btn.active i { color: white; }
+        /* REMOVIDO: .filter-btn-all { display: none !important; } */
 
 
         /* ÁREA DE CONTENIDO Y GRID DE PRODUCTOS */
@@ -161,7 +164,7 @@
             gap: 25px; 
         }
 
-        /* --- 3. TARJETAS DE PRODUCTO DINÁMICAS (SIN CAMBIOS) --- */
+        /* --- 3. TARJETAS DE PRODUCTO DINÁMICAS (EXPANSIÓN) --- */
         .tarjeta-producto {
             background-color: var(--color-light-bg);
             border-radius: 10px;
@@ -218,7 +221,7 @@
             margin-top: 5px;
         }
         
-        /* Overlay de Detalles (Aparece en Hover) */
+        /* --- Overlay de Detalles (Aparece en Hover) --- */
         .detalle-overlay {
             position: absolute;
             top: 0;
@@ -284,103 +287,101 @@
             }
         }
         
-        /* ------------------------------------------------------------- */
-        /* --- 4. RECUADRO EXPRESS FLOTANTE (MODIFICADO A ESTADO FIJO) --- */
-        /* ------------------------------------------------------------- */
+        /* --- 4. RECUADRO EXPRESS FLOTANTE (MINIMIZADO) - ESTÉTICA MEJORADA --- */
         .express-float {
             position: fixed;
             bottom: 30px; 
             left: 30px; 
-            width: 220px; /* Ancho fijo para el contenido */
-            height: auto; /* Altura automática para el texto */
-            border-radius: 10px; 
+            width: 55px; 
+            height: 55px;
+            border-radius: 50px; 
             background: var(--color-cta); /* NEGRO MATE */
-            box-shadow: 0 4px 15px rgba(0,0,0,0.4); 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.4); /* Sombra más fuerte */
+            padding: 0; 
+            text-align: center;
             z-index: 9999;
-            /* Eliminamos transiciones de tamaño */
-            padding: 0; 
-            cursor: default; /* Ya no es interactivo en hover */
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); /* Curva de transición elegante */
+            cursor: pointer;
             overflow: hidden; 
-            display: block;
-            border: 2px solid #25D366; /* Borde de color WhatsApp para destacar */
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        /* Ocultamos el ícono grande, solo mostramos el contenido fijo */
-        .express-float i { display: none !important; }
+        /* ICONO DE WHATSAPP (Visible siempre) */
+        .express-float i {
+            color: white;
+            font-size: 2rem;
+            transition: transform 0.3s;
+        }
         
-        /* Contenido Fijo (Ahora siempre visible y en estado normal) */
+        /* Contenido expandido (Oculto inicialmente) */
         .express-content {
-            /* Reutilizamos la clase, pero la hacemos visible y ajustada */
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            position: static; /* Ya no es absoluto dentro de su padre */
-            width: 100%; 
-            height: auto;
-            background: var(--color-cta); /* Color de fondo uniforme */
-            border-radius: 10px;
-            padding: 15px; /* Más padding para que se vea mejor */
-            opacity: 1; /* Siempre visible */
-            transform: none; /* Sin transformación */
+            position: absolute;
+            width: 200px; 
+            height: 100%;
+            top: 0;
+            left: 0;
+            /* Degradado de negro a un gris oscuro */
+            background: linear-gradient(90deg, var(--color-cta) 0%, var(--color-cta-hover) 100%); 
+            border-radius: 10px; /* Ya que el padre se redondeará al expandirse */
+            padding: 10px 15px;
+            opacity: 0;
+            transform: translateX(-100%); 
+            transition: all 0.3s ease-out;
         }
-        
-        /* Se elimina todo el comportamiento de hover para .express-float */
+
         .express-float:hover {
-            width: 220px; 
-            border-radius: 10px; 
+            width: 200px; 
+            border-radius: 10px; /* Se convierte en caja al expandirse */
             background-color: var(--color-cta);
         }
+
         .express-float:hover .express-content {
             opacity: 1;
-            transform: none; 
+            transform: translateX(0); 
             width: 100%;
         }
-        .express-float:hover i { display: none; }
+
+        .express-float:hover i {
+            opacity: 0;
+            transform: scale(0.5); 
+        }
         
-        /* Estilos del texto en la expansión - Título de Urgencia */
+        /* Estilos del texto en la expansión */
         .express-content h4 {
             font-family: var(--font-body);
-            font-weight: 900; /* Mayor énfasis */
-            color: #FFD700; /* Dorado para la urgencia */
-            font-size: 1.1rem;
+            font-weight: 700;
+            color: #25D366; /* Verde de WhatsApp para destacar el servicio */
+            font-size: 1rem;
             margin: 0;
-            text-transform: uppercase;
-            margin-bottom: 5px;
         }
-        /* Estilos del texto en la expansión - Mensaje */
         .express-content p {
-            color: #ffffff; /* Texto más claro */
-            font-size: 0.8rem;
+            color: #cccccc;
+            font-size: 0.75rem;
             margin: 0;
-            line-height: 1.3;
-            margin-bottom: 10px;
-            text-align: center;
+            line-height: 1.2;
+            margin-bottom: 5px;
         }
         
         /* Botón de texto dentro de la expansión */
         .express-content .btn-whatsapp-expanded {
             background-color: #25D366; 
             color: white;
-            padding: 8px 15px; 
-            border-radius: 20px; 
-            font-size: 0.9rem; 
+            padding: 5px 10px; 
+            border-radius: 5px; 
+            font-size: 0.8rem; 
             font-weight: 700;
             text-decoration: none;
             display: flex;
             align-items: center;
-            transition: background-color 0.2s;
-        }
-        .express-content .btn-whatsapp-expanded:hover {
-            background-color: #1DA851;
-        }
-        .express-content .btn-whatsapp-expanded i {
-            color: white;
-            font-size: 1rem;
-            margin-right: 5px;
         }
 
-        /* --- 5. PIE DE PÁGINA (SIN CAMBIOS) --- */
+        /* --- 5. PIE DE PÁGINA --- */
         footer {
             text-align: center;
             padding: 25px;
@@ -393,24 +394,20 @@
 
         /* --- 6. RESPONSIVO (Móviles) --- */
         @media (max-width: 900px) {
-            /* En móvil, volvemos al estado de botón minimizado (sin el contenido de texto) */
+            /* Express-Float: Vuelve a ser un botón fijo en móvil */
             .express-float {
                 width: 50px; 
                 height: 50px;
                 bottom: 20px; 
                 left: 20px; 
                 border-radius: 50%;
-                background: var(--color-cta);
-                border: none; /* Eliminar el borde de urgencia en móvil */
-                cursor: pointer;
-                display: flex;
-                align-items: center;
-                justify-content: center;
+                background: var(--color-cta); /* Mantiene el color negro en móvil */
             }
+            .express-float:hover { width: 50px; border-radius: 50%; }
             .express-content { display: none !important; } /* Ocultar contenido expandido en móvil */
-            .express-float i { opacity: 1; transform: none; font-size: 1.8rem; color: white; display: block !important; }
+            .express-float i { opacity: 1; transform: none; font-size: 1.8rem; }
             
-            /* Layout Móvil (Sin cambios) */
+            /* Layout Móvil */
             .main-content-wrapper { flex-direction: column; }
             .sidebar-filter {
                 order: -1; 
@@ -418,22 +415,23 @@
                 flex: 0 0 auto; 
             }
             
-            /* Ajustes de tarjeta para móvil (Sin cambios) */
+            /* Ajustes de tarjeta para móvil */
             .product-grid {
-                grid-template-columns: repeat(auto-fit, minmin(130px, 1fr));
+                grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
                 gap: 15px;
             }
             
-            /* En móvil, el precio es visible y el overlay no existe (Sin cambios) */
+            /* En móvil, el precio es visible y el overlay no existe */
             .tarjeta-producto:hover {
                 transform: none;
                 box-shadow: 0 4px 12px rgba(0,0,0,0.08);
             }
             .detalle-overlay { display: none; }
             
-            /* Botón de whatsapp visible en la tarjeta en móvil (Sin cambios) */
+            /* Botón de whatsapp visible en la tarjeta en móvil */
             .tarjeta-producto > a {
                  display: block;
+                 /* Mantiene el color verde de WhatsApp en el botón de la tarjeta */
                  background-color: #25D366; 
                  color: white;
                  text-decoration: none;
@@ -451,7 +449,8 @@
 </head>
 <body>
 
-        <header class="main-header">
+    <!-- CABECERA PRINCIPAL -->
+    <header class="main-header">
         <nav class="menu">
             <a href="index.html" class="logo-link">RiaFlowerShopp</a>
             <a href="index.html">Inicio</a>
@@ -461,13 +460,17 @@
         </nav>
     </header>
 
-        <main class="main-content-wrapper">
+    <!-- CONTENEDOR PRINCIPAL (SIDEBAR + PRODUCTOS) -->
+    <main class="main-content-wrapper">
 
-                <aside class="sidebar-filter">
+        <!-- BARRA LATERAL DE FILTROS (Se mantiene la lógica para filtrar) -->
+        <aside class="sidebar-filter">
             <h3>Buscar por Colección</h3>
 
             <div class="filter-container-mobile">
-                                <button class="filter-btn active" data-category="rosas"><i class="fas fa-leaf"></i> Rosas</button>
+                <!-- Botones de Filtro -->
+                <!-- Botón de Rosas ahora visible y activo por defecto -->
+                <button class="filter-btn active" data-category="rosas"><i class="fas fa-leaf"></i> Rosas</button>
                 <button class="filter-btn" data-category="gerberas"><i class="fas fa-sun"></i> Gerberas</button>
                 <button class="filter-btn" data-category="girasoles"><i class="fas fa-gift"></i> Girasoles</button>
                 <button class="filter-btn" data-category="tulipanes"><i class="fas fa-seedling"></i> Tulipanes</button>
@@ -477,12 +480,16 @@
             </div>
         </aside>
 
-                <section class="catalogo-content-area">
+        <!-- ÁREA DE CATÁLOGO -->
+        <section class="catalogo-content-area">
             <h2 id="tituloCatalogo" class="font-heading text-3xl font-bold text-terra mb-6">Nuestra Colección Floral</h2> 
 
             <div class="product-grid">
                 
-                                <div class="tarjeta-producto" data-category="rosas">
+                <!-- === COLECCIÓN: ROSAS (12, 24, 36, 50) === -->
+                
+                <!-- Rosas: Docena Clásica (12) -->
+                <div class="tarjeta-producto" data-category="rosas">
                     <div class="imagen-producto">
                         <img src="https://placehold.co/300x180/C9082A/ffffff?text=RAMO+12+ROSAS" alt="Ramo de 12 Rosas Premium">
                         <div class="detalle-overlay">
@@ -497,7 +504,8 @@
                     <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20Docena%20Clásica%20de%20Rosas%20(12)" target="_blank">Ver Detalles <i class="fas fa-arrow-right"></i></a>
                 </div>
 
-                                <div class="tarjeta-producto" data-category="rosas">
+                <!-- Rosas: Doble de Amor (24) -->
+                <div class="tarjeta-producto" data-category="rosas">
                     <div class="imagen-producto">
                         <img src="https://placehold.co/300x180/F0F0F0/3a3a3a?text=RAMO+24+ROSAS+BLANCAS" alt="Ramo de 24 Rosas Blancas">
                          <div class="detalle-overlay">
@@ -512,7 +520,8 @@
                     <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20el%20arreglo%20Doble%20de%20Amor%20(24%20Rosas)" target="_blank">Ver Detalles <i class="fas fa-arrow-right"></i></a>
                 </div>
                 
-                                <div class="tarjeta-producto" data-category="rosas">
+                <!-- Rosas: Gran Romance (36) -->
+                <div class="tarjeta-producto" data-category="rosas">
                     <div class="imagen-producto">
                         <img src="https://placehold.co/300x180/C41E3A/ffffff?text=RAMO+36+ROSAS+ROJAS" alt="Ramo de 36 Rosas">
                         <div class="detalle-overlay">
@@ -527,7 +536,8 @@
                     <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20Gran%20Romance%20(36%20Rosas)" target="_blank">Ver Detalles <i class="fas fa-arrow-right"></i></a>
                 </div>
 
-                                <div class="tarjeta-producto" data-category="rosas">
+                <!-- Rosas: Majestuosidad (50) -->
+                <div class="tarjeta-producto" data-category="rosas">
                     <div class="imagen-producto">
                         <img src="https://placehold.co/300x180/4C0211/ffffff?text=RAMO+50+ROSAS+LUJO" alt="Ramo de 50 Rosas">
                         <div class="detalle-overlay">
@@ -542,84 +552,141 @@
                     <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20Majestuosidad%20(50%20Rosas)" target="_blank">Ver Detalles <i class="fas fa-arrow-right"></i></a>
                 </div>
 
-                                
-            </div>
-        </section>
+                <!-- === COLECCIÓN: GERBERAS (12, 24, 36, 50) === -->
+                
+                <!-- Gerberas: Docena de Colores (12) -->
+                <div class="tarjeta-producto" data-category="gerberas">
+                    <div class="imagen-producto">
+                        <img src="https://placehold.co/300x180/FFD700/3a3a3a?text=RAMO+12+GERBERAS+MIX" alt="Ramo de 12 Gerberas">
+                        <div class="detalle-overlay">
+                            <h4>Docena de Colores (12)</h4>
+                            <p class="sub-desc">Ramo de 12 gerberas de colores vibrantes. Un regalo de pura alegría.</p>
+                            <span class="price-tag">$580 MXN</span>
+                            <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20Docena%20de%20Colores%20de%20Gerberas%20(12)" class="btn-whatsapp" target="_blank">Ordenar ahora <i class="fab fa-whatsapp"></i></a>
+                        </div>
+                    </div>
+                    <h4>Docena de Colores</h4>
+                    <span class="price-tag-mobile">$580 MXN</span>
+                    <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20Docena%20de%20Colores%20de%20Gerberas%20(12)" target="_blank">Ver Detalles <i class="fas fa-arrow-right"></i></a>
+                </div>
+                
+                <!-- Gerberas: Alegría Doble (24) -->
+                <div class="tarjeta-producto" data-category="gerberas">
+                    <div class="imagen-producto">
+                        <img src="https://placehold.co/300x180/F0E68C/3a3a3a?text=BOUQUET+24+GERBERAS" alt="Gerberas Amarillas">
+                        <div class="detalle-overlay">
+                            <h4>Alegría Doble (24)</h4>
+                            <p class="sub-desc">24 cabezas de gerberas frescas en bouquet, maximizando el impacto visual.</p>
+                            <span class="price-tag">$990 MXN</span>
+                            <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20el%20bouquet%20Alegría%20Doble%20(24%20Gerberas)" class="btn-whatsapp" target="_blank">Ordenar ahora <i class="fab fa-whatsapp"></i></a>
+                        </div>
+                    </div>
+                    <h4>Alegría Doble</h4>
+                    <span class="price-tag-mobile">$990 MXN</span>
+                    <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20el%20bouquet%20Alegría%20Doble%20(24%20Gerberas)" target="_blank">Ver Detalles <i class="fas fa-arrow-right"></i></a>
+                </div>
 
-    </main>
+                <!-- Gerberas: Ramo Festivo (36) -->
+                <div class="tarjeta-producto" data-category="gerberas">
+                    <div class="imagen-producto">
+                        <img src="https://placehold.co/300x180/FF6347/ffffff?text=RAMO+36+GERBERAS+GRANDES" alt="Ramo de 36 Gerberas">
+                        <div class="detalle-overlay">
+                            <h4>Ramo Festivo (36)</h4>
+                            <p class="sub-desc">36 gerberas de tallo largo, perfecto para celebraciones y eventos grandes.</p>
+                            <span class="price-tag">$1,500 MXN</span>
+                            <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20Ramo%20Festivo%20(36%20Gerberas)" class="btn-whatsapp" target="_blank">Ordenar ahora <i class="fab fa-whatsapp"></i></a>
+                        </div>
+                    </div>
+                    <h4>Ramo Festivo</h4>
+                    <span class="price-tag-mobile">$1,500 MXN</span>
+                    <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20Ramo%20Festivo%20(36%20Gerberas)" target="_blank">Ver Detalles <i class="fas fa-arrow-right"></i></a>
+                </div>
 
-                <a href="https://wa.me/XXXXXXXXXX?text=Necesito%20un%20arreglo%20floral%20de%20urgencia" class="express-float" target="_blank">
-                <i class="fab fa-whatsapp"></i> 
-        
-        <div class="express-content">
-            <h4>¡ORDEN DE URGENCIA!</h4>
-            <p>¿Tienes una urgencia? Solicita nuestros productos ya elaborados y listos para envío inmediato.</p>
-            <span class="btn-whatsapp-expanded">
-                <i class="fab fa-whatsapp"></i> 
-                Solicítalo por WhatsApp
-            </span>
-        </div>
-    </a>
+                <!-- Gerberas: Explosión Floral (50) -->
+                <div class="tarjeta-producto" data-category="gerberas">
+                    <div class="imagen-producto">
+                        <img src="https://placehold.co/300x180/FF1493/ffffff?text=RAMO+50+GERBERAS+FULL+COLOR" alt="Ramo de 50 Gerberas">
+                        <div class="detalle-overlay">
+                            <h4>Explosión Floral (50)</h4>
+                            <p class="sub-desc">50 gerberas en un arreglo espectacular. El regalo más impactante.</p>
+                            <span class="price-tag">$1,990 MXN</span>
+                            <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20Explosión%20Floral%20(50%20Gerberas)" class="btn-whatsapp" target="_blank">Ordenar ahora <i class="fab fa-whatsapp"></i></a>
+                        </div>
+                    </div>
+                    <h4>Explosión Floral</h4>
+                    <span class="price-tag-mobile">$1,990 MXN</span>
+                    <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20Explosión%20Floral%20(50%20Gerberas)" target="_blank">Ver Detalles <i class="fas fa-arrow-right"></i></a>
+                </div>
 
+                <!-- === COLECCIÓN: GIRASOLES (12, 24, 36, 50) === -->
 
-        <footer>
-        <p>&copy; 2024 RiaFlowerShopp. Todos los derechos reservados.</p>
-    </footer>
+                <!-- Girasoles: Docena de Sol (12) -->
+                <div class="tarjeta-producto" data-category="girasoles">
+                    <div class="imagen-producto">
+                        <img src="https://placehold.co/300x180/FFDB58/3a3a3a?text=RAMO+12+GIRASOLES" alt="Ramo de 12 Girasoles Grandes">
+                        <div class="detalle-overlay">
+                            <h4>Docena de Sol (12)</h4>
+                            <p class="sub-desc">Ramo de 12 girasoles grandes, que irradian energía y positividad.</p>
+                            <span class="price-tag">$1,150 MXN</span>
+                            <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20Docena%20de%20Sol%20(12%20Girasoles)" class="btn-whatsapp" target="_blank">Ordenar ahora <i class="fab fa-whatsapp"></i></a>
+                        </div>
+                    </div>
+                    <h4>Docena de Sol</h4>
+                    <span class="price-tag-mobile">$1,150 MXN</span>
+                    <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20Docena%20de%20Sol%20(12%20Girasoles)" target="_blank">Ver Detalles <i class="fas fa-arrow-right"></i></a>
+                </div>
 
-        <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const filterButtons = document.querySelectorAll('.filter-btn');
-            const productCards = document.querySelectorAll('.tarjeta-producto');
-            const tituloCatalogo = document.getElementById('tituloCatalogo');
+                <!-- Girasoles: Doble Resplandor (24) -->
+                <div class="tarjeta-producto" data-category="girasoles">
+                    <div class="imagen-producto">
+                        <img src="https://placehold.co/300x180/F0E68C/3a3a3a?text=RAMO+24+GIRASOLES" alt="Ramo de 24 Girasoles">
+                        <div class="detalle-overlay">
+                            <h4>Doble Resplandor (24)</h4>
+                            <p class="sub-desc">24 girasoles que duplican la alegría. Un detalle que no olvidarán.</p>
+                            <span class="price-tag">$1,950 MXN</span>
+                            <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20Doble%20Resplandor%20(24%20Girasoles)" class="btn-whatsapp" target="_blank">Ordenar ahora <i class="fab fa-whatsapp"></i></a>
+                        </div>
+                    </div>
+                    <h4>Doble Resplandor</h4>
+                    <span class="price-tag-mobile">$1,950 MXN</span>
+                    <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20Doble%20Resplandor%20(24%20Girasoles)" target="_blank">Ver Detalles <i class="fas fa-arrow-right"></i></a>
+                </div>
+                
+                <!-- Girasoles: Campo Luminoso (36) -->
+                <div class="tarjeta-producto" data-category="girasoles">
+                    <div class="imagen-producto">
+                        <img src="https://placehold.co/300x180/DAA520/ffffff?text=RAMO+36+GIRASOLES+IMPRESIONANTE" alt="Ramo de 36 Girasoles">
+                        <div class="detalle-overlay">
+                            <h4>Campo Luminoso (36)</h4>
+                            <p class="sub-desc">36 girasoles en un arreglo que simula un pequeño campo de luz.</p>
+                            <span class="price-tag">$2,700 MXN</span>
+                            <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20Campo%20Luminoso%20(36%20Girasoles)" class="btn-whatsapp" target="_blank">Ordenar ahora <i class="fab fa-whatsapp"></i></a>
+                        </div>
+                    </div>
+                    <h4>Campo Luminoso</h4>
+                    <span class="price-tag-mobile">$2,700 MXN</span>
+                    <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20Campo%20Luminoso%20(36%20Girasoles)" target="_blank">Ver Detalles <i class="fas fa-arrow-right"></i></a>
+                </div>
+                
+                <!-- Girasoles: Eterno Verano (50) -->
+                <div class="tarjeta-producto" data-category="girasoles">
+                    <div class="imagen-producto">
+                        <img src="https://placehold.co/300x180/F4A460/3a3a3a?text=RAMO+50+GIRASOLES+MAGNO" alt="Ramo de 50 Girasoles">
+                        <div class="detalle-overlay">
+                            <h4>Eterno Verano (50)</h4>
+                            <p class="sub-desc">50 girasoles. La máxima expresión de felicidad y admiración.</p>
+                            <span class="price-tag">$3,500 MXN</span>
+                            <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20Eterno%20Verano%20(50%20Girasoles)" class="btn-whatsapp" target="_blank">Ordenar ahora <i class="fab fa-whatsapp"></i></a>
+                        </div>
+                    </div>
+                    <h4>Eterno Verano</h4>
+                    <span class="price-tag-mobile">$3,500 MXN</span>
+                    <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20Eterno%20Verano%20(50%20Girasoles)" target="_blank">Ver Detalles <i class="fas fa-arrow-right"></i></a>
+                </div>
 
-            const categoryTitles = {
-                'rosas': 'Colección: Rosas Clásicas',
-                'gerberas': 'Colección: Gerberas de Alegría',
-                'girasoles': 'Colección: Girasoles de Verano',
-                'tulipanes': 'Colección: Tulipanes Premium',
-                'orquideas': 'Colección: Orquídeas Exóticas',
-                'lirios': 'Colección: Lirios Elegantes',
-                'lisianthus': 'Colección: Lisianthus Delicados',
-            };
+                <!-- === COLECCIÓN: TULIPANES (4 productos únicos) === -->
 
-            function filterProducts(category) {
-                productCards.forEach(card => {
-                    const cardCategory = card.getAttribute('data-category');
-                    
-                    // Comprueba si la categoría es "todos" (aunque no hay botón de "todos") o si la tarjeta contiene la categoría buscada
-                    if (category === 'todos' || cardCategory.includes(category)) {
-                        card.style.display = 'block';
-                    } else {
-                        card.style.display = 'none';
-                    }
-                });
-                
-                // Actualiza el título del catálogo
-                tituloCatalogo.textContent = categoryTitles[category] || categoryTitles['rosas'];
-            }
-
-            function setActiveButton(category) {
-                filterButtons.forEach(btn => btn.classList.remove('active'));
-                
-                // Activa el botón clickeado
-                document.querySelectorAll(`.filter-btn[data-category=\"${category}\"]`).forEach(btn => {
-                    btn.classList.add('active');
-                });
-            }
-
-            filterButtons.forEach(button => {
-                button.addEventListener('click', () => {
-                    const category = button.getAttribute('data-category');
-                    setActiveButton(category);
-                    filterProducts(category);
-                });
-            });
-
-            // Inicialización: Mostrar la categoría 'rosas' por defecto
-            const initialCategory = 'rosas'; 
-            setActiveButton(initialCategory);
-            filterProducts(initialCategory);
-        });
-    </script>
-</body>
-</html>
+                <!-- Tulipanes: Ternura Holandesa (20) -->
+                <div class="tarjeta-producto" data-category="tulipanes">
+                    <div class="imagen-producto">
+                        <img src="https://placehold.co/300x180/FF99AA/ffffff?text=TULIPANES+ROSADOS+20" alt="Ramo de 
