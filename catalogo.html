@@ -1,1030 +1,625 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RiaFlowerShopp | Catálogo de Flores Profesional y Dinámico</title>
-    <!-- Fuentes de Google: Playfair Display para títulos, Roboto para cuerpo -->
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
-    <!-- Font Awesome para iconos de filtrado y WhatsApp -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    
-    <style>
-        /* --- RiaFlowerShopp Estilo Cálido y Terroso --- */
-        :root {
-            --color-terra: #a8522c; /* Marrón Terroso de la barra de navegación */
-            --color-dark-text: #3a3a3a; /* Texto principal oscuro */
-            --color-soft-cream: #fbf9f6; /* Fondo general minimalista */
-            --color-light-bg: #ffffff; /* Fondo de tarjetas */
-            --color-cta: #1a1a1a; /* NEGRO MATE para el botón flotante (Mejora) */
-            --color-cta-hover: #333333; /* Color oscuro en hover */
-            --font-heading: 'Playfair Display', serif; /* Elegante para títulos */
-            --font-body: 'Roboto', sans-serif; /* Limpio para cuerpo */
-        }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RiaFlowerShopp | Catálogo de Flores Profesional y Dinámico</title>
+        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <style>
+        /* --- RiaFlowerShopp Estilo Cálido y Terroso --- */
+        :root {
+            --color-terra: #a8522c; /* Marrón Terroso de la barra de navegación */
+            --color-dark-text: #3a3a3a; /* Texto principal oscuro */
+            --color-soft-cream: #fbf9f6; /* Fondo general minimalista */
+            --color-light-bg: #ffffff; /* Fondo de tarjetas */
+            --color-cta: #1a1a1a; /* NEGRO MATE para el botón flotante (Mejora) */
+            --color-cta-hover: #333333; /* Color oscuro en hover */
+            --font-heading: 'Playfair Display', serif; /* Elegante para títulos */
+            --font-body: 'Roboto', sans-serif; /* Limpio para cuerpo */
+        }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-        body {
-            font-family: var(--font-body);
-            background: var(--color-soft-cream);
-            color: var(--color-dark-text);
-            line-height: 1.6;
-        }
+        body {
+            font-family: var(--font-body);
+            background: var(--color-soft-cream);
+            color: var(--color-dark-text);
+            line-height: 1.6;
+        }
 
-        /* --- 1. CABECERA Y MENÚ --- */
-        .main-header {
-            background: var(--color-terra);
-            color: white;
-            padding: 12px 0; 
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
+        /* --- 1. CABECERA Y MENÚ (SIN CAMBIOS) --- */
+        .main-header {
+            background: var(--color-terra);
+            color: white;
+            padding: 12px 0; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
 
-        .menu a {
-            color: white;
-            text-decoration: none;
-            margin: 0 20px;
-            font-weight: 400;
-            font-size: 1rem;
-            transition: all 0.3s;
-            padding: 5px 0;
-            border-bottom: 2px solid transparent;
-        }
+        .menu a {
+            color: white;
+            text-decoration: none;
+            margin: 0 20px;
+            font-weight: 400;
+            font-size: 1rem;
+            transition: all 0.3s;
+            padding: 5px 0;
+            border-bottom: 2px solid transparent;
+        }
 
-        .menu a:hover, .menu a.active {
-            color: #fff0e6;
-            border-bottom: 2px solid #fff0e6;
-        }
+        .menu a:hover, .menu a.active {
+            color: #fff0e6;
+            border-bottom: 2px solid #fff0e6;
+        }
 
-        /* Título/Logo en el menú */
-        .menu a.logo-link {
-            font-family: var(--font-heading); 
-            font-size: 1.6rem; 
-            font-weight: 600; 
-            margin-right: 40px;
-            border-bottom: none; 
-        }
+        /* Título/Logo en el menú */
+        .menu a.logo-link {
+            font-family: var(--font-heading); 
+            font-size: 1.6rem; 
+            font-weight: 600; 
+            margin-right: 40px;
+            border-bottom: none; 
+        }
 
-        /* --- 2. LAYOUT PRINCIPAL (SIDEBAR + CONTENT) --- */
-        .main-content-wrapper {
-            display: flex;
-            max-width: 1300px; /* Ancho mayor para más productos en vista */
-            margin: 40px auto;
-            padding: 0 20px;
-        }
+        /* --- 2. LAYOUT PRINCIPAL (SIN CAMBIOS) --- */
+        .main-content-wrapper {
+            display: flex;
+            max-width: 1300px; /* Ancho mayor para más productos en vista */
+            margin: 40px auto;
+            padding: 0 20px;
+        }
 
-        /* BARRA LATERAL (Filtros) */
-        .sidebar-filter {
-            flex: 0 0 180px; /* Ancho más pequeño */
-            margin-right: 30px; 
-            padding: 20px 0;
-            height: fit-content;
-            position: sticky;
-            top: 20px;
-        }
-        
-        .filter-container-mobile {
-            display: flex;
-            gap: 8px;
-            overflow-x: auto;
-            padding-bottom: 10px;
-            -webkit-overflow-scrolling: touch;
-            scrollbar-width: none; 
-        }
-        .filter-container-mobile::-webkit-scrollbar { display: none; }
+        /* BARRA LATERAL (Filtros) */
+        .sidebar-filter {
+            flex: 0 0 180px; /* Ancho más pequeño */
+            margin-right: 30px; 
+            padding: 20px 0;
+            height: fit-content;
+            position: sticky;
+            top: 20px;
+        }
+        
+        .filter-container-mobile {
+            display: flex;
+            gap: 8px;
+            overflow-x: auto;
+            padding-bottom: 10px;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none; 
+        }
+        .filter-container-mobile::-webkit-scrollbar { display: none; }
 
-        @media (min-width: 901px) {
-             .filter-container-mobile {
-                display: block; 
-                overflow-x: visible; 
-                padding-bottom: 0;
-            }
-        }
+        @media (min-width: 901px) {
+             .filter-container-mobile {
+                display: block; 
+                overflow-x: visible; 
+                padding-bottom: 0;
+            }
+        }
 
-        .sidebar-filter h3 {
-            font-family: var(--font-heading);
-            font-weight: 600;
-            margin-bottom: 20px;
-            font-size: 1.3rem;
-            border-bottom: 2px solid #eee;
-            padding-bottom: 5px;
-        }
+        .sidebar-filter h3 {
+            font-family: var(--font-heading);
+            font-weight: 600;
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 5px;
+        }
 
-        .filter-btn {
-            display: block;
-            min-width: fit-content; 
-            padding: 8px 10px;
-            margin-bottom: 6px;
-            background: transparent;
-            border: none;
-            text-align: left;
-            font-size: 0.95rem;
-            color: var(--color-dark-text);
-            cursor: pointer;
-            transition: all 0.3s;
-            border-radius: 4px;
-        }
+        .filter-btn {
+            display: block;
+            min-width: fit-content; 
+            padding: 8px 10px;
+            margin-bottom: 6px;
+            background: transparent;
+            border: none;
+            text-align: left;
+            font-size: 0.95rem;
+            color: var(--color-dark-text);
+            cursor: pointer;
+            transition: all 0.3s;
+            border-radius: 4px;
+        }
 
-        .filter-btn:hover {
-            background-color: #f7f7f7;
-            color: var(--color-terra);
-        }
+        .filter-btn:hover {
+            background-color: #f7f7f7;
+            color: var(--color-terra);
+        }
 
-        .filter-btn i {
-            margin-right: 8px;
-            color: var(--color-terra);
-        }
+        .filter-btn i {
+            margin-right: 8px;
+            color: var(--color-terra);
+        }
 
-        .filter-btn.active {
-            color: white;
-            background-color: var(--color-terra); 
-            font-weight: 500;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-        .filter-btn.active i { color: white; }
-        /* REMOVIDO: .filter-btn-all { display: none !important; } */
+        .filter-btn.active {
+            color: white;
+            background-color: var(--color-terra); 
+            font-weight: 500;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .filter-btn.active i { color: white; }
 
 
-        /* ÁREA DE CONTENIDO Y GRID DE PRODUCTOS */
-        .catalogo-content-area {
-            flex: 1;
-            padding: 0;
-        }
-        
-        .product-grid {
-            display: grid;
-            /* Grid denso para mostrar más productos */
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); 
-            gap: 25px; 
-        }
+        /* ÁREA DE CONTENIDO Y GRID DE PRODUCTOS */
+        .catalogo-content-area {
+            flex: 1;
+            padding: 0;
+        }
+        
+        .product-grid {
+            display: grid;
+            /* Grid denso para mostrar más productos */
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); 
+            gap: 25px; 
+        }
 
-        /* --- 3. TARJETAS DE PRODUCTO DINÁMICAS (EXPANSIÓN) --- */
-        .tarjeta-producto {
-            background-color: var(--color-light-bg);
-            border-radius: 10px;
-            padding: 15px; /* Padding interno para separación */
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-            transition: all 0.4s ease; /* Transición suave para todos los efectos */
-            text-align: center;
-            border: 1px solid #f0f0f0;
-            position: relative; 
-            overflow: hidden; /* Oculta elementos que se salen al hacer zoom */
-        }
+        /* --- 3. TARJETAS DE PRODUCTO DINÁMICAS (SIN CAMBIOS) --- */
+        .tarjeta-producto {
+            background-color: var(--color-light-bg);
+            border-radius: 10px;
+            padding: 15px; /* Padding interno para separación */
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            transition: all 0.4s ease; /* Transición suave para todos los efectos */
+            text-align: center;
+            border: 1px solid #f0f0f0;
+            position: relative; 
+            overflow: hidden; /* Oculta elementos que se salen al hacer zoom */
+        }
 
-        /* EFECTO DE EXPANSION Y LEVANTAMIENTO EN HOVER */
-        .tarjeta-producto:hover {
-            box-shadow: 0 10px 30px rgba(168, 82, 44, 0.3); /* Sombra con más profundidad */
-            transform: translateY(-8px) scale(1.05); /* Zoom y levantamiento notable */
-            z-index: 10; /* Asegura que se vea sobre las tarjetas vecinas */
-        }
+        /* EFECTO DE EXPANSION Y LEVANTAMIENTO EN HOVER */
+        .tarjeta-producto:hover {
+            box-shadow: 0 10px 30px rgba(168, 82, 44, 0.3); /* Sombra con más profundidad */
+            transform: translateY(-8px) scale(1.05); /* Zoom y levantamiento notable */
+            z-index: 10; /* Asegura que se vea sobre las tarjetas vecinas */
+        }
 
-        .imagen-producto {
-            height: 160px; 
-            border-radius: 8px;
-            margin-bottom: 10px;
-            overflow: hidden;
-            position: relative; 
-        }
+        .imagen-producto {
+            height: 160px; 
+            border-radius: 8px;
+            margin-bottom: 10px;
+            overflow: hidden;
+            position: relative; 
+        }
 
-        .imagen-producto img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.4s ease;
-        }
-        
-        /* Contenido que se muestra por defecto (Minimalista) */
-        .tarjeta-producto h4 {
-            font-family: var(--font-heading);
-            margin-bottom: 5px;
-            color: var(--color-dark-text);
-            font-size: 1.1rem; 
-            font-weight: 600;
-            /* Elipsis para títulos largos */
-            overflow: hidden;
-            white-space: nowrap;
-            text-overflow: ellipsis;
-        }
-        
-        /* El precio es el foco visible en la tarjeta minimizada */
-        .price-tag-mobile {
-            display: block; 
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: var(--color-terra);
-            margin-top: 5px;
-        }
-        
-        /* --- Overlay de Detalles (Aparece en Hover) --- */
-        .detalle-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            /* Fondo que se funde con la imagen */
-            background-color: rgba(168, 82, 44, 0.95); 
-            color: white;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            opacity: 0; 
-            transform: translateY(100%); /* Oculto inicialmente abajo */
-            transition: all 0.4s ease-out;
-            pointer-events: none; 
-            border-radius: 10px; 
-            text-align: center;
-        }
+        .imagen-producto img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+        
+        /* Contenido que se muestra por defecto (Minimalista) */
+        .tarjeta-producto h4 {
+            font-family: var(--font-heading);
+            margin-bottom: 5px;
+            color: var(--color-dark-text);
+            font-size: 1.1rem; 
+            font-weight: 600;
+            /* Elipsis para títulos largos */
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+        
+        /* El precio es el foco visible en la tarjeta minimizada */
+        .price-tag-mobile {
+            display: block; 
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--color-terra);
+            margin-top: 5px;
+        }
+        
+        /* Overlay de Detalles (Aparece en Hover) */
+        .detalle-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* Fondo que se funde con la imagen */
+            background-color: rgba(168, 82, 44, 0.95); 
+            color: white;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0; 
+            transform: translateY(100%); /* Oculto inicialmente abajo */
+            transition: all 0.4s ease-out;
+            pointer-events: none; 
+            border-radius: 10px; 
+            text-align: center;
+        }
 
-        /* Revelar el Overlay en Hover */
-        .tarjeta-producto:hover .detalle-overlay {
-            opacity: 1; 
-            transform: translateY(0); /* Desliza hacia arriba */
-            pointer-events: auto; 
-        }
-        
-        /* Ajustes de estilo dentro del Overlay */
-        .detalle-overlay h4 { color: white; margin-bottom: 5px; font-size: 1.3rem; }
-        .detalle-overlay .sub-desc {
-            color: #ffe0c0; 
-            font-size: 0.85rem; 
-            margin-bottom: 15px; 
-            line-height: 1.3;
-        }
-        .detalle-overlay .price-tag {
-            font-size: 1.8rem;
-            color: #FFD700; /* Dorado para destacar el precio en el overlay */
-            font-weight: 700;
-            margin-bottom: 20px;
-        }
-        .detalle-overlay .btn-whatsapp {
-            /* Mantiene el color original de WhatsApp en el overlay */
-            background-color: #25D366; 
-            padding: 10px 20px;
-            border-radius: 20px;
-            font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-            transition: background-color 0.2s;
-        }
-        .detalle-overlay .btn-whatsapp:hover {
-            background-color: #1DA851;
-        }
-        
-        /* Ocultar elementos de la tarjeta minimizada en el hover (Desktop) */
-        @media (min-width: 901px) {
-            .tarjeta-producto:hover .price-tag-mobile {
-                display: none;
-            }
-        }
-        
-        /* --- 4. RECUADRO EXPRESS FLOTANTE (MINIMIZADO) - ESTÉTICA MEJORADA --- */
-        .express-float {
-            position: fixed;
-            bottom: 30px; 
-            left: 30px; 
-            width: 55px; 
-            height: 55px;
-            border-radius: 50px; 
-            background: var(--color-cta); /* NEGRO MATE */
-            box-shadow: 0 4px 15px rgba(0,0,0,0.4); /* Sombra más fuerte */
-            padding: 0; 
-            text-align: center;
-            z-index: 9999;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); /* Curva de transición elegante */
-            cursor: pointer;
-            overflow: hidden; 
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+        /* Revelar el Overlay en Hover */
+        .tarjeta-producto:hover .detalle-overlay {
+            opacity: 1; 
+            transform: translateY(0); /* Desliza hacia arriba */
+            pointer-events: auto; 
+        }
+        
+        /* Ajustes de estilo dentro del Overlay */
+        .detalle-overlay h4 { color: white; margin-bottom: 5px; font-size: 1.3rem; }
+        .detalle-overlay .sub-desc {
+            color: #ffe0c0; 
+            font-size: 0.85rem; 
+            margin-bottom: 15px; 
+            line-height: 1.3;
+        }
+        .detalle-overlay .price-tag {
+            font-size: 1.8rem;
+            color: #FFD700; /* Dorado para destacar el precio en el overlay */
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        .detalle-overlay .btn-whatsapp {
+            /* Mantiene el color original de WhatsApp en el overlay */
+            background-color: #25D366; 
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.2s;
+        }
+        .detalle-overlay .btn-whatsapp:hover {
+            background-color: #1DA851;
+        }
+        
+        /* Ocultar elementos de la tarjeta minimizada en el hover (Desktop) */
+        @media (min-width: 901px) {
+            .tarjeta-producto:hover .price-tag-mobile {
+                display: none;
+            }
+        }
+        
+        /* ------------------------------------------------------------- */
+        /* --- 4. RECUADRO EXPRESS FLOTANTE (MODIFICADO A ESTADO FIJO) --- */
+        /* ------------------------------------------------------------- */
+        .express-float {
+            position: fixed;
+            bottom: 30px; 
+            left: 30px; 
+            width: 220px; /* Ancho fijo para el contenido */
+            height: auto; /* Altura automática para el texto */
+            border-radius: 10px; 
+            background: var(--color-cta); /* NEGRO MATE */
+            box-shadow: 0 4px 15px rgba(0,0,0,0.4); 
+            z-index: 9999;
+            /* Eliminamos transiciones de tamaño */
+            padding: 0; 
+            cursor: default; /* Ya no es interactivo en hover */
+            overflow: hidden; 
+            display: block;
+            border: 2px solid #25D366; /* Borde de color WhatsApp para destacar */
+        }
 
-        /* ICONO DE WHATSAPP (Visible siempre) */
-        .express-float i {
-            color: white;
-            font-size: 2rem;
-            transition: transform 0.3s;
-        }
-        
-        /* Contenido expandido (Oculto inicialmente) */
-        .express-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            position: absolute;
-            width: 200px; 
-            height: 100%;
-            top: 0;
-            left: 0;
-            /* Degradado de negro a un gris oscuro */
-            background: linear-gradient(90deg, var(--color-cta) 0%, var(--color-cta-hover) 100%); 
-            border-radius: 10px; /* Ya que el padre se redondeará al expandirse */
-            padding: 10px 15px;
-            opacity: 0;
-            transform: translateX(-100%); 
-            transition: all 0.3s ease-out;
-        }
+        /* Ocultamos el ícono grande, solo mostramos el contenido fijo */
+        .express-float i { display: none !important; }
+        
+        /* Contenido Fijo (Ahora siempre visible y en estado normal) */
+        .express-content {
+            /* Reutilizamos la clase, pero la hacemos visible y ajustada */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: static; /* Ya no es absoluto dentro de su padre */
+            width: 100%; 
+            height: auto;
+            background: var(--color-cta); /* Color de fondo uniforme */
+            border-radius: 10px;
+            padding: 15px; /* Más padding para que se vea mejor */
+            opacity: 1; /* Siempre visible */
+            transform: none; /* Sin transformación */
+        }
+        
+        /* Se elimina todo el comportamiento de hover para .express-float */
+        .express-float:hover {
+            width: 220px; 
+            border-radius: 10px; 
+            background-color: var(--color-cta);
+        }
+        .express-float:hover .express-content {
+            opacity: 1;
+            transform: none; 
+            width: 100%;
+        }
+        .express-float:hover i { display: none; }
+        
+        /* Estilos del texto en la expansión - Título de Urgencia */
+        .express-content h4 {
+            font-family: var(--font-body);
+            font-weight: 900; /* Mayor énfasis */
+            color: #FFD700; /* Dorado para la urgencia */
+            font-size: 1.1rem;
+            margin: 0;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+        /* Estilos del texto en la expansión - Mensaje */
+        .express-content p {
+            color: #ffffff; /* Texto más claro */
+            font-size: 0.8rem;
+            margin: 0;
+            line-height: 1.3;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        
+        /* Botón de texto dentro de la expansión */
+        .express-content .btn-whatsapp-expanded {
+            background-color: #25D366; 
+            color: white;
+            padding: 8px 15px; 
+            border-radius: 20px; 
+            font-size: 0.9rem; 
+            font-weight: 700;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            transition: background-color 0.2s;
+        }
+        .express-content .btn-whatsapp-expanded:hover {
+            background-color: #1DA851;
+        }
+        .express-content .btn-whatsapp-expanded i {
+            color: white;
+            font-size: 1rem;
+            margin-right: 5px;
+        }
 
-        .express-float:hover {
-            width: 200px; 
-            border-radius: 10px; /* Se convierte en caja al expandirse */
-            background-color: var(--color-cta);
-        }
+        /* --- 5. PIE DE PÁGINA (SIN CAMBIOS) --- */
+        footer {
+            text-align: center;
+            padding: 25px;
+            background: var(--color-terra);
+            color: white;
+            font-weight: 300;
+            font-size: 0.9rem;
+            margin-top: 50px;
+        }
 
-        .express-float:hover .express-content {
-            opacity: 1;
-            transform: translateX(0); 
-            width: 100%;
-        }
-
-        .express-float:hover i {
-            opacity: 0;
-            transform: scale(0.5); 
-        }
-        
-        /* Estilos del texto en la expansión */
-        .express-content h4 {
-            font-family: var(--font-body);
-            font-weight: 700;
-            color: #25D366; /* Verde de WhatsApp para destacar el servicio */
-            font-size: 1rem;
-            margin: 0;
-        }
-        .express-content p {
-            color: #cccccc;
-            font-size: 0.75rem;
-            margin: 0;
-            line-height: 1.2;
-            margin-bottom: 5px;
-        }
-        
-        /* Botón de texto dentro de la expansión */
-        .express-content .btn-whatsapp-expanded {
-            background-color: #25D366; 
-            color: white;
-            padding: 5px 10px; 
-            border-radius: 5px; 
-            font-size: 0.8rem; 
-            font-weight: 700;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-        }
-
-        /* --- 5. PIE DE PÁGINA --- */
-        footer {
-            text-align: center;
-            padding: 25px;
-            background: var(--color-terra);
-            color: white;
-            font-weight: 300;
-            font-size: 0.9rem;
-            margin-top: 50px;
-        }
-
-        /* --- 6. RESPONSIVO (Móviles) --- */
-        @media (max-width: 900px) {
-            /* Express-Float: Vuelve a ser un botón fijo en móvil */
-            .express-float {
-                width: 50px; 
-                height: 50px;
-                bottom: 20px; 
-                left: 20px; 
-                border-radius: 50%;
-                background: var(--color-cta); /* Mantiene el color negro en móvil */
-            }
-            .express-float:hover { width: 50px; border-radius: 50%; }
-            .express-content { display: none !important; } /* Ocultar contenido expandido en móvil */
-            .express-float i { opacity: 1; transform: none; font-size: 1.8rem; }
-            
-            /* Layout Móvil */
-            .main-content-wrapper { flex-direction: column; }
-            .sidebar-filter {
-                order: -1; 
-                margin-bottom: 20px;
-                flex: 0 0 auto; 
-            }
-            
-            /* Ajustes de tarjeta para móvil */
-            .product-grid {
-                grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-                gap: 15px;
-            }
-            
-            /* En móvil, el precio es visible y el overlay no existe */
-            .tarjeta-producto:hover {
-                transform: none;
-                box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-            }
-            .detalle-overlay { display: none; }
-            
-            /* Botón de whatsapp visible en la tarjeta en móvil */
-            .tarjeta-producto > a {
-                 display: block;
-                 /* Mantiene el color verde de WhatsApp en el botón de la tarjeta */
-                 background-color: #25D366; 
-                 color: white;
-                 text-decoration: none;
-                 padding: 5px 10px;
-                 border-radius: 5px;
-                 font-size: 0.85rem;
-                 margin-top: 10px;
-            }
-            .tarjeta-producto > a i { margin-left: 5px; }
-            
-            .tarjeta-producto p { display: none; } /* Ocultar descripción larga en vista móvil */
-        }
-        
-    </style>
+        /* --- 6. RESPONSIVO (Móviles) --- */
+        @media (max-width: 900px) {
+            /* En móvil, volvemos al estado de botón minimizado (sin el contenido de texto) */
+            .express-float {
+                width: 50px; 
+                height: 50px;
+                bottom: 20px; 
+                left: 20px; 
+                border-radius: 50%;
+                background: var(--color-cta);
+                border: none; /* Eliminar el borde de urgencia en móvil */
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            .express-content { display: none !important; } /* Ocultar contenido expandido en móvil */
+            .express-float i { opacity: 1; transform: none; font-size: 1.8rem; color: white; display: block !important; }
+            
+            /* Layout Móvil (Sin cambios) */
+            .main-content-wrapper { flex-direction: column; }
+            .sidebar-filter {
+                order: -1; 
+                margin-bottom: 20px;
+                flex: 0 0 auto; 
+            }
+            
+            /* Ajustes de tarjeta para móvil (Sin cambios) */
+            .product-grid {
+                grid-template-columns: repeat(auto-fit, minmin(130px, 1fr));
+                gap: 15px;
+            }
+            
+            /* En móvil, el precio es visible y el overlay no existe (Sin cambios) */
+            .tarjeta-producto:hover {
+                transform: none;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            }
+            .detalle-overlay { display: none; }
+            
+            /* Botón de whatsapp visible en la tarjeta en móvil (Sin cambios) */
+            .tarjeta-producto > a {
+                 display: block;
+                 background-color: #25D366; 
+                 color: white;
+                 text-decoration: none;
+                 padding: 5px 10px;
+                 border-radius: 5px;
+                 font-size: 0.85rem;
+                 margin-top: 10px;
+            }
+            .tarjeta-producto > a i { margin-left: 5px; }
+            
+            .tarjeta-producto p { display: none; } /* Ocultar descripción larga en vista móvil */
+        }
+        
+    </style>
 </head>
 <body>
 
-    <!-- CABECERA PRINCIPAL -->
-    <header class="main-header">
-        <nav class="menu">
-            <a href="index.html" class="logo-link">RiaFlowerShopp</a>
-            <a href="index.html">Inicio</a>
-            <a href="#" class="active">Catálogo</a>
-            <a href="servicios.html">Servicios</a>
-            <a href="#">Contacto</a>
-        </nav>
-    </header>
+        <header class="main-header">
+        <nav class="menu">
+            <a href="index.html" class="logo-link">RiaFlowerShopp</a>
+            <a href="index.html">Inicio</a>
+            <a href="#" class="active">Catálogo</a>
+            <a href="servicios.html">Servicios</a>
+            <a href="#">Contacto</a>
+        </nav>
+    </header>
 
-    <!-- CONTENEDOR PRINCIPAL (SIDEBAR + PRODUCTOS) -->
-    <main class="main-content-wrapper">
+        <main class="main-content-wrapper">
 
-        <!-- BARRA LATERAL DE FILTROS (Se mantiene la lógica para filtrar) -->
-        <aside class="sidebar-filter">
-            <h3>Buscar por Colección</h3>
+                <aside class="sidebar-filter">
+            <h3>Buscar por Colección</h3>
 
-            <div class="filter-container-mobile">
-                <!-- Botones de Filtro -->
-                <!-- Botón de Rosas ahora visible y activo por defecto -->
-                <button class="filter-btn active" data-category="rosas"><i class="fas fa-leaf"></i> Rosas</button>
-                <button class="filter-btn" data-category="gerberas"><i class="fas fa-sun"></i> Gerberas</button>
-                <button class="filter-btn" data-category="girasoles"><i class="fas fa-gift"></i> Girasoles</button>
-                <button class="filter-btn" data-category="tulipanes"><i class="fas fa-seedling"></i> Tulipanes</button>
-                <button class="filter-btn" data-category="orquideas"><i class="fas fa-hand-holding-heart"></i> Orquídeas</button>
-                <button class="filter-btn" data-category="lirios"><i class="fas fa-bell"></i> Lirios</button>
-                <button class="filter-btn" data-category="lisianthus"><i class="fas fa-feather-alt"></i> Lisianthus</button>
-            </div>
-        </aside>
+            <div class="filter-container-mobile">
+                                <button class="filter-btn active" data-category="rosas"><i class="fas fa-leaf"></i> Rosas</button>
+                <button class="filter-btn" data-category="gerberas"><i class="fas fa-sun"></i> Gerberas</button>
+                <button class="filter-btn" data-category="girasoles"><i class="fas fa-gift"></i> Girasoles</button>
+                <button class="filter-btn" data-category="tulipanes"><i class="fas fa-seedling"></i> Tulipanes</button>
+                <button class="filter-btn" data-category="orquideas"><i class="fas fa-hand-holding-heart"></i> Orquídeas</button>
+                <button class="filter-btn" data-category="lirios"><i class="fas fa-bell"></i> Lirios</button>
+                <button class="filter-btn" data-category="lisianthus"><i class="fas fa-feather-alt"></i> Lisianthus</button>
+            </div>
+        </aside>
 
-        <!-- ÁREA DE CATÁLOGO -->
-        <section class="catalogo-content-area">
-            <h2 id="tituloCatalogo" class="font-heading text-3xl font-bold text-terra mb-6">Nuestra Colección Floral</h2> 
+                <section class="catalogo-content-area">
+            <h2 id="tituloCatalogo" class="font-heading text-3xl font-bold text-terra mb-6">Nuestra Colección Floral</h2> 
 
-            <div class="product-grid">
-                
-                <!-- === COLECCIÓN: ROSAS (12, 24, 36, 50) === -->
-                
-                <!-- Rosas: Docena Clásica (12) -->
-                <div class="tarjeta-producto" data-category="rosas">
-                    <div class="imagen-producto">
-                        <img src="https://placehold.co/300x180/C9082A/ffffff?text=RAMO+12+ROSAS" alt="Ramo de 12 Rosas Premium">
-                        <div class="detalle-overlay">
-                            <h4>Docena Clásica (12)</h4>
-                            <p class="sub-desc">12 rosas frescas de tallo largo. El símbolo atemporal del amor.</p>
-                            <span class="price-tag">$850 MXN</span>
-                            <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20Docena%20Clásica%20de%20Rosas%20(12)" class="btn-whatsapp" target="_blank">Ordenar ahora <i class="fab fa-whatsapp"></i></a>
-                        </div>
-                    </div>
-                    <h4>Docena Clásica</h4>
-                    <span class="price-tag-mobile">$850 MXN</span>
-                    <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20Docena%20Clásica%20de%20Rosas%20(12)" target="_blank">Ver Detalles <i class="fas fa-arrow-right"></i></a>
-                </div>
+            <div class="product-grid">
+                
+                                <div class="tarjeta-producto" data-category="rosas">
+                    <div class="imagen-producto">
+                        <img src="https://placehold.co/300x180/C9082A/ffffff?text=RAMO+12+ROSAS" alt="Ramo de 12 Rosas Premium">
+                        <div class="detalle-overlay">
+                            <h4>Docena Clásica (12)</h4>
+                            <p class="sub-desc">12 rosas frescas de tallo largo. El símbolo atemporal del amor.</p>
+                            <span class="price-tag">$850 MXN</span>
+                            <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20Docena%20Clásica%20de%20Rosas%20(12)" class="btn-whatsapp" target="_blank">Ordenar ahora <i class="fab fa-whatsapp"></i></a>
+                        </div>
+                    </div>
+                    <h4>Docena Clásica</h4>
+                    <span class="price-tag-mobile">$850 MXN</span>
+                    <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20Docena%20Clásica%20de%20Rosas%20(12)" target="_blank">Ver Detalles <i class="fas fa-arrow-right"></i></a>
+                </div>
 
-                <!-- Rosas: Doble de Amor (24) -->
-                <div class="tarjeta-producto" data-category="rosas">
-                    <div class="imagen-producto">
-                        <img src="https://placehold.co/300x180/F0F0F0/3a3a3a?text=RAMO+24+ROSAS+BLANCAS" alt="Ramo de 24 Rosas Blancas">
-                         <div class="detalle-overlay">
-                            <h4>Doble de Amor (24)</h4>
-                            <p class="sub-desc">24 rosas del color de tu elección, ideales para aniversarios o cumpleaños.</p>
-                            <span class="price-tag">$1,390 MXN</span>
-                            <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20el%20arreglo%20Doble%20de%20Amor%20(24%20Rosas)" class="btn-whatsapp" target="_blank">Ordenar ahora <i class="fab fa-whatsapp"></i></a>
-                        </div>
-                    </div>
-                    <h4>Doble de Amor</h4>
-                    <span class="price-tag-mobile">$1,390 MXN</span>
-                    <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20el%20arreglo%20Doble%20de%20Amor%20(24%20Rosas)" target="_blank">Ver Detalles <i class="fas fa-arrow-right"></i></a>
-                </div>
-                
-                <!-- Rosas: Gran Romance (36) -->
-                <div class="tarjeta-producto" data-category="rosas">
-                    <div class="imagen-producto">
-                        <img src="https://placehold.co/300x180/C41E3A/ffffff?text=RAMO+36+ROSAS+ROJAS" alt="Ramo de 36 Rosas">
-                        <div class="detalle-overlay">
-                            <h4>Gran Romance (36)</h4>
-                            <p class="sub-desc">36 rosas que expresan un amor profundo. Presentación de lujo.</p>
-                            <span class="price-tag">$2,050 MXN</span>
-                            <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20Gran%20Romance%20(36%20Rosas)" class="btn-whatsapp" target="_blank">Ordenar ahora <i class="fab fa-whatsapp"></i></a>
-                        </div>
-                    </div>
-                    <h4>Gran Romance</h4>
-                    <span class="price-tag-mobile">$2,050 MXN</span>
-                    <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20Gran%20Romance%20(36%20Rosas)" target="_blank">Ver Detalles <i class="fas fa-arrow-right"></i></a>
-                </div>
+                                <div class="tarjeta-producto" data-category="rosas">
+                    <div class="imagen-producto">
+                        <img src="https://placehold.co/300x180/F0F0F0/3a3a3a?text=RAMO+24+ROSAS+BLANCAS" alt="Ramo de 24 Rosas Blancas">
+                         <div class="detalle-overlay">
+                            <h4>Doble de Amor (24)</h4>
+                            <p class="sub-desc">24 rosas del color de tu elección, ideales para aniversarios o cumpleaños.</p>
+                            <span class="price-tag">$1,390 MXN</span>
+                            <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20el%20arreglo%20Doble%20de%20Amor%20(24%20Rosas)" class="btn-whatsapp" target="_blank">Ordenar ahora <i class="fab fa-whatsapp"></i></a>
+                        </div>
+                    </div>
+                    <h4>Doble de Amor</h4>
+                    <span class="price-tag-mobile">$1,390 MXN</span>
+                    <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20el%20arreglo%20Doble%20de%20Amor%20(24%20Rosas)" target="_blank">Ver Detalles <i class="fas fa-arrow-right"></i></a>
+                </div>
+                
+                                <div class="tarjeta-producto" data-category="rosas">
+                    <div class="imagen-producto">
+                        <img src="https://placehold.co/300x180/C41E3A/ffffff?text=RAMO+36+ROSAS+ROJAS" alt="Ramo de 36 Rosas">
+                        <div class="detalle-overlay">
+                            <h4>Gran Romance (36)</h4>
+                            <p class="sub-desc">36 rosas que expresan un amor profundo. Presentación de lujo.</p>
+                            <span class="price-tag">$2,050 MXN</span>
+                            <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20Gran%20Romance%20(36%20Rosas)" class="btn-whatsapp" target="_blank">Ordenar ahora <i class="fab fa-whatsapp"></i></a>
+                        </div>
+                    </div>
+                    <h4>Gran Romance</h4>
+                    <span class="price-tag-mobile">$2,050 MXN</span>
+                    <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20Gran%20Romance%20(36%20Rosas)" target="_blank">Ver Detalles <i class="fas fa-arrow-right"></i></a>
+                </div>
 
-                <!-- Rosas: Majestuosidad (50) -->
-                <div class="tarjeta-producto" data-category="rosas">
-                    <div class="imagen-producto">
-                        <img src="https://placehold.co/300x180/4C0211/ffffff?text=RAMO+50+ROSAS+LUJO" alt="Ramo de 50 Rosas">
-                        <div class="detalle-overlay">
-                            <h4>Majestuosidad (50)</h4>
-                            <p class="sub-desc">50 rosas envueltas de manera majestuosa. Para los grandes acontecimientos.</p>
-                            <span class="price-tag">$2,500 MXN</span>
-                            <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20Majestuosidad%20(50%20Rosas)" class="btn-whatsapp" target="_blank">Ordenar ahora <i class="fab fa-whatsapp"></i></a>
-                        </div>
-                    </div>
-                    <h4>Majestuosidad</h4>
-                    <span class="price-tag-mobile">$2,500 MXN</span>
-                    <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20Majestuosidad%20(50%20Rosas)" target="_blank">Ver Detalles <i class="fas fa-arrow-right"></i></a>
-                </div>
+                                <div class="tarjeta-producto" data-category="rosas">
+                    <div class="imagen-producto">
+                        <img src="https://placehold.co/300x180/4C0211/ffffff?text=RAMO+50+ROSAS+LUJO" alt="Ramo de 50 Rosas">
+                        <div class="detalle-overlay">
+                            <h4>Majestuosidad (50)</h4>
+                            <p class="sub-desc">50 rosas envueltas de manera majestuosa. Para los grandes acontecimientos.</p>
+                            <span class="price-tag">$2,500 MXN</span>
+                            <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20Majestuosidad%20(50%20Rosas)" class="btn-whatsapp" target="_blank">Ordenar ahora <i class="fab fa-whatsapp"></i></a>
+                        </div>
+                    </div>
+                    <h4>Majestuosidad</h4>
+                    <span class="price-tag-mobile">$2,500 MXN</span>
+                    <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20Majestuosidad%20(50%20Rosas)" target="_blank">Ver Detalles <i class="fas fa-arrow-right"></i></a>
+                </div>
 
-                <!-- === COLECCIÓN: GERBERAS (12, 24, 36, 50) === -->
-                
-                <!-- Gerberas: Docena de Colores (12) -->
-                <div class="tarjeta-producto" data-category="gerberas">
-                    <div class="imagen-producto">
-                        <img src="https://placehold.co/300x180/FFD700/3a3a3a?text=RAMO+12+GERBERAS+MIX" alt="Ramo de 12 Gerberas">
-                        <div class="detalle-overlay">
-                            <h4>Docena de Colores (12)</h4>
-                            <p class="sub-desc">Ramo de 12 gerberas de colores vibrantes. Un regalo de pura alegría.</p>
-                            <span class="price-tag">$580 MXN</span>
-                            <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20Docena%20de%20Colores%20de%20Gerberas%20(12)" class="btn-whatsapp" target="_blank">Ordenar ahora <i class="fab fa-whatsapp"></i></a>
-                        </div>
-                    </div>
-                    <h4>Docena de Colores</h4>
-                    <span class="price-tag-mobile">$580 MXN</span>
-                    <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20Docena%20de%20Colores%20de%20Gerberas%20(12)" target="_blank">Ver Detalles <i class="fas fa-arrow-right"></i></a>
-                </div>
-                
-                <!-- Gerberas: Alegría Doble (24) -->
-                <div class="tarjeta-producto" data-category="gerberas">
-                    <div class="imagen-producto">
-                        <img src="https://placehold.co/300x180/F0E68C/3a3a3a?text=BOUQUET+24+GERBERAS" alt="Gerberas Amarillas">
-                        <div class="detalle-overlay">
-                            <h4>Alegría Doble (24)</h4>
-                            <p class="sub-desc">24 cabezas de gerberas frescas en bouquet, maximizando el impacto visual.</p>
-                            <span class="price-tag">$990 MXN</span>
-                            <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20el%20bouquet%20Alegría%20Doble%20(24%20Gerberas)" class="btn-whatsapp" target="_blank">Ordenar ahora <i class="fab fa-whatsapp"></i></a>
-                        </div>
-                    </div>
-                    <h4>Alegría Doble</h4>
-                    <span class="price-tag-mobile">$990 MXN</span>
-                    <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20el%20bouquet%20Alegría%20Doble%20(24%20Gerberas)" target="_blank">Ver Detalles <i class="fas fa-arrow-right"></i></a>
-                </div>
+                                
+            </div>
+        </section>
 
-                <!-- Gerberas: Ramo Festivo (36) -->
-                <div class="tarjeta-producto" data-category="gerberas">
-                    <div class="imagen-producto">
-                        <img src="https://placehold.co/300x180/FF6347/ffffff?text=RAMO+36+GERBERAS+GRANDES" alt="Ramo de 36 Gerberas">
-                        <div class="detalle-overlay">
-                            <h4>Ramo Festivo (36)</h4>
-                            <p class="sub-desc">36 gerberas de tallo largo, perfecto para celebraciones y eventos grandes.</p>
-                            <span class="price-tag">$1,500 MXN</span>
-                            <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20Ramo%20Festivo%20(36%20Gerberas)" class="btn-whatsapp" target="_blank">Ordenar ahora <i class="fab fa-whatsapp"></i></a>
-                        </div>
-                    </div>
-                    <h4>Ramo Festivo</h4>
-                    <span class="price-tag-mobile">$1,500 MXN</span>
-                    <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20Ramo%20Festivo%20(36%20Gerberas)" target="_blank">Ver Detalles <i class="fas fa-arrow-right"></i></a>
-                </div>
+    </main>
 
-                <!-- Gerberas: Explosión Floral (50) -->
-                <div class="tarjeta-producto" data-category="gerberas">
-                    <div class="imagen-producto">
-                        <img src="https://placehold.co/300x180/FF1493/ffffff?text=RAMO+50+GERBERAS+FULL+COLOR" alt="Ramo de 50 Gerberas">
-                        <div class="detalle-overlay">
-                            <h4>Explosión Floral (50)</h4>
-                            <p class="sub-desc">50 gerberas en un arreglo espectacular. El regalo más impactante.</p>
-                            <span class="price-tag">$1,990 MXN</span>
-                            <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20Explosión%20Floral%20(50%20Gerberas)" class="btn-whatsapp" target="_blank">Ordenar ahora <i class="fab fa-whatsapp"></i></a>
-                        </div>
-                    </div>
-                    <h4>Explosión Floral</h4>
-                    <span class="price-tag-mobile">$1,990 MXN</span>
-                    <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20Explosión%20Floral%20(50%20Gerberas)" target="_blank">Ver Detalles <i class="fas fa-arrow-right"></i></a>
-                </div>
+                <a href="https://wa.me/XXXXXXXXXX?text=Necesito%20un%20arreglo%20floral%20de%20urgencia" class="express-float" target="_blank">
+                <i class="fab fa-whatsapp"></i> 
+        
+        <div class="express-content">
+            <h4>¡ORDEN DE URGENCIA!</h4>
+            <p>¿Tienes una urgencia? Solicita nuestros productos ya elaborados y listos para envío inmediato.</p>
+            <span class="btn-whatsapp-expanded">
+                <i class="fab fa-whatsapp"></i> 
+                Solicítalo por WhatsApp
+            </span>
+        </div>
+    </a>
 
-                <!-- === COLECCIÓN: GIRASOLES (12, 24, 36, 50) === -->
 
-                <!-- Girasoles: Docena de Sol (12) -->
-                <div class="tarjeta-producto" data-category="girasoles">
-                    <div class="imagen-producto">
-                        <img src="https://placehold.co/300x180/FFDB58/3a3a3a?text=RAMO+12+GIRASOLES" alt="Ramo de 12 Girasoles Grandes">
-                        <div class="detalle-overlay">
-                            <h4>Docena de Sol (12)</h4>
-                            <p class="sub-desc">Ramo de 12 girasoles grandes, que irradian energía y positividad.</p>
-                            <span class="price-tag">$1,150 MXN</span>
-                            <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20Docena%20de%20Sol%20(12%20Girasoles)" class="btn-whatsapp" target="_blank">Ordenar ahora <i class="fab fa-whatsapp"></i></a>
-                        </div>
-                    </div>
-                    <h4>Docena de Sol</h4>
-                    <span class="price-tag-mobile">$1,150 MXN</span>
-                    <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20Docena%20de%20Sol%20(12%20Girasoles)" target="_blank">Ver Detalles <i class="fas fa-arrow-right"></i></a>
-                </div>
+        <footer>
+        <p>&copy; 2024 RiaFlowerShopp. Todos los derechos reservados.</p>
+    </footer>
 
-                <!-- Girasoles: Doble Resplandor (24) -->
-                <div class="tarjeta-producto" data-category="girasoles">
-                    <div class="imagen-producto">
-                        <img src="https://placehold.co/300x180/F0E68C/3a3a3a?text=RAMO+24+GIRASOLES" alt="Ramo de 24 Girasoles">
-                        <div class="detalle-overlay">
-                            <h4>Doble Resplandor (24)</h4>
-                            <p class="sub-desc">24 girasoles que duplican la alegría. Un detalle que no olvidarán.</p>
-                            <span class="price-tag">$1,950 MXN</span>
-                            <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20Doble%20Resplandor%20(24%20Girasoles)" class="btn-whatsapp" target="_blank">Ordenar ahora <i class="fab fa-whatsapp"></i></a>
-                        </div>
-                    </div>
-                    <h4>Doble Resplandor</h4>
-                    <span class="price-tag-mobile">$1,950 MXN</span>
-                    <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20Doble%20Resplandor%20(24%20Girasoles)" target="_blank">Ver Detalles <i class="fas fa-arrow-right"></i></a>
-                </div>
-                
-                <!-- Girasoles: Campo Luminoso (36) -->
-                <div class="tarjeta-producto" data-category="girasoles">
-                    <div class="imagen-producto">
-                        <img src="https://placehold.co/300x180/DAA520/ffffff?text=RAMO+36+GIRASOLES+IMPRESIONANTE" alt="Ramo de 36 Girasoles">
-                        <div class="detalle-overlay">
-                            <h4>Campo Luminoso (36)</h4>
-                            <p class="sub-desc">36 girasoles en un arreglo que simula un pequeño campo de luz.</p>
-                            <span class="price-tag">$2,700 MXN</span>
-                            <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20Campo%20Luminoso%20(36%20Girasoles)" class="btn-whatsapp" target="_blank">Ordenar ahora <i class="fab fa-whatsapp"></i></a>
-                        </div>
-                    </div>
-                    <h4>Campo Luminoso</h4>
-                    <span class="price-tag-mobile">$2,700 MXN</span>
-                    <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20Campo%20Luminoso%20(36%20Girasoles)" target="_blank">Ver Detalles <i class="fas fa-arrow-right"></i></a>
-                </div>
-                
-                <!-- Girasoles: Eterno Verano (50) -->
-                <div class="tarjeta-producto" data-category="girasoles">
-                    <div class="imagen-producto">
-                        <img src="https://placehold.co/300x180/F4A460/3a3a3a?text=RAMO+50+GIRASOLES+MAGNO" alt="Ramo de 50 Girasoles">
-                        <div class="detalle-overlay">
-                            <h4>Eterno Verano (50)</h4>
-                            <p class="sub-desc">50 girasoles. La máxima expresión de felicidad y admiración.</p>
-                            <span class="price-tag">$3,500 MXN</span>
-                            <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20Eterno%20Verano%20(50%20Girasoles)" class="btn-whatsapp" target="_blank">Ordenar ahora <i class="fab fa-whatsapp"></i></a>
-                        </div>
-                    </div>
-                    <h4>Eterno Verano</h4>
-                    <span class="price-tag-mobile">$3,500 MXN</span>
-                    <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20Eterno%20Verano%20(50%20Girasoles)" target="_blank">Ver Detalles <i class="fas fa-arrow-right"></i></a>
-                </div>
+        <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const productCards = document.querySelectorAll('.tarjeta-producto');
+            const tituloCatalogo = document.getElementById('tituloCatalogo');
 
-                <!-- === COLECCIÓN: TULIPANES (4 productos únicos) === -->
+            const categoryTitles = {
+                'rosas': 'Colección: Rosas Clásicas',
+                'gerberas': 'Colección: Gerberas de Alegría',
+                'girasoles': 'Colección: Girasoles de Verano',
+                'tulipanes': 'Colección: Tulipanes Premium',
+                'orquideas': 'Colección: Orquídeas Exóticas',
+                'lirios': 'Colección: Lirios Elegantes',
+                'lisianthus': 'Colección: Lisianthus Delicados',
+            };
 
-                <!-- Tulipanes: Ternura Holandesa (20) -->
-                <div class="tarjeta-producto" data-category="tulipanes">
-                    <div class="imagen-producto">
-                        <img src="https://placehold.co/300x180/FF99AA/ffffff?text=TULIPANES+ROSADOS+20" alt="Ramo de Tulipanes Rosados">
-                        <div class="detalle-overlay">
-                            <h4>Ternura Holandesa</h4>
-                            <p class="sub-desc">20 tulipanes rosados, envueltos en tela de organza. Pura delicadeza y elegancia.</p>
-                            <span class="price-tag">$950 MXN</span>
-                            <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20el%20ramo%20Ternura%20Holandesa%20de%20Tulipanes" class="btn-whatsapp" target="_blank">Ordenar ahora <i class="fab fa-whatsapp"></i></a>
-                        </div>
-                    </div>
-                    <h4>Ternura Holandesa</h4>
-                    <span class="price-tag-mobile">$950 MXN</span>
-                    <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20el%20ramo%20Ternura%20Holandesa%20de%20Tulipanes" target="_blank">Ver Detalles <i class="fas fa-arrow-right"></i></a>
-                </div>
+            function filterProducts(category) {
+                productCards.forEach(card => {
+                    const cardCategory = card.getAttribute('data-category');
+                    
+                    // Comprueba si la categoría es "todos" (aunque no hay botón de "todos") o si la tarjeta contiene la categoría buscada
+                    if (category === 'todos' || cardCategory.includes(category)) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+                
+                // Actualiza el título del catálogo
+                tituloCatalogo.textContent = categoryTitles[category] || categoryTitles['rosas'];
+            }
 
-                <!-- Tulipanes: Intensidad Silenciosa (18) -->
-                <div class="tarjeta-producto" data-category="tulipanes">
-                    <div class="imagen-producto">
-                        <img src="https://placehold.co/300x180/800000/ffffff?text=TULIPANES+BORGOÑA+INTENSO" alt="Ramo de Tulipanes Borgoña">
-                        <div class="detalle-overlay">
-                            <h4>Intensidad Silenciosa</h4>
-                            <p class="sub-desc">18 tulipanes borgoña, de tonos profundos y sofisticados. Un lujo exclusivo.</p>
-                            <span class="price-tag">$820 MXN</span>
-                            <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20el%20ramo%20Intensidad%20Silenciosa" class="btn-whatsapp" target="_blank">Ordenar ahora <i class="fab fa-whatsapp"></i></a>
-                        </div>
-                    </div>
-                    <h4>Intensidad Silenciosa</h4>
-                    <span class="price-tag-mobile">$820 MXN</span>
-                    <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20el%20ramo%20Intensidad%20Silenciosa" target="_blank">Ver Detalles <i class="fas fa-arrow-right"></i></a>
-                </div>
-                
-                <!-- Tulipanes: Arcoíris Primaveral (30) -->
-                <div class="tarjeta-producto" data-category="tulipanes">
-                    <div class="imagen-producto">
-                        <img src="https://placehold.co/300x180/FFB6C1/000000?text=TULIPANES+30+COLORES" alt="Ramo de 30 Tulipanes de Colores">
-                        <div class="detalle-overlay">
-                            <h4>Arcoíris Primaveral</h4>
-                            <p class="sub-desc">Ramo vibrante con 30 tulipanes en una mezcla alegre de todos los colores.</p>
-                            <span class="price-tag">$1,400 MXN</span>
-                            <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20el%20ramo%20Arcoíris%20Primaveral" class="btn-whatsapp" target="_blank">Ordenar ahora <i class="fab fa-whatsapp"></i></a>
-                        </div>
-                    </div>
-                    <h4>Arcoíris Primaveral</h4>
-                    <span class="price-tag-mobile">$1,400 MXN</span>
-                    <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20el%20ramo%20Arcoíris%20Primaveral" target="_blank">Ver Detalles <i class="fas fa-arrow-right"></i></a>
-                </div>
+            function setActiveButton(category) {
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                
+                // Activa el botón clickeado
+                document.querySelectorAll(`.filter-btn[data-category=\"${category}\"]`).forEach(btn => {
+                    btn.classList.add('active');
+                });
+            }
 
-                <!-- Tulipanes: Elegancia Minimalista (10) -->
-                <div class="tarjeta-producto" data-category="tulipanes">
-                    <div class="imagen-producto">
-                        <img src="https://placehold.co/300x180/FFFFFF/3a3a3a?text=TULIPANES+BLANCOS+10+MINIMAL" alt="Ramo de 10 Tulipanes Blancos">
-                        <div class="detalle-overlay">
-                            <h4>Elegancia Minimalista</h4>
-                            <p class="sub-desc">10 tulipanes blancos puros envoltura moderna. Sencillez y buen gusto.</p>
-                            <span class="price-tag">$590 MXN</span>
-                            <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20Elegancia%20Minimalista%20(10%20Tulipanes)" class="btn-whatsapp" target="_blank">Ordenar ahora <i class="fab fa-whatsapp"></i></a>
-                        </div>
-                    </div>
-                    <h4>Elegancia Minimalista</h4>
-                    <span class="price-tag-mobile">$590 MXN</span>
-                    <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20Elegancia%20Minimalista%20(10%20Tulipanes)" target="_blank">Ver Detalles <i class="fas fa-arrow-right"></i></a>
-                </div>
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const category = button.getAttribute('data-category');
+                    setActiveButton(category);
+                    filterProducts(category);
+                });
+            });
 
-                <!-- === COLECCIÓN: ORQUÍDEAS (4 productos únicos) === -->
-
-                <!-- Orquídeas: Elegancia Imperial (Doble Vara) -->
-                <div class="tarjeta-producto" data-category="orquideas">
-                    <div class="imagen-producto">
-                        <img src="https://placehold.co/300x180/800080/ffffff?text=ORQUIDEA+DOBLE+VARA" alt="Orquídea Phalaenopsis">
-                        <div class="detalle-overlay">
-                            <h4>Elegancia Imperial</h4>
-                            <p class="sub-desc">Planta de Orquídea Phalaenopsis doble vara en maceta de cerámica. Larga duración.</p>
-                            <span class="price-tag">$1,250 MXN</span>
-                            <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20la%20Orquídea%20Elegancia%20Imperial" class="btn-whatsapp" target="_blank">Ordenar ahora <i class="fab fa-whatsapp"></i></a>
-                        </div>
-                    </div>
-                    <h4>Elegancia Imperial</h4>
-                    <span class="price-tag-mobile">$1,250 MXN</span>
-                    <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20la%20Orquídea%20Elegancia%20Imperial" target="_blank">Ver Detalles <i class="fas fa-arrow-right"></i></a>
-                </div>
-
-                <!-- Orquídeas: Lujo Preservado (Flor preservada) -->
-                <div class="tarjeta-producto" data-category="orquideas">
-                    <div class="imagen-producto">
-                        <img src="https://placehold.co/300x180/000000/ffffff?text=ORQUIDEA+PRESERVADA+CRISTAL" alt="Orquídea Preservada">
-                        <div class="detalle-overlay">
-                            <h4>Lujo Preservado</h4>
-                            <p class="sub-desc">Flor de orquídea preservada en caja de cristal. Un regalo eterno y sofisticado.</p>
-                            <span class="price-tag">$1,800 MXN</span>
-                            <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20Orquídea%20Lujo%20Preservado" class="btn-whatsapp" target="_blank">Ordenar ahora <i class="fab fa-whatsapp"></i></a>
-                        </div>
-                    </div>
-                    <h4>Lujo Preservado</h4>
-                    <span class="price-tag-mobile">$1,800 MXN</span>
-                    <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20Orquídea%20Lujo%20Preservado" target="_blank">Ver Detalles <i class="fas fa-arrow-right"></i></a>
-                </div>
-                
-                <!-- Orquídeas: Orquídea Cattleya (Perfume Exótico) -->
-                <div class="tarjeta-producto" data-category="orquideas">
-                    <div class="imagen-producto">
-                        <img src="https://placehold.co/300x180/FF69B4/ffffff?text=ORQUIDEA+CATTLEYA" alt="Orquídea Cattleya">
-                        <div class="detalle-overlay">
-                            <h4>Perfume Exótico (Cattleya)</h4>
-                            <p class="sub-desc">Planta de Orquídea Cattleya, conocida por su belleza y aroma intenso.</p>
-                            <span class="price-tag">$990 MXN</span>
-                            <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20Orquídea%20Perfume%20Exótico" class="btn-whatsapp" target="_blank">Ordenar ahora <i class="fab fa-whatsapp"></i></a>
-                        </div>
-                    </div>
-                    <h4>Perfume Exótico</h4>
-                    <span class="price-tag-mobile">$990 MXN</span>
-                    <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20Orquídea%20Perfume%20Exótico" target="_blank">Ver Detalles <i class="fas fa-arrow-right"></i></a>
-                </div>
-
-                <!-- Orquídeas: Mini Orquídeas (Trío en Maceta) -->
-                <div class="tarjeta-producto" data-category="orquideas">
-                    <div class="imagen-producto">
-                        <img src="https://placehold.co/300x180/D8BFD8/3a3a3a?text=MINI+ORQUIDEAS+TRIO" alt="Trío de Mini Orquídeas">
-                        <div class="detalle-overlay">
-                            <h4>Mini Orquídeas Trío</h4>
-                            <p class="sub-desc">Tres mini orquídeas de colores variados en una elegante maceta de barro.</p>
-                            <span class="price-tag">$750 MXN</span>
-                            <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20el%20Trío%20de%20Mini%20Orquídeas" class="btn-whatsapp" target="_blank">Ordenar ahora <i class="fab fa-whatsapp"></i></a>
-                        </div>
-                    </div>
-                    <h4>Mini Orquídeas Trío</h4>
-                    <span class="price-tag-mobile">$750 MXN</span>
-                    <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20el%20Trío%20de%20Mini%20Orquídeas" target="_blank">Ver Detalles <i class="fas fa-arrow-right"></i></a>
-                </div>
-
-                <!-- === COLECCIÓN: LIRIOS (4 productos únicos) === -->
-
-                <!-- Lirios: Majestuosidad Pura (10 tallos Blancos) -->
-                <div class="tarjeta-producto" data-category="lirios">
-                    <div class="imagen-producto">
-                        <img src="https://placehold.co/300x180/FFFFFF/3a3a3a?text=LIRIOS+BLANCOS+MAJESTUOSOS" alt="Arreglo de Lirios Blancos">
-                        <div class="detalle-overlay">
-                            <h4>Majestuosidad Pura</h4>
-                            <p class="sub-desc">Arreglo alto con 10 tallos de lirios blancos. Imponente y formal.</p>
-                            <span class="price-tag">$900 MXN</span>
-                            <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20el%20arreglo%20Majestuosidad%20Pura%20de%20Lirios" class="btn-whatsapp" target="_blank">Ordenar ahora <i class="fab fa-whatsapp"></i></a>
-                        </div>
-                    </div>
-                    <h4>Majestuosidad Pura</h4>
-                    <span class="price-tag-mobile">$900 MXN</span>
-                    <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20el%20arreglo%20Majestuosidad%20Pura%20de%20Lirios" target="_blank">Ver Detalles <i class="fas fa-arrow-right"></i></a>
-                </div>
-
-                <!-- Lirios: Lirio Cala Elegante (10 tallos) -->
-                <div class="tarjeta-producto" data-category="lirios">
-                    <div class="imagen-producto">
-                        <img src="https://placehold.co/300x180/C0C0C0/3a3a3a?text=LIRIOS+CALA+ELEGANTES" alt="Ramo de Lirios Cala">
-                        <div class="detalle-overlay">
-                            <h4>Lirio Cala Elegante</h4>
-                            <p class="sub-desc">Ramo de 10 lirios Cala (Zantedeschia) en tallo largo. Diseño minimalista.</p>
-                            <span class="price-tag">$1,100 MXN</span>
-                            <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20el%20ramo%20Lirio%20Cala%20Elegante" class="btn-whatsapp" target="_blank">Ordenar ahora <i class="fab fa-whatsapp"></i></a>
-                        </div>
-                    </div>
-                    <h4>Lirio Cala Elegante</h4>
-                    <span class="price-tag-mobile">$1,100 MXN</span>
-                    <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20el%20ramo%20Lirio%20Cala%20Elegante" target="_blank">Ver Detalles <i class="fas fa-arrow-right"></i></a>
-                </div>
-                
-                <!-- Lirios: Perfume Oriental (Lirios Rosas) -->
-                <div class="tarjeta-producto" data-category="lirios">
-                    <div class="imagen-producto">
-                        <img src="https://placehold.co/300x180/F08080/ffffff?text=LIRIOS+ROSAS+ORIENTALES" alt="Lirios Rosas Orientales">
-                        <div class="detalle-overlay">
-                            <h4>Perfume Oriental</h4>
-                            <p class="sub-desc">Ramo de lirios orientales rosas. Fragancia intensa y capullos grandes.</p>
-                            <span class="price-tag">$780 MXN</span>
-                            <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20Perfume%20Oriental%20de%20Lirios" class="btn-whatsapp" target="_blank">Ordenar ahora <i class="fab fa-whatsapp"></i></a>
-                        </div>
-                    </div>
-                    <h4>Perfume Oriental</h4>
-                    <span class="price-tag-mobile">$780 MXN</span>
-                    <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20Perfume%20Oriental%20de%20Lirios" target="_blank">Ver Detalles <i class="fas fa-arrow-right"></i></a>
-                </div>
-
-                <!-- Lirios: Arreglo de Alstroemerias y Lirios -->
-                <div class="tarjeta-producto" data-category="lirios">
-                    <div class="imagen-producto">
-                        <img src="https://placehold.co/300x180/E0FFFF/3a3a3a?text=MIX+LIRIOS+ALSTROEMERIAS" alt="Arreglo Mixto Lirios y Alstroemerias">
-                        <div class="detalle-overlay">
-                            <h4>Naturaleza Compartida</h4>
-                            <p class="sub-desc">Base de lirios blancos combinados con alstroemerias de colores. Muy duradero.</p>
-                            <span class="price-tag">$650 MXN</span>
-                            <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20Arreglo%20Naturaleza%20Compartida" class="btn-whatsapp" target="_blank">Ordenar ahora <i class="fab fa-whatsapp"></i></a>
-                        </div>
-                    </div>
-                    <h4>Naturaleza Compartida</h4>
-                    <span class="price-tag-mobile">$650 MXN</span>
-                    <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20Arreglo%20Naturaleza%20Compartida" target="_blank">Ver Detalles <i class="fas fa-arrow-right"></i></a>
-                </div>
-
-                <!-- === COLECCIÓN: LISIANTHUS (4 productos únicos) === -->
-
-                <!-- Lisianthus: Sueño Versátil (Morados y Rosas) -->
-                <div class="tarjeta-producto" data-category="lisianthus">
-                    <div class="imagen-producto">
-                        <img src="https://placehold.co/300x180/9370DB/ffffff?text=LISIANTHUS+MORADOS+Y+ROSAS" alt="Ramo de Lisianthus Morados">
-                        <div class="detalle-overlay">
-                            <h4>Sueño Versátil</h4>
-                            <p class="sub-desc">Ramo de Lisianthus morados y rosas en tono pastel. Abundante y muy delicado.</p>
-                            <span class="price-tag">$820 MXN</span>
-                            <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20el%20ramo%20Sueño%20Versátil%20de%20Lisianthus" class="btn-whatsapp" target="_blank">Ordenar ahora <i class="fab fa-whatsapp"></i></a>
-                        </div>
-                    </div>
-                    <h4>Sueño Versátil</h4>
-                    <span class="price-tag-mobile">$820 MXN</span>
-                    <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20el%20ramo%20Sueño%20Versátil%20de%20Lisianthus" target="_blank">Ver Detalles <i class="fas fa-arrow-right"></i></a>
-                </div>
-
-                <!-- Lisianthus: Nieve de Verano (Blancos) -->
-                <div class="tarjeta-producto" data-category="lisianthus">
-                    <div class="imagen-producto">
-                        <img src="https://placehold.co/300x180/F0F8FF/3a3a3a?text=LISIANTHUS+BLANCOS+PUROS" alt="Ramo de Lisianthus Blanco">
-                        <div class="detalle-overlay">
-                            <h4>Nieve de Verano</h4>
-                            <p class="sub-desc">Ramo puro de Lisianthus blancos. Símbolo de respeto y gratitud.</p>
-                            <span class="price-tag">$750 MXN</span>
-                            <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20el%20ramo%20Nieve%20de%20Verano" class="btn-whatsapp" target="_blank">Ordenar ahora <i class="fab fa-whatsapp"></i></a>
-                        </div>
-                    </div>
-                    <h4>Nieve de Verano</h4>
-                    <span class="price-tag-mobile">$750 MXN</span>
-                    <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20el%20ramo%20Nieve%20de%20Verano" target="_blank">Ver Detalles <i class="fas fa-arrow-right"></i></a>
-                </div>
-                
-                <!-- Lisianthus: Cascada de Púrpura (Lisianthus + Rosas) -->
-                <div class="tarjeta-producto" data-category="lisianthus rosas">
-                    <div class="imagen-producto">
-                        <img src="https://placehold.co/300x180/4B0082/ffffff?text=LISIANTHUS+ROSAS+PURPURA" alt="Cascada de Púrpura">
-                        <div class="detalle-overlay">
-                            <h4>Cascada de Púrpura</h4>
-                            <p class="sub-desc">Combinación de Lisianthus y rosas moradas. Arreglo denso y muy romántico.</p>
-                            <span class="price-tag">$1,100 MXN</span>
-                            <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20Cascada%20de%20Púrpura" class="btn-whatsapp" target="_blank">Ordenar ahora <i class="fab fa-whatsapp"></i></a>
-                        </div>
-                    </div>
-                    <h4>Cascada de Púrpura</h4>
-                    <span class="price-tag-mobile">$1,100 MXN</span>
-                    <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20Cascada%20de%20Púrpura" target="_blank">Ver Detalles <i class="fas fa-arrow-right"></i></a>
-                </div>
-
-                <!-- Lisianthus: Mix de Pasteles (Lisianthus y Eucalipto) -->
-                <div class="tarjeta-producto" data-category="lisianthus">
-                    <div class="imagen-producto">
-                        <img src="https://placehold.co/300x180/E6E6FA/3a3a3a?text=LISIANTHUS+PASTEL+EUCALIPTO" alt="Mix de Pasteles">
-                        <div class="detalle-overlay">
-                            <h4>Mix de Pasteles</h4>
-                            <p class="sub-desc">Lisianthus blancos y lavanda combinados con follaje de eucalipto aromático.</p>
-                            <span class="price-tag">$620 MXN</span>
-                            <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20Mix%20de%20Pasteles" class="btn-whatsapp" target="_blank">Ordenar ahora <i class="fab fa-whatsapp"></i></a>
-                        </div>
-                    </div>
-                    <h4>Mix de Pasteles</h4>
-                    <span class="price-tag-mobile">$620 MXN</span>
-                    <a href="https://wa.me/XXXXXXXXXX?text=Me%20interesa%20Mix%20de%20Pasteles" target="_blank">Ver Detalles <i class="fas fa-arrow-right"></i></a>
-                </div>
-                
-            </div>
-        </section>
-
-    </main>
-
-    <!-- RECUADRO DE PEDIDO EXPRESS FLOTANTE NEGRO (MEJORADO) -->
-    <a href="https://wa.me/XXXXXXXXXX?text=Hola,%20quisiera%20hacer%20un%20pedido%20express%20personalizado." class="express-float" target="_blank">
-        <i class="fab fa-whatsapp"></i> <!-- Ícono visible cuando está minimizado -->
-        <div class="express-content">
-            <!-- Contenido que aparece al expandirse -->
-            <h4>Chat Express</h4>
-            <p>¡Respuesta inmediata! Pregunta por tu arreglo ideal.</p>
-            <span class="btn-whatsapp-expanded">Abrir Chat</span>
-        </div>
-    </a>
-
-    <!-- PIE DE PÁGINA -->
-    <footer>
-        &copy; 2023 RiaFlowerShopp. Todos los derechos reservados. | Precios en Pesos Mexicanos (MXN).
-    </footer>
-
-    <!-- SCRIPT DE FILTRADO (Lógica para filtrar y actualizar el título) -->
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const filterButtons = document.querySelectorAll('.filter-btn');
-            const productCards = document.querySelectorAll('.tarjeta-producto');
-            const tituloCatalogo = document.getElementById('tituloCatalogo');
-
-            const categoryTitles = {
-                'rosas': 'Rosas | Docenas y Arreglos de Lujo',
-                'gerberas': 'Gerberas | Alegría y Vitalidad',
-                'girasoles': 'Girasoles | El Optimismo hecho Flor',
-                'tulipanes': 'Tulipanes | Elegancia y Color',
-                'orquideas': 'Orquídeas | Belleza Exótica y Eterna',
-                'lirios': 'Lirios | Majestuosidad y Pureza',
-                'lisianthus': 'Lisianthus | Delicadeza en Ramo',
-                'todos': 'Nuestra Colección Floral'
-            };
-
-            function filterProducts(category) {
-                productCards.forEach(card => {
-                    const cardCategory = card.getAttribute('data-category');
-                    
-                    // Comprueba si la categoría es "todos" (aunque no hay botón de "todos") o si la tarjeta contiene la categoría buscada
-                    if (category === 'todos' || cardCategory.includes(category)) {
-                        card.style.display = 'block';
-                    } else {
-                        card.style.display = 'none';
-                    }
-                });
-                
-                // Actualiza el título del catálogo
-                tituloCatalogo.textContent = categoryTitles[category] || categoryTitles['todos'];
-            }
-
-            function setActiveButton(category) {
-                filterButtons.forEach(btn => btn.classList.remove('active'));
-                
-                // Activa el botón clickeado
-                document.querySelectorAll(`.filter-btn[data-category="${category}"]`).forEach(btn => {
-                    btn.classList.add('active');
-                });
-            }
-
-            filterButtons.forEach(button => {
-                button.addEventListener('click', () => {
-                    const category = button.getAttribute('data-category');
-                    setActiveButton(category);
-                    filterProducts(category);
-                });
-            });
-
-            // Inicialización: Mostrar la categoría 'rosas' por defecto
-            const initialCategory = 'rosas'; 
-            setActiveButton(initialCategory);
-            filterProducts(initialCategory);
-        });
-    </script>
+            // Inicialización: Mostrar la categoría 'rosas' por defecto
+            const initialCategory = 'rosas'; 
+            setActiveButton(initialCategory);
+            filterProducts(initialCategory);
+        });
+    </script>
 </body>
 </html>
