@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RiaFlowerShopp | Contacto</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        /* =========================================
+           ESTILOS BASE (COPIADOS DEL CATÁLOGO/SERVICIOS)
+           ========================================= */
+        :root {
+            --primary-color: #9e0721; /* Rojo elegante */
+            --secondary-color: #f8f5f2; /* Fondo crema suave */
+            --text-dark: #333333;
+            --text-light: #666666;
+            --white: #ffffff;
+            --accent: #d4af37; /* Toque dorado sutil */
+            --success: #25D366; /* Verde WhatsApp */
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: var(--secondary-color);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            color: var(--text-dark);
+        }
+
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+
+        /* ENCABEZADO */
+        header {
+            background-color: var(--white);
+            padding: 20px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        nav h1 {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+        }
+
+        nav a:hover { color: var(--primary-color); }
+
+        /* =========================================
+           ESTILOS ESPECÍFICOS DE CONTACTO
+           ========================================= */
+        .contact-container {
+            max-width: 800px;
+            margin: 60px auto;
+            padding: 40px;
+            background: var(--white);
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            text-align: center;
+        }
+
+        .contact-container h2 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .contact-container p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-bottom: 40px;
+        }
+
+        .contact-info div {
+            margin-bottom: 25px;
+        }
+
+        .contact-info i {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            margin-right: 10px;
+        }
+
+        .contact-info strong {
+            display: block;
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+        
+        .contact-info span {
+            color: var(--text-dark);
+        }
+
+        /* REDES SOCIALES */
+        .social-links {
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 1px solid #eee;
+        }
+
+        .social-links a {
+            font-size: 2rem;
+            margin: 0 15px;
+            transition: color 0.3s;
+            display: inline-block;
+        }
+
+        .social-links .fa-whatsapp { color: #25D366; }
+        .social-links .fa-instagram { 
+             /* Degradado para imitar el logo de Instagram */
+            background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .social-links .fa-facebook { color: #1877F2; }
+
+        .social-links a:hover {
+            transform: scale(1.1);
+        }
+
+        /* CAJA FLOTANTE Y FOOTER */
+        .pedido-express-fixed {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            max-width: 250px; 
+            background: linear-gradient(135deg, var(--primary-color), #5e0513); 
+            color: var(--white);
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+            z-index: 10000; 
+            text-align: center;
+        }
+
+        .pedido-express-fixed h4 {
+            color: var(--white); 
+            font-size: 1.1rem; 
+            margin-bottom: 5px;
+            font-family: 'Lato', sans-serif;
+            font-weight: 700;
+        }
+
+        .pedido-express-fixed p {
+            font-size: 0.8rem;
+            color: #ffd;
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+
+        .pedido-express-fixed .btn-chat-express {
+            background-color: var(--accent);
+            color: #111;
+            padding: 8px 15px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.8rem;
+            display: block; 
+        }
+
+        footer {
+            background-color: #222;
+            color: #fff;
+            padding: 30px 20px 20px; 
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .copyright {
+            font-size: 0.8rem;
+            color: #777;
+            margin-top: 20px;
+            border-top: 1px solid #333;
+            padding-top: 20px;
+        }
+
+        @media (max-width: 768px) {
+             nav { flex-direction: column; gap: 15px; }
+             .contact-container { padding: 30px 20px; margin: 30px auto; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <h1>RiaFlowerShopp</h1>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="catalogo.html">Catálogo</a></li>
+                <li><a href="servicios.html">Servicios</a></li>
+                <li><a href="contacto.html" style="color: var(--primary-color);">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="contact-container">
+            <h2>Hablemos de Flores</h2>
+            <p>Estamos disponibles para atender sus pedidos, cotizaciones y resolver cualquier duda sobre nuestros servicios florales.</p>
+
+            <div class="contact-info">
+                <div>
+                    <i class="fas fa-phone"></i>
+                    <strong>Llamada / WhatsApp</strong>
+                    <span>+52 228 301 0051</span> 
+                </div>
+                <div>
+                    <i class="fas fa-envelope"></i>
+                    <strong>Correo Electrónico</strong>
+                    <span>info@riaflowershopp.com</span>
+                </div>
+                <div>
+                    <i class="fas fa-map-marker-alt"></i>
+                    <strong>Visítanos (Solo con cita)</strong>
+                    <span>Av. Principal #101, Col. Jardines, Xalapa, Veracruz.</span>
+                </div>
+            </div>
+
+            <div class="social-links">
+                <h3>Síguenos</h3>
+                <a href="https://wa.me/522283010051" target="_blank" aria-label="WhatsApp">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+                <a href="#" target="_blank" aria-label="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="#" target="_blank" aria-label="Facebook">
+                    <i class="fab fa-facebook"></i>
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p class="copyright">© 2023 RiaFlowerShopp. Todos los derechos reservados. | Envíos a Domicilio.</p>
+    </footer>
+
+    <div class="pedido-express-fixed">
+        <h4>¡Entrega Rápida!</h4>
+        <p>¿Necesitas un ramo hoy mismo? Pide nuestras opciones ya elaboradas.</p>
+        <a href="https://wa.me/522283010051?text=Hola,%20quisiera%20hacer%20un%20pedido%20express%20personalizado." class="btn-chat-express">Chat Express</a>
+    </div>
+
+</body>
+</html>
