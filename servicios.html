@@ -3,22 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RiaFlowerShopp | Servicios Florales Especiales</title>
-    <!-- Fuentes de Google: Playfair Display para títulos, Roboto para cuerpo -->
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
-    <!-- Font Awesome para iconos -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>RiaFlowerShopp | Servicios Especializados</title>
     
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+
     <style>
-        /* --- RiaFlowerShopp Estilo Cálido y Terroso --- */
+        /* =========================================
+           ESTILOS (COPIADOS Y AJUSTADOS DEL CATÁLOGO)
+           ========================================= */
         :root {
-            --color-terra: #a8522c; /* Marrón Terroso de la barra de navegación */
-            --color-dark-text: #3a3a3a; /* Texto principal oscuro */
-            --color-soft-cream: #fbf9f6; /* Fondo general minimalista */
-            --color-light-bg: #ffffff; /* Fondo de tarjetas */
-            --color-cta: #1a1a1a; /* NEGRO MATE para el botón flotante */
-            --font-heading: 'Playfair Display', serif; /* Elegante para títulos */
-            --font-body: 'Roboto', sans-serif; /* Limpio para cuerpo */
+            --primary-color: #9e0721; /* Rojo elegante */
+            --secondary-color: #f8f5f2; /* Fondo crema suave */
+            --text-dark: #333333;
+            --text-light: #666666;
+            --white: #ffffff;
+            --accent: #d4af37; /* Toque dorado sutil */
+            --success: #25D366; /* Verde WhatsApp */
         }
 
         * {
@@ -28,521 +28,501 @@
         }
 
         body {
-            font-family: var(--font-body);
-            background: var(--color-soft-cream);
-            color: var(--color-dark-text);
+            font-family: 'Lato', sans-serif;
+            background-color: var(--secondary-color);
+            color: var(--text-dark);
             line-height: 1.6;
         }
 
-        /* --- 1. CABECERA Y MENÚ --- */
-        .main-header {
-            background: var(--color-terra);
-            color: white;
-            padding: 12px 0; 
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            color: var(--text-dark);
+        }
+
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+
+        /* ENCABEZADO */
+        header {
+            background-color: var(--white);
+            padding: 20px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-
-        .menu a {
-            color: white;
-            text-decoration: none;
-            margin: 0 20px;
-            font-weight: 400;
-            font-size: 1rem;
-            transition: all 0.3s;
-            padding: 5px 0;
-            border-bottom: 2px solid transparent;
-        }
-
-        .menu a:hover, .menu a.active {
-            color: #fff0e6;
-            border-bottom: 2px solid #fff0e6;
-        }
-
-        .menu a.logo-link {
-            font-family: var(--font-heading); 
-            font-size: 1.6rem; 
-            font-weight: 600; 
-            margin-right: 40px;
-            border-bottom: none; 
-        }
-
-        /* --- 2. LAYOUT PRINCIPAL (Contenido y Sidebar) --- */
-        .main-content-wrapper {
-            max-width: 1200px; 
-            margin: 40px auto 80px auto;
             padding: 0 20px;
         }
 
-        .page-title {
-            font-family: var(--font-heading);
-            font-size: 2.5rem;
-            color: var(--color-terra);
-            text-align: center;
-            margin-bottom: 20px;
+        nav h1 {
+            font-size: 1.8rem;
+            color: var(--primary-color);
             font-weight: 700;
-        }
-        .page-subtitle {
-            text-align: center;
-            color: #6a6a6a;
-            font-size: 1.1rem;
-            margin-bottom: 50px;
+            letter-spacing: 1px;
         }
 
-        /* Contenedor Flex para el Layout de 2 Columnas */
-        .services-container {
-            display: grid;
-            grid-template-columns: 250px 1fr; /* 250px para el sidebar, el resto para detalles */
-            gap: 30px;
-            background-color: var(--color-light-bg);
-            border-radius: 10px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
-            padding: 20px;
-        }
-        
-        /* --- 3. BARRA LATERAL (SIDEBAR) --- */
-        .sidebar-nav {
-            padding-right: 20px;
-            border-right: 1px solid #eee;
-        }
-
-        .nav-title {
-            font-family: var(--font-heading);
-            font-size: 1.4rem;
-            color: var(--color-dark-text);
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid var(--color-terra);
-        }
-
-        .nav-link {
+        nav ul {
             display: flex;
-            align-items: center;
-            padding: 15px 10px;
-            margin-bottom: 8px;
-            text-decoration: none;
-            color: var(--color-dark-text);
-            font-weight: 500;
-            border-radius: 6px;
-            transition: all 0.3s;
-            font-size: 1rem;
+            gap: 30px;
         }
 
-        .nav-link i {
-            margin-right: 12px;
-            font-size: 1.3rem;
-            color: var(--color-terra);
-            width: 20px;
+        nav a {
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+        }
+
+        nav a:hover { color: var(--primary-color); }
+
+        /* =========================================
+           LAYOUT PRINCIPAL (SIDEBAR + GRID)
+           ========================================= */
+        .main-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            display: grid;
+            grid-template-columns: 250px 1fr; /* Sidebar fijo 250px, resto flexible */
+            gap: 40px;
+            padding: 0 20px;
+        }
+
+        /* BARRA LATERAL */
+        aside.filtros-colecciones {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+            height: fit-content;
+            position: sticky;
+            top: 100px;
+        }
+
+        aside h3 {
+            margin-bottom: 20px;
+            font-size: 1.4rem;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 10px;
+            display: inline-block;
+        }
+
+        aside ul li {
+            margin-bottom: 12px;
+        }
+
+        aside a {
+            display: block;
+            padding: 8px 12px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            color: var(--text-light);
+            font-weight: 500;
+        }
+
+        aside a:hover, aside a.active {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding-left: 20px; /* Efecto de desplazamiento */
+        }
+
+        /* GRID DE PRODUCTOS */
+        .catalogo-productos {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); 
+            gap: 20px; 
+        }
+
+        /* TARJETA DE PRODUCTO (Servicio/Arreglo) */
+        .producto-card {
+            background: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid rgba(0,0,0,0.03);
+        }
+
+        .producto-card:hover {
+            transform: translateY(-3px); 
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+
+        .producto-card img {
+            width: 100%;
+            height: 150px; 
+            object-fit: cover;
+            border-bottom: 1px solid #eee;
+        }
+
+        .info-producto {
+            padding: 15px; 
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
             text-align: center;
         }
 
-        .nav-link:hover {
-            background-color: #f7e7df; /* Tono suave de terra */
-            color: var(--color-terra);
+        .info-producto h4 {
+            font-size: 1.0rem; 
+            margin-bottom: 8px;
+            color: var(--text-dark);
         }
 
-        .nav-link.active {
-            background-color: var(--color-terra);
-            color: white;
-            font-weight: 600;
-        }
-        
-        .nav-link.active i {
-            color: white;
-        }
-        
-        /* Estilo especial para Funerarios en la navegación */
-        .nav-link[data-service="funerarios"] i {
-            color: #6a6a6a;
-        }
-        .nav-link[data-service="funerarios"].active i {
-            color: white;
+        .info-producto .descripcion {
+            font-size: 0.8rem; 
+            color: var(--text-light);
+            margin-bottom: 12px;
+            flex-grow: 1;
+            display: -webkit-box;
+            -webkit-line-clamp: 2; 
+            -webkit-box-orient: vertical;
+            overflow: hidden;
         }
 
-        /* --- 4. ÁREA DE DETALLES DEL SERVICIO --- */
-        .service-details {
-            padding: 10px 0 20px 0;
-        }
-
-        .details-header {
-            margin-bottom: 30px;
-            padding-bottom: 15px;
-            border-bottom: 1px solid #ddd;
-        }
-
-        .details-header h2 {
-            font-family: var(--font-heading);
-            font-size: 2rem;
-            color: var(--color-terra);
-            margin-bottom: 10px;
-        }
-        
-        /* Estilo para Funerarios en el título de detalles */
-        .service-details.funerarios h2 {
-            color: #6a6a6a;
-        }
-
-        .details-description {
-            color: #555;
-            font-size: 1rem;
-        }
-
-        /* Contenedor de Productos/Paquetes (El mismo grid anterior) */
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-            margin-top: 30px;
-        }
-
-        .product-card {
-            background-color: var(--color-soft-cream);
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s;
-            border-left: 5px solid #e0e0e0;
-        }
-
-        .product-card:hover {
-            transform: translateY(-5px);
-            border-left-color: var(--color-terra);
-        }
-        
-        /* Ajuste para tarjetas Funerarias */
-        .service-details.funerarios .product-card:hover {
-            border-left-color: #6a6a6a;
-        }
-
-        .product-card h3 {
-            font-family: var(--font-heading);
-            font-size: 1.3rem;
-            color: var(--color-terra);
-            margin-bottom: 10px;
-        }
-        
-        /* Ajuste de color del título de la tarjeta Funeraria */
-        .service-details.funerarios .product-card h3 {
-             color: #6a6a6a;
-        }
-
-        .product-card p {
-            font-size: 0.95rem;
-            color: #6a6a6a;
+        .info-producto .precio {
+            font-size: 1.1rem; 
+            font-weight: 700;
+            color: var(--primary-color);
             margin-bottom: 15px;
         }
-        
-        .btn-card-contact {
+
+        .btn-ordenar {
             display: inline-block;
-            background-color: var(--color-terra);
+            background-color: var(--success);
             color: white;
-            padding: 8px 15px;
-            border-radius: 5px;
+            padding: 8px 15px; 
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            transition: background 0.3s;
             text-decoration: none;
-            font-weight: 500;
-            font-size: 0.9rem;
-            transition: background-color 0.2s;
+            width: 100%;
         }
 
-        .btn-card-contact:hover {
-            background-color: #7a3a24;
-        }
-        
-        /* Botón Funerario más sobrio */
-        .service-details.funerarios .btn-card-contact {
-            background-color: #6a6a6a;
-        }
-        .service-details.funerarios .btn-card-contact:hover {
-            background-color: #555555;
+        .btn-ordenar:hover {
+            background-color: #1ebc57;
+            box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3);
         }
 
-        /* Estilos de Novenarios */
-        .novenario-list {
-            list-style: none;
-            padding: 0;
-            margin-top: 20px;
-        }
-
-        .novenario-list li {
-            background-color: #f0f0f0;
-            padding: 12px 20px;
-            border-radius: 5px;
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            font-size: 0.95rem;
-        }
-        .novenario-list li i {
-            color: #3a3a3a;
-            margin-right: 10px;
-        }
-
-        /* Mensaje de Bienvenida Inicial */
-        .initial-message {
+        /* =========================================
+           CAJA FLOTANTE Y FOOTER 
+           ========================================= */
+        .pedido-express-fixed {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            max-width: 250px; 
+            background: linear-gradient(135deg, var(--primary-color), #5e0513); 
+            color: var(--white);
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+            z-index: 10000; 
             text-align: center;
-            padding: 60px 20px;
-            background-color: #fcf4f0;
-            border: 1px dashed var(--color-terra);
-            border-radius: 8px;
-            margin-top: 20px;
         }
 
-        .initial-message h3 {
-            font-family: var(--font-heading);
-            color: var(--color-terra);
-            font-size: 1.8rem;
+        .pedido-express-fixed h4 {
+            color: var(--white); 
+            font-size: 1.1rem; 
+            margin-bottom: 5px;
+            font-family: 'Lato', sans-serif;
+            font-weight: 700;
+        }
+
+        .pedido-express-fixed p {
+            font-size: 0.8rem;
+            color: #ffd;
             margin-bottom: 10px;
+            line-height: 1.4;
         }
-        
-        /* --- 5. RESPONSIVO (Móviles) --- */
+
+        .pedido-express-fixed .btn-chat-express {
+            background-color: var(--accent);
+            color: #111;
+            padding: 8px 15px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.8rem;
+            display: block; 
+        }
+
+        footer {
+            background-color: #222;
+            color: #fff;
+            padding: 30px 20px 20px; 
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .copyright {
+            font-size: 0.8rem;
+            color: #777;
+            margin-top: 20px;
+            border-top: 1px solid #333;
+            padding-top: 20px;
+        }
+
+        /* RESPONSIVE */
         @media (max-width: 768px) {
-            .page-title { font-size: 2rem; }
-            .page-subtitle { margin-bottom: 30px; }
-            
-            .services-container {
-                grid-template-columns: 1fr; /* Colapsa a una columna */
-                gap: 20px;
-                padding: 15px;
+            .main-container {
+                grid-template-columns: 1fr;
             }
-            
-            .sidebar-nav {
-                border-right: none;
-                border-bottom: 1px solid #eee;
-                padding-right: 0;
-                padding-bottom: 15px;
+            aside.filtros-colecciones {
+                position: static;
+                margin-bottom: 30px;
+                display: flex;
+                flex-wrap: wrap;
+                gap: 10px;
             }
-
-            .nav-title {
-                text-align: center;
-                border-bottom: 1px solid #eee;
-            }
-            
-            .nav-link {
-                justify-content: center;
-                padding: 12px;
-            }
-
-            .products-grid { grid-template-columns: 1fr; }
+            aside h3 { width: 100%; text-align: center; margin-bottom: 15px;}
+            aside ul { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
+            aside ul li { margin: 0; }
+            aside a { padding: 6px 10px; }
+            nav { flex-direction: column; gap: 15px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- CABECERA PRINCIPAL -->
-    <header class="main-header">
-        <nav class="menu">
-            <a href="index.html" class="logo-link">RiaFlowerShopp</a>
-            <a href="index.html">Inicio</a>
-            <a href="catalogo.html">Catálogo</a>
-            <a href="#" class="active">Servicios</a>
-            <a href="#">Contacto</a>
+    <header>
+        <nav>
+            <h1>RiaFlowerShopp</h1>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="catalogo.html">Catálogo</a></li>
+                <li><a href="servicios.html" style="color: var(--primary-color);">Servicios</a></li>
+                <li><a href="#">Contacto</a></li>
+            </ul>
         </nav>
     </header>
 
-    <!-- CONTENEDOR PRINCIPAL DE SERVICIOS -->
-    <main class="main-content-wrapper">
+    <main class="main-container">
+        
+        <aside class="filtros-colecciones">
+            <h3>Nuestros Especializados</h3>
+            <ul id="lista-filtros">
+                <li><a href="#" class="active" onclick="filtrarProductos('bodas', this)">Bodas</a></li>
+                <li><a href="#" onclick="filtrarProductos('quince', this)">Quince Años</a></li>
+                <li><a href="#" onclick="filtrarProductos('funerarios', this)">Servicios Funerarios</a></li>
+            </ul>
+        </aside>
 
-        <h1 class="page-title">Servicios Florales para Momentos Únicos</h1>
-        <p class="page-subtitle">Diseño y montaje de arreglos florales especializados para eventos sociales y ceremonias solemnes.</p>
-
-        <div class="services-container">
-            <!-- BARRA LATERAL DE NAVEGACIÓN -->
-            <aside class="sidebar-nav">
-                <h3 class="nav-title">Servicios Especiales</h3>
-                <a href="#" data-service="bodas" class="nav-link active">
-                    <i class="fas fa-ring"></i> Bodas
-                </a>
-                <a href="#" data-service="quince_anos" class="nav-link">
-                    <i class="fas fa-crown"></i> Quince Años
-                </a>
-                <a href="#" data-service="funerarios" class="nav-link">
-                    <i class="fas fa-cross"></i> Servicios Funerarios
-                </a>
-            </aside>
-
-            <!-- ÁREA DE DETALLES (Contenido Dinámico) -->
-            <section class="service-details" id="service-details">
-                <div class="initial-message">
-                    <h3>Bienvenido a Servicios Especiales</h3>
-                    <p>Selecciona un servicio de la izquierda (Bodas, Quince Años o Funerarios) para ver los paquetes y detalles de los arreglos que ofrecemos.</p>
+        <section class="catalogo-productos" id="grid-productos">
+            
+            <div class="producto-card" data-categoria="bodas">
+                <img src="https://placehold.co/300x150/F5F5DC/9e0721?text=RAMO+NOVIA+CLASICO" alt="Ramo de Novia Clásico">
+                <div class="info-producto">
+                    <h4>Ramo de Novia Clásico</h4>
+                    <p class="descripcion">Rosas blancas, lirios y follaje fino. Elegancia atemporal.</p>
+                    <p class="precio">$2,800.00 MXN</p>
+                    <a href="https://wa.me/522283010051?text=Me%20interesa%20el%20Ramo%20de%20Novia%20Clásico" class="btn-ordenar">Solicitar Cotización</a>
                 </div>
-            </section>
-        </div>
+            </div>
 
+            <div class="producto-card" data-categoria="bodas">
+                <img src="https://placehold.co/300x150/FFC0CB/9e0721?text=CENTROS+DE+MESA" alt="Centros de Mesa Elegantes">
+                <div class="info-producto">
+                    <h4>Centros de Mesa Elegantes</h4>
+                    <p class="descripcion">Arreglo bajo con peonías y hortensias para mesas de invitados.</p>
+                    <p class="precio">$1,550.00 MXN</p>
+                    <a href="https://wa.me/522283010051?text=Me%20interesan%20Centros%20de%20Mesa%20Elegantes" class="btn-ordenar">Solicitar Cotización</a>
+                </div>
+            </div>
+
+            <div class="producto-card" data-categoria="bodas">
+                <img src="https://placehold.co/300x150/DDA0DD/9e0721?text=ARCO+FLORAL" alt="Arco Floral para Ceremonia">
+                <div class="info-producto">
+                    <h4>Arco Floral para Ceremonia</h4>
+                    <p class="descripcion">Estructura circular o cuadrada con rosas y eucalipto.</p>
+                    <p class="precio">$9,500.00 MXN</p>
+                    <a href="https://wa.me/522283010051?text=Me%20interesa%20el%20Arco%20Floral%20para%20Ceremonia" class="btn-ordenar">Solicitar Cotización</a>
+                </div>
+            </div>
+             <div class="producto-card" data-categoria="bodas">
+                <img src="https://placehold.co/300x150/87CEEB/9e0721?text=BOUTONNIERE" alt="Boutonniere Padrinos">
+                <div class="info-producto">
+                    <h4>Boutonniere Padrinos</h4>
+                    <p class="descripcion">Mini rosa blanca y eucalipto para el traje del novio y padrinos.</p>
+                    <p class="precio">$250.00 MXN</p>
+                    <a href="https://wa.me/522283010051?text=Me%20interesa%20el%20Boutonniere%20para%20Padrinos" class="btn-ordenar">Solicitar Cotización</a>
+                </div>
+            </div>
+             <div class="producto-card" data-categoria="bodas">
+                <img src="https://placehold.co/300x150/F08080/9e0721?text=CORONA+DAMAS" alt="Corona de Dama de Honor">
+                <div class="info-producto">
+                    <h4>Corona de Dama de Honor</h4>
+                    <p class="descripcion">Corona de flores de velo de novia y lavanda, muy delicada.</p>
+                    <p class="precio">$650.00 MXN</p>
+                    <a href="https://wa.me/522283010051?text=Me%20interesa%20la%20Corona%20para%20Dama%20de%20Honor" class="btn-ordenar">Solicitar Cotización</a>
+                </div>
+            </div>
+
+            <div class="producto-card" data-categoria="quince">
+                <img src="https://placehold.co/300x150/FF69B4/ffffff?text=BOUQUET+DE+QUINCE" alt="Bouquet de Rosas Rosas">
+                <div class="info-producto">
+                    <h4>Bouquet de Rosas Rosas</h4>
+                    <p class="descripcion">36 rosas importadas en tonos pastel, ideal para la misa o ceremonia civil.</p>
+                    <p class="precio">$1,900.00 MXN</p>
+                    <a href="https://wa.me/522283010051?text=Me%20interesa%20el%20Bouquet%20de%20Rosas%20Rosas%20para%20XV" class="btn-ordenar">Solicitar Cotización</a>
+                </div>
+            </div>
+
+            <div class="producto-card" data-categoria="quince">
+                <img src="https://placehold.co/300x150/9932CC/ffffff?text=CENTRO+ALTO+XV" alt="Centro de Mesa Alto Festejo">
+                <div class="info-producto">
+                    <h4>Centro de Mesa Alto Festejo</h4>
+                    <p class="descripcion">Jarrón de cristal con flores mixtas y luces LED para el salón.</p>
+                    <p class="precio">$1,850.00 MXN</p>
+                    <a href="https://wa.me/522283010051?text=Me%20interesa%20Centro%20de%20Mesa%20Alto%20Festejo%20XV" class="btn-ordenar">Solicitar Cotización</a>
+                </div>
+            </div>
+
+            <div class="producto-card" data-categoria="quince">
+                <img src="https://placehold.co/300x150/DA70D6/ffffff?text=MUÑECA+FLORAL" alt="Muñeca con Flores Preservadas">
+                <div class="info-producto">
+                    <h4>Muñeca con Flores Preservadas</h4>
+                    <p class="descripcion">Mini ramo de recuerdo para la festejada, un detalle que dura.</p>
+                    <p class="precio">$550.00 MXN</p>
+                    <a href="https://wa.me/522283010051?text=Me%20interesa%20Muñeca%20con%20Flores%20Preservadas%20XV" class="btn-ordenar">Solicitar Cotización</a>
+                </div>
+            </div>
+            
+            <div class="producto-card" data-categoria="quince">
+                <img src="https://placehold.co/300x150/FFB6C1/ffffff?text=ENTRADA+PRINCIPAL+XV" alt="Arreglo para Entrada Principal">
+                <div class="info-producto">
+                    <h4>Arreglo para Entrada Principal</h4>
+                    <p class="descripcion">Base grande con liliums y follaje exuberante, impactante bienvenida.</p>
+                    <p class="precio">$3,500.00 MXN</p>
+                    <a href="https://wa.me/522283010051?text=Me%20interesa%20Arreglo%20para%20Entrada%20Principal%20XV" class="btn-ordenar">Solicitar Cotización</a>
+                </div>
+            </div>
+            
+            <div class="producto-card" data-categoria="quince">
+                <img src="https://placehold.co/300x150/C71585/ffffff?text=SET+DE+RAMOS+XV" alt="Set de Ramos Complementarios">
+                <div class="info-producto">
+                    <h4>Set de Ramos Complementarios</h4>
+                    <p class="descripcion">Ramo para la iglesia y el brindis (2 piezas) a juego con el principal.</p>
+                    <p class="precio">$2,500.00 MXN</p>
+                    <a href="https://wa.me/522283010051?text=Me%20interesa%20el%20Set%20de%20Ramos%20Complementarios%20XV" class="btn-ordenar">Solicitar Cotización</a>
+                </div>
+            </div>
+
+
+            <div class="producto-card" data-categoria="funerarios">
+                <img src="https://placehold.co/300x150/808080/ffffff?text=CORONA+FÚNEBRE+GRANDE" alt="Corona Fúnebre Grande">
+                <div class="info-producto">
+                    <h4>Corona Fúnebre Grande</h4>
+                    <p class="descripcion">Corona tradicional con crisantemos y gladiolas blancas de gran tamaño.</p>
+                    <p class="precio">$2,950.00 MXN</p>
+                    <a href="https://wa.me/522283010051?text=Me%20interesa%20la%20Corona%20Fúnebre%20Grande" class="btn-ordenar">Ordenar ahora</a>
+                </div>
+            </div>
+
+            <div class="producto-card" data-categoria="funerarios">
+                <img src="https://placehold.co/300x150/A9A9A9/ffffff?text=CRUZ+FLORAL" alt="Cruz Floral Lirio y Rosa">
+                <div class="info-producto">
+                    <h4>Cruz Floral Lirio y Rosa</h4>
+                    <p class="descripcion">Cruz mediana de flores blancas, símbolo de paz y respeto.</p>
+                    <p class="precio">$2,100.00 MXN</p>
+                    <a href="https://wa.me/522283010051?text=Me%20interesa%20la%20Cruz%20Floral%20Lirio%20y%20Rosa" class="btn-ordenar">Ordenar ahora</a>
+                </div>
+            </div>
+
+            <div class="producto-card" data-categoria="funerarios">
+                <img src="https://placehold.co/300x150/B0C4DE/ffffff?text=CUBRE+ATAÚD" alt="Cubre Ataúd Elegancia">
+                <div class="info-producto">
+                    <h4>Cubre Ataúd Elegancia</h4>
+                    <p class="descripcion">Arreglo completo para cubrir el ataúd con rosas y nardos.</p>
+                    <p class="precio">$4,500.00 MXN</p>
+                    <a href="https://wa.me/522283010051?text=Me%20interesa%20el%20Cubre%20Ataúd%20Elegancia" class="btn-ordenar">Ordenar ahora</a>
+                </div>
+            </div>
+            
+            <div class="producto-card" data-categoria="funerarios">
+                <img src="https://placehold.co/300x150/696969/ffffff?text=ARREGLO+MESA" alt="Arreglo de Mesa Condolencias">
+                <div class="info-producto">
+                    <h4>Arreglo de Mesa Condolencias</h4>
+                    <p class="descripcion">Arreglo pequeño y sobrio para sala de velación, discreto y respetuoso.</p>
+                    <p class="precio">$950.00 MXN</p>
+                    <a href="https://wa.me/522283010051?text=Me%20interesa%20el%20Arreglo%20de%20Mesa%20Condolencias" class="btn-ordenar">Ordenar ahora</a>
+                </div>
+            </div>
+            
+            <div class="producto-card" data-categoria="funerarios">
+                <img src="https://placehold.co/300x150/DCDCDC/696969?text=PALMAS+FÚNEBRES" alt="Palmas Fúnebres Clásicas">
+                <div class="info-producto">
+                    <h4>Palmas Fúnebres Clásicas</h4>
+                    <p class="descripcion">Palmas grandes con lazo de honor. Simplicidad y respeto.</p>
+                    <p class="precio">$1,800.00 MXN</p>
+                    <a href="https://wa.me/522283010051?text=Me%20interesan%20las%20Palmas%20Fúnebres%20Clásicas" class="btn-ordenar">Ordenar ahora</a>
+                </div>
+            </div>
+
+            
+        </section>
     </main>
 
-    <!-- BOTÓN FLOTANTE DE WHATSAPP -->
-    <a href="https://wa.me/XXXXXXXXXX?text=Hola,%20solicito%20información%20sobre%20sus%20servicios%20especiales." class="express-float" target="_blank">
-        <i class="fab fa-whatsapp"></i> 
-    </a>
-
-    <!-- PIE DE PÁGINA -->
     <footer>
-        &copy; 2023 RiaFlowerShopp. Todos los derechos reservados. | Contacto y Pedidos: WhatsApp.
+        <p class="copyright">© 2023 RiaFlowerShopp. Todos los derechos reservados. | Envíos a Domicilio.</p>
     </footer>
 
-    <!-- LÓGICA DE CARGA DINÁMICA CON JAVASCRIPT -->
+    <div class="pedido-express-fixed">
+        <h4>¡Entrega Rápida!</h4>
+        <p>¿Necesitas un ramo hoy mismo? Pide nuestras opciones ya elaboradas.</p>
+        <a href="https://wa.me/522283010051?text=Hola,%20quisiera%20hacer%20un%20pedido%20express%20personalizado." class="btn-chat-express">Chat Express</a>
+    </div>
+
     <script>
-        // 1. DATA DE SERVICIOS
-        const servicesData = {
-            'bodas': {
-                title: 'Diseño Floral para Bodas',
-                description: 'Creamos atmósferas mágicas que reflejan su historia de amor. Desde la ceremonia hasta el banquete, cada flor es seleccionada para armonizar con el tema de su boda.',
-                products: [
-                    { name: 'Mesa de Novios (Principal)', desc: 'Diseño de cabecera de mesa, con cascadas florales completas o jardines bajos y abundantes. Incluye montaje de candelabros y follaje premium.', whatsapp: 'Mesa%20Principal' },
-                    { name: 'Centros de Mesa (Banquete)', desc: 'Opciones altas y bajas que aportan movimiento y volumen al salón. Diseños que van desde la elegancia minimalista hasta el lujo total con flores importadas.', whatsapp: 'Centros%20de%20Mesa' },
-                    { name: 'Decoración de Iglesia/Altar', desc: 'Arreglos para el altar, bancas, e iluminación con velos y flores. Decoración especial para la entrada principal y el pasillo.', whatsapp: 'Decoración%20Iglesia' },
-                    { name: 'Bouquets y Boutonniere', desc: 'Diseño de ramo de novia personalizado (bouquet), ramos para damas de honor y prendidos (boutonniere) para el novio y padrinos. Totalmente coordinados.', whatsapp: 'Bouquets' }
-                ]
-            },
-            'quince_anos': {
-                title: 'Flores para Fiestas de Quince Años',
-                description: 'Diseños frescos y modernos, pensados para la quinceañera. Creamos ambientes vibrantes que realzan el espíritu joven y festivo de la celebración.',
-                products: [
-                    { name: 'Mesa Principal Temática', desc: 'Arreglos y bases florales que destacan la mesa principal, adaptados al color y tema de la quinceañera (Ej. Vintage, Jardín Secreto, Gala).', whatsapp: 'XV%20Años:%20Mesa%20Principal' },
-                    { name: 'Centros de Mesa Juveniles', desc: 'Centros altos con follaje colgante o bases con luces LED y flores de temporada. Diseños divertidos y elegantes que capturan la atención.', whatsapp: 'XV%20Años:%20Centros%20de%20Mesa' },
-                    { name: 'Arcos y Puerta de Entrada', desc: 'Arreglos florales monumentales en la puerta o pórtico. Diseño de fondo floral (Photo Booth) para capturar los mejores recuerdos del evento.', whatsapp: 'XV%20Años:%20Arcos%20y%20Entrada' },
-                    { name: 'Ramos de Quinceañera', desc: 'Ramos de presentación y réplica (para lanzar) a juego. Elaborados con flores delicadas como Lisianthus, Rosas de jardín o Peonías (según disponibilidad).', whatsapp: 'XV%20Años:%20Ramos' }
-                ]
-            },
-            'funerarios': {
-                title: 'Servicios Florales Funerarios (Paz y Respeto)',
-                description: 'Arreglos sobrios y respetuosos, elaborados con la mayor calidad y puntualidad para acompañar en estos momentos difíciles.',
-                products: [
-                    // Subsección 1: Arreglos de Salas
-                    { name: 'Coronas Fúnebres', desc: 'Coronas circulares grandes con bases de tripie y listón personalizado. Flores tradicionales: Lirios, Rosas Blancas y Crisantemos.', whatsapp: 'Funerario:%20Coronas', subTitle: 'Arreglos para Salas y Ataúdes' },
-                    { name: 'Cruces y Palmas', desc: 'Arreglos con forma de cruz en flores naturales. Ideales para colocar en esquinas o a la entrada de la sala velatoria.', whatsapp: 'Funerario:%20Cruces' },
-                    { name: 'Arreglos Cubre-Ataúdes', desc: 'Arreglos horizontales diseñados para cubrir el ataúd por completo o parcialmente. Rosas y follaje denso para máxima solemnidad.', whatsapp: 'Funerario:%20Cubre-Ataúdes' },
-                    { name: 'Bases Florales Medianas', desc: 'Arreglos de pie o de mesa para complementar la decoración de la sala, disponibles en tonos neutros y flores de temporada.', whatsapp: 'Funerario:%20Bases%20Medianas' },
-                    // Subsección 2: Novenarios (Generado como lista en JS para el Novenario)
-                    { name: 'Paquetes de Novenarios (9 Días)', desc: 'Servicio de suministro de flores frescas diarias o semanalmente para el periodo del novenario, garantizando frescura y entrega puntual.', whatsapp: 'Funerario:%20Novenarios', isNovenario: true }
-                ]
-            }
-        };
+        function filtrarProductos(categoria, elemento) {
+            event.preventDefault();
 
-        const serviceDetailsElement = document.getElementById('service-details');
-        const navLinks = document.querySelectorAll('.nav-link');
-        
-        // 2. FUNCIÓN PARA GENERAR EL CONTENIDO DE LA TARJETA
-        function generateProductCard(product, serviceId) {
-            const buttonText = product.isNovenario ? 'Solicitar Paquete' : 'Cotizar Paquete';
+            // 1. Manejar clase 'active' en la lista
+            const enlaces = document.querySelectorAll('#lista-filtros a');
+            enlaces.forEach(link => link.classList.remove('active'));
+            elemento.classList.add('active');
+
+            // 2. Filtrar tarjetas
+            const tarjetas = document.querySelectorAll('.producto-card');
             
-            // Generar contenido de Novenarios como lista
-            if (product.isNovenario) {
-                return `
-                    <div class="product-card" style="grid-column: 1 / -1;">
-                        <h3>${product.name}</h3>
-                        <p>${product.desc}</p>
-                        <ul class="novenario-list">
-                            <li><i class="fas fa-calendar-alt"></i> Paquete Básico: 9 Arreglos pequeños (tipo ramo o florero) para cambio diario.</li>
-                            <li><i class="fas fa-calendar-alt"></i> Paquete Estándar: 3 Arreglos medianos (centros de mesa) con cambio cada tres días.</li>
-                            <li><i class="fas fa-calendar-alt"></i> Paquete Premium: Servicio de montaje semanal con flores de alta gama (Orquídeas o Anturios) para un ambiente duradero.</li>
-                        </ul>
-                        <a href="https://wa.me/XXXXXXXXXX?text=Cotización%20Servicio%20${product.whatsapp}" class="btn-card-contact" target="_blank" style="margin-top: 15px;">
-                            ${buttonText} <i class="fab fa-whatsapp"></i>
-                        </a>
-                    </div>
-                `;
-            }
-
-            // Generar tarjetas estándar
-            return `
-                <div class="product-card">
-                    <h3>${product.name}</h3>
-                    <p>${product.desc}</p>
-                    <a href="https://wa.me/XXXXXXXXXX?text=Cotización%20Servicio%20${serviceId.toUpperCase()}:%20${product.whatsapp}" class="btn-card-contact" target="_blank">
-                        ${buttonText} <i class="fab fa-whatsapp"></i>
-                    </a>
-                </div>
-            `;
+            tarjetas.forEach(tarjeta => {
+                // Si la categoría coincide, se muestra, si no, se oculta.
+                if (tarjeta.getAttribute('data-categoria') === categoria) {
+                    tarjeta.style.display = 'flex';
+                } else {
+                    tarjeta.style.display = 'none';
+                }
+            });
         }
 
-        // 3. FUNCIÓN PRINCIPAL PARA CARGAR EL SERVICIO
-        function loadService(serviceId) {
-            const data = servicesData[serviceId];
-            if (!data) return;
-
-            // 1. Limpiar clase anterior y añadir la clase específica para CSS
-            serviceDetailsElement.className = 'service-details ' + serviceId;
-
-            // 2. Generar el HTML de las tarjetas
-            let productsHtml = '';
-            let currentSubTitle = '';
-            
-            data.products.forEach(product => {
-                // Manejar el subtítulo (solo para Funerarios)
-                if (product.subTitle && product.subTitle !== currentSubTitle) {
-                    if (currentSubTitle !== '') {
-                        productsHtml += '</div>'; // Cerrar el grid anterior si existe
+        // Ejecutar el filtro inicial al cargar la página para mostrar solo la primera categoría (Bodas)
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const primerFiltro = document.querySelector('#lista-filtros a.active');
+            if (primerFiltro) {
+                // Obtener la categoría del primer filtro activo ('bodas')
+                const categoriaInicial = primerFiltro.getAttribute('onclick').match(/'([^']*)'/)[1];
+                
+                // Mostrar solo los productos de la categoría inicial
+                const tarjetas = document.querySelectorAll('.producto-card');
+                tarjetas.forEach(tarjeta => {
+                    if (tarjeta.getAttribute('data-categoria') === categoriaInicial) {
+                        tarjeta.style.display = 'flex';
+                    } else {
+                        tarjeta.style.display = 'none';
                     }
-                    productsHtml += `<h4 style="font-family: var(--font-body); font-weight: 700; font-size: 1.2rem; color: var(--color-dark-text); margin-top: 30px; margin-bottom: 15px;">${product.subTitle}</h4>`;
-                    productsHtml += '<div class="products-grid">';
-                    currentSubTitle = product.subTitle;
-                }
-                
-                // Si no tiene subtitulo (Bodas/XV Años), asegura que el grid principal esté abierto
-                if (serviceId !== 'funerarios' && productsHtml === '') {
-                     productsHtml += '<div class="products-grid">';
-                }
-                
-                productsHtml += generateProductCard(product, serviceId);
-            });
-            
-            // 3. Cerrar el grid si no fue cerrado previamente
-            if (productsHtml.endsWith('<div class="products-grid">')) {
-                 productsHtml += '</div>';
+                });
             }
-
-
-            // 4. Construir el contenido final
-            const finalHtml = `
-                <div class="details-header">
-                    <h2>${data.title}</h2>
-                    <p class="details-description">${data.description}</p>
-                </div>
-                ${productsHtml}
-            `;
-
-            // 5. Inyectar el HTML
-            serviceDetailsElement.innerHTML = finalHtml;
-        }
-
-        // 4. EVENT LISTENERS PARA NAVEGACIÓN
-        navLinks.forEach(link => {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                const serviceId = this.getAttribute('data-service');
-
-                // Quitar 'active' de todos los enlaces
-                navLinks.forEach(nav => nav.classList.remove('active'));
-
-                // Añadir 'active' al enlace clickeado
-                this.classList.add('active');
-
-                // Cargar el contenido
-                loadService(serviceId);
-            });
         });
-
-        // 5. CARGAR EL SERVICIO DE BODAS POR DEFECTO AL INICIAR
-        window.onload = function() {
-            // Asegurarse de que el enlace de 'bodas' tenga la clase 'active' inicialmente (ya está en HTML)
-            loadService('bodas');
-        }
-
     </script>
-
-    <!-- BOTÓN FLOTANTE DE WHATSAPP (Mantenido) -->
-    <a href="https://wa.me/XXXXXXXXXX?text=Hola,%20solicito%20información%20sobre%20sus%20servicios%20especiales." class="express-float" target="_blank">
-        <i class="fab fa-whatsapp"></i> 
-    </a>
-
-    <!-- PIE DE PÁGINA -->
-    <footer>
-        &copy; 2023 RiaFlowerShopp. Todos los derechos reservados. | Contacto y Pedidos: WhatsApp.
-    </footer>
 
 </body>
 </html>
