@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RiaFlowerShopp | Nuestra Historia y Filosofía</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* =========================================
+           ESTILOS BASE (Mismo Look and Feel)
+           ========================================= */
+        :root {
+            --primary-color: #9e0721; /* Rojo elegante */
+            --secondary-color: #f8f5f2; /* Fondo crema suave */
+            --text-dark: #333333;
+            --text-light: #666666;
+            --white: #ffffff;
+            --accent: #d4af37; /* Toque dorado sutil */
+            --success: #25D366; /* Verde WhatsApp */
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: var(--secondary-color);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            color: var(--text-dark);
+        }
+
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+
+        /* ENCABEZADO */
+        header {
+            background-color: var(--white);
+            padding: 20px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        nav h1 {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+        }
+
+        nav a:hover { color: var(--primary-color); }
+
+        /* =========================================
+           ESTILOS ESPECÍFICOS DE NOSOTROS
+           ========================================= */
+        
+        .about-header {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .about-header h2 {
+            color: var(--white);
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+
+        .about-header p {
+            font-size: 1.2rem;
+            font-weight: 300;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .section-content {
+            max-width: 1000px;
+            margin: 50px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .section-content:nth-child(even) {
+            /* Invierte el orden para un patrón visual agradable */
+            direction: rtl; 
+            text-align: right;
+        }
+
+        .section-content:nth-child(even) .text-block {
+            direction: ltr; 
+            text-align: left;
+        }
+        
+        .section-content img {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .text-block h3 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+        
+        .valores {
+            max-width: 1000px;
+            margin: 80px auto;
+            padding: 0 20px;
+            text-align: center;
+        }
+
+        .valores h2 {
+            margin-bottom: 40px;
+            font-size: 2.5rem;
+        }
+
+        .valores-grid {
+            display: flex;
+            justify-content: space-around;
+            gap: 30px;
+        }
+
+        .valor-card {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            flex: 1;
+            border-bottom: 3px solid var(--accent);
+        }
+
+        .valor-card h4 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+        
+        /* CAJA FLOTANTE Y FOOTER */
+        .pedido-express-fixed {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            max-width: 250px; 
+            background: linear-gradient(135deg, var(--primary-color), #5e0513); 
+            color: var(--white);
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+            z-index: 10000; 
+            text-align: center;
+        }
+
+        .pedido-express-fixed h4 {
+            color: var(--white); 
+            font-size: 1.1rem; 
+            margin-bottom: 5px;
+            font-family: 'Lato', sans-serif;
+            font-weight: 700;
+        }
+
+        .pedido-express-fixed p {
+            font-size: 0.8rem;
+            color: #ffd;
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+
+        .pedido-express-fixed .btn-chat-express {
+            background-color: var(--accent);
+            color: #111;
+            padding: 8px 15px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.8rem;
+            display: block; 
+        }
+
+        footer {
+            background-color: #222;
+            color: #fff;
+            padding: 30px 20px 20px; 
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .copyright {
+            font-size: 0.8rem;
+            color: #777;
+            margin-top: 20px;
+            border-top: 1px solid #333;
+            padding-top: 20px;
+        }
+
+        @media (max-width: 768px) {
+             nav { flex-direction: column; gap: 15px; }
+             .section-content {
+                grid-template-columns: 1fr;
+                direction: ltr; /* Desactiva la inversión en móvil */
+                text-align: left;
+             }
+             .section-content:nth-child(even) .text-block {
+                text-align: left;
+             }
+             .valores-grid { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <h1>RiaFlowerShopp</h1>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="catalogo.html">Catálogo</a></li>
+                <li><a href="servicios.html">Servicios</a></li>
+                <li><a href="nosotros.html" style="color: var(--primary-color);">Nosotros</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="about-header">
+            <h2>Nuestra Esencia Floral</h2>
+            <p>RiaFlowerShopp nace del amor por la naturaleza y la creencia de que cada flor es un mensaje que merece ser entregado con arte.</p>
+        </section>
+
+        <section class="section-content">
+            <div class="text-block">
+                <h3>El Origen de un Sueño</h3>
+                <p>Nuestra historia comienza con un pequeño jardín y la ambición de transformar la floristería tradicional en una experiencia de diseño de lujo accesible. Cada arreglo es el resultado de años de dedicación y la búsqueda de las flores más frescas y exóticas.</p>
+                <p>No solo vendemos flores, creamos ambientes, contamos historias y encapsulamos emociones.</p>
+            </div>
+            <img src="https://placehold.co/600x400/F5DEB3/9e0721?text=El+Equipo+o+El+Taller" alt="Equipo de floristas de RiaFlowerShopp">
+        </section>
+
+        <section class="section-content">
+            <div class="text-block">
+                <h3>El Arte de la Curación Floral</h3>
+                <p>Nuestra filosofía se basa en la selección rigurosa. Trabajamos directamente con los mejores cultivadores locales y de importación para garantizar la vida útil y la belleza de cada pétalo.</p>
+                <p>Desde la recepción hasta la entrega, cuidamos la cadena de frío y utilizamos técnicas de diseño vanguardistas, asegurando que su arreglo sea una obra de arte efímera que deslumbre al recibirla.</p>
+            </div>
+            <img src="https://placehold.co/600x400/ADD8E6/9e0721?text=Flores+de+Alta+Calidad" alt="Proceso de selección y diseño de flores">
+        </section>
+
+        <section class="valores">
+            <h2>Pilares de Nuestra Marca</h2>
+            <div class="valores-grid">
+                <div class="valor-card">
+                    <h4>Exclusividad</h4>
+                    <p>Cada diseño es único y se adapta a la personalidad y al mensaje que desea transmitir.</p>
+                </div>
+                <div class="valor-card">
+                    <h4>Compromiso</h4>
+                    <p>Garantizamos la frescura y la puntualidad en cada entrega, sin excepciones.</p>
+                </div>
+                <div class="valor-card">
+                    <h4>Sostenibilidad</h4>
+                    <p>Priorizamos prácticas responsables en el cultivo y el uso de materiales de empaque ecológicos.</p>
+                </div>
+            </div>
+        </section>
+        
+    </main>
+
+    <footer>
+        <p class="copyright">© 2023 RiaFlowerShopp. Todos los derechos reservados. | Envíos a Domicilio.</p>
+    </footer>
+
+    <div class="pedido-express-fixed">
+        <h4>¡Entrega Rápida!</h4>
+        <p>¿Necesitas un ramo hoy mismo? Pide nuestras opciones ya elaboradas.</p>
+        <a href="https://wa.me/522283010051?text=Hola,%20quisiera%20hacer%20un%20pedido%20express%20personalizado." class="btn-chat-express">Chat Express</a>
+    </div>
+
+</body>
+</html>
