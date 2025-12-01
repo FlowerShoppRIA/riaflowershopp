@@ -138,7 +138,6 @@
         /* GRID DE PRODUCTOS */
         .catalogo-productos {
             display: grid;
-            /* **AJUSTE PARA TARJETAS MÁS PEQUEÑAS** */
             grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); 
             gap: 20px; 
         }
@@ -156,19 +155,19 @@
         }
 
         .producto-card:hover {
-            transform: translateY(-3px); /* Menos desplazamiento */
+            transform: translateY(-3px); 
             box-shadow: 0 8px 20px rgba(0,0,0,0.1);
         }
 
         .producto-card img {
             width: 100%;
-            height: 150px; /* Altura de imagen reducida */
+            height: 150px; 
             object-fit: cover;
             border-bottom: 1px solid #eee;
         }
 
         .info-producto {
-            padding: 15px; /* Relleno reducido */
+            padding: 15px; 
             display: flex;
             flex-direction: column;
             flex-grow: 1;
@@ -176,24 +175,24 @@
         }
 
         .info-producto h4 {
-            font-size: 1.0rem; /* Tamaño de título reducido */
+            font-size: 1.0rem; 
             margin-bottom: 8px;
             color: var(--text-dark);
         }
 
         .info-producto .descripcion {
-            font-size: 0.8rem; /* Tamaño de descripción reducido */
+            font-size: 0.8rem; 
             color: var(--text-light);
             margin-bottom: 12px;
             flex-grow: 1;
             display: -webkit-box;
-            -webkit-line-clamp: 2; /* Menos líneas de descripción */
+            -webkit-line-clamp: 2; 
             -webkit-box-orient: vertical;
             overflow: hidden;
         }
 
         .info-producto .precio {
-            font-size: 1.1rem; /* Tamaño de precio ajustado */
+            font-size: 1.1rem; 
             font-weight: 700;
             color: var(--primary-color);
             margin-bottom: 15px;
@@ -203,7 +202,7 @@
             display: inline-block;
             background-color: var(--success);
             color: white;
-            padding: 8px 15px; /* Relleno de botón reducido */
+            padding: 8px 15px; 
             border-radius: 50px;
             font-size: 0.85rem;
             font-weight: 700;
@@ -218,52 +217,68 @@
         }
 
         /* =========================================
-           FOOTER Y PEDIDO EXPRESS
+           NUEVA CAJA FLOTANTE (FIXED)
+           ========================================= */
+        .pedido-express-fixed {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            max-width: 250px; 
+            background: linear-gradient(135deg, var(--primary-color), #5e0513); 
+            color: var(--white);
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+            z-index: 10000; 
+            text-align: center;
+            /* Transición para que aparezca suavemente */
+            transition: opacity 0.3s;
+        }
+
+        .pedido-express-fixed h4 {
+            color: var(--white); 
+            font-size: 1.1rem; 
+            margin-bottom: 5px;
+            font-family: 'Lato', sans-serif;
+            font-weight: 700;
+        }
+
+        .pedido-express-fixed p {
+            font-size: 0.8rem;
+            color: #ffd;
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+
+        .pedido-express-fixed .btn-chat-express {
+            background-color: var(--accent);
+            color: #111;
+            padding: 8px 15px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.8rem;
+            display: block; /* Ocupa todo el ancho */
+        }
+        
+        /* Ocultar en móviles muy pequeños si estorba */
+        @media (max-width: 450px) {
+            .pedido-express-fixed {
+                right: 5px;
+                bottom: 5px;
+                max-width: 90%;
+            }
+        }
+
+
+        /* =========================================
+           FOOTER 
            ========================================= */
         footer {
             background-color: #222;
             color: #fff;
-            padding: 50px 20px 20px;
-            margin-top: 60px;
+            padding: 30px 20px 20px; /* Padding ajustado */
+            margin-top: 40px;
             text-align: center;
-        }
-
-        .pedido-express-box {
-            background: linear-gradient(135deg, #111, #333);
-            border: 1px solid var(--accent);
-            max-width: 800px;
-            margin: -80px auto 40px; 
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-            position: relative;
-        }
-
-        .pedido-express-box h4 {
-            color: var(--accent);
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-        }
-
-        .pedido-express-box p {
-            margin-bottom: 20px;
-            color: #ccc;
-        }
-
-        .btn-chat-express {
-            background-color: var(--accent);
-            color: #111;
-            padding: 12px 30px;
-            border-radius: 50px;
-            font-weight: 700;
-            text-transform: uppercase;
-            transition: transform 0.2s;
-            display: inline-block;
-        }
-
-        .btn-chat-express:hover {
-            transform: scale(1.05);
-            background-color: #e5c150;
         }
 
         .copyright {
@@ -272,25 +287,6 @@
             margin-top: 20px;
             border-top: 1px solid #333;
             padding-top: 20px;
-        }
-
-        /* RESPONSIVE */
-        @media (max-width: 768px) {
-            .main-container {
-                grid-template-columns: 1fr;
-            }
-            aside.filtros-colecciones {
-                position: static;
-                margin-bottom: 30px;
-                display: flex;
-                flex-wrap: wrap;
-                gap: 10px;
-            }
-            aside h3 { width: 100%; text-align: center; margin-bottom: 15px;}
-            aside ul { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
-            aside ul li { margin: 0; }
-            aside a { padding: 6px 10px; }
-            nav { flex-direction: column; gap: 15px; }
         }
     </style>
 </head>
@@ -548,17 +544,16 @@
     </main>
 
     <footer>
-        <div class="pedido-express-box">
-            <h4>Entrega Rápida - ¡Urgencia!</h4>
-            <p>¿Necesitas un ramo hoy mismo? Pide nuestras opciones ya elaboradas y recibe tu envío rápidamente.</p>
-            <a href="https://wa.me/522283010051?text=Hola,%20quisiera%20hacer%20un%20pedido%20express%20personalizado." class="btn-chat-express">Chat Express</a>
-        </div>
-        
         <p class="copyright">© 2023 RiaFlowerShopp. Todos los derechos reservados. | Envíos a Domicilio.</p>
     </footer>
 
+    <div class="pedido-express-fixed">
+        <h4>¡Entrega Rápida!</h4>
+        <p>¿Necesitas un ramo hoy mismo? Pide nuestras opciones ya elaboradas.</p>
+        <a href="https://wa.me/522283010051?text=Hola,%20quisiera%20hacer%20un%20pedido%20express%20personalizado." class="btn-chat-express">Chat Express</a>
+    </div>
+
     <script>
-        // La función ahora mostrará la primera categoría ('rosas') al cargar, ya que 'todos' fue eliminado.
         function filtrarProductos(categoria, elemento) {
             event.preventDefault();
 
