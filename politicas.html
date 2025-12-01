@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RiaFlowerShopp | Políticas de Venta y Servicio</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        /* =========================================
+           ESTILOS BASE (Mismo Look and Feel)
+           ========================================= */
+        :root {
+            --primary-color: #9e0721; /* Rojo elegante */
+            --secondary-color: #f8f5f2; /* Fondo crema suave */
+            --text-dark: #333333;
+            --text-light: #666666;
+            --white: #ffffff;
+            --accent: #d4af37; /* Toque dorado sutil */
+            --success: #25D366; /* Verde WhatsApp */
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: var(--secondary-color);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            color: var(--text-dark);
+        }
+
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+
+        /* ENCABEZADO */
+        header {
+            background-color: var(--white);
+            padding: 20px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        nav h1 {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+        }
+
+        nav a:hover { color: var(--primary-color); }
+
+        /* =========================================
+           ESTILOS ESPECÍFICOS DE POLÍTICAS
+           ========================================= */
+        
+        .politicas-container {
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 40px;
+            background: var(--white);
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        }
+
+        .politicas-container h2 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        
+        .politicas-container p.subtitle {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-bottom: 40px;
+            text-align: center;
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 15px;
+        }
+
+        .policy-item {
+            margin-bottom: 30px;
+        }
+
+        .policy-item h3 {
+            font-size: 1.4rem;
+            color: var(--text-dark);
+            margin-bottom: 10px;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .policy-item h3::before {
+            content: "\f058"; /* Icono de check */
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            color: var(--primary-color);
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        .policy-item ul {
+            list-style-type: disc;
+            padding-left: 45px;
+            color: var(--text-light);
+        }
+        
+        .policy-item ul li {
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+        }
+        
+        /* CAJA FLOTANTE Y FOOTER */
+        .pedido-express-fixed {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            max-width: 250px; 
+            background: linear-gradient(135deg, var(--primary-color), #5e0513); 
+            color: var(--white);
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+            z-index: 10000; 
+            text-align: center;
+        }
+
+        .pedido-express-fixed h4 {
+            color: var(--white); 
+            font-size: 1.1rem; 
+            margin-bottom: 5px;
+            font-family: 'Lato', sans-serif;
+            font-weight: 700;
+        }
+
+        .pedido-express-fixed p {
+            font-size: 0.8rem;
+            color: #ffd;
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+
+        .pedido-express-fixed .btn-chat-express {
+            background-color: var(--accent);
+            color: #111;
+            padding: 8px 15px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.8rem;
+            display: block; 
+        }
+
+        footer {
+            background-color: #222;
+            color: #fff;
+            padding: 30px 20px 20px; 
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .copyright {
+            font-size: 0.8rem;
+            color: #777;
+            margin-top: 20px;
+            border-top: 1px solid #333;
+            padding-top: 20px;
+        }
+
+        @media (max-width: 768px) {
+             nav { flex-direction: column; gap: 15px; }
+             .politicas-container { padding: 30px 20px; margin: 30px auto; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <h1>RiaFlowerShopp</h1>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="catalogo.html">Catálogo</a></li>
+                <li><a href="servicios.html">Servicios</a></li>
+                <li><a href="nosotros.html">Nosotros</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="politicas-container">
+            <h2>Nuestra Promesa de Servicio</h2>
+            <p class="subtitle">Conozca las bases para una experiencia de compra transparente y satisfactoria.</p>
+
+            <div class="policy-item">
+                <h3>Política de Sustitución Floral</h3>
+                <p>Las flores son productos naturales y estacionales. Si la flor o el color exacto no están disponibles, garantizamos un reemplazo de igual o mayor valor que mantenga la estética y la calidad del diseño original. Siempre se le informará de cualquier cambio significativo.</p>
+            </div>
+
+            <div class="policy-item">
+                <h3>Tiempos y Zonas de Entrega</h3>
+                <ul>
+                    <li>**Entrega Estándar:** Se realiza en un rango de 4 horas dentro del horario de 9:00 a 18:00 hrs.</li>
+                    <li>**Entregas Express:** Disponibles solo a través de **Chat Express** y sujetas a disponibilidad de rutas.</li>
+                    <li>**Zonas de Cobertura:** Cubrimos toda la zona metropolitana de Xalapa y municipios aledaños (favor de consultar costo extra).</li>
+                    <li>**Días Festivos:** En San Valentín y Día de las Madres, las entregas se garantizan en el día, pero no en un horario específico.</li>
+                </ul>
+            </div>
+
+            <div class="policy-item">
+                <h3>Cancelaciones y Reembolsos</h3>
+                <ul>
+                    <li>**Pedidos Estándar:** Se aceptan cancelaciones con reembolso completo si se solicitan con un mínimo de **24 horas** de anticipación.</li>
+                    <li>**Eventos Especiales (Bodas/XV):** Requieren un aviso de cancelación de al menos **30 días** y el reembolso se aplicará según los términos del contrato de servicio.</li>
+                    <li>**Fallas de Entrega:** Si no podemos entregar el pedido por error de dirección o falta de acceso, el ramo puede ser recogido en tienda o se cobrará un cargo por reenvío. No aplica reembolso.</li>
+                </ul>
+            </div>
+            
+            <div class="policy-item">
+                <h3>Garantía de Frescura</h3>
+                <p>Garantizamos la frescura de nuestras flores por un periodo de **48 horas** a partir de la entrega. Si su arreglo presenta deterioro prematuro, por favor, contáctenos inmediatamente con una fotografía para gestionar la reposición o un crédito en tienda, siempre y cuando se hayan seguido las instrucciones de cuidado.</p>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p class="copyright">© 2023 RiaFlowerShopp. Todos los derechos reservados. | Envíos a Domicilio.</p>
+    </footer>
+
+    <div class="pedido-express-fixed">
+        <h4>¡Entrega Rápida!</h4>
+        <p>¿Necesitas un ramo hoy mismo? Pide nuestras opciones ya elaboradas.</p>
+        <a href="https://wa.me/522283010051?text=Hola,%20quisiera%20hacer%20un%20pedido%20express%20personalizado." class="btn-chat-express">Chat Express</a>
+    </div>
+
+</body>
+</html>
