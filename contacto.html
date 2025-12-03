@@ -10,8 +10,8 @@
 
     <style>
         /* =========================================
-           ESTILOS BASE (COPIADOS DEL CATÁLOGO/SERVICIOS)
-           ========================================= */
+            ESTILOS BASE (COPIADOS DEL CATÁLOGO/SERVICIOS)
+            ========================================= */
         :root {
             --primary-color: #9e0721; /* Rojo elegante */
             --secondary-color: #f8f5f2; /* Fondo crema suave */
@@ -42,6 +42,23 @@
 
         a { text-decoration: none; color: inherit; }
         ul { list-style: none; }
+        
+        /* -------------------------------------- */
+        /* ESTILOS DEL LOGO (NUEVO) */
+        /* -------------------------------------- */
+        .logo-link {
+            display: block;
+            margin: 0; /* Se ajusta con la alineación del nav */
+            max-width: 150px; 
+        }
+
+        .logo-img {
+            height: auto;
+            width: 100%;
+            max-height: 120px; /* Tamaño grande, como ajustamos antes */
+            vertical-align: middle;
+        }
+        /* -------------------------------------- */
 
         /* ENCABEZADO */
         header {
@@ -62,11 +79,14 @@
             padding: 0 20px;
         }
 
+        /* ESTILO ORIGINAL DE H1 ELIMINADO/AJUSTADO */
         nav h1 {
             font-size: 1.8rem;
             color: var(--primary-color);
             font-weight: 700;
             letter-spacing: 1px;
+            /* Si usas la imagen, puedes comentar o borrar este h1 */
+            display: none; 
         }
 
         nav ul {
@@ -85,8 +105,8 @@
         nav a:hover { color: var(--primary-color); }
 
         /* =========================================
-           ESTILOS ESPECÍFICOS DE CONTACTO
-           ========================================= */
+            ESTILOS ESPECÍFICOS DE CONTACTO
+            ========================================= */
         .contact-container {
             max-width: 800px;
             margin: 60px auto;
@@ -145,7 +165,7 @@
 
         .social-links .fa-whatsapp { color: #25D366; }
         .social-links .fa-instagram { 
-             /* Degradado para imitar el logo de Instagram */
+            /* Degradado para imitar el logo de Instagram */
             background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -222,7 +242,9 @@
 
     <header>
         <nav>
-            <h1>RiaFlowerShopp</h1>
+            <a href="index.html" class="logo-link">
+                <img src="img/logo_circular.png" alt="Logo de RiaFlowerShopp" class="logo-img">
+            </a>
             <ul>
                 <li><a href="index.html">Inicio</a></li>
                 <li><a href="catalogo.html">Catálogo</a></li>
