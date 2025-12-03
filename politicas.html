@@ -83,6 +83,21 @@
         }
 
         nav a:hover { color: var(--primary-color); }
+        /* -------------------------------------- */
+    /* ESTILOS DEL LOGO */
+    /* -------------------------------------- */
+    .logo-link {
+        display: block;
+        margin: 0; 
+        max-width: 150px; 
+    }
+
+    .logo-img {
+        height: auto;
+        width: 100%;
+        max-height: 90px; /* Tamaño ajustado para el logo */
+        vertical-align: middle;
+    }
 
         /* =========================================
            ESTILOS ESPECÍFICOS DE POLÍTICAS (Con Layout Lateral)
@@ -265,7 +280,9 @@
 
     <header>
         <nav>
-            <h1>RiaFlowerShopp</h1>
+           <a href="index.html" class="logo-link">
+                <img src="img/logo_circular.png" alt="RiaFlowerShopp Logo" class="logo-img">
+            </a>
             <ul>
                 <li><a href="index.html">Inicio</a></li>
                 <li><a href="catalogo.html">Catálogo</a></li>
