@@ -44,7 +44,7 @@ h1, h2, h3 {
 
 .logo-img {
     height: auto;
-    width: 100%; /* El logo toma el 100% del ancho del contenedor (.logo-link) */
+    width: 150%; /* El logo toma el 100% del ancho del contenedor (.logo-link) */
     max-height: 200px; /* Limita la altura máxima del logo */
     vertical-align: middle;
 }
