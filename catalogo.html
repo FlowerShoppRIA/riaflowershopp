@@ -8,24 +8,17 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
 
     <style>
-        /* =========================================
-           ESTILOS GENERALES Y ELEGANCIA
-           ========================================= */
         :root {
-            --primary-color: #9e0721; /* Rojo elegante */
-            --secondary-color: #f8f5f2; /* Fondo crema suave */
+            --primary-color: #9e0721;
+            --secondary-color: #f8f5f2;
             --text-dark: #333333;
             --text-light: #666666;
             --white: #ffffff;
-            --accent: #d4af37; /* Toque dorado sutil */
-            --success: #25D366; /* Verde WhatsApp */
+            --accent: #d4af37;
+            --success: #25D366;
         }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
 
         body {
             font-family: 'Lato', sans-serif;
@@ -34,20 +27,13 @@
             line-height: 1.6;
         }
 
-        h1, h2, h3, h4 {
-            font-family: 'Playfair Display', serif;
-            color: var(--text-dark);
-        }
-
+        h1, h2, h3, h4 { font-family: 'Playfair Display', serif; }
         a { text-decoration: none; color: inherit; }
         ul { list-style: none; }
 
-        /* =========================================
-           ENCABEZADO
-           ========================================= */
         header {
             background-color: var(--white);
-            padding: 20px 0;
+            padding: 10px 0;
             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
             position: sticky;
             top: 0;
@@ -55,265 +41,74 @@
         }
 
         nav {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 20px;
+            max-width: 1200px; margin: 0 auto;
+            display: flex; justify-content: space-between; align-items: center; padding: 0 20px;
         }
 
-        nav h1 {
-            font-size: 1.8rem;
-            color: var(--primary-color);
-            font-weight: 700;
-            letter-spacing: 1px;
-        }
-
-        nav ul {
-            display: flex;
-            gap: 30px;
-        }
-
-        nav a {
-            font-weight: 700;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: color 0.3s;
-        }
-
+        .logo-img { height: auto; width: 100%; max-height: 80px; vertical-align: middle; }
+        nav ul { display: flex; gap: 30px; }
+        nav a { font-weight: 700; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; }
         nav a:hover { color: var(--primary-color); }
 
-        /* =========================================
-           LAYOUT PRINCIPAL (SIDEBAR + GRID)
-           ========================================= */
         .main-container {
-            max-width: 1200px;
-            margin: 40px auto;
-            display: grid;
-            grid-template-columns: 250px 1fr; /* Sidebar fijo 250px, resto flexible */
-            gap: 40px;
-            padding: 0 20px;
+            max-width: 1200px; margin: 40px auto;
+            display: grid; grid-template-columns: 250px 1fr; gap: 40px; padding: 0 20px;
         }
 
-        /* BARRA LATERAL */
         aside.filtros-colecciones {
-            background: var(--white);
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
-            height: fit-content;
-            position: sticky;
-            top: 100px;
+            background: var(--white); padding: 30px; border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03); height: fit-content; position: sticky; top: 120px;
         }
 
-        aside h3 {
-            margin-bottom: 20px;
-            font-size: 1.4rem;
-            border-bottom: 2px solid var(--primary-color);
-            padding-bottom: 10px;
-            display: inline-block;
-        }
+        aside h3 { margin-bottom: 20px; border-bottom: 2px solid var(--primary-color); padding-bottom: 10px; }
+        aside a { display: block; padding: 10px 12px; border-radius: 4px; transition: all 0.3s ease; color: var(--text-light); margin-bottom: 5px; }
+        aside a:hover, aside a.active { background-color: var(--primary-color); color: var(--white); padding-left: 20px; border-right: 4px solid var(--accent); }
 
-        aside ul li {
-            margin-bottom: 12px;
-        }
-
-        aside a {
-            display: block;
-            padding: 8px 12px;
-            border-radius: 4px;
-            transition: all 0.3s ease;
-            color: var(--text-light);
-            font-weight: 500;
-        }
-
-        aside a:hover, aside a.active {
-            background-color: var(--primary-color);
-            color: var(--white);
-            padding-left: 20px; /* Efecto de desplazamiento */
-        }
-
-        /* GRID DE PRODUCTOS */
         .catalogo-productos {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); 
-            gap: 20px; 
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 30px; 
         }
 
-        /* TARJETA DE PRODUCTO */
         .producto-card {
-            background: var(--white);
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            border: 1px solid rgba(0,0,0,0.03);
+            position: relative; background: var(--white); border-radius: 15px; overflow: hidden; height: 380px; 
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08); cursor: pointer;
         }
 
-        .producto-card:hover {
-            transform: translateY(-3px); 
-            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-        }
-
-        .producto-card img {
-            width: 100%;
-            height: 150px; 
-            object-fit: cover;
-            border-bottom: 1px solid #eee;
-        }
+        .producto-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
 
         .info-producto {
-            padding: 15px; 
-            display: flex;
-            flex-direction: column;
-            flex-grow: 1;
-            text-align: center;
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(158, 7, 33, 0.92);
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            padding: 25px; text-align: center; opacity: 0; transition: opacity 0.4s ease;
+            color: white; z-index: 2;
         }
 
-        .info-producto h4 {
-            font-size: 1.0rem; 
-            margin-bottom: 8px;
-            color: var(--text-dark);
-        }
+        .producto-card:hover img { transform: scale(1.15); }
+        .producto-card:hover .info-producto { opacity: 1; }
 
-        .info-producto .descripcion {
-            font-size: 0.8rem; 
-            color: var(--text-light);
-            margin-bottom: 12px;
-            flex-grow: 1;
-            display: -webkit-box;
-            -webkit-line-clamp: 2; 
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-        }
-
-        .info-producto .precio {
-            font-size: 1.1rem; 
-            font-weight: 700;
-            color: var(--primary-color);
-            margin-bottom: 15px;
-        }
+        .info-producto h4 { font-size: 1.4rem; margin-bottom: 10px; }
+        .info-producto .precio { font-size: 1.5rem; font-weight: 700; color: var(--accent); margin-bottom: 15px; }
 
         .btn-ordenar {
-            display: inline-block;
-            background-color: var(--success);
-            color: white;
-            padding: 8px 15px; 
-            border-radius: 50px;
-            font-size: 0.85rem;
-            font-weight: 700;
-            transition: background 0.3s;
-            text-decoration: none;
-            width: 100%;
+            background-color: var(--success); color: white; padding: 10px 20px; border-radius: 50px; font-weight: 700;
         }
 
-        .btn-ordenar:hover {
-            background-color: #1ebc57;
-            box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3);
-        }
-
-        /* =========================================
-           NUEVA CAJA FLOTANTE (FIXED)
-           ========================================= */
         .pedido-express-fixed {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            max-width: 250px; 
-            background: linear-gradient(135deg, var(--primary-color), #5e0513); 
-            color: var(--white);
-            padding: 15px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.4);
-            z-index: 10000; 
-            text-align: center;
-            /* Transición para que aparezca suavemente */
-            transition: opacity 0.3s;
+            position: fixed; bottom: 30px; right: 30px; max-width: 220px;
+            background: linear-gradient(135deg, var(--primary-color), #5e0513);
+            color: var(--white); padding: 20px; border-radius: 15px; z-index: 10000; text-align: center;
         }
+        .btn-chat-express { background-color: var(--accent); color: #111; padding: 8px 15px; border-radius: 50px; font-weight: 700; display: block; margin-top: 10px; }
 
-        .pedido-express-fixed h4 {
-            color: var(--white); 
-            font-size: 1.1rem; 
-            margin-bottom: 5px;
-            font-family: 'Lato', sans-serif;
-            font-weight: 700;
-        }
-
-        .pedido-express-fixed p {
-            font-size: 0.8rem;
-            color: #ffd;
-            margin-bottom: 10px;
-            line-height: 1.4;
-        }
-
-        .pedido-express-fixed .btn-chat-express {
-            background-color: var(--accent);
-            color: #111;
-            padding: 8px 15px;
-            border-radius: 50px;
-            font-weight: 700;
-            font-size: 0.8rem;
-            display: block; /* Ocupa todo el ancho */
-        }
-        
-        /* Ocultar en móviles muy pequeños si estorba */
-        @media (max-width: 450px) {
-            .pedido-express-fixed {
-                right: 5px;
-                bottom: 5px;
-                max-width: 90%;
-            }
-        }
-
-
-        /* =========================================
-           FOOTER 
-           ========================================= */
-        footer {
-            background-color: #222;
-            color: #fff;
-            padding: 30px 20px 20px; /* Padding ajustado */
-            margin-top: 40px;
-            text-align: center;
-        }
-
-        .copyright {
-            font-size: 0.8rem;
-            color: #777;
-            margin-top: 20px;
-            border-top: 1px solid #333;
-            padding-top: 20px;
-        }
-        /* =========================================
-           ESTILOS DEL LOGO (AJUSTE FINAL)
-           ========================================= */
-        .logo-link {
-            display: block;
-            margin: 0; 
-            max-width: 150px; 
-        }
-
-        .logo-img {
-            height: auto;
-            width: 100%;
-            max-height: 90px; /* Tamaño ajustado a 90px */
-            vertical-align: middle;
-        }
+        @media (max-width: 850px) { .main-container { grid-template-columns: 1fr; } aside.filtros-colecciones { position: relative; top: 0; } }
     </style>
 </head>
 <body>
 
     <header>
         <nav>
-        <a href="index.html" class="logo-link">
-            <img src="img/logo_circular.png" alt="Logo de RiaFlowerShopp" class="logo-img">
-        </a>
-        <ul>
-            </ul>
+            <a href="index.html" class="logo-link"><img src="img/logo_circular.png" alt="Logo" class="logo-img"></a>
+            <ul>
                 <li><a href="index.html">Inicio</a></li>
                 <li><a href="catalogo.html" style="color: var(--primary-color);">Catálogo</a></li>
                 <li><a href="servicios.html">Servicios</a></li>
@@ -323,7 +118,6 @@
     </header>
 
     <main class="main-container">
-        
         <aside class="filtros-colecciones">
             <h3>Colecciones</h3>
             <ul id="lista-filtros">
@@ -340,278 +134,177 @@
         <section class="catalogo-productos" id="grid-productos">
             
             <div class="producto-card" data-categoria="rosas">
-                <img src="img/12rosasrojas.png" alt="Ramo de 12 Rosas Premium">
-                <div class="info-producto">
-                    <h4>Docena Premium</h4>
-                    <p class="descripcion">12 rosas frescas de tallo largo, presentación elegante sin base.</p>
-                    <p class="precio">$850.00 MXN</p>
-                    <a href="https://wa.me/522283010051?text=Me%20interesa%20Docena%20Premium%20de%20Rosas%20(12)" class="btn-ordenar">Ordenar ahora</a>
-                </div>
+                <img src="https://placehold.co/400x600/9E0721/ffffff?text=6+Rosas" alt="6 Rosas">
+                <div class="info-producto"><h4>Media Docena</h4><p>6 rosas premium.</p><p class="precio">$450 MXN</p><a href="#" class="btn-ordenar">Ordenar ahora</a></div>
             </div>
-
             <div class="producto-card" data-categoria="rosas">
-                <img src="https://placehold.co/300x150/9E0721/ffffff?text=RAMO+24+ROSAS" alt="Ramo de 24 Rosas">
-                <div class="info-producto">
-                    <h4>Dos Docenas Amor</h4>
-                    <p class="descripcion">24 Rosas Rojas. El regalo clásico para expresar amor profundo.</p>
-                    <p class="precio">$1,445.00 MXN</p>
-                    <a href="https://wa.me/522283010051?text=Me%20interesa%20Dos%20Docenas%20Amor%20de%20Rosas%20(24)" class="btn-ordenar">Ordenar ahora</a>
-                </div>
+                <img src="https://placehold.co/400x600/9E0721/ffffff?text=12+Rosas" alt="12 Rosas">
+                <div class="info-producto"><h4>Docena Premium</h4><p>12 rosas de exportación.</p><p class="precio">$850 MXN</p><a href="#" class="btn-ordenar">Ordenar ahora</a></div>
             </div>
-
             <div class="producto-card" data-categoria="rosas">
-                <img src="https://placehold.co/300x150/6E081C/ffffff?text=RAMO+36+ROSAS" alt="Ramo de 36 Rosas">
-                <div class="info-producto">
-                    <h4>Ramo Cumpleaños</h4>
-                    <p class="descripcion">36 rosas rojas o mixtas. Ideal para celebraciones grandes.</p>
-                    <p class="precio">$2,040.00 MXN</p>
-                    <a href="https://wa.me/522283010051?text=Me%20interesa%20Ramo%20Cumpleaños%20de%20Rosas%20(36)" class="btn-ordenar">Ordenar ahora</a>
-                </div>
+                <img src="https://placehold.co/400x600/9E0721/ffffff?text=24+Rosas" alt="24 Rosas">
+                <div class="info-producto"><h4>Dos Docenas</h4><p>24 rosas rojas intensas.</p><p class="precio">$1,445 MXN</p><a href="#" class="btn-ordenar">Ordenar ahora</a></div>
             </div>
-             <div class="producto-card" data-categoria="rosas">
-                <img src="https://placehold.co/300x150/8B0000/ffffff?text=RAMO+PASION" alt="Ramo de Rosas Rojas">
-                <div class="info-producto">
-                    <h4>Pasión Profunda</h4>
-                    <p class="descripcion">Docena de rosas rojas de exportación en papel Kraft italiano.</p>
-                    <p class="precio">$765.00 MXN</p>
-                    <a href="https://wa.me/522283010051?text=Me%20interesa%20el%20ramo%20Pasión%20Profunda%20de%20Rosas%20Rojas" class="btn-ordenar">Ordenar ahora</a>
-                </div>
+            <div class="producto-card" data-categoria="rosas">
+                <img src="https://placehold.co/400x600/9E0721/ffffff?text=36+Rosas" alt="36 Rosas">
+                <div class="info-producto"><h4>Arreglo Gala</h4><p>36 rosas seleccionadas.</p><p class="precio">$2,100 MXN</p><a href="#" class="btn-ordenar">Ordenar ahora</a></div>
+            </div>
+            <div class="producto-card" data-categoria="rosas">
+                <img src="https://placehold.co/400x600/9E0721/ffffff?text=50+Rosas" alt="50 Rosas">
+                <div class="info-producto"><h4>Pasión Suprema</h4><p>50 rosas majestuosas.</p><p class="precio">$2,850 MXN</p><a href="#" class="btn-ordenar">Ordenar ahora</a></div>
             </div>
 
             <div class="producto-card" data-categoria="gerberas">
-                <img src="https://placehold.co/300x150/FFD700/333333?text=RAMO+12+GERBERAS" alt="Ramo de 12 Gerberas">
-                <div class="info-producto">
-                    <h4>Docena Alegría</h4>
-                    <p class="descripcion">Ramo de 12 gerberas de colores variados en presentación minimalista.</p>
-                    <p class="precio">$510.00 MXN</p>
-                    <a href="https://wa.me/522283010051?text=Me%20interesa%20Docena%20Alegría%20de%20Gerberas%20(12)" class="btn-ordenar">Ordenar ahora</a>
-                </div>
+                <img src="https://placehold.co/400x600/FFD700/333333?text=6+Gerberas" alt="6 Gerberas">
+                <div class="info-producto"><h4>Detalle Sonrisa</h4><p>6 gerberas de colores.</p><p class="precio">$320 MXN</p><a href="#" class="btn-ordenar">Ordenar</a></div>
             </div>
-
             <div class="producto-card" data-categoria="gerberas">
-                <img src="https://placehold.co/300x150/FFA500/333333?text=RAMO+24+GERBERAS" alt="Ramo de 24 Gerberas">
-                <div class="info-producto">
-                    <h4>Ramo Amistad</h4>
-                    <p class="descripcion">24 gerberas frescas y vibrantes en tonos naranjas y rosas.</p>
-                    <p class="precio">$850.00 MXN</p>
-                    <a href="https://wa.me/522283010051?text=Me%20interesa%20Ramo%20Amistad%20de%20Gerberas%20(24)" class="btn-ordenar">Ordenar ahora</a>
-                </div>
+                <img src="https://placehold.co/400x600/FFD700/333333?text=12+Gerberas" alt="12 Gerberas">
+                <div class="info-producto"><h4>Docena Alegría</h4><p>12 gerberas brillantes.</p><p class="precio">$510 MXN</p><a href="#" class="btn-ordenar">Ordenar</a></div>
             </div>
-
-             <div class="producto-card" data-categoria="gerberas">
-                <img src="https://placehold.co/300x150/CD853F/333333?text=BOUQUET+50+GERBERAS" alt="Ramo de 50 Gerberas">
-                <div class="info-producto">
-                    <h4>Bouquet Luminoso</h4>
-                    <p class="descripcion">50 gerberas en tonos pastel, un regalo impresionante y elegante.</p>
-                    <p class="precio">$1,530.00 MXN</p>
-                    <a href="https://wa.me/522283010051?text=Me%20interesa%20Bouquet%20Luminoso%20de%20Gerberas%20(50)" class="btn-ordenar">Ordenar ahora</a>
-                </div>
+            <div class="producto-card" data-categoria="gerberas">
+                <img src="https://placehold.co/400x600/FFD700/333333?text=24+Gerberas" alt="24 Gerberas">
+                <div class="info-producto"><h4>Fiesta Floral</h4><p>24 gerberas surtidas.</p><p class="precio">$950 MXN</p><a href="#" class="btn-ordenar">Ordenar</a></div>
+            </div>
+            <div class="producto-card" data-categoria="gerberas">
+                <img src="https://placehold.co/400x600/FFD700/333333?text=36+Gerberas" alt="36 Gerberas">
+                <div class="info-producto"><h4>Explosión</h4><p>36 gerberas premium.</p><p class="precio">$1,350 MXN</p><a href="#" class="btn-ordenar">Ordenar</a></div>
+            </div>
+            <div class="producto-card" data-categoria="gerberas">
+                <img src="https://placehold.co/400x600/FFD700/333333?text=50+Gerberas" alt="50 Gerberas">
+                <div class="info-producto"><h4>Jardín Infinito</h4><p>50 gerberas espectaculares.</p><p class="precio">$1,800 MXN</p><a href="#" class="btn-ordenar">Ordenar</a></div>
             </div>
 
             <div class="producto-card" data-categoria="girasoles">
-                <img src="https://placehold.co/300x150/FFDB58/333333?text=RAMO+12+GIRASOLES" alt="Ramo de 12 Girasoles Grandes">
-                <div class="info-producto">
-                    <h4>12 Girasoles Grandes</h4>
-                    <p class="descripcion">Ramo de 12 girasoles, un regalo lleno de energía y positividad.</p>
-                    <p class="precio">$1,020.00 MXN</p>
-                    <a href="https://wa.me/522283010051?text=Me%20interesa%2012%20Girasoles%20Grandes" class="btn-ordenar">Ordenar ahora</a>
-                </div>
+                <img src="https://placehold.co/400x600/FFDB58/333333?text=6+Girasoles" alt="6 Girasoles">
+                <div class="info-producto"><h4>Luz de Mañana</h4><p>6 girasoles grandes.</p><p class="precio">$600 MXN</p><a href="#" class="btn-ordenar">Ordenar</a></div>
             </div>
-
             <div class="producto-card" data-categoria="girasoles">
-                <img src="https://placehold.co/300x150/F0E68C/333333?text=RAMO+24+GIRASOLES" alt="Ramo de 24 Girasoles">
-                <div class="info-producto">
-                    <h4>Campo de Sol</h4>
-                    <p class="descripcion">24 girasoles que capturan la belleza de un campo soleado.</p>
-                    <p class="precio">$1,700.00 MXN</p>
-                    <a href="https://wa.me/522283010051?text=Me%20interesa%20Campo%20de%20Sol%20(24%20Girasoles)" class="btn-ordenar">Ordenar ahora</a>
-                </div>
+                <img src="https://placehold.co/400x600/FFDB58/333333?text=12+Girasoles" alt="12 Girasoles">
+                <div class="info-producto"><h4>Ramo Solar</h4><p>12 girasoles frescos.</p><p class="precio">$1,020 MXN</p><a href="#" class="btn-ordenar">Ordenar</a></div>
             </div>
-
             <div class="producto-card" data-categoria="girasoles">
-                <img src="https://placehold.co/300x150/DAA520/ffffff?text=RAMO+36+GIRASOLES" alt="Ramo de 36 Girasoles">
-                <div class="info-producto">
-                    <h4>Cosecha de Éxito</h4>
-                    <p class="descripcion">36 Girasoles que simbolizan la alegría y los logros.</p>
-                    <p class="precio">$2,380.00 MXN</p>
-                    <a href="https://wa.me/522283010051?text=Me%20interesa%20Cosecha%20de%20Éxito%20(36%20Girasoles)" class="btn-ordenar">Ordenar ahora</a>
-                </div>
+                <img src="https://placehold.co/400x600/FFDB58/333333?text=24+Girasoles" alt="24 Girasoles">
+                <div class="info-producto"><h4>Campo Dorado</h4><p>24 girasoles radiantes.</p><p class="precio">$1,900 MXN</p><a href="#" class="btn-ordenar">Ordenar</a></div>
+            </div>
+            <div class="producto-card" data-categoria="girasoles">
+                <img src="https://placehold.co/400x600/FFDB58/333333?text=36+Girasoles" alt="36 Girasoles">
+                <div class="info-producto"><h4>Esplendor</h4><p>36 girasoles de lujo.</p><p class="precio">$2,700 MXN</p><a href="#" class="btn-ordenar">Ordenar</a></div>
+            </div>
+            <div class="producto-card" data-categoria="girasoles">
+                <img src="https://placehold.co/400x600/FFDB58/333333?text=50+Girasoles" alt="50 Girasoles">
+                <div class="info-producto"><h4>Sol Máximo</h4><p>50 girasoles imponentes.</p><p class="precio">$3,600 MXN</p><a href="#" class="btn-ordenar">Ordenar</a></div>
             </div>
 
             <div class="producto-card" data-categoria="tulipanes">
-                <img src="https://placehold.co/300x150/FF99AA/ffffff?text=TULIPANES+ROSADOS" alt="Ramo de Tulipanes Rosados">
-                <div class="info-producto">
-                    <h4>Ternura Holandesa</h4>
-                    <p class="descripcion">20 tulipanes rosados, envueltos en tela de organza.</p>
-                    <p class="precio">$935.00 MXN</p>
-                    <a href="https://wa.me/522283010051?text=Me%20interesa%20el%20ramo%20Ternura%20Holandesa%20de%20Tulipanes" class="btn-ordenar">Ordenar ahora</a>
-                </div>
+                <img src="https://placehold.co/400x600/FF69B4/ffffff?text=6+Tulipanes" alt="6 Tulipanes">
+                <div class="info-producto"><h4>Elegancia Sutil</h4><p>6 tulipanes importados.</p><p class="precio">$750 MXN</p><a href="#" class="btn-ordenar">Ordenar</a></div>
             </div>
-
             <div class="producto-card" data-categoria="tulipanes">
-                <img src="https://placehold.co/300x150/0000CD/ffffff?text=TULIPANES+AZULES" alt="Ramo de Tulipanes Azules">
-                <div class="info-producto">
-                    <h4>Sueño Tranquilo</h4>
-                    <p class="descripcion">15 tulipanes azules intensos, ideales para desear paz.</p>
-                    <p class="precio">$850.00 MXN</p>
-                    <a href="https://wa.me/522283010051?text=Me%20interesa%20el%20ramo%20Sueño%20Tranquilo%20de%20Tulipanes" class="btn-ordenar">Ordenar ahora</a>
-                </div>
+                <img src="https://placehold.co/400x600/FF69B4/ffffff?text=12+Tulipanes" alt="12 Tulipanes">
+                <div class="info-producto"><h4>Clásico Holandés</h4><p>12 tulipanes premium.</p><p class="precio">$1,350 MXN</p><a href="#" class="btn-ordenar">Ordenar</a></div>
             </div>
-
-             <div class="producto-card" data-categoria="tulipanes">
-                <img src="https://placehold.co/300x150/FFFF00/333333?text=TULIPANES+AMARILLOS" alt="Ramo de Tulipanes Amarillos">
-                <div class="info-producto">
-                    <h4>Alegría Inesperada</h4>
-                    <p class="descripcion">25 tulipanes amarillos y blancos en presentación de jarrón.</p>
-                    <p class="precio">$1,020.00 MXN</p>
-                    <a href="https://wa.me/522283010051?text=Me%20interesa%20el%20arreglo%20Alegría%20Inesperada" class="btn-ordenar">Ordenar ahora</a>
-                </div>
+            <div class="producto-card" data-categoria="tulipanes">
+                <img src="https://placehold.co/400x600/FF69B4/ffffff?text=24+Tulipanes" alt="24 Tulipanes">
+                <div class="info-producto"><h4>Ramo Real</h4><p>24 tulipanes de colores.</p><p class="precio">$2,400 MXN</p><a href="#" class="btn-ordenar">Ordenar</a></div>
+            </div>
+            <div class="producto-card" data-categoria="tulipanes">
+                <img src="https://placehold.co/400x600/FF69B4/ffffff?text=36+Tulipanes" alt="36 Tulipanes">
+                <div class="info-producto"><h4>Distinción</h4><p>36 tulipanes en jarrón.</p><p class="precio">$3,400 MXN</p><a href="#" class="btn-ordenar">Ordenar</a></div>
+            </div>
+            <div class="producto-card" data-categoria="tulipanes">
+                <img src="https://placehold.co/400x600/FF69B4/ffffff?text=50+Tulipanes" alt="50 Tulipanes">
+                <div class="info-producto"><h4>Lujo Holandés</h4><p>50 tulipanes exclusivos.</p><p class="precio">$4,500 MXN</p><a href="#" class="btn-ordenar">Ordenar</a></div>
             </div>
 
             <div class="producto-card" data-categoria="orquideas">
-                <img src="https://placehold.co/300x150/800080/ffffff?text=ORQUIDEA+PHALAENOPSIS" alt="Orquídea Phalaenopsis">
-                <div class="info-producto">
-                    <h4>Elegancia Imperial</h4>
-                    <p class="descripcion">Planta de Orquídea Phalaenopsis doble vara en maceta de cerámica.</p>
-                    <p class="precio">$1,275.00 MXN</p>
-                    <a href="https://wa.me/522283010051?text=Me%20interesa%20la%20Orquídea%20Elegancia%20Imperial" class="btn-ordenar">Ordenar ahora</a>
-                </div>
+                <img src="https://placehold.co/400x600/800080/ffffff?text=6+Orquideas" alt="6 Orquideas">
+                <div class="info-producto"><h4>Toque Exótico</h4><p>6 varas de orquídea.</p><p class="precio">$1,100 MXN</p><a href="#" class="btn-ordenar">Ordenar</a></div>
             </div>
-            
             <div class="producto-card" data-categoria="orquideas">
-                <img src="https://placehold.co/300x150/008080/ffffff?text=ORQUIDEA+CYMBIDIUM" alt="Orquídea Cymbidium">
-                <div class="info-producto">
-                    <h4>Flor Exótica</h4>
-                    <p class="descripcion">Arreglo de Orquídea Cymbidium de larga duración.</p>
-                    <p class="precio">$1,615.00 MXN</p>
-                    <a href="https://wa.me/522283010051?text=Me%20interesa%20el%20arreglo%20Flor%20Exótica%20Cymbidium" class="btn-ordenar">Ordenar ahora</a>
-                </div>
+                <img src="https://placehold.co/400x600/800080/ffffff?text=12+Orquideas" alt="12 Orquideas">
+                <div class="info-producto"><h4>Pureza Zen</h4><p>12 orquídeas phalaenopsis.</p><p class="precio">$2,100 MXN</p><a href="#" class="btn-ordenar">Ordenar</a></div>
             </div>
-
             <div class="producto-card" data-categoria="orquideas">
-                <img src="https://placehold.co/300x150/A52A2A/ffffff?text=ORQUIDEA+DENDROBIUM" alt="Orquídea Dendrobium">
-                <div class="info-producto">
-                    <h4>Dendrobium Real</h4>
-                    <p class="descripcion">Pequeña planta de orquídea Dendrobium en tonos café y blanco.</p>
-                    <p class="precio">$950.00 MXN</p>
-                    <a href="https://wa.me/522283010051?text=Me%20interesa%20la%20Orquídea%20Dendrobium%20Real" class="btn-ordenar">Ordenar ahora</a>
-                </div>
+                <img src="https://placehold.co/400x600/800080/ffffff?text=24+Orquideas" alt="24 Orquideas">
+                <div class="info-producto"><h4>Cascada Mística</h4><p>24 orquídeas seleccionadas.</p><p class="precio">$3,900 MXN</p><a href="#" class="btn-ordenar">Ordenar</a></div>
+            </div>
+            <div class="producto-card" data-categoria="orquideas">
+                <img src="https://placehold.co/400x600/800080/ffffff?text=36+Orquideas" alt="36 Orquideas">
+                <div class="info-producto"><h4>Soberanía</h4><p>36 orquídeas de lujo.</p><p class="precio">$5,500 MXN</p><a href="#" class="btn-ordenar">Ordenar</a></div>
+            </div>
+            <div class="producto-card" data-categoria="orquideas">
+                <img src="https://placehold.co/400x600/800080/ffffff?text=50+Orquideas" alt="50 Orquideas">
+                <div class="info-producto"><h4>Reinado Floral</h4><p>50 orquídeas premium.</p><p class="precio">$7,200 MXN</p><a href="#" class="btn-ordenar">Ordenar</a></div>
             </div>
 
             <div class="producto-card" data-categoria="lirios">
-                <img src="https://placehold.co/300x150/FFFFFF/000000?text=LIRIOS+BLANCOS" alt="Arreglo de Lirios Blancos">
-                <div class="info-producto">
-                    <h4>Majestuosidad Pura</h4>
-                    <p class="descripcion">Arreglo alto con 10 tallos de lirios blancos, ideal para inauguraciones.</p>
-                    <p class="precio">$1,020.00 MXN</p>
-                    <a href="https://wa.me/522283010051?text=Me%20interesa%20el%20arreglo%20Majestuosidad%20Pura%20de%20Lirios" class="btn-ordenar">Ordenar ahora</a>
-                </div>
+                <img src="https://placehold.co/400x600/FFFAF0/333333?text=6+Lirios" alt="6 Lirios">
+                <div class="info-producto"><h4>Aroma Suave</h4><p>6 lirios blancos.</p><p class="precio">$500 MXN</p><a href="#" class="btn-ordenar">Ordenar</a></div>
             </div>
-
-             <div class="producto-card" data-categoria="lirios">
-                <img src="https://placehold.co/300x150/FFA07A/333333?text=LIRIOS+NARANJAS" alt="Ramo de Lirios Naranjas">
-                <div class="info-producto">
-                    <h4>Atardecer Dorado</h4>
-                    <p class="descripcion">Ramo de lirios naranjas vibrantes, perfecto para motivar.</p>
-                    <p class="precio">$765.00 MXN</p>
-                    <a href="https://wa.me/522283010051?text=Me%20interesa%20el%20ramo%20Atardecer%20Dorado%20de%20Lirios" class="btn-ordenar">Ordenar ahora</a>
-                </div>
-            </div>
-
             <div class="producto-card" data-categoria="lirios">
-                <img src="https://placehold.co/300x150/F08080/ffffff?text=LIRIOS+ROSAS" alt="Ramo de Lirios Rosas">
-                <div class="info-producto">
-                    <h4>Bouquet Sueños</h4>
-                    <p class="descripcion">Ramo de 8 tallos de lirios rosas orientales con fino follaje.</p>
-                    <p class="precio">$890.00 MXN</p>
-                    <a href="https://wa.me/522283010051?text=Me%20interesa%20el%20Bouquet%20Sueños%20de%20Lirios" class="btn-ordenar">Ordenar ahora</a>
-                </div>
+                <img src="https://placehold.co/400x600/FFFAF0/333333?text=12+Lirios" alt="12 Lirios">
+                <div class="info-producto"><h4>Lirio Imperial</h4><p>12 lirios perfumados.</p><p class="precio">$950 MXN</p><a href="#" class="btn-ordenar">Ordenar</a></div>
+            </div>
+            <div class="producto-card" data-categoria="lirios">
+                <img src="https://placehold.co/400x600/FFFAF0/333333?text=24+Lirios" alt="24 Lirios">
+                <div class="info-producto"><h4>Bosque Blanco</h4><p>24 lirios premium.</p><p class="precio">$1,800 MXN</p><a href="#" class="btn-ordenar">Ordenar</a></div>
+            </div>
+            <div class="producto-card" data-categoria="lirios">
+                <img src="https://placehold.co/400x600/FFFAF0/333333?text=36+Lirios" alt="36 Lirios">
+                <div class="info-producto"><h4>Majestuosidad</h4><p>36 lirios de invernadero.</p><p class="precio">$2,600 MXN</p><a href="#" class="btn-ordenar">Ordenar</a></div>
+            </div>
+            <div class="producto-card" data-categoria="lirios">
+                <img src="https://placehold.co/400x600/FFFAF0/333333?text=50+Lirios" alt="50 Lirios">
+                <div class="info-producto"><h4>Poder Floral</h4><p>50 lirios espectaculares.</p><p class="precio">$3,500 MXN</p><a href="#" class="btn-ordenar">Ordenar</a></div>
             </div>
 
             <div class="producto-card" data-categoria="lisianthus">
-                <img src="https://placehold.co/300x150/9370DB/ffffff?text=LISIANTHUS+MORADOS" alt="Ramo de Lisianthus Morados">
-                <div class="info-producto">
-                    <h4>Sueño Versátil</h4>
-                    <p class="descripcion">Ramo de Lisianthus morados y rosas en tono pastel, muy delicado.</p>
-                    <p class="precio">$816.00 MXN</p>
-                    <a href="https://wa.me/522283010051?text=Me%20interesa%20el%20ramo%20Sueño%20Versátil%20de%20Lisianthus" class="btn-ordenar">Ordenar ahora</a>
-                </div>
+                <img src="https://placehold.co/400x600/E6E6FA/333333?text=6+Lisianthus" alt="6 Lisianthus">
+                <div class="info-producto"><h4>Ternura</h4><p>6 varas de lisianthus.</p><p class="precio">$400 MXN</p><a href="#" class="btn-ordenar">Ordenar</a></div>
             </div>
-
-             <div class="producto-card" data-categoria="lisianthus">
-                <img src="https://placehold.co/300x150/F0F8FF/333333?text=LISIANTHUS+BLANCOS" alt="Ramo de Lisianthus Blanco">
-                <div class="info-producto">
-                    <h4>Nieve de Verano</h4>
-                    <p class="descripcion">Ramo puro de Lisianthus blancos, ideal para bodas o aniversarios.</p>
-                    <p class="precio">$714.00 MXN</p>
-                    <a href="https://wa.me/522283010051?text=Me%20interesa%20el%20ramo%20Nieve%20de%20Verano" class="btn-ordenar">Ordenar ahora</a>
-                </div>
-            </div>
-
             <div class="producto-card" data-categoria="lisianthus">
-                <img src="https://placehold.co/300x150/FF6347/ffffff?text=LISIANTHUS+ROJOS" alt="Arreglo de Lisianthus Rojos">
-                <div class="info-producto">
-                    <h4>Pasión Suave</h4>
-                    <p class="descripcion">Arreglo moderno con Lisianthus rojos y follaje exótico.</p>
-                    <p class="precio">$850.00 MXN</p>
-                    <a href="https://wa.me/522283010051?text=Me%20interesa%20el%20arreglo%20Pasión%20Suave" class="btn-ordenar">Ordenar ahora</a>
-                </div>
+                <img src="https://placehold.co/400x600/E6E6FA/333333?text=12+Lisianthus" alt="12 Lisianthus">
+                <div class="info-producto"><h4>Encanto</h4><p>12 lisianthus suaves.</p><p class="precio">$780 MXN</p><a href="#" class="btn-ordenar">Ordenar</a></div>
             </div>
-            
+            <div class="producto-card" data-categoria="lisianthus">
+                <img src="https://placehold.co/400x600/E6E6FA/333333?text=24+Lisianthus" alt="24 Lisianthus">
+                <div class="info-producto"><h4>Sueño Violeta</h4><p>24 lisianthus premium.</p><p class="precio">$1,450 MXN</p><a href="#" class="btn-ordenar">Ordenar</a></div>
+            </div>
+            <div class="producto-card" data-categoria="lisianthus">
+                <img src="https://placehold.co/400x600/E6E6FA/333333?text=36+Lisianthus" alt="36 Lisianthus">
+                <div class="info-producto"><h4>Poesía</h4><p>36 lisianthus de lujo.</p><p class="precio">$2,100 MXN</p><a href="#" class="btn-ordenar">Ordenar</a></div>
+            </div>
+            <div class="producto-card" data-categoria="lisianthus">
+                <img src="https://placehold.co/400x600/E6E6FA/333333?text=50+Lisianthus" alt="50 Lisianthus">
+                <div class="info-producto"><h4>Eternidad</h4><p>50 lisianthus sublimes.</p><p class="precio">$2,900 MXN</p><a href="#" class="btn-ordenar">Ordenar</a></div>
+            </div>
+
         </section>
     </main>
 
-    <footer>
-        <p class="copyright">© 2025 RiaFlowerShopp. Todos los derechos reservados. | Envíos a Domicilio.</p>
-    </footer>
-
     <div class="pedido-express-fixed">
         <h4>¡Entrega Rápida!</h4>
-        <p>¿Necesitas un ramo hoy mismo? Pide nuestras opciones ya elaboradas.</p>
-        <a href="https://wa.me/522283010051?text=Hola,%20quisiera%20hacer%20un%20pedido%20express%20personalizado." class="btn-chat-express">Chat Express</a>
+        <p>¿Flores para hoy mismo?</p>
+        <a href="https://wa.me/522283010051" class="btn-chat-express">Chat Express</a>
     </div>
 
     <script>
         function filtrarProductos(categoria, elemento) {
             event.preventDefault();
-
-            // 1. Manejar clase 'active' en la lista
             const enlaces = document.querySelectorAll('#lista-filtros a');
             enlaces.forEach(link => link.classList.remove('active'));
             elemento.classList.add('active');
 
-            // 2. Filtrar tarjetas
             const tarjetas = document.querySelectorAll('.producto-card');
-            
             tarjetas.forEach(tarjeta => {
-                // Si la categoría coincide, se muestra, si no, se oculta.
-                if (tarjeta.getAttribute('data-categoria') === categoria) {
-                    tarjeta.style.display = 'flex';
-                } else {
-                    tarjeta.style.display = 'none';
-                }
+                tarjeta.style.display = (tarjeta.getAttribute('data-categoria') === categoria) ? 'block' : 'none';
             });
         }
-
-        // Ejecutar el filtro inicial al cargar la página para mostrar solo la primera categoría (Rosas)
-        document.addEventListener('DOMContentLoaded', (event) => {
+        document.addEventListener('DOMContentLoaded', () => {
             const primerFiltro = document.querySelector('#lista-filtros a.active');
-            if (primerFiltro) {
-                // Obtener la categoría del primer filtro activo ('rosas')
-                const categoriaInicial = primerFiltro.getAttribute('onclick').match(/'([^']*)'/)[1];
-                
-                // Mostrar solo los productos de la categoría inicial
-                const tarjetas = document.querySelectorAll('.producto-card');
-                tarjetas.forEach(tarjeta => {
-                    if (tarjeta.getAttribute('data-categoria') === categoriaInicial) {
-                        tarjeta.style.display = 'flex';
-                    } else {
-                        tarjeta.style.display = 'none';
-                    }
-                });
-            }
+            if (primerFiltro) filtrarProductos('rosas', primerFiltro);
         });
     </script>
-
 </body>
 </html>
