@@ -24,12 +24,10 @@
             font-family: 'Lato', sans-serif;
             background-color: var(--secondary-color);
             color: var(--text-dark);
-            line-height: 1.6;
         }
 
         h1, h2, h3, h4 { font-family: 'Playfair Display', serif; }
         a { text-decoration: none; color: inherit; }
-        ul { list-style: none; }
 
         header {
             background-color: var(--white);
@@ -45,73 +43,88 @@
             display: flex; justify-content: space-between; align-items: center; padding: 0 20px;
         }
 
-        .logo-img { height: auto; width: 100%; max-height: 80px; vertical-align: middle; }
-        nav ul { display: flex; gap: 30px; }
-        nav a { font-weight: 700; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; }
-        nav a:hover { color: var(--primary-color); }
+        .logo-img { height: auto; width: 100%; max-height: 80px; }
+        nav ul { display: flex; gap: 30px; list-style: none; }
+        nav a { font-weight: 700; font-size: 0.9rem; text-transform: uppercase; }
 
         .main-container {
             max-width: 1200px; margin: 40px auto;
             display: grid; grid-template-columns: 250px 1fr; gap: 40px; padding: 0 20px;
         }
 
-        aside.filtros-colecciones {
-            background: var(--white); padding: 30px; border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.03); height: fit-content; position: sticky; top: 120px;
-        }
-
-        aside h3 { margin-bottom: 20px; border-bottom: 2px solid var(--primary-color); padding-bottom: 10px; }
-        aside a { display: block; padding: 10px 12px; border-radius: 4px; transition: all 0.3s ease; color: var(--text-light); margin-bottom: 5px; }
-        aside a:hover, aside a.active { background-color: var(--primary-color); color: var(--white); padding-left: 20px; border-right: 4px solid var(--accent); }
-
-        .catalogo-productos {
-            display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 30px; 
-        }
-
+        /* --- ESTILOS DE LA TARJETA CON EFECTO LUPA --- */
         .producto-card {
-            position: relative; background: var(--white); border-radius: 15px; overflow: hidden; height: 380px; 
-            box-shadow: 0 8px 20px rgba(0,0,0,0.08); cursor: pointer;
+            position: relative;
+            background: var(--white);
+            border-radius: 15px;
+            overflow: hidden; /* Corta el zoom para que no se salga */
+            height: 400px; 
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
         }
 
-        .producto-card img { width: 100%; height: 100%;object-fit: contain; background-color: #f9f9f9; transition: transform 0.6s ease; }
+        .producto-card img { 
+            width: 100%; 
+            height: 100%; 
+            object-fit: contain; /* Foto completa sin recortes */
+            background-color: #ffffff;
+            transition: transform 0.6s ease; /* Suavidad del zoom */
+        }
 
+        /* El cuadro de información ahora solo sale desde abajo */
         .info-producto {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(158, 7, 33, 0.92);
-            display: flex; flex-direction: column; justify-content: center; align-items: center;
-            padding: 25px; text-align: center; opacity: 0; transition: opacity 0.4s ease;
-            color: white; z-index: 2;
+            position: absolute;
+            bottom: -100%; /* Escondido abajo */
+            left: 0;
+            width: 100%;
+            height: 45%; /* Solo tapa la mitad inferior */
+            background: rgba(158, 7, 33, 0.9); /* Rojo con ligera transparencia */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 15px;
+            text-align: center;
+            transition: bottom 0.4s ease; /* Desliza hacia arriba */
+            color: white;
+            z-index: 10;
         }
 
-        .producto-card:hover img { transform: scale(1.5); }
-        .producto-card:hover .info-producto { opacity: 1; }
+        /* --- EFECTO AL PASAR EL MOUSE (HOVER) --- */
+        .producto-card:hover img { 
+            transform: scale(1.5); /* EFECTO LUPA: La imagen crece */
+        }
 
-        .info-producto h4 { font-size: 1.4rem; margin-bottom: 10px; }
-        .info-producto .precio { font-size: 1.5rem; font-weight: 700; color: var(--accent); margin-bottom: 15px; }
+        .producto-card:hover .info-producto { 
+            bottom: 0; /* El texto rojo sube a la parte inferior */
+        }
+
+        .info-producto h4 { font-size: 1.2rem; margin-bottom: 5px; }
+        .info-producto p { font-size: 0.85rem; margin-bottom: 8px; }
+        .info-producto .precio { font-size: 1.3rem; font-weight: 700; color: var(--accent); margin-bottom: 10px; }
 
         .btn-ordenar {
-            background-color: var(--success); color: white; padding: 10px 20px; border-radius: 50px; font-weight: 700;
+            background-color: var(--success); color: white; padding: 8px 18px; border-radius: 50px; font-weight: 700; font-size: 0.8rem;
         }
 
-        .pedido-express-fixed {
-            position: fixed; bottom: 30px; right: 30px; max-width: 220px;
-            background: linear-gradient(135deg, var(--primary-color), #5e0513);
-            color: var(--white); padding: 20px; border-radius: 15px; z-index: 10000; text-align: center;
-        }
-        .btn-chat-express { background-color: var(--accent); color: #111; padding: 8px 15px; border-radius: 50px; font-weight: 700; display: block; margin-top: 10px; }
-
-        @media (max-width: 850px) { .main-container { grid-template-columns: 1fr; } aside.filtros-colecciones { position: relative; top: 0; } }
+        /* Resto de estilos necesarios */
+        .catalogo-productos { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 30px; }
+        aside.filtros-colecciones { background: var(--white); padding: 30px; border-radius: 8px; height: fit-content; position: sticky; top: 120px; }
+        aside h3 { margin-bottom: 20px; border-bottom: 2px solid var(--primary-color); padding-bottom: 10px; }
+        aside a { display: block; padding: 10px; color: var(--text-light); }
+        aside a.active { background: var(--primary-color); color: white; border-radius: 4px; }
     </style>
 </head>
 <body>
 
     <header>
         <nav>
-            <a href="index.html" class="logo-link"><img src="img/logo_circular.png" alt="Logo" class="logo-img"></a>
+            <a href="index.html"><img src="img/logo_circular.png" alt="Logo" class="logo-img"></a>
             <ul>
                 <li><a href="index.html">Inicio</a></li>
                 <li><a href="catalogo.html" style="color: var(--primary-color);">Catálogo</a></li>
-                <li><a href="servicios.html">Servicios</a></li>
                 <li><a href="contacto.html">Contacto</a></li>
             </ul>
         </nav>
@@ -123,188 +136,41 @@
             <ul id="lista-filtros">
                 <li><a href="#" class="active" onclick="filtrarProductos('rosas', this)">Rosas</a></li>
                 <li><a href="#" onclick="filtrarProductos('gerberas', this)">Gerberas</a></li>
-                <li><a href="#" onclick="filtrarProductos('girasoles', this)">Girasoles</a></li>
-                <li><a href="#" onclick="filtrarProductos('tulipanes', this)">Tulipanes</a></li>
-                <li><a href="#" onclick="filtrarProductos('orquideas', this)">Orquídeas</a></li>
-                <li><a href="#" onclick="filtrarProductos('lirios', this)">Lirios</a></li>
-                <li><a href="#" onclick="filtrarProductos('lisianthus', this)">Lisianthus</a></li>
             </ul>
         </aside>
 
         <section class="catalogo-productos" id="grid-productos">
-            
             <div class="producto-card" data-categoria="rosas">
-                <img src="https://placehold.co/400x600/9E0721/ffffff?text=6+Rosas" alt="6 Rosas">
-                <div class="info-producto"><h4>Media Docena</h4><p>6 rosas premium.</p><p class="precio">$450 MXN</p><a href="#" class="btn-ordenar">Ordenar ahora</a></div>
+                <img src="img/12rosasrojas1.png" alt="12 Rosas">
+                <div class="info-producto">
+                    <h4>Media Docena</h4>
+                    <p>6 rosas premium frescas.</p>
+                    <p class="precio">$450 MXN</p>
+                    <a href="https://wa.me/522283010051" class="btn-ordenar">Ordenar</a>
+                </div>
             </div>
+
             <div class="producto-card" data-categoria="rosas">
-                <img src="img/12rosasrojas.png" alt="12 Rosas">
-                <div class="info-producto"><h4>Docena Premium</h4><p>12 rosas de exportación.</p><p class="precio">$850 MXN</p><a href="#" class="btn-ordenar">Ordenar ahora</a></div>
+                <img src="img/12rosasrojasambos.png" alt="Ramo Mixto">
+                <div class="info-producto">
+                    <h4>Docena Premium</h4>
+                    <p>12 rosas de exportación.</p>
+                    <p class="precio">$850 MXN</p>
+                    <a href="https://wa.me/522283010051" class="btn-ordenar">Ordenar</a>
+                </div>
             </div>
-            <div class="producto-card" data-categoria="rosas">
-                <img src="https://placehold.co/400x600/9E0721/ffffff?text=24+Rosas" alt="24 Rosas">
-                <div class="info-producto"><h4>Dos Docenas</h4><p>24 rosas rojas intensas.</p><p class="precio">$1,445 MXN</p><a href="#" class="btn-ordenar">Ordenar ahora</a></div>
-            </div>
-            <div class="producto-card" data-categoria="rosas">
-                <img src="https://placehold.co/400x600/9E0721/ffffff?text=36+Rosas" alt="36 Rosas">
-                <div class="info-producto"><h4>Arreglo Gala</h4><p>36 rosas seleccionadas.</p><p class="precio">$2,100 MXN</p><a href="#" class="btn-ordenar">Ordenar ahora</a></div>
-            </div>
-            <div class="producto-card" data-categoria="rosas">
-                <img src="https://placehold.co/400x600/9E0721/ffffff?text=50+Rosas" alt="50 Rosas">
-                <div class="info-producto"><h4>Pasión Suprema</h4><p>50 rosas majestuosas.</p><p class="precio">$2,850 MXN</p><a href="#" class="btn-ordenar">Ordenar ahora</a></div>
-            </div>
-
-            <div class="producto-card" data-categoria="gerberas">
-                <img src="https://placehold.co/400x600/FFD700/333333?text=6+Gerberas" alt="6 Gerberas">
-                <div class="info-producto"><h4>Detalle Sonrisa</h4><p>6 gerberas de colores.</p><p class="precio">$320 MXN</p><a href="#" class="btn-ordenar">Ordenar</a></div>
-            </div>
-            <div class="producto-card" data-categoria="gerberas">
-                <img src="https://placehold.co/400x600/FFD700/333333?text=12+Gerberas" alt="12 Gerberas">
-                <div class="info-producto"><h4>Docena Alegría</h4><p>12 gerberas brillantes.</p><p class="precio">$510 MXN</p><a href="#" class="btn-ordenar">Ordenar</a></div>
-            </div>
-            <div class="producto-card" data-categoria="gerberas">
-                <img src="https://placehold.co/400x600/FFD700/333333?text=24+Gerberas" alt="24 Gerberas">
-                <div class="info-producto"><h4>Fiesta Floral</h4><p>24 gerberas surtidas.</p><p class="precio">$950 MXN</p><a href="#" class="btn-ordenar">Ordenar</a></div>
-            </div>
-            <div class="producto-card" data-categoria="gerberas">
-                <img src="https://placehold.co/400x600/FFD700/333333?text=36+Gerberas" alt="36 Gerberas">
-                <div class="info-producto"><h4>Explosión</h4><p>36 gerberas premium.</p><p class="precio">$1,350 MXN</p><a href="#" class="btn-ordenar">Ordenar</a></div>
-            </div>
-            <div class="producto-card" data-categoria="gerberas">
-                <img src="https://placehold.co/400x600/FFD700/333333?text=50+Gerberas" alt="50 Gerberas">
-                <div class="info-producto"><h4>Jardín Infinito</h4><p>50 gerberas espectaculares.</p><p class="precio">$1,800 MXN</p><a href="#" class="btn-ordenar">Ordenar</a></div>
-            </div>
-
-            <div class="producto-card" data-categoria="girasoles">
-                <img src="https://placehold.co/400x600/FFDB58/333333?text=6+Girasoles" alt="6 Girasoles">
-                <div class="info-producto"><h4>Luz de Mañana</h4><p>6 girasoles grandes.</p><p class="precio">$600 MXN</p><a href="#" class="btn-ordenar">Ordenar</a></div>
-            </div>
-            <div class="producto-card" data-categoria="girasoles">
-                <img src="https://placehold.co/400x600/FFDB58/333333?text=12+Girasoles" alt="12 Girasoles">
-                <div class="info-producto"><h4>Ramo Solar</h4><p>12 girasoles frescos.</p><p class="precio">$1,020 MXN</p><a href="#" class="btn-ordenar">Ordenar</a></div>
-            </div>
-            <div class="producto-card" data-categoria="girasoles">
-                <img src="https://placehold.co/400x600/FFDB58/333333?text=24+Girasoles" alt="24 Girasoles">
-                <div class="info-producto"><h4>Campo Dorado</h4><p>24 girasoles radiantes.</p><p class="precio">$1,900 MXN</p><a href="#" class="btn-ordenar">Ordenar</a></div>
-            </div>
-            <div class="producto-card" data-categoria="girasoles">
-                <img src="https://placehold.co/400x600/FFDB58/333333?text=36+Girasoles" alt="36 Girasoles">
-                <div class="info-producto"><h4>Esplendor</h4><p>36 girasoles de lujo.</p><p class="precio">$2,700 MXN</p><a href="#" class="btn-ordenar">Ordenar</a></div>
-            </div>
-            <div class="producto-card" data-categoria="girasoles">
-                <img src="https://placehold.co/400x600/FFDB58/333333?text=50+Girasoles" alt="50 Girasoles">
-                <div class="info-producto"><h4>Sol Máximo</h4><p>50 girasoles imponentes.</p><p class="precio">$3,600 MXN</p><a href="#" class="btn-ordenar">Ordenar</a></div>
-            </div>
-
-            <div class="producto-card" data-categoria="tulipanes">
-                <img src="https://placehold.co/400x600/FF69B4/ffffff?text=6+Tulipanes" alt="6 Tulipanes">
-                <div class="info-producto"><h4>Elegancia Sutil</h4><p>6 tulipanes importados.</p><p class="precio">$750 MXN</p><a href="#" class="btn-ordenar">Ordenar</a></div>
-            </div>
-            <div class="producto-card" data-categoria="tulipanes">
-                <img src="https://placehold.co/400x600/FF69B4/ffffff?text=12+Tulipanes" alt="12 Tulipanes">
-                <div class="info-producto"><h4>Clásico Holandés</h4><p>12 tulipanes premium.</p><p class="precio">$1,350 MXN</p><a href="#" class="btn-ordenar">Ordenar</a></div>
-            </div>
-            <div class="producto-card" data-categoria="tulipanes">
-                <img src="https://placehold.co/400x600/FF69B4/ffffff?text=24+Tulipanes" alt="24 Tulipanes">
-                <div class="info-producto"><h4>Ramo Real</h4><p>24 tulipanes de colores.</p><p class="precio">$2,400 MXN</p><a href="#" class="btn-ordenar">Ordenar</a></div>
-            </div>
-            <div class="producto-card" data-categoria="tulipanes">
-                <img src="https://placehold.co/400x600/FF69B4/ffffff?text=36+Tulipanes" alt="36 Tulipanes">
-                <div class="info-producto"><h4>Distinción</h4><p>36 tulipanes en jarrón.</p><p class="precio">$3,400 MXN</p><a href="#" class="btn-ordenar">Ordenar</a></div>
-            </div>
-            <div class="producto-card" data-categoria="tulipanes">
-                <img src="https://placehold.co/400x600/FF69B4/ffffff?text=50+Tulipanes" alt="50 Tulipanes">
-                <div class="info-producto"><h4>Lujo Holandés</h4><p>50 tulipanes exclusivos.</p><p class="precio">$4,500 MXN</p><a href="#" class="btn-ordenar">Ordenar</a></div>
-            </div>
-
-            <div class="producto-card" data-categoria="orquideas">
-                <img src="https://placehold.co/400x600/800080/ffffff?text=6+Orquideas" alt="6 Orquideas">
-                <div class="info-producto"><h4>Toque Exótico</h4><p>6 varas de orquídea.</p><p class="precio">$1,100 MXN</p><a href="#" class="btn-ordenar">Ordenar</a></div>
-            </div>
-            <div class="producto-card" data-categoria="orquideas">
-                <img src="https://placehold.co/400x600/800080/ffffff?text=12+Orquideas" alt="12 Orquideas">
-                <div class="info-producto"><h4>Pureza Zen</h4><p>12 orquídeas phalaenopsis.</p><p class="precio">$2,100 MXN</p><a href="#" class="btn-ordenar">Ordenar</a></div>
-            </div>
-            <div class="producto-card" data-categoria="orquideas">
-                <img src="https://placehold.co/400x600/800080/ffffff?text=24+Orquideas" alt="24 Orquideas">
-                <div class="info-producto"><h4>Cascada Mística</h4><p>24 orquídeas seleccionadas.</p><p class="precio">$3,900 MXN</p><a href="#" class="btn-ordenar">Ordenar</a></div>
-            </div>
-            <div class="producto-card" data-categoria="orquideas">
-                <img src="https://placehold.co/400x600/800080/ffffff?text=36+Orquideas" alt="36 Orquideas">
-                <div class="info-producto"><h4>Soberanía</h4><p>36 orquídeas de lujo.</p><p class="precio">$5,500 MXN</p><a href="#" class="btn-ordenar">Ordenar</a></div>
-            </div>
-            <div class="producto-card" data-categoria="orquideas">
-                <img src="https://placehold.co/400x600/800080/ffffff?text=50+Orquideas" alt="50 Orquideas">
-                <div class="info-producto"><h4>Reinado Floral</h4><p>50 orquídeas premium.</p><p class="precio">$7,200 MXN</p><a href="#" class="btn-ordenar">Ordenar</a></div>
-            </div>
-
-            <div class="producto-card" data-categoria="lirios">
-                <img src="https://placehold.co/400x600/FFFAF0/333333?text=6+Lirios" alt="6 Lirios">
-                <div class="info-producto"><h4>Aroma Suave</h4><p>6 lirios blancos.</p><p class="precio">$500 MXN</p><a href="#" class="btn-ordenar">Ordenar</a></div>
-            </div>
-            <div class="producto-card" data-categoria="lirios">
-                <img src="https://placehold.co/400x600/FFFAF0/333333?text=12+Lirios" alt="12 Lirios">
-                <div class="info-producto"><h4>Lirio Imperial</h4><p>12 lirios perfumados.</p><p class="precio">$950 MXN</p><a href="#" class="btn-ordenar">Ordenar</a></div>
-            </div>
-            <div class="producto-card" data-categoria="lirios">
-                <img src="https://placehold.co/400x600/FFFAF0/333333?text=24+Lirios" alt="24 Lirios">
-                <div class="info-producto"><h4>Bosque Blanco</h4><p>24 lirios premium.</p><p class="precio">$1,800 MXN</p><a href="#" class="btn-ordenar">Ordenar</a></div>
-            </div>
-            <div class="producto-card" data-categoria="lirios">
-                <img src="https://placehold.co/400x600/FFFAF0/333333?text=36+Lirios" alt="36 Lirios">
-                <div class="info-producto"><h4>Majestuosidad</h4><p>36 lirios de invernadero.</p><p class="precio">$2,600 MXN</p><a href="#" class="btn-ordenar">Ordenar</a></div>
-            </div>
-            <div class="producto-card" data-categoria="lirios">
-                <img src="https://placehold.co/400x600/FFFAF0/333333?text=50+Lirios" alt="50 Lirios">
-                <div class="info-producto"><h4>Poder Floral</h4><p>50 lirios espectaculares.</p><p class="precio">$3,500 MXN</p><a href="#" class="btn-ordenar">Ordenar</a></div>
-            </div>
-
-            <div class="producto-card" data-categoria="lisianthus">
-                <img src="https://placehold.co/400x600/E6E6FA/333333?text=6+Lisianthus" alt="6 Lisianthus">
-                <div class="info-producto"><h4>Ternura</h4><p>6 varas de lisianthus.</p><p class="precio">$400 MXN</p><a href="#" class="btn-ordenar">Ordenar</a></div>
-            </div>
-            <div class="producto-card" data-categoria="lisianthus">
-                <img src="https://placehold.co/400x600/E6E6FA/333333?text=12+Lisianthus" alt="12 Lisianthus">
-                <div class="info-producto"><h4>Encanto</h4><p>12 lisianthus suaves.</p><p class="precio">$780 MXN</p><a href="#" class="btn-ordenar">Ordenar</a></div>
-            </div>
-            <div class="producto-card" data-categoria="lisianthus">
-                <img src="https://placehold.co/400x600/E6E6FA/333333?text=24+Lisianthus" alt="24 Lisianthus">
-                <div class="info-producto"><h4>Sueño Violeta</h4><p>24 lisianthus premium.</p><p class="precio">$1,450 MXN</p><a href="#" class="btn-ordenar">Ordenar</a></div>
-            </div>
-            <div class="producto-card" data-categoria="lisianthus">
-                <img src="https://placehold.co/400x600/E6E6FA/333333?text=36+Lisianthus" alt="36 Lisianthus">
-                <div class="info-producto"><h4>Poesía</h4><p>36 lisianthus de lujo.</p><p class="precio">$2,100 MXN</p><a href="#" class="btn-ordenar">Ordenar</a></div>
-            </div>
-            <div class="producto-card" data-categoria="lisianthus">
-                <img src="https://placehold.co/400x600/E6E6FA/333333?text=50+Lisianthus" alt="50 Lisianthus">
-                <div class="info-producto"><h4>Eternidad</h4><p>50 lisianthus sublimes.</p><p class="precio">$2,900 MXN</p><a href="#" class="btn-ordenar">Ordenar</a></div>
-            </div>
-
         </section>
     </main>
-
-    <div class="pedido-express-fixed">
-        <h4>¡Entrega Rápida!</h4>
-        <p>¿Flores para hoy mismo?</p>
-        <a href="https://wa.me/522283010051" class="btn-chat-express">Chat Express</a>
-    </div>
 
     <script>
         function filtrarProductos(categoria, elemento) {
             event.preventDefault();
-            const enlaces = document.querySelectorAll('#lista-filtros a');
-            enlaces.forEach(link => link.classList.remove('active'));
+            document.querySelectorAll('#lista-filtros a').forEach(link => link.classList.remove('active'));
             elemento.classList.add('active');
-
-            const tarjetas = document.querySelectorAll('.producto-card');
-            tarjetas.forEach(tarjeta => {
+            document.querySelectorAll('.producto-card').forEach(tarjeta => {
                 tarjeta.style.display = (tarjeta.getAttribute('data-categoria') === categoria) ? 'block' : 'none';
             });
         }
-        document.addEventListener('DOMContentLoaded', () => {
-            const primerFiltro = document.querySelector('#lista-filtros a.active');
-            if (primerFiltro) filtrarProductos('rosas', primerFiltro);
-        });
     </script>
 </body>
 </html>
